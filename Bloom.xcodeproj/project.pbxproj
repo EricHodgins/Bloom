@@ -1,0 +1,704 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
+		7A84F9441DFE761D00A37C80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* ViewController.swift */; };
+		7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9451DFE761D00A37C80 /* Main.storyboard */; };
+		7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9481DFE761D00A37C80 /* Assets.xcassets */; };
+		7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */; };
+		7A84F9571DFE761E00A37C80 /* BloomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9561DFE761E00A37C80 /* BloomTests.swift */; };
+		7A84F95C1DFE761E00A37C80 /* Bloom WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7A84F95B1DFE761E00A37C80 /* Bloom WatchKit App.app */; };
+		7A84F9621DFE761E00A37C80 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9601DFE761E00A37C80 /* Interface.storyboard */; };
+		7A84F9641DFE761E00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9631DFE761E00A37C80 /* Assets.xcassets */; };
+		7A84F96B1DFE761E00A37C80 /* Bloom WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A84F9721DFE761E00A37C80 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9711DFE761E00A37C80 /* InterfaceController.swift */; };
+		7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9731DFE761E00A37C80 /* ExtensionDelegate.swift */; };
+		7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9751DFE761E00A37C80 /* NotificationController.swift */; };
+		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A84F9531DFE761D00A37C80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A84F9361DFE761D00A37C80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84F93D1DFE761D00A37C80;
+			remoteInfo = Bloom;
+		};
+		7A84F95D1DFE761E00A37C80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A84F9361DFE761D00A37C80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84F95A1DFE761E00A37C80;
+			remoteInfo = "Bloom WatchKit App";
+		};
+		7A84F96C1DFE761E00A37C80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A84F9361DFE761D00A37C80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84F9691DFE761E00A37C80;
+			remoteInfo = "Bloom WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7A84F97F1DFE761F00A37C80 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A84F96B1DFE761E00A37C80 /* Bloom WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9831DFE761F00A37C80 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7A84F95C1DFE761E00A37C80 /* Bloom WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84F9411DFE761D00A37C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A84F9431DFE761D00A37C80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A84F9461DFE761D00A37C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A84F9481DFE761D00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A84F94B1DFE761D00A37C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A84F94D1DFE761D00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A84F9521DFE761D00A37C80 /* BloomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84F9561DFE761E00A37C80 /* BloomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomTests.swift; sourceTree = "<group>"; };
+		7A84F9581DFE761E00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A84F95B1DFE761E00A37C80 /* Bloom WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bloom WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84F9611DFE761E00A37C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		7A84F9631DFE761E00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A84F9651DFE761E00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Bloom WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84F9701DFE761E00A37C80 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		7A84F9711DFE761E00A37C80 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		7A84F9731DFE761E00A37C80 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		7A84F9751DFE761E00A37C80 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		7A84F9771DFE761F00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A84F93B1DFE761D00A37C80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F94F1DFE761D00A37C80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9671DFE761E00A37C80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A84F9351DFE761D00A37C80 = {
+			isa = PBXGroup;
+			children = (
+				7A84F9401DFE761D00A37C80 /* Bloom */,
+				7A84F9551DFE761E00A37C80 /* BloomTests */,
+				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
+				7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */,
+				7A84F93F1DFE761D00A37C80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A84F93F1DFE761D00A37C80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F93E1DFE761D00A37C80 /* Bloom.app */,
+				7A84F9521DFE761D00A37C80 /* BloomTests.xctest */,
+				7A84F95B1DFE761E00A37C80 /* Bloom WatchKit App.app */,
+				7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A84F9401DFE761D00A37C80 /* Bloom */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
+				7A84F9431DFE761D00A37C80 /* ViewController.swift */,
+				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
+				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
+				7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */,
+				7A84F94D1DFE761D00A37C80 /* Info.plist */,
+			);
+			path = Bloom;
+			sourceTree = "<group>";
+		};
+		7A84F9551DFE761E00A37C80 /* BloomTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F9561DFE761E00A37C80 /* BloomTests.swift */,
+				7A84F9581DFE761E00A37C80 /* Info.plist */,
+			);
+			path = BloomTests;
+			sourceTree = "<group>";
+		};
+		7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F9601DFE761E00A37C80 /* Interface.storyboard */,
+				7A84F9631DFE761E00A37C80 /* Assets.xcassets */,
+				7A84F9651DFE761E00A37C80 /* Info.plist */,
+			);
+			path = "Bloom WatchKit App";
+			sourceTree = "<group>";
+		};
+		7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F9711DFE761E00A37C80 /* InterfaceController.swift */,
+				7A84F9731DFE761E00A37C80 /* ExtensionDelegate.swift */,
+				7A84F9751DFE761E00A37C80 /* NotificationController.swift */,
+				7A84F9771DFE761F00A37C80 /* Assets.xcassets */,
+				7A84F9791DFE761F00A37C80 /* Info.plist */,
+				7A84F96F1DFE761E00A37C80 /* Supporting Files */,
+			);
+			path = "Bloom WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		7A84F96F1DFE761E00A37C80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A84F9701DFE761E00A37C80 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A84F93D1DFE761D00A37C80 /* Bloom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84F9841DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom" */;
+			buildPhases = (
+				7A84F93A1DFE761D00A37C80 /* Sources */,
+				7A84F93B1DFE761D00A37C80 /* Frameworks */,
+				7A84F93C1DFE761D00A37C80 /* Resources */,
+				7A84F9831DFE761F00A37C80 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A84F95E1DFE761E00A37C80 /* PBXTargetDependency */,
+			);
+			name = Bloom;
+			productName = Bloom;
+			productReference = 7A84F93E1DFE761D00A37C80 /* Bloom.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A84F9511DFE761D00A37C80 /* BloomTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84F9871DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "BloomTests" */;
+			buildPhases = (
+				7A84F94E1DFE761D00A37C80 /* Sources */,
+				7A84F94F1DFE761D00A37C80 /* Frameworks */,
+				7A84F9501DFE761D00A37C80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A84F9541DFE761D00A37C80 /* PBXTargetDependency */,
+			);
+			name = BloomTests;
+			productName = BloomTests;
+			productReference = 7A84F9521DFE761D00A37C80 /* BloomTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A84F95A1DFE761E00A37C80 /* Bloom WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84F9801DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom WatchKit App" */;
+			buildPhases = (
+				7A84F9591DFE761E00A37C80 /* Resources */,
+				7A84F97F1DFE761F00A37C80 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A84F96D1DFE761E00A37C80 /* PBXTargetDependency */,
+			);
+			name = "Bloom WatchKit App";
+			productName = "Bloom WatchKit App";
+			productReference = 7A84F95B1DFE761E00A37C80 /* Bloom WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		7A84F9691DFE761E00A37C80 /* Bloom WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84F97C1DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom WatchKit Extension" */;
+			buildPhases = (
+				7A84F9661DFE761E00A37C80 /* Sources */,
+				7A84F9671DFE761E00A37C80 /* Frameworks */,
+				7A84F9681DFE761E00A37C80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bloom WatchKit Extension";
+			productName = "Bloom WatchKit Extension";
+			productReference = 7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A84F9361DFE761D00A37C80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Eric Hodgins";
+				TargetAttributes = {
+					7A84F93D1DFE761D00A37C80 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+					};
+					7A84F9511DFE761D00A37C80 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A84F93D1DFE761D00A37C80;
+					};
+					7A84F95A1DFE761E00A37C80 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+					};
+					7A84F9691DFE761E00A37C80 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7A84F9391DFE761D00A37C80 /* Build configuration list for PBXProject "Bloom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A84F9351DFE761D00A37C80;
+			productRefGroup = 7A84F93F1DFE761D00A37C80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A84F93D1DFE761D00A37C80 /* Bloom */,
+				7A84F9511DFE761D00A37C80 /* BloomTests */,
+				7A84F95A1DFE761E00A37C80 /* Bloom WatchKit App */,
+				7A84F9691DFE761E00A37C80 /* Bloom WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A84F93C1DFE761D00A37C80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
+				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
+				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9501DFE761D00A37C80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9591DFE761E00A37C80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F9641DFE761E00A37C80 /* Assets.xcassets in Resources */,
+				7A84F9621DFE761E00A37C80 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9681DFE761E00A37C80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A84F93A1DFE761D00A37C80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F9441DFE761D00A37C80 /* ViewController.swift in Sources */,
+				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F94E1DFE761D00A37C80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F9571DFE761E00A37C80 /* BloomTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84F9661DFE761E00A37C80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */,
+				7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */,
+				7A84F9721DFE761E00A37C80 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A84F9541DFE761D00A37C80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84F93D1DFE761D00A37C80 /* Bloom */;
+			targetProxy = 7A84F9531DFE761D00A37C80 /* PBXContainerItemProxy */;
+		};
+		7A84F95E1DFE761E00A37C80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84F95A1DFE761E00A37C80 /* Bloom WatchKit App */;
+			targetProxy = 7A84F95D1DFE761E00A37C80 /* PBXContainerItemProxy */;
+		};
+		7A84F96D1DFE761E00A37C80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84F9691DFE761E00A37C80 /* Bloom WatchKit Extension */;
+			targetProxy = 7A84F96C1DFE761E00A37C80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A84F9451DFE761D00A37C80 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A84F9461DFE761D00A37C80 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A84F94B1DFE761D00A37C80 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7A84F9601DFE761E00A37C80 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A84F9611DFE761E00A37C80 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A84F97A1DFE761F00A37C80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7A84F97B1DFE761F00A37C80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A84F97D1DFE761F00A37C80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		7A84F97E1DFE761F00A37C80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		7A84F9811DFE761F00A37C80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				IBSC_MODULE = Bloom_WatchKit_Extension;
+				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		7A84F9821DFE761F00A37C80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				IBSC_MODULE = Bloom_WatchKit_Extension;
+				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		7A84F9851DFE761F00A37C80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = Bloom/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7A84F9861DFE761F00A37C80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = Bloom/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7A84F9881DFE761F00A37C80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = BloomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.BloomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloom.app/Bloom";
+			};
+			name = Debug;
+		};
+		7A84F9891DFE761F00A37C80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = BloomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.BloomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloom.app/Bloom";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A84F9391DFE761D00A37C80 /* Build configuration list for PBXProject "Bloom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84F97A1DFE761F00A37C80 /* Debug */,
+				7A84F97B1DFE761F00A37C80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A84F97C1DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84F97D1DFE761F00A37C80 /* Debug */,
+				7A84F97E1DFE761F00A37C80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A84F9801DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84F9811DFE761F00A37C80 /* Debug */,
+				7A84F9821DFE761F00A37C80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A84F9841DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84F9851DFE761F00A37C80 /* Debug */,
+				7A84F9861DFE761F00A37C80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A84F9871DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "BloomTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84F9881DFE761F00A37C80 /* Debug */,
+				7A84F9891DFE761F00A37C80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A84F9361DFE761D00A37C80 /* Project object */;
+}
