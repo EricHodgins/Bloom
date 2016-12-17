@@ -45,9 +45,23 @@
                                             <segue destination="IW1-7m-3vF" kind="presentation" id="otL-wJ-G1O"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="201" width="375" height="201"/>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Workouts">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.99863356351852417" green="0.33362942934036255" blue="0.00073126255301758647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="1" green="0.43923366069793701" blue="0.73984533548355103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.9999043345451355" green="0.83545953035354614" blue="0.78380119800567627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC">
                                         <rect key="frame" x="0.0" y="402" width="375" height="201"/>
@@ -66,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd"/>
                     <connections>
+                        <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
                     </connections>
                 </viewController>
