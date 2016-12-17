@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
-		7A84F9441DFE761D00A37C80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* ViewController.swift */; };
+		7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* MainViewController.swift */; };
 		7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9451DFE761D00A37C80 /* Main.storyboard */; };
 		7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9481DFE761D00A37C80 /* Assets.xcassets */; };
 		7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */; };
@@ -73,9 +74,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
+		7A6340021E05CECA0021594C /* Drawings.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Drawings.playground; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84F9411DFE761D00A37C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A84F9431DFE761D00A37C80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A84F9431DFE761D00A37C80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A84F9461DFE761D00A37C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A84F9481DFE761D00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A84F94B1DFE761D00A37C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,9 +124,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A30CD831E03AFDA007C2F69 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				7A6340021E05CECA0021594C /* Drawings.playground */,
+			);
+			name = Playgrounds;
+			sourceTree = "<group>";
+		};
 		7A84F9351DFE761D00A37C80 = {
 			isa = PBXGroup;
 			children = (
+				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
 				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
@@ -147,7 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
-				7A84F9431DFE761D00A37C80 /* ViewController.swift */,
+				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
+				7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */,
 				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
 				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
 				7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */,
@@ -366,7 +379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A84F9441DFE761D00A37C80 /* ViewController.swift in Sources */,
+				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
+				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +687,7 @@
 				7A84F97E1DFE761F00A37C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A84F9801DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -681,6 +696,7 @@
 				7A84F9821DFE761F00A37C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A84F9841DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom" */ = {
 			isa = XCConfigurationList;
@@ -689,6 +705,7 @@
 				7A84F9861DFE761F00A37C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A84F9871DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "BloomTests" */ = {
 			isa = XCConfigurationList;
@@ -697,6 +714,7 @@
 				7A84F9891DFE761F00A37C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
