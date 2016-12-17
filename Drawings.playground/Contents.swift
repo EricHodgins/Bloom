@@ -9,7 +9,7 @@ let rect = CGRect(origin: .zero, size: size)
 
 // MARK: - Draw the plus sign
 
-let fillColor = UIColor.green
+let plusSignFillColor = UIColor.green
 
 // Begin context
 
@@ -26,9 +26,62 @@ plusPath.addLine(to: CGPoint(x: 24, y: 40))
 plusPath.move(to: CGPoint(x: 10, y: 25))
 plusPath.addLine(to: CGPoint(x: 40, y: 25))
 
-fillColor.setStroke()
+plusSignFillColor.setStroke()
 plusPath.stroke()
 
-let image = UIGraphicsGetImageFromCurrentImageContext()
+let fullPlusSignPath = UIBezierPath()
+fullPlusSignPath.append(plusPath)
+
+let plusSignImage = UIGraphicsGetImageFromCurrentImageContext()
 UIGraphicsEndImageContext()
-image
+plusSignImage
+
+
+// MARK - Draw stick man
+
+UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+
+
+
+
+let stickManImage = UIGraphicsGetImageFromCurrentImageContext()
+UIGraphicsEndImageContext()
+stickManImage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

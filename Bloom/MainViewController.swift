@@ -10,18 +10,15 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    lazy var createWorkoutButton: CreateWorkoutButton = {
-        let button = CreateWorkoutButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height/3))
-        return button
-    }()
+    @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    func setupButtonLayout() {
-        view.addSubview(createWorkoutButton)
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        createWorkoutButton.setNeedsDisplay()
     }
 }
 

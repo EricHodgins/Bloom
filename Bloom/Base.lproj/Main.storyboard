@@ -37,6 +37,9 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                                 <color key="value" red="0.47695761919021606" green="0.9448046088218689" blue="0.40673577785491943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.74529534578323364" green="0.99853819608688354" blue="0.90455156564712524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="IW1-7m-3vF" kind="presentation" id="otL-wJ-G1O"/>
@@ -62,6 +65,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd"/>
+                    <connections>
+                        <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
