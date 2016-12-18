@@ -10,6 +10,8 @@
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
+		7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */; };
+		7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13ED1E06197900330EFB /* GradientView.swift */; };
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
 		7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* MainViewController.swift */; };
@@ -80,6 +82,8 @@
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
+		7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutController.swift; sourceTree = "<group>"; };
+		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Drawings.playground; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1E13E91E06182600330EFB /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */,
+				7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */,
+				7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */,
+				7A1E13E71E06124300330EFB /* StatsButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		7A1E13EC1E06195600330EFB /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A1E13ED1E06197900330EFB /* GradientView.swift */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
 		7A30CD831E03AFDA007C2F69 /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,11 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
+				7A1E13EC1E06195600330EFB /* Custom Views */,
+				7A1E13E91E06182600330EFB /* Buttons */,
 				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
-				7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */,
-				7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */,
-				7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */,
-				7A1E13E71E06124300330EFB /* StatsButton.swift */,
+				7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */,
 				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
 				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
 				7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */,
@@ -392,7 +414,9 @@
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
+				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
+				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
