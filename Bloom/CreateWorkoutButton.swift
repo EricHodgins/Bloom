@@ -9,28 +9,10 @@
 import UIKit
 
 @IBDesignable
-class CreateWorkoutButton: UIButton {
+class CreateWorkoutButton: GenericBloomButton {
     
-    let gradientLayer = CAGradientLayer()
-    @IBInspectable var startColor: UIColor = UIColor.green
-    @IBInspectable var endColor: UIColor = UIColor.white
-    @IBInspectable var fillColor: UIColor = UIColor.green
-    
-
-
     override func draw(_ rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        let colors = [startColor.cgColor, endColor.cgColor] as CFArray
-        
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colorLocations: [CGFloat] = [0.0, 1.0]
-        
-        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: colorLocations)!
-        let startPoint = CGPoint.zero
-        let endPoint = CGPoint(x: 0, y: bounds.size.height)
-        
-        context!.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
-        
+        super.draw(rect)
         
         // Draw the plus sign
         let plusPath = UIBezierPath()
