@@ -26,7 +26,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Create Workout Routine">
                                             <color key="titleColor" red="0.97148927979999999" green="1" blue="0.97109420769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -47,7 +47,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="201" width="375" height="201"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Workouts">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -63,9 +63,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="402" width="375" height="201"/>
-                                        <state key="normal" title="Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="View Stats">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.016745710745453835" green="0.51669448614120483" blue="0.99863952398300171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.41047936677932739" green="0.85733288526535034" blue="0.99989908933639526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.83378636837005615" green="0.86821842193603516" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -82,6 +96,7 @@
                     <connections>
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
+                        <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

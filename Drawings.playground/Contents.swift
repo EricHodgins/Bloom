@@ -116,10 +116,49 @@ UIGraphicsEndImageContext()
 stickManImage
 
 
+// MARK: - Draw graph icon
 
+UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
 
+let verticalPath = UIBezierPath()
+verticalPath.lineWidth = 4.0
+verticalPath.move(to: CGPoint(x: 10, y: 10))
+verticalPath.addLine(to: CGPoint(x: 10, y: 50))
 
+UIColor.blue.setStroke()
+verticalPath.stroke()
 
+let horizontalPath = UIBezierPath()
+horizontalPath.lineWidth = 4.0
+horizontalPath.move(to: CGPoint(x: 8, y: 50))
+horizontalPath.addLine(to: CGPoint(x: 50, y: 50))
+
+UIColor.blue.setStroke()
+horizontalPath.stroke()
+
+// Line in graph
+let line1 = UIBezierPath()
+line1.lineWidth = 4.0
+line1.move(to: CGPoint(x: 15, y: 45))
+line1.addLine(to: CGPoint(x: 28, y: 30))
+
+line1.move(to: CGPoint(x: 28, y: 30))
+line1.addLine(to: CGPoint(x: 37, y: 40))
+
+line1.move(to: CGPoint(x: 37, y: 40))
+line1.addLine(to: CGPoint(x: 50, y: 15))
+
+UIColor.blue.setStroke()
+line1.stroke()
+
+let graphPath = UIBezierPath()
+graphPath.append(verticalPath)
+graphPath.append(horizontalPath)
+graphPath.append(line1)
+
+let graphImage = UIGraphicsGetImageFromCurrentImageContext()
+UIGraphicsEndImageContext()
+graphImage
 
 
 

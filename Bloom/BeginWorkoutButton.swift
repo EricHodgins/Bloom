@@ -21,25 +21,21 @@ class BeginWorkoutButton: GenericBloomButton {
         
         // Body
         let bodyPath = UIBezierPath()
-        bodyPath.lineWidth = 3.0
         bodyPath.move(to: CGPoint(x: 31, y: 26))
         bodyPath.addLine(to: CGPoint(x: 23, y: 45))
         
         // Right arm
         let rightArmPath = UIBezierPath()
-        rightArmPath.lineWidth = 3.0
         rightArmPath.move(to: CGPoint(x: 31, y: 34))
         rightArmPath.addLine(to: CGPoint(x: 44, y: 40))
         
         // Left arm
         let leftArmPath = UIBezierPath()
-        leftArmPath.lineWidth = 3.0
-        leftArmPath.move(to: CGPoint(x: 26, y: 32))
+        leftArmPath.move(to: CGPoint(x: 26, y: 33))
         leftArmPath.addLine(to: CGPoint(x: 16, y: 39))
         
         // Right leg
         let rightLegPath = UIBezierPath()
-        rightLegPath.lineWidth = 3.0
         rightLegPath.move(to: CGPoint(x: 24, y: 46))
         rightLegPath.addLine(to: CGPoint(x: 30, y: 55))
         rightLegPath.move(to: CGPoint(x: 30, y: 55))
@@ -47,7 +43,6 @@ class BeginWorkoutButton: GenericBloomButton {
         
         // Left Leg
         let leftLegPath = UIBezierPath()
-        leftLegPath.lineWidth = 3.0
         leftLegPath.move(to: CGPoint(x: 23, y: 45))
         leftLegPath.addLine(to: CGPoint(x: 12, y: 66))
         
@@ -59,7 +54,7 @@ class BeginWorkoutButton: GenericBloomButton {
         workoutManPath.append(rightLegPath)
         workoutManPath.append(leftLegPath)
         
-        workoutManPath.lineWidth = 3.0
+        workoutManPath.lineWidth = 4.0
         workoutManPath.lineCapStyle = .round
         
         fillColor.setStroke()

@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
     @IBOutlet weak var beginWorkoutButton: BeginWorkoutButton!
+    @IBOutlet weak var statsButton: StatsButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class MainViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         createWorkoutButton.setNeedsDisplay()
         beginWorkoutButton.setNeedsDisplay()
+        statsButton.setNeedsDisplay()
     }
 }
 
