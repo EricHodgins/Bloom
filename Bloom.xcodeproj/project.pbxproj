@@ -27,6 +27,7 @@
 		7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9731DFE761E00A37C80 /* ExtensionDelegate.swift */; };
 		7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9751DFE761E00A37C80 /* NotificationController.swift */; };
 		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
+		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		7A84F9751DFE761E00A37C80 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		7A84F9771DFE761F00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				7A1E13E91E06182600330EFB /* Buttons */,
 				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
 				7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */,
+				7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */,
 				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
 				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
 				7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */,
@@ -413,6 +416,7 @@
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
+				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
 				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
