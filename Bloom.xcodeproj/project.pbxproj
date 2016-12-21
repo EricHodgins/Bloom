@@ -28,6 +28,7 @@
 		7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9751DFE761E00A37C80 /* NotificationController.swift */; };
 		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
 		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
+		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7A84F9691DFE761E00A37C80;
 			remoteInfo = "Bloom WatchKit Extension";
+		};
+		7ACBB5291E0A325800CE285A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A84F9361DFE761D00A37C80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84F93D1DFE761D00A37C80;
+			remoteInfo = Bloom;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,6 +117,9 @@
 		7A84F9771DFE761F00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
+		7ACBB5241E0A325800CE285A /* BloomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ACBB5261E0A325800CE285A /* BloomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomUITests.swift; sourceTree = "<group>"; };
+		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +138,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7A84F9671DFE761E00A37C80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ACBB5211E0A325800CE285A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -171,6 +189,7 @@
 				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
 				7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */,
+				7ACBB5251E0A325800CE285A /* BloomUITests */,
 				7A84F93F1DFE761D00A37C80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,6 +201,7 @@
 				7A84F9521DFE761D00A37C80 /* BloomTests.xctest */,
 				7A84F95B1DFE761E00A37C80 /* Bloom WatchKit App.app */,
 				7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */,
+				7ACBB5241E0A325800CE285A /* BloomUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,6 +261,15 @@
 				7A84F9701DFE761E00A37C80 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ACBB5251E0A325800CE285A /* BloomUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7ACBB5261E0A325800CE285A /* BloomUITests.swift */,
+				7ACBB5281E0A325800CE285A /* Info.plist */,
+			);
+			path = BloomUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,13 +346,31 @@
 			productReference = 7A84F96A1DFE761E00A37C80 /* Bloom WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		7ACBB5231E0A325800CE285A /* BloomUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7ACBB52D1E0A325900CE285A /* Build configuration list for PBXNativeTarget "BloomUITests" */;
+			buildPhases = (
+				7ACBB5201E0A325800CE285A /* Sources */,
+				7ACBB5211E0A325800CE285A /* Frameworks */,
+				7ACBB5221E0A325800CE285A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ACBB52A1E0A325800CE285A /* PBXTargetDependency */,
+			);
+			name = BloomUITests;
+			productName = BloomUITests;
+			productReference = 7ACBB5241E0A325800CE285A /* BloomUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7A84F9361DFE761D00A37C80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Eric Hodgins";
 				TargetAttributes = {
@@ -348,6 +395,12 @@
 						DevelopmentTeam = E3QZ6M9437;
 						ProvisioningStyle = Automatic;
 					};
+					7ACBB5231E0A325800CE285A = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A84F93D1DFE761D00A37C80;
+					};
 				};
 			};
 			buildConfigurationList = 7A84F9391DFE761D00A37C80 /* Build configuration list for PBXProject "Bloom" */;
@@ -367,6 +420,7 @@
 				7A84F9511DFE761D00A37C80 /* BloomTests */,
 				7A84F95A1DFE761E00A37C80 /* Bloom WatchKit App */,
 				7A84F9691DFE761E00A37C80 /* Bloom WatchKit Extension */,
+				7ACBB5231E0A325800CE285A /* BloomUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -403,6 +457,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ACBB5221E0A325800CE285A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +504,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7ACBB5201E0A325800CE285A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -460,6 +529,11 @@
 			isa = PBXTargetDependency;
 			target = 7A84F9691DFE761E00A37C80 /* Bloom WatchKit Extension */;
 			targetProxy = 7A84F96C1DFE761E00A37C80 /* PBXContainerItemProxy */;
+		};
+		7ACBB52A1E0A325800CE285A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84F93D1DFE761D00A37C80 /* Bloom */;
+			targetProxy = 7ACBB5291E0A325800CE285A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -708,6 +782,36 @@
 			};
 			name = Release;
 		};
+		7ACBB52B1E0A325900CE285A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = BloomUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.BloomUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Bloom;
+			};
+			name = Debug;
+		};
+		7ACBB52C1E0A325900CE285A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = BloomUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.BloomUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Bloom;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -755,6 +859,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7ACBB52D1E0A325900CE285A /* Build configuration list for PBXNativeTarget "BloomUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7ACBB52B1E0A325900CE285A /* Debug */,
+				7ACBB52C1E0A325900CE285A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
