@@ -96,6 +96,12 @@ class AddExcerciseView: UIView {
     
     override func didMoveToSuperview() {
         animateUIElements()
+        
+        let anim = CABasicAnimation(keyPath: "transform.scale")
+        anim.fromValue = 0.01
+        anim.toValue = 1
+        anim.duration = 0.25
+        layer.add(anim, forKey: nil)
     }
     
     func animateUIElements() {

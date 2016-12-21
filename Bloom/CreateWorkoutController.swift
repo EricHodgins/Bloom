@@ -37,12 +37,7 @@ class CreateWorkoutController: UIViewController {
     @IBAction func addExcercisePressed(_ sender: Any) {
         lineSeparator.alpha = 0
         addBlurEffect()
-        let rect = setupExcerciseViewFrame()
-        excerciseView = AddExcerciseView(frame: rect)
-        view.addSubview(excerciseView)
-        
-        excerciseView.saveButton.addTarget(self, action: #selector(CreateWorkoutController.addedNewExcercise), for: .touchUpInside)
-        excerciseView.cancelButton.addTarget(self, action: #selector(CreateWorkoutController.cancelledAddingExcercise), for: .touchUpInside)
+        addExcerciseView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,6 +48,16 @@ class CreateWorkoutController: UIViewController {
         super.viewDidAppear(animated)
         
         animateLineSeparator()
+    }
+    
+    func addExcerciseView() {
+        let rect = setupExcerciseViewFrame()
+        excerciseView = AddExcerciseView(frame: rect)
+        view.addSubview(excerciseView)
+        
+        excerciseView.saveButton.addTarget(self, action: #selector(CreateWorkoutController.addedNewExcercise), for: .touchUpInside)
+        excerciseView.cancelButton.addTarget(self, action: #selector(CreateWorkoutController.cancelledAddingExcercise), for: .touchUpInside)
+        
     }
     
     func reAdjustExcerciseViewOnOrienationChange() {
