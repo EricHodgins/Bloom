@@ -139,6 +139,10 @@ class CreateWorkoutController: UIViewController {
                 self.reAdjustExcerciseViewOnOrienationChange()
             }
         }
+        
+        DispatchQueue.main.async {
+            self.animateLineSeparator()
+        }
     }
     
     
