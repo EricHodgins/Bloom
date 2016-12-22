@@ -30,13 +30,11 @@ class AddExcerciseView: UIView {
         saveButton = UIButton(frame: saveButtonFrame())
         saveButton.backgroundColor = UIColor(red: 1/255, green: 73/255, blue: 188/255, alpha: 1.0)
         saveButton.setTitle("Save", for: .normal)
-        saveButton.alpha = 0
         addSubview(saveButton)
         
         cancelButton = UIButton(frame: cancelButtonFrame())
         cancelButton.backgroundColor = UIColor(red: 232/255, green: 39/255, blue: 39/255, alpha: 1.0)
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.alpha = 0
         addSubview(cancelButton)
         
         setupTextField()
@@ -110,14 +108,6 @@ class AddExcerciseView: UIView {
             self.lineSeparator.transform = CGAffineTransform(scaleX: scaleX, y: 2)
         }, completion: {_ in
             
-            let fade = CABasicAnimation(keyPath: "opacity")
-            fade.fromValue = 0
-            fade.toValue = 1.0
-            fade.duration = 0.3
-            self.saveButton.layer.add(fade, forKey: nil)
-            self.cancelButton.layer.add(fade, forKey: nil)
-            self.saveButton.layer.opacity = 1.0
-            self.cancelButton.layer.opacity = 1.0
         })
     }
     
