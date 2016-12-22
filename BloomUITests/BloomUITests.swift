@@ -45,4 +45,19 @@ class BloomUITests: XCTestCase {
         
     }
     
+    func testCancelButtonForCreatingWorkoutRoutine() {
+        let createWorkoutRoutineButton = app.buttons["Create Workout Routine"]
+        createWorkoutRoutineButton.tap()
+        
+        let cancelButton = app.buttons["Cancel"]
+        
+        XCTAssertTrue(cancelButton.exists, "Cancel button does not exist in Creating Workout Routine")
+        
+        // Make sure it dismisses
+        cancelButton.tap()
+        
+        XCTAssertTrue(createWorkoutRoutineButton.exists, "Cancel Button Failed to dismiss.")
+        
+    }
+    
 }
