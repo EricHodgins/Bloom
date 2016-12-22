@@ -86,7 +86,7 @@ class AddExcerciseView: UIView {
         
         NSLayoutConstraint.activate([
             textField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            textField.topAnchor.constraint(equalTo: topAnchor, constant: bounds.size.height/3),
             textField.widthAnchor.constraint(equalToConstant: bounds.size.width - 20),
             textField.heightAnchor.constraint(equalToConstant: 30)
         ])
