@@ -222,7 +222,7 @@
             </objects>
             <point key="canvasLocation" x="1892" y="-385.45727136431788"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats-->
         <scene sceneID="Uel-H4-adw">
             <objects>
                 <viewController id="fSD-V5-eS1" sceneMemberID="viewController">
@@ -243,6 +243,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFc-mg-emR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

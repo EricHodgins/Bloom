@@ -60,4 +60,70 @@ class BloomUITests: XCTestCase {
         
     }
     
+    func testSaveButtonForCreatingWorkoutRoutine() {
+        let createWorkoutRoutineButton = app.buttons["Create Workout Routine"]
+        createWorkoutRoutineButton.tap()
+        
+        let saveButton = app.buttons["Save"]
+        
+        XCTAssertTrue(saveButton.exists, "Cancel button does not exist in Creating Workout Routine")
+        
+        // Make sure it dismisses
+        saveButton.tap()
+        
+        XCTAssertTrue(createWorkoutRoutineButton.exists, "Save Button Failed to dismiss.")
+    }
+    
+    func testWorkoutsButton() {
+        app.buttons["Workouts"].tap()
+        
+        let workoutsNavBar = app.navigationBars["Workouts"]
+        
+        XCTAssertTrue(workoutsNavBar.exists, "Workouts button did not work.")
+    }
+    
+    func testViewStatusButton() {
+        app.buttons["View Stats"].tap()
+        
+        let statsNavBar = app.navigationBars["Stats"]
+        
+        XCTAssertTrue(statsNavBar.exists, "View stats button not working.")
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
