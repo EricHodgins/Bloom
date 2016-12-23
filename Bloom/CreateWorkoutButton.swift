@@ -26,6 +26,8 @@ class CreateWorkoutButton: GenericBloomButton {
         plusPath.move(to: CGPoint(x: 10, y: 25))
         plusPath.addLine(to: CGPoint(x: 40, y: 25))
         
+        plusPath.lineCapStyle = .round
+        
         fillColor.setStroke()
         plusPath.stroke()
     }

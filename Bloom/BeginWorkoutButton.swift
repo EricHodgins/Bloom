@@ -18,6 +18,8 @@ class BeginWorkoutButton: GenericBloomButton {
         // Head
         let circlePath = UIBezierPath()
         circlePath.addArc(withCenter: CGPoint(x: 34, y: 20), radius: 5, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
+        fillColor.setFill()
+        circlePath.fill()
         
         // Body
         let bodyPath = UIBezierPath()
@@ -27,7 +29,7 @@ class BeginWorkoutButton: GenericBloomButton {
         // Right arm
         let rightArmPath = UIBezierPath()
         rightArmPath.move(to: CGPoint(x: 31, y: 34))
-        rightArmPath.addLine(to: CGPoint(x: 44, y: 40))
+        rightArmPath.addLine(to: CGPoint(x: 42, y: 40))
         
         // Left arm
         let leftArmPath = UIBezierPath()
