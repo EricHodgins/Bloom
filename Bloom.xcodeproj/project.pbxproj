@@ -29,6 +29,7 @@
 		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
 		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
+		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
 		7ACBB5241E0A325800CE285A /* BloomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACBB5261E0A325800CE285A /* BloomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomUITests.swift; sourceTree = "<group>"; };
 		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
+				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
 				7A1E13EC1E06195600330EFB /* Custom Views */,
 				7A1E13E91E06182600330EFB /* Buttons */,
 				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
@@ -480,6 +483,7 @@
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
+				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
@@ -876,6 +880,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */,
+			);
+			currentVersion = 7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */;
+			path = Bloom.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7A84F9361DFE761D00A37C80 /* Project object */;
 }
