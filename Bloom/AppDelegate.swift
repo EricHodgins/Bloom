@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    lazy var coreDataStack = CoreDataStack(modelName: "Bloom")
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        guard let navController = window?.rootViewController as? UINavigationController,
+            let mainController = navController.topViewController as? MainViewController else { return true }
+        
+        mainController.managedContext = coreDataStack.managedContext
+    
         return true
     }
 

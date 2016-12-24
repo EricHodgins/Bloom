@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateWorkoutController: UIViewController {
     
@@ -18,6 +19,8 @@ class CreateWorkoutController: UIViewController {
     
     let lineSeparator: UIView = UIView()
     var blurEffectView: UIVisualEffectView!
+    
+    var managedContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,7 @@ class CreateWorkoutController: UIViewController {
     }
 
     @IBAction func savePressed(_ sender: Any) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addExcercisePressed(_ sender: Any) {

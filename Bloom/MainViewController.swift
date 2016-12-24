@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
     @IBOutlet weak var beginWorkoutButton: BeginWorkoutButton!
     @IBOutlet weak var statsButton: StatsButton!
+    
+    var managedContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,13 @@ class MainViewController: UIViewController {
         createWorkoutButton.setNeedsDisplay()
         beginWorkoutButton.setNeedsDisplay()
         statsButton.setNeedsDisplay()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreateWorkout" {
+            let createController = segue.destination as! CreateWorkoutController
+            createController.managedContext = managedContext
+        }
     }
 }
 
