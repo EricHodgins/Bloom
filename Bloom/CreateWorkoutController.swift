@@ -20,11 +20,15 @@ class CreateWorkoutController: UIViewController {
     let lineSeparator: UIView = UIView()
     var blurEffectView: UIVisualEffectView!
     
+    var currentWorkout: Workout?
+    
     var managedContext: NSManagedObjectContext!
+    var excercises: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.dataSource = self
         workoutNameTextfield.delegate = self
     }
 
@@ -56,11 +60,25 @@ class CreateWorkoutController: UIViewController {
     func addExcerciseView() {
         let rect = setupExcerciseViewFrame()
         excerciseView = AddExcerciseView(frame: rect)
+        excerciseView.completionHandler = { (excerciseName) in
+            // Add New Excercise
+            if let excerciseName = excerciseName {
+                self.excercises.append(excerciseName)
+                self.tableView.reloadData()
+            }
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.blurEffectView.alpha = 0
+            }, completion: {_ in
+                self.blurEffectView.removeFromSuperview()
+                self.lineSeparator.alpha = 1.0
+            })
+            
+        }
+        
         view.addSubview(excerciseView)
-        
-        excerciseView.saveButton.addTarget(self, action: #selector(CreateWorkoutController.addedNewExcercise), for: .touchUpInside)
-        excerciseView.cancelButton.addTarget(self, action: #selector(CreateWorkoutController.cancelledAddingExcercise), for: .touchUpInside)
-        
+        excerciseView.saveButton.addTarget(excerciseView, action: #selector(AddExcerciseView.savePressed), for: .touchUpInside)
+        excerciseView.cancelButton.addTarget(excerciseView, action: #selector(AddExcerciseView.cancelPressed), for: .touchUpInside)
     }
     
     func reAdjustExcerciseViewOnOrienationChange() {
@@ -99,43 +117,7 @@ class CreateWorkoutController: UIViewController {
             lineSeparator.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
-    
-    func animateAddExceciseViewOffFromSuperView() {
-        addExcerciseButton.isEnabled = true
         
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
-            
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-                self.excerciseView.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
-                self.excerciseView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-            })
-            
-            
-        }, completion: {_ in
-            self.excerciseView.removeFromSuperview()
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.blurEffectView.alpha = 0
-            }, completion: {_ in
-                self.blurEffectView.removeFromSuperview()
-                self.lineSeparator.alpha = 1.0
-            })
-            
-        })
-        
-    }
-    
-    func addedNewExcercise() {
-        animateAddExceciseViewOffFromSuperView()
-    }
-    
-    func cancelledAddingExcercise() {
-        animateAddExceciseViewOffFromSuperView()
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if excerciseView != nil {
             DispatchQueue.main.async {
@@ -161,9 +143,31 @@ class CreateWorkoutController: UIViewController {
 }
 
 extension CreateWorkoutController: UITextFieldDelegate {
+    
+    //MARK: - Create Workout Name Textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.isFirstResponder {
             textField.resignFirstResponder()
+        }
+        
+        if workoutNameTextfield.text != "" {
+            let workoutFetch: NSFetchRequest<Workout> = Workout.fetchRequest()
+            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Workout.name), workoutNameTextfield.text!)
+            
+            do {
+                let results = try managedContext.fetch(workoutFetch)
+                if results.count > 0 {
+                    // Already have a workout called that
+                    currentWorkout = results.first
+                } else {
+                    // New Workout Named -> Create a new workout with this name
+                    currentWorkout = Workout(context: managedContext)
+                    currentWorkout?.name = workoutNameTextfield.text!
+                    try managedContext.save()
+                }
+            } catch let error as NSError {
+                print("Fetch error: \(error), \(error.userInfo)")
+            }
         }
         
         return true
@@ -183,7 +187,27 @@ extension CreateWorkoutController {
 
 
 
+// MARK: - Table View Delegate / Datasource
 
+extension CreateWorkoutController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return excercises.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let excercise = excercises[indexPath.row]
+        
+        cell.textLabel?.text = excercise
+        
+        return cell
+    }
+}
 
 
 

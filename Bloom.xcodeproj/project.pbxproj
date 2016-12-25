@@ -30,6 +30,10 @@
 		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
+		7AA861301E0F1CB30054B443 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612C1E0F1CB30054B443 /* Workout+CoreDataClass.swift */; };
+		7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612D1E0F1CB30054B443 /* Workout+CoreDataProperties.swift */; };
+		7AA861321E0F1CB30054B443 /* Excercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */; };
+		7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */; };
 		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +125,10 @@
 		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
+		7AA8612C1E0F1CB30054B443 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7AA8612D1E0F1CB30054B443 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7ACBB5241E0A325800CE285A /* BloomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACBB5261E0A325800CE285A /* BloomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomUITests.swift; sourceTree = "<group>"; };
 		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,6 +196,10 @@
 		7A84F9351DFE761D00A37C80 = {
 			isa = PBXGroup;
 			children = (
+				7AA8612C1E0F1CB30054B443 /* Workout+CoreDataClass.swift */,
+				7AA8612D1E0F1CB30054B443 /* Workout+CoreDataProperties.swift */,
+				7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */,
+				7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
 				7A84F9551DFE761E00A37C80 /* BloomTests */,
@@ -480,7 +492,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
+				7AA861301E0F1CB30054B443 /* Workout+CoreDataClass.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
@@ -489,8 +503,10 @@
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
+				7AA861321E0F1CB30054B443 /* Excercise+CoreDataClass.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
+				7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
