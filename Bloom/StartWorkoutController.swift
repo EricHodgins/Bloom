@@ -22,5 +22,7 @@ class StartWorkoutController: UIViewController {
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }
     
-
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        startButton.setNeedsDisplay()
+    }
 }

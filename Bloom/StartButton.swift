@@ -41,10 +41,43 @@ class StartButton: GenericBloomButton {
     //MARK: - Animations
     func animateGradient() {
         let gradientAnimation = CABasicAnimation(keyPath: "colors")
+        gradientAnimation.setValue(gradientLayer, forKey: "gradientLayer")
         gradientAnimation.fromValue = [startColor.cgColor, endColor.cgColor]
         gradientAnimation.toValue = [startNewGradientColor.cgColor, endNewGradientColor.cgColor]
-        gradientAnimation.duration = 5.0
+        gradientAnimation.delegate = self
+        gradientAnimation.duration = 0.5
+        gradientAnimation.fillMode = kCAFillModeForwards
+        gradientAnimation.isRemovedOnCompletion = false
         
-        
+        gradientLayer.add(gradientAnimation, forKey: nil)
     }
 }
+
+extension StartButton: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        guard let _ = anim.value(forKey: "gradientLayer") as? CAGradientLayer else { return }
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
