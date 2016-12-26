@@ -40,10 +40,14 @@ class StatsButton: GenericBloomButton {
         graphPath.append(horizontalPath)
         graphPath.append(line1)
         
-        graphPath.lineWidth = 4.0
-        graphPath.lineCapStyle = .round
-        fillColor.setStroke()
-        graphPath.stroke()
+        // Graph Layer
+        let graphLayer = CAShapeLayer()
+        graphLayer.path = graphPath.cgPath
+        graphLayer.strokeColor = fillColor.cgColor
+        graphLayer.lineWidth = 4.0
+        graphLayer.lineCap = kCALineCapRound
+        
+        layer.addSublayer(graphLayer)
     }
  
 

@@ -18,8 +18,6 @@ class BeginWorkoutButton: GenericBloomButton {
         // Head
         let circlePath = UIBezierPath()
         circlePath.addArc(withCenter: CGPoint(x: 33, y: 21), radius: 4, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
-        fillColor.setFill()
-        circlePath.fill()
         
         // Body
         let bodyPath = UIBezierPath()
@@ -49,18 +47,27 @@ class BeginWorkoutButton: GenericBloomButton {
         leftLegPath.addLine(to: CGPoint(x: 12, y: 66))
         
         let workoutManPath = UIBezierPath()
-        workoutManPath.append(circlePath)
         workoutManPath.append(bodyPath)
         workoutManPath.append(rightArmPath)
         workoutManPath.append(leftArmPath)
         workoutManPath.append(rightLegPath)
         workoutManPath.append(leftLegPath)
         
-        workoutManPath.lineWidth = 4.0
-        workoutManPath.lineCapStyle = .round
+        // Body Layer
+        let bodyShapeLayer = CAShapeLayer()
+        bodyShapeLayer.path = workoutManPath.cgPath
+        bodyShapeLayer.lineWidth = 4.0
+        bodyShapeLayer.lineCap = kCALineCapRound
+        bodyShapeLayer.strokeColor = fillColor.cgColor
+        layer.addSublayer(bodyShapeLayer)
         
-        fillColor.setStroke()
-        workoutManPath.stroke()
+        // Head Layer
+        let headShapeLayer = CAShapeLayer()
+        headShapeLayer.lineWidth = 4.0
+        headShapeLayer.path = circlePath.cgPath
+        headShapeLayer.fillColor = fillColor.cgColor
+        headShapeLayer.strokeColor = fillColor.cgColor
+        layer.addSublayer(headShapeLayer)
     }
 
 
