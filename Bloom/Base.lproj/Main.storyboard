@@ -331,6 +331,12 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
                                         <color key="value" red="1" green="0.43578806519508362" blue="0.71957975625991821" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startNewGradientColor">
+                                        <color key="value" red="0.051554158329963684" green="0.54144704341888428" blue="0.99831098318099976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endNewGradientColor">
+                                        <color key="value" red="0.39404487609863281" green="0.84529596567153931" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>

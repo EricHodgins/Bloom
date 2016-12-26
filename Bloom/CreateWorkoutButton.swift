@@ -16,7 +16,7 @@ class CreateWorkoutButton: GenericBloomButton {
         
         // Draw the plus sign
         let plusPath = UIBezierPath()
-        plusPath.lineWidth = 4.0
+        //plusPath.lineWidth = 4.0
         
         // Vertical line
         plusPath.move(to: CGPoint(x: 25, y: 10))
@@ -26,11 +26,17 @@ class CreateWorkoutButton: GenericBloomButton {
         plusPath.move(to: CGPoint(x: 10, y: 25))
         plusPath.addLine(to: CGPoint(x: 40, y: 25))
         
-        plusPath.lineCapStyle = .round
+        //plusPath.lineCapStyle = .round
+        //fillColor.setStroke()
+        //plusPath.stroke()
         
-        fillColor.setStroke()
-        plusPath.stroke()
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = plusPath.cgPath
+        shapeLayer.lineWidth = 4.0
+        shapeLayer.lineCap = kCALineCapRound
+        shapeLayer.strokeColor = fillColor.cgColor
+        layer.addSublayer(shapeLayer)
+        
     }
-    
 
 }

@@ -18,6 +18,8 @@ class StartWorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = workout.name
+        
+        startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }
     
 

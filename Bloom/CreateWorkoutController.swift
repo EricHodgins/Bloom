@@ -169,6 +169,7 @@ extension CreateWorkoutController: UITextFieldDelegate {
             textField.resignFirstResponder()
         }
         
+        //TODO: Allow ability to update as well
         if workoutNameTextfield.text != "" {
             let workoutFetch: NSFetchRequest<Workout> = Workout.fetchRequest()
             workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Workout.name), workoutNameTextfield.text!)
