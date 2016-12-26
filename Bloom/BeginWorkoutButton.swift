@@ -17,7 +17,7 @@ class BeginWorkoutButton: GenericBloomButton {
         
         // Head
         let circlePath = UIBezierPath()
-        circlePath.addArc(withCenter: CGPoint(x: 34, y: 20), radius: 5, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
+        circlePath.addArc(withCenter: CGPoint(x: 33, y: 21), radius: 4, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: true)
         fillColor.setFill()
         circlePath.fill()
         

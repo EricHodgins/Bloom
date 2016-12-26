@@ -33,6 +33,11 @@ class MainViewController: UIViewController {
             let createController = segue.destination as! CreateWorkoutController
             createController.managedContext = managedContext
         }
+        
+        if segue.identifier == "Workouts" {
+            let workoutsController = segue.destination as! WorkoutsController
+            workoutsController.managedContext = managedContext
+        }
     }
 }
 

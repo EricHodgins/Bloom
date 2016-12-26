@@ -38,6 +38,25 @@ class CreateWorkoutController: UIViewController {
     }
 
     @IBAction func savePressed(_ sender: Any) {
+        
+        // Save the workout and set it's excercises to the tableview
+        //1. Validate Textfield and current workout view
+        if let workout = currentWorkout {
+            for excerciseString in excercises {
+                let excercise = Excercise(context: managedContext)
+                excercise.name = excerciseString
+                workout.addToExcercises(excercise)
+            }
+            
+            //2. Save the context to disc
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Save error: \(error), description: \(error.userInfo)")
+            }
+        }
+        
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -61,7 +80,7 @@ class CreateWorkoutController: UIViewController {
         let rect = setupExcerciseViewFrame()
         excerciseView = AddExcerciseView(frame: rect)
         excerciseView.completionHandler = { (excerciseName) in
-            // Add New Excercise
+            // Add New Excercise ( Save was pressed.)
             if let excerciseName = excerciseName {
                 self.excercises.append(excerciseName)
                 self.tableView.reloadData()
@@ -117,7 +136,7 @@ class CreateWorkoutController: UIViewController {
             lineSeparator.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
-        
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if excerciseView != nil {
             DispatchQueue.main.async {
@@ -158,7 +177,7 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 let results = try managedContext.fetch(workoutFetch)
                 if results.count > 0 {
                     // Already have a workout called that
-                    currentWorkout = results.first
+                    //TODO: - Setup Alert Notifying a workout is already named that.
                 } else {
                     // New Workout Named -> Create a new workout with this name
                     currentWorkout = Workout(context: managedContext)

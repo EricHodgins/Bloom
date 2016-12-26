@@ -13,6 +13,7 @@
 		7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */; };
 		7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13ED1E06197900330EFB /* GradientView.swift */; };
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
+		7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
 		7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* MainViewController.swift */; };
 		7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9451DFE761D00A37C80 /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Drawings.playground; sourceTree = "<group>"; };
+		7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsController.swift; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84F9411DFE761D00A37C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A84F9431DFE761D00A37C80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
 				7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */,
 				7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */,
+				7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */,
 				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
 				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
 				7A84F94A1DFE761D00A37C80 /* LaunchScreen.storyboard */,
@@ -497,6 +500,7 @@
 				7AA861301E0F1CB30054B443 /* Workout+CoreDataClass.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
+				7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */,
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
