@@ -19,7 +19,8 @@ class WorkoutsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-
+        tableView.delegate = self
+        
         fetchWorkouts()
     }
     
@@ -62,6 +63,22 @@ extension WorkoutsController: UITableViewDataSource {
         cell.textLabel?.text = workout.name
         
         return cell
+    }
+    
+}
+
+extension WorkoutsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StartWorkoutSegue" {
+            let workoutCellIndex = tableView.indexPathForSelectedRow!
+            let workout = workouts[workoutCellIndex.row]
+            let startWorkoutController = segue.destination as! StartWorkoutController
+            startWorkoutController.workout = workout
+        }
     }
 }
 
