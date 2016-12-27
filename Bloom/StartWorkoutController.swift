@@ -11,7 +11,8 @@ import UIKit
 
 class StartWorkoutController: UIViewController {
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startButton: StartButton!
+    @IBOutlet weak var editWorkoutButton: EditWorkoutButton!
     
     var workout: Workout!
 
@@ -19,6 +20,7 @@ class StartWorkoutController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = workout.name
         
+        startButton.editWorkoutButton = editWorkoutButton
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }
     

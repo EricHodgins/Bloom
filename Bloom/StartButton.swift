@@ -12,6 +12,8 @@ class StartButton: GenericBloomButton {
     
     @IBInspectable var startNewGradientColor: UIColor = UIColor.blue
     @IBInspectable var endNewGradientColor: UIColor = UIColor.white
+    
+    var editWorkoutButton: EditWorkoutButton!
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -40,6 +42,8 @@ class StartButton: GenericBloomButton {
     
     //MARK: - Animations
     func animateGradient() {
+        editWorkoutButton.animateGradient()
+        
         let gradientAnimation = CABasicAnimation(keyPath: "colors")
         gradientAnimation.setValue(gradientLayer, forKey: "gradientLayer")
         gradientAnimation.fromValue = [startColor.cgColor, endColor.cgColor]
