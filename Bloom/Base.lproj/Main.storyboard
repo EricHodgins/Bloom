@@ -131,7 +131,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -270,7 +270,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQT-vz-QWC" id="ZHM-OZ-uYI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -318,8 +318,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3D-HA-Msd" customClass="StartButton" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="72" width="343" height="150.5"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3D-HA-Msd" customClass="StartButton" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72" width="343" height="100"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -339,13 +339,39 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkr-Pj-q4z" customClass="EditWorkoutButton" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="16" y="547" width="343" height="100"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <state key="normal" title="Edit Workout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.46498084070000001" green="0.93289178610000001" blue="0.412327528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-kZ-qpk">
+                                <rect key="frame" x="16" y="180" width="343" height="359.5"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qAA-3M-frL" firstAttribute="top" secondItem="p3D-HA-Msd" secondAttribute="bottom" multiplier="3" id="2DU-on-t5e"/>
-                            <constraint firstItem="p3D-HA-Msd" firstAttribute="top" secondItem="YUB-yP-vwd" secondAttribute="bottom" constant="8" symbolic="YES" id="RiX-SU-2zY"/>
-                            <constraint firstItem="p3D-HA-Msd" firstAttribute="leading" secondItem="euu-dV-rmI" secondAttribute="leadingMargin" id="Xmh-er-t3N"/>
-                            <constraint firstItem="p3D-HA-Msd" firstAttribute="centerX" secondItem="euu-dV-rmI" secondAttribute="centerX" id="kuW-y6-XLe"/>
+                            <constraint firstItem="p3D-HA-Msd" firstAttribute="top" secondItem="YUB-yP-vwd" secondAttribute="bottom" constant="8" id="3Qx-sj-kFg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="V1N-kZ-qpk" secondAttribute="leading" id="5b8-dE-KSh"/>
+                            <constraint firstItem="p3D-HA-Msd" firstAttribute="height" secondItem="euu-dV-rmI" secondAttribute="height" multiplier="0.15" id="Apq-qf-8dL"/>
+                            <constraint firstItem="mkr-Pj-q4z" firstAttribute="top" secondItem="V1N-kZ-qpk" secondAttribute="bottom" constant="7.5" id="F0Z-XS-DGp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mkr-Pj-q4z" secondAttribute="leading" id="OzD-Pq-XoH"/>
+                            <constraint firstItem="V1N-kZ-qpk" firstAttribute="top" secondItem="p3D-HA-Msd" secondAttribute="bottom" constant="8" id="YXz-vD-HqR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p3D-HA-Msd" secondAttribute="trailing" id="ZVS-eP-bAL"/>
+                            <constraint firstItem="mkr-Pj-q4z" firstAttribute="height" secondItem="euu-dV-rmI" secondAttribute="height" multiplier="0.15" id="ZXR-hu-7Q4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mkr-Pj-q4z" secondAttribute="trailing" id="aiX-Bh-3Kn"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="p3D-HA-Msd" secondAttribute="leading" id="d7K-ap-m8R"/>
+                            <constraint firstItem="qAA-3M-frL" firstAttribute="top" secondItem="mkr-Pj-q4z" secondAttribute="bottom" constant="20" id="hX7-cL-i6r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V1N-kZ-qpk" secondAttribute="trailing" id="r71-mz-agM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Workout Name" id="cHn-7D-3hU">

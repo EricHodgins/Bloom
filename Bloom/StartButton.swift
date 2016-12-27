@@ -51,12 +51,26 @@ class StartButton: GenericBloomButton {
         
         gradientLayer.add(gradientAnimation, forKey: nil)
     }
+    
 }
 
 extension StartButton: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         guard let _ = anim.value(forKey: "gradientLayer") as? CAGradientLayer else { return }
         
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                self.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+                self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            })
+            
+        }, completion: {_ in
+            self.removeFromSuperview()
+        })
     }
     
 }
