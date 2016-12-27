@@ -13,6 +13,7 @@ class StartWorkoutController: UIViewController {
     
     @IBOutlet weak var startButton: StartButton!
     @IBOutlet weak var editWorkoutButton: EditWorkoutButton!
+    @IBOutlet weak var countDownView: CountDownView!
     
     var workout: Workout!
 
@@ -21,10 +22,15 @@ class StartWorkoutController: UIViewController {
         navigationItem.title = workout.name
         
         startButton.editWorkoutButton = editWorkoutButton
+        self.countDownView.isHidden = true
+        startButton.buttonAnimationCompletion = {
+            self.countDownView.isHidden = false
+            self.countDownView.animateCircleDrawn()
+        }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        startButton.setNeedsDisplay()
+
     }
 }

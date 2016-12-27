@@ -14,6 +14,7 @@ class StartButton: GenericBloomButton {
     @IBInspectable var endNewGradientColor: UIColor = UIColor.white
     
     var editWorkoutButton: EditWorkoutButton!
+    var buttonAnimationCompletion: (() -> Void)?
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -73,7 +74,9 @@ extension StartButton: CAAnimationDelegate {
             })
             
         }, completion: {_ in
-            self.removeFromSuperview()
+            //self.removeFromSuperview()
+            self.isHidden = true
+            self.buttonAnimationCompletion!()
         })
     }
     

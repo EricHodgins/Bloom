@@ -17,6 +17,7 @@
 		7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */; };
 		7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */; };
 		7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915DA1E10CA9000090D7B /* StartButton.swift */; };
+		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
 		7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9431DFE761D00A37C80 /* MainViewController.swift */; };
 		7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9451DFE761D00A37C80 /* Main.storyboard */; };
@@ -109,6 +110,7 @@
 		7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsController.swift; sourceTree = "<group>"; };
 		7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutController.swift; sourceTree = "<group>"; };
 		7A7915DA1E10CA9000090D7B /* StartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84F9411DFE761D00A37C80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A84F9431DFE761D00A37C80 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1E13ED1E06197900330EFB /* GradientView.swift */,
+				7A83F94C1E1228FC00451BBA /* CountDownView.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				7AA861321E0F1CB30054B443 /* Excercise+CoreDataClass.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
+				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
 				7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
