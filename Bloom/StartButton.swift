@@ -65,6 +65,7 @@ extension StartButton: CAAnimationDelegate {
         
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
             
+            // Hide Start Button
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })
@@ -74,7 +75,6 @@ extension StartButton: CAAnimationDelegate {
             })
             
         }, completion: {_ in
-            //self.removeFromSuperview()
             self.isHidden = true
             self.buttonAnimationCompletion!()
         })

@@ -14,6 +14,7 @@ class StartWorkoutController: UIViewController {
     @IBOutlet weak var startButton: StartButton!
     @IBOutlet weak var editWorkoutButton: EditWorkoutButton!
     @IBOutlet weak var countDownView: CountDownView!
+    @IBOutlet weak var countDownLabel: UILabel!
     
     var workout: Workout!
 
@@ -22,7 +23,9 @@ class StartWorkoutController: UIViewController {
         navigationItem.title = workout.name
         
         startButton.editWorkoutButton = editWorkoutButton
-        self.countDownView.isHidden = true
+        countDownView.isHidden = true
+        countDownLabel.alpha = 0
+        countDownView.countDownLabel = countDownLabel
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
             self.countDownView.animateCircleDrawn()

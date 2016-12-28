@@ -16,6 +16,7 @@ class CountDownView: UIView {
     @IBInspectable var strokeColor: UIColor = UIColor.blue
     
     let circleShapeLayer = CAShapeLayer()
+    var countDownLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
         
@@ -47,6 +48,7 @@ class CountDownView: UIView {
         
         circleShapeLayer.path = outerCircle.cgPath
         circleShapeLayer.lineWidth = 15.0
+        circleShapeLayer.lineDashPattern = [40, 3]
         circleShapeLayer.fillColor = UIColor.clear.cgColor
         circleShapeLayer.strokeColor = strokeColor.cgColor
         layer.addSublayer(circleShapeLayer)
@@ -54,15 +56,47 @@ class CountDownView: UIView {
     
     func animateCircleDrawn() {
         let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeAnimation.delegate = self
+        strokeAnimation.setValue(circleShapeLayer, forKey: "strokeCircleOn")
         strokeAnimation.fromValue = 0
         strokeAnimation.toValue = 1
         strokeAnimation.duration = 0.5
         
         circleShapeLayer.add(strokeAnimation, forKey: nil)
     }
+    
+    func animateCircleOff(withSeconds seconds: CFTimeInterval) {
+        let strokeAnimation = CABasicAnimation(keyPath: "strokeStart")
+        strokeAnimation.delegate = self
+        strokeAnimation.setValue(circleShapeLayer, forKey: "strokeCircleOff")
+        strokeAnimation.fromValue = 0
+        strokeAnimation.toValue = 1
+        strokeAnimation.fillMode = kCAFillModeForwards
+        strokeAnimation.isRemovedOnCompletion = false
+        strokeAnimation.duration = seconds
+        
+        circleShapeLayer.add(strokeAnimation, forKey: nil)
+    }
+    
+    func startCountDown(withSeconds seconds: Int) {
+        
+    }
 }
 
-
+extension CountDownView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if let _ = anim.value(forKey: "strokeCircleOn") as? CAShapeLayer{
+            countDownLabel.alpha = 1.0
+            animateCircleOff(withSeconds: 5.0)
+            return
+        }
+        
+        if let _ = anim.value(forKey: "strokeCircleOff") as? CAShapeLayer {
+            circleShapeLayer.strokeColor = UIColor.clear.cgColor
+            return
+        }
+    }
+}
 
 
 

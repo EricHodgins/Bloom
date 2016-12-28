@@ -361,8 +361,20 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-kZ-qpk" customClass="CountDownView" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="180" width="343" height="359.5"/>
+                                <rect key="frame" x="16" y="180" width="343" height="359"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-lV-0wa">
+                                        <rect key="frame" x="142" y="120" width="59" height="120"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="N9e-lV-0wa" firstAttribute="centerY" secondItem="V1N-kZ-qpk" secondAttribute="centerY" id="ZvC-oQ-Rlp"/>
+                                    <constraint firstItem="N9e-lV-0wa" firstAttribute="centerX" secondItem="V1N-kZ-qpk" secondAttribute="centerX" id="lS9-YO-dCR"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
                                         <color key="value" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -390,6 +402,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="u2n-xq-1u7"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="countDownLabel" destination="N9e-lV-0wa" id="IeR-Jx-a2Z"/>
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
