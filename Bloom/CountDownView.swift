@@ -55,12 +55,15 @@ class CountDownView: UIView {
     }
     
     func animateCircleDrawn() {
+        
+        startCountDown(withSeconds: 3)
+        
         let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeAnimation.delegate = self
         strokeAnimation.setValue(circleShapeLayer, forKey: "strokeCircleOn")
         strokeAnimation.fromValue = 0
         strokeAnimation.toValue = 1
-        strokeAnimation.duration = 0.5
+        strokeAnimation.duration = 3
         
         circleShapeLayer.add(strokeAnimation, forKey: nil)
     }
@@ -79,15 +82,25 @@ class CountDownView: UIView {
     }
     
     func startCountDown(withSeconds seconds: Int) {
-        
+        var timeRemaining = seconds
+        countDownLabel.text = "\(timeRemaining)"
+        timeRemaining = timeRemaining - 1
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            DispatchQueue.main.async {
+                self.countDownLabel.text = "\(timeRemaining)"
+                timeRemaining = timeRemaining - 1
+                if timeRemaining == -1 {
+                    timer.invalidate()
+                }
+            }
+        }
     }
 }
 
 extension CountDownView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let _ = anim.value(forKey: "strokeCircleOn") as? CAShapeLayer{
-            countDownLabel.alpha = 1.0
-            animateCircleOff(withSeconds: 5.0)
+            animateCircleOff(withSeconds: 0.5)
             return
         }
         

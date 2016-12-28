@@ -69,7 +69,6 @@ extension EditWorkoutButton: CAAnimationDelegate {
             })
             
         }, completion: {_ in
-            //self.removeFromSuperview()
             self.isHidden = true
         })
     }

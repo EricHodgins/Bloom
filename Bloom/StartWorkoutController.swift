@@ -24,7 +24,6 @@ class StartWorkoutController: UIViewController {
         
         startButton.editWorkoutButton = editWorkoutButton
         countDownView.isHidden = true
-        countDownLabel.alpha = 0
         countDownView.countDownLabel = countDownLabel
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
