@@ -131,7 +131,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fS-VI-QQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-385.45727136431788"/>
+            <point key="canvasLocation" x="1892" y="-454"/>
         </scene>
         <!--Stats-->
         <scene sceneID="Uel-H4-adw">
@@ -270,7 +270,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQT-vz-QWC" id="ZHM-OZ-uYI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -363,7 +363,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-kZ-qpk" customClass="CountDownView" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="16" y="180" width="343" height="359"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-lV-0wa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-lV-0wa">
                                         <rect key="frame" x="142" y="120" width="59" height="120"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                         <nil key="textColor"/>
@@ -376,8 +376,11 @@
                                     <constraint firstItem="N9e-lV-0wa" firstAttribute="centerX" secondItem="V1N-kZ-qpk" secondAttribute="centerX" id="lS9-YO-dCR"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                        <color key="value" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringGradientStarColor">
+                                        <color key="value" red="0.080622263252735138" green="0.57005900144577026" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringGradientEndColor">
+                                        <color key="value" red="1" green="0.43246281147003174" blue="0.69522017240524292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -410,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="297.30134932533736"/>
+            <point key="canvasLocation" x="2618" y="299"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">

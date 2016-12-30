@@ -26,7 +26,7 @@ public class RingLayer: CALayer {
         let layer = CAGradientLayer()
         layer.startPoint = CGPoint(x: 0.5, y: 0)
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        let colors = [UIColor.blue.cgColor, UIColor.red.cgColor]
+        let colors = self.ringGradientColors
         layer.colors = colors
         let locations: [NSNumber] = [0, 1.0]
         layer.locations = locations
@@ -52,9 +52,19 @@ public class RingLayer: CALayer {
     
     
     // Public API
-    var value: CGFloat = 0.8
-    var ringBackgroundColor: CGColor = UIColor.darkGray.cgColor
-    var ringWidth: CGFloat = 40.0
+    var value: CGFloat = 0.0
+    var ringBackgroundColor: CGColor = UIColor.darkGray.cgColor // not used
+    var ringGradientColors: [CGColor] = [UIColor.blue.cgColor, UIColor.red.cgColor] {
+        didSet {
+            gradientLayer.colors = ringGradientColors
+            
+        }
+    }
+    var ringWidth: CGFloat = 6 {
+        didSet {
+            foregroundMask.lineWidth = ringWidth
+        }
+    }
     
     override init() {
         super.init()
@@ -113,6 +123,8 @@ extension RingLayer {
         foregroundMask.path = maskPath(value: value)
     }
     
+    
+    // MARK: - Animations
     func animateGradientPath() {
         foregroundMask.path = maskPath(value: value)
         let anim = CABasicAnimation(keyPath: "strokeEnd")

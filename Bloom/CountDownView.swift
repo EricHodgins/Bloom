@@ -13,8 +13,15 @@ let π = CGFloat(M_PI)
 @IBDesignable
 class CountDownView: UIView {
     
-    @IBInspectable var strokeColor: UIColor = UIColor.blue
-    let ringLayer = RingLayer()
+    @IBInspectable var ringGradientStarColor: UIColor = UIColor.blue
+    @IBInspectable var ringGradientEndColor: UIColor = UIColor.red
+    
+    fileprivate lazy var ringLayer: RingLayer = {
+        let layer = RingLayer()
+        layer.ringGradientColors = [self.ringGradientStarColor.cgColor, self.ringGradientEndColor.cgColor]
+        layer.ringWidth = 15.0
+        return layer
+    }()
     
     override func draw(_ rect: CGRect) {
         
@@ -39,7 +46,6 @@ class CountDownView: UIView {
         super.layoutSubviews()
 
         ringLayer.frame = bounds
-        
         
     }
     
