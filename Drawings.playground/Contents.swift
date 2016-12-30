@@ -22,10 +22,12 @@ extension UIView {
 class CustomView: UIView {
     
     let arcLayer = CAShapeLayer()
+    let gradientLayer = CAGradientLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.addSublayer(arcLayer)
+        layer.addSublayer(gradientLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,27 +36,58 @@ class CustomView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
-        let centerPoint = CGPoint(x: frame.midX, y: frame.midY)
-        let arcPath = UIBezierPath(arcCenter: centerPoint, radius: 180, startAngle: π, endAngle: 0, clockwise: true)
-        arcPath.lineWidth = 20.0
-        let curvedLinePath = arcPath.cgPath.copy(strokingWithWidth: arcPath.lineWidth, lineCap: arcPath.lineCapStyle, lineJoin: arcPath.lineJoinStyle, miterLimit: arcPath.miterLimit)
-        
-        let curvedPath = UIBezierPath(cgPath: curvedLinePath)
-
-        curvedPath.addClip()
-        
-        drawGradient(startColor: UIColor.white, endColor: UIColor.purple, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: rect.width, y: rect.height))
+        //drawCircleGradient(withRect: rect)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
         backgroundColor = UIColor.black
+    }
+    
+    func drawCircleGradient(withRect rect: CGRect) {
+        let centerPoint = CGPoint(x: frame.midX, y: frame.midY)
+        let arcPath = UIBezierPath(arcCenter: centerPoint, radius: 180, startAngle: 0, endAngle: 2*π, clockwise: true)
+        arcPath.lineWidth = 20.0
+        let curvedLinePath = arcPath.cgPath.copy(strokingWithWidth: arcPath.lineWidth, lineCap: arcPath.lineCapStyle, lineJoin: arcPath.lineJoinStyle, miterLimit: arcPath.miterLimit)
+        
+        let curvedPath = UIBezierPath(cgPath: curvedLinePath)
+        
+        curvedPath.addClip()
+        
+        drawGradient(startColor: UIColor.red, endColor: UIColor.purple, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: rect.width, y: rect.height))
+    }
+    
+    func animateCircleGradient() {
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        let colors = [UIColor.red.cgColor, UIColor.purple.cgColor]
+        gradientLayer.colors = colors
+        let locations: [NSNumber] = [0, 1]
+        gradientLayer.locations = locations
+        gradientLayer.frame = bounds
+        
+        let centerPoint = CGPoint(x: frame.midX, y: frame.midY)
+        let arcPath = UIBezierPath(arcCenter: centerPoint, radius: 180, startAngle: 0, endAngle: 2*π, clockwise: true)
+        arcPath.lineWidth = 20.0
+        let curvedLinePath = arcPath.cgPath.copy(strokingWithWidth: arcPath.lineWidth, lineCap: arcPath.lineCapStyle, lineJoin: arcPath.lineJoinStyle, miterLimit: arcPath.miterLimit)
+        
+        let curvedPath = UIBezierPath(cgPath: curvedLinePath)
+        arcLayer.path = curvedPath.cgPath
+        layer.mask = arcLayer
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fillMode = kCAFillModeBoth
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 5.0
+        
+        arcLayer.add(animation, forKey: nil)
     }
 }
 
 let customerView = CustomView(frame: rect)
+customerView.animateCircleGradient()
 customerView
 
 //let view = UIView(frame: rect)

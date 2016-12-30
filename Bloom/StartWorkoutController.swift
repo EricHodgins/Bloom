@@ -27,7 +27,8 @@ class StartWorkoutController: UIViewController {
         countDownView.countDownLabel = countDownLabel
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
-            self.countDownView.animateCircleDrawn()
+            //self.countDownView.animateCircleDrawn()
+            self.countDownView.drawCircleGradient()
         }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }
