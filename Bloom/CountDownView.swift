@@ -48,10 +48,11 @@ class CountDownView: UIView {
         
         circleShapeLayer.path = outerCircle.cgPath
         circleShapeLayer.lineWidth = 15.0
-        circleShapeLayer.lineDashPattern = [40, 3]
+        circleShapeLayer.lineDashPattern = [100, 10]
         circleShapeLayer.fillColor = UIColor.clear.cgColor
         circleShapeLayer.strokeColor = strokeColor.cgColor
         layer.addSublayer(circleShapeLayer)
+        
     }
     
     func animateCircleDrawn() {
