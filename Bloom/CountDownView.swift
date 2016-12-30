@@ -38,6 +38,7 @@ class CountDownView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        ringLayer.frame = bounds
         
         
     }
@@ -61,6 +62,11 @@ class CountDownView: UIView {
 }
 
 extension CountDownView: CAAnimationDelegate {
+    
+    func animateRing() {
+        ringLayer.animateGradientPath()
+    }
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
 //        if let _ = anim.value(forKey: "strokeCircleOn") as? CAShapeLayer{
 //            animateCircleOff(withSeconds: 0.5)

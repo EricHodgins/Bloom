@@ -24,11 +24,11 @@ class StartWorkoutController: UIViewController {
         
         startButton.editWorkoutButton = editWorkoutButton
         countDownView.isHidden = true
-        countDownView.countDownLabel = countDownLabel
+
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
             //self.countDownView.animateCircleDrawn()
-            self.countDownView.drawCircleGradient()
+            self.countDownView.animateRing()
         }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }

@@ -13,6 +13,7 @@ public class RingLayer: CALayer {
     fileprivate let angleOffsetForZero = CGFloat(-M_PI_2)
     
     //:- Layers
+    // - backgroundLayer is not used.  But keeping for now incase needed later.
     fileprivate lazy var backgroundLayer : CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = self.ringBackgroundColor
@@ -60,6 +61,10 @@ public class RingLayer: CALayer {
         sharedInitialization()
     }
     
+    override init(layer: Any) {
+        super.init(layer: layer)
+    }
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInitialization()
@@ -68,8 +73,7 @@ public class RingLayer: CALayer {
 
 extension RingLayer {
     fileprivate func sharedInitialization() {
-        backgroundColor = UIColor.black.cgColor
-        addSublayer(backgroundLayer)
+        backgroundColor = UIColor.clear.cgColor
         addSublayer(foregroundLayer)
         self.value = 1.0
     }
@@ -77,7 +81,7 @@ extension RingLayer {
     public override func layoutSublayers() {
         super.layoutSublayers()
         if backgroundLayer.bounds != bounds {
-            for layer in [backgroundLayer, foregroundLayer, gradientLayer, foregroundMask] {
+            for layer in [foregroundLayer, gradientLayer, foregroundMask] {
                 layer.bounds = bounds
                 layer.position = center
             }
@@ -106,6 +110,7 @@ extension RingLayer {
     
     fileprivate func preparePaths() {
         backgroundLayer.path = backgroundPath
+        foregroundMask.path = maskPath(value: value)
     }
     
     func animateGradientPath() {
