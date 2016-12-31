@@ -23,6 +23,8 @@ class CountDownView: UIView {
         return layer
     }()
     
+    var countDownLabel: UILabel!
+    
     override func draw(_ rect: CGRect) {
         
     }
@@ -46,17 +48,16 @@ class CountDownView: UIView {
         super.layoutSubviews()
 
         ringLayer.frame = bounds
-        
     }
     
     
     func startCountDown(withSeconds seconds: Int) {
         var timeRemaining = seconds
-        //countDownLabel.text = "\(timeRemaining)"
+        countDownLabel.text = "\(timeRemaining)"
         timeRemaining = timeRemaining - 1
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             DispatchQueue.main.async {
-                //self.countDownLabel.text = "\(timeRemaining)"
+                self.countDownLabel.text = "\(timeRemaining)"
                 timeRemaining = timeRemaining - 1
                 if timeRemaining == -1 {
                     timer.invalidate()
@@ -69,8 +70,8 @@ class CountDownView: UIView {
 
 extension CountDownView: CAAnimationDelegate {
     
-    func animateRing() {
-        ringLayer.animateGradientPath()
+    func animateRing(withSeconds seconds: Int) {
+        ringLayer.animateGradientPath(withSeconds: seconds)
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {

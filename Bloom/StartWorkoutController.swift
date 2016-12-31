@@ -16,6 +16,7 @@ class StartWorkoutController: UIViewController {
     @IBOutlet weak var countDownView: CountDownView!
     @IBOutlet weak var countDownLabel: UILabel!
     
+    var ringAnimationInterval: Int = 3
     var workout: Workout!
 
     override func viewDidLoad() {
@@ -23,12 +24,13 @@ class StartWorkoutController: UIViewController {
         navigationItem.title = workout.name
         
         startButton.editWorkoutButton = editWorkoutButton
+        countDownView.countDownLabel = countDownLabel
         countDownView.isHidden = true
 
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
-            //self.countDownView.animateCircleDrawn()
-            self.countDownView.animateRing()
+            self.countDownView.startCountDown(withSeconds: self.ringAnimationInterval)
+            self.countDownView.animateRing(withSeconds: self.ringAnimationInterval)
         }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
     }

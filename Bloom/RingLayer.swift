@@ -125,12 +125,12 @@ extension RingLayer {
     
     
     // MARK: - Animations
-    func animateGradientPath() {
+    func animateGradientPath(withSeconds seconds: Int) {
         foregroundMask.path = maskPath(value: value)
         let anim = CABasicAnimation(keyPath: "strokeEnd")
         anim.fromValue = 0
-        anim.toValue = 1.1
-        anim.duration = 3.0
+        anim.toValue = 1.0
+        anim.duration = CFTimeInterval(seconds)
         
         foregroundMask.add(anim, forKey: nil)
     }

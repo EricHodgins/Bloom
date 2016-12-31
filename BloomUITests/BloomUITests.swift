@@ -11,6 +11,11 @@ import XCTest
 class BloomUITests: XCTestCase {
     
     let app = XCUIApplication()
+    
+    private func delay(seconds: Int, completionHandler: @escaping (() -> Void)) {
+        let delayInMilliSeconds = DispatchTime.now() + DispatchTimeInterval.milliseconds(seconds)
+        DispatchQueue.main.asyncAfter(deadline: delayInMilliSeconds, execute: completionHandler)
+    }
         
     override func setUp() {
         super.setUp()
@@ -88,6 +93,21 @@ class BloomUITests: XCTestCase {
         let statsNavBar = app.navigationBars["Stats"]
         
         XCTAssertTrue(statsNavBar.exists, "View stats button not working.")
+    }
+    
+    func testTransitionToStartWorkoutView() {
+        app.buttons["Workouts"].tap()
+        XCTAssertTrue(app.navigationBars["Workouts"].exists)
+        
+        let countDownLabel = app.staticTexts["0"]
+        app.tables.staticTexts["chest and back"].tap()
+        XCTAssertTrue(app.navigationBars["chest and back"].exists)
+        XCTAssertFalse(countDownLabel.exists)
+        
+        app.buttons["Start"].tap()
+        sleep(5)
+        XCTAssertTrue(countDownLabel.exists, "Countdown label did not appear.")
+
     }
     
 }
