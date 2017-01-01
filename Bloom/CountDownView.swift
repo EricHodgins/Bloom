@@ -23,6 +23,7 @@ class CountDownView: UIView {
         return layer
     }()
     
+    weak var delegate: CountDown!
     var countDownLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
@@ -56,11 +57,12 @@ class CountDownView: UIView {
         countDownLabel.text = "\(timeRemaining)"
         timeRemaining = timeRemaining - 1
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.countDownLabel.text = "\(timeRemaining)"
                 timeRemaining = timeRemaining - 1
                 if timeRemaining == -1 {
                     timer.invalidate()
+                    self.delegate.countDownComplete()
                 }
             }
         }

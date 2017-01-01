@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol CountDown: class {
+    func countDownComplete()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class StartWorkoutController: UIViewController {
+class StartWorkoutController: UIViewController, CountDown {
     
     @IBOutlet weak var startButton: StartButton!
     @IBOutlet weak var editWorkoutButton: EditWorkoutButton!
@@ -26,7 +26,7 @@ class StartWorkoutController: UIViewController {
         startButton.editWorkoutButton = editWorkoutButton
         countDownView.countDownLabel = countDownLabel
         countDownView.isHidden = true
-
+        countDownView.delegate = self
         startButton.buttonAnimationCompletion = {
             self.countDownView.isHidden = false
             self.countDownView.startCountDown(withSeconds: self.ringAnimationInterval)
@@ -37,5 +37,11 @@ class StartWorkoutController: UIViewController {
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
 
+    }
+}
+
+extension StartWorkoutController {
+    func countDownComplete() {
+        performSegue(withIdentifier: "LiveWorkoutSegue", sender: nil)
     }
 }

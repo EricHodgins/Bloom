@@ -413,16 +413,17 @@
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
+                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" id="6nR-L9-1gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2618" y="299"/>
         </scene>
-        <!--View Controller-->
+        <!--Live Workout Controller-->
         <scene sceneID="6gQ-Ut-eDG">
             <objects>
-                <viewController id="EYv-bC-qS5" sceneMemberID="viewController">
+                <viewController id="EYv-bC-qS5" customClass="LiveWorkoutController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5DU-Pt-H9F"/>
                         <viewControllerLayoutGuide type="bottom" id="TB8-XU-409"/>
@@ -475,35 +476,57 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="21e-yA-fa5">
                                 <rect key="frame" x="0.0" y="176" width="375" height="491"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nxd-54-1aw">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nxd-54-1aw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="294.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="62" id="t3g-dW-wK8">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="62"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="91" id="t3g-dW-wK8">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t3g-dW-wK8" id="n94-XQ-UsW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efY-yF-d1X">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efY-yF-d1X" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="294.5" width="375" height="147.5"/>
                                         <color key="backgroundColor" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="DONE Next Excercise --&gt;">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.39428913593292236" green="0.84127384424209595" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextExcerciseButtonPressed:" destination="EYv-bC-qS5" eventType="touchUpInside" id="QRv-OZ-GJT"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-BP-Ezh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-BP-Ezh" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="442" width="375" height="49"/>
                                         <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Finish Workout">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.99860817193984985" green="0.33764228224754333" blue="0.020136715844273567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="1" green="0.43633037805557251" blue="0.70330071449279785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="workoutFinishedButtonPressed:" destination="EYv-bC-qS5" eventType="touchUpInside" id="i6X-yN-voO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -537,6 +560,12 @@
                             <constraint firstAttribute="leadingMargin" secondItem="C3d-Hr-3qj" secondAttribute="leading" id="zfC-8k-9uP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentExcerciseLabel" destination="Fkc-jR-eQA" id="sCn-RF-B7d"/>
+                        <outlet property="heartBeatView" destination="gHR-P7-7wo" id="e20-cD-xGB"/>
+                        <outlet property="tableView" destination="Nxd-54-1aw" id="jhM-lq-1EP"/>
+                        <outlet property="workoutDurationLabel" destination="sKD-ZL-zFB" id="hQZ-Ac-vAE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKT-lf-ME6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -561,4 +590,7 @@
             <point key="canvasLocation" x="135" y="139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6nR-L9-1gv"/>
+    </inferredMetricsTieBreakers>
 </document>
