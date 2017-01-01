@@ -231,10 +231,10 @@
 				7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
-				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
 				7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */,
 				7ACBB5251E0A325800CE285A /* BloomUITests */,
+				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F93F1DFE761D00A37C80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				7A84F9581DFE761E00A37C80 /* Info.plist */,
 			);
 			path = BloomTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */ = {
 			isa = PBXGroup;

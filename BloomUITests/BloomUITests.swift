@@ -13,7 +13,7 @@ class BloomUITests: XCTestCase {
     let app = XCUIApplication()
     
     private func delay(seconds: Int, completionHandler: @escaping (() -> Void)) {
-        let delayInMilliSeconds = DispatchTime.now() + DispatchTimeInterval.milliseconds(seconds)
+        let delayInMilliSeconds = DispatchTime.now() + DispatchTimeInterval.seconds(seconds)
         DispatchQueue.main.asyncAfter(deadline: delayInMilliSeconds, execute: completionHandler)
     }
         
@@ -105,7 +105,7 @@ class BloomUITests: XCTestCase {
         XCTAssertFalse(countDownLabel.exists)
         
         app.buttons["Start"].tap()
-        sleep(5)
+        sleep(5) // assuming animtion takes 3 seconds to complete
         XCTAssertTrue(countDownLabel.exists, "Countdown label did not appear.")
 
     }

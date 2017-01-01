@@ -131,7 +131,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -270,7 +270,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQT-vz-QWC" id="ZHM-OZ-uYI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -364,9 +364,9 @@
                                 <rect key="frame" x="16" y="180" width="343" height="359"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-lV-0wa">
-                                        <rect key="frame" x="142" y="120" width="59" height="120"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="138" y="120" width="67" height="120"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="100"/>
+                                        <color key="textColor" red="0.080622263250000006" green="0.57005900139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -409,11 +409,30 @@
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
+                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveSegue" id="GXX-Yh-Yfo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2618" y="299"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6gQ-Ut-eDG">
+            <objects>
+                <viewController id="EYv-bC-qS5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5DU-Pt-H9F"/>
+                        <viewControllerLayoutGuide type="bottom" id="TB8-XU-409"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Z1-9g-JwO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKT-lf-ME6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3502" y="298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">
