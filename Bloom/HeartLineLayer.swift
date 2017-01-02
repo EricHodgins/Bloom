@@ -60,10 +60,10 @@ class HeartLineLayer: CALayer {
     
     func heartPath() -> CGPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 20, y: 25))
+        path.move(to: CGPoint(x: 20, y: 23))
         path.addCurve(to: CGPoint(x:20, y:15), controlPoint1: CGPoint(x: 20, y:25), controlPoint2: CGPoint(x: 30, y: 10))
         
-        path.move(to: CGPoint(x: 20, y: 25))
+        path.move(to: CGPoint(x: 20, y: 23))
         
         path.addCurve(to: CGPoint(x: 20, y: 15), controlPoint1: CGPoint(x:20, y:25), controlPoint2: CGPoint(x:10, y: 10))
         path.close()
@@ -117,14 +117,13 @@ class HeartLineLayer: CALayer {
         heartLayer.path = heartPath()
         heartLayer.frame.origin = CGPoint(x: 20, y: 15)
         heartLayer.bounds.origin = CGPoint(x: 20, y:20)
-        let anim = CABasicAnimation(keyPath: "transform.scale")
-        anim.fromValue = 0.25
-        anim.toValue = 1.25
-        anim.duration = 1
-        anim.repeatCount = .infinity
-        anim.autoreverses = true
+        let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
+        pulse.duration = 1.25
+        pulse.repeatCount = .infinity
+        pulse.values = [0.75, 0.95, 1.25, 0.75]
+        pulse.keyTimes = [0, 0.75, 0.90, 1]
         
-        heartLayer.add(anim, forKey: nil)
+        heartLayer.add(pulse, forKey: nil)
     }
 }
 

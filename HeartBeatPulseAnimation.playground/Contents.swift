@@ -133,14 +133,15 @@ class HeatBeatLayer: CALayer {
         heartLayer.path = heartPath()
         heartLayer.frame.origin = CGPoint(x: 75, y: 50)
         heartLayer.bounds.origin = CGPoint(x: 100, y:60)
-        let anim = CABasicAnimation(keyPath: "transform.scale")
-        anim.fromValue = 0.5
-        anim.toValue = 1.25
-        anim.duration = 1
-        anim.repeatCount = 10
-        anim.autoreverses = true
         
-        heartLayer.add(anim, forKey: nil)
+        let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
+        pulse.duration = 1
+        pulse.repeatCount = .infinity
+        pulse.values = [0.5, 0.75, 1, 0.5]
+        pulse.keyTimes = [0, 0.75, 0.90, 1]
+        
+        heartLayer.add(pulse, forKey: nil)
+        
     }
 }
 
