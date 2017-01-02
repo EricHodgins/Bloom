@@ -26,10 +26,6 @@ class CountDownView: UIView {
     weak var delegate: CountDown!
     var countDownLabel: UILabel!
     
-    override func draw(_ rect: CGRect) {
-        
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -70,23 +66,12 @@ class CountDownView: UIView {
     
 }
 
-extension CountDownView: CAAnimationDelegate {
+extension CountDownView {
     
     func animateRing(withSeconds seconds: Int) {
         ringLayer.animateGradientPath(withSeconds: seconds)
     }
     
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-//        if let _ = anim.value(forKey: "strokeCircleOn") as? CAShapeLayer{
-//            animateCircleOff(withSeconds: 0.5)
-//            return
-//        }
-//        
-//        if let _ = anim.value(forKey: "strokeCircleOff") as? CAShapeLayer {
-//            circleShapeLayer.strokeColor = UIColor.clear.cgColor
-//            return
-//        }
-    }
 }
 
 

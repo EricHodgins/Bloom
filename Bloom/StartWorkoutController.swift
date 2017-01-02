@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+//CountDown protoco is in the AppDelegate for now
 class StartWorkoutController: UIViewController, CountDown {
     
     @IBOutlet weak var startButton: StartButton!

@@ -13,7 +13,7 @@ public class RingLayer: CALayer {
     fileprivate let angleOffsetForZero = CGFloat(-M_PI_2)
     
     //:- Layers
-    // - backgroundLayer is not used.  But keeping for now incase needed later.
+    // - backgroundLayer is not used.  But keeping for now ...might needed later.
     fileprivate lazy var backgroundLayer : CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = self.ringBackgroundColor
@@ -57,7 +57,6 @@ public class RingLayer: CALayer {
     var ringGradientColors: [CGColor] = [UIColor.blue.cgColor, UIColor.red.cgColor] {
         didSet {
             gradientLayer.colors = ringGradientColors
-            
         }
     }
     var ringWidth: CGFloat = 6 {

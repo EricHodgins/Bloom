@@ -12,7 +12,7 @@ class LiveWorkoutController: UIViewController {
 
     @IBOutlet weak var workoutDurationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var heartBeatView: UIView!
+    @IBOutlet weak var heartBeatView: HeartBeatView!
     @IBOutlet weak var currentExcerciseLabel: UILabel!
 
     var startTime: TimeInterval!
@@ -23,6 +23,11 @@ class LiveWorkoutController: UIViewController {
 
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startHeartLineAnimation()
     }
     
     @IBAction func nextExcerciseButtonPressed(_ sender: Any) {
@@ -42,7 +47,7 @@ extension LiveWorkoutController {
         
         diff -= TimeInterval(hours * 3600)
         
-        let minutes = Int8(diff / 60)
+        let minutes = Int16(diff / 60)
         
         diff -= TimeInterval(minutes * 60)
         
@@ -55,6 +60,10 @@ extension LiveWorkoutController {
         DispatchQueue.main.async {
             self.workoutDurationLabel.text = "\(hoursFormatted):\(minutesFormatted):\(secondsFormatted)"
         }
+    }
+    
+    func startHeartLineAnimation() {
+        heartBeatView.startAnimatingHeartLine()
     }
 }
 

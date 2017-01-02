@@ -13,6 +13,8 @@
 		7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */; };
 		7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13ED1E06197900330EFB /* GradientView.swift */; };
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
+		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
+		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
 		7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEA1E16EF1300736446 /* RingLayer.swift */; };
 		7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEC1E16EFF400736446 /* LayerExtension.swift */; };
@@ -110,6 +112,8 @@
 		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
 		7A5346811E198B680067E982 /* HeartBeatPulseAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = HeartBeatPulseAnimation.playground; sourceTree = "<group>"; };
+		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
+		7A5346841E1A049A0067E982 /* HeartLineLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineLayer.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
 		7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkoutButton.swift; sourceTree = "<group>"; };
 		7A764CEA1E16EF1300736446 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				7A764CE91E16EF0400736446 /* Layers */,
 				7A1E13ED1E06197900330EFB /* GradientView.swift */,
 				7A83F94C1E1228FC00451BBA /* CountDownView.swift */,
+				7A5346821E1A03610067E982 /* HeartBeatView.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				7A764CEA1E16EF1300736446 /* RingLayer.swift */,
+				7A5346841E1A049A0067E982 /* HeartLineLayer.swift */,
 				7A764CEC1E16EFF400736446 /* LayerExtension.swift */,
 			);
 			name = Layers;
@@ -529,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */,
+				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7AA861301E0F1CB30054B443 /* Workout+CoreDataClass.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
@@ -550,6 +557,7 @@
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
+				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,
 				7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
