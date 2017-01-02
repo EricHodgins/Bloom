@@ -83,17 +83,28 @@ class HeatBeatLayer: CALayer {
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         anim.fromValue = 0
         anim.toValue = 1
-        anim.duration = 1.5
-        anim.repeatCount = 5
+
+        
+        let anim2 = CABasicAnimation(keyPath: "strokeStart")
+        anim2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        anim2.fromValue = -5
+        anim2.toValue = 1.0
+
         
         let lineWidthAnim = CABasicAnimation(keyPath: "lineWidth")
         lineWidthAnim.fromValue = 0
         lineWidthAnim.toValue = 8
-        lineWidthAnim.duration = 1.5
-        lineWidthAnim.repeatCount = 5
+
         
-        heartLine.add(anim, forKey: nil)
-        heartLine.add(lineWidthAnim, forKey: nil)
+        
+        let group = CAAnimationGroup()
+        group.duration = 1.5
+        group.repeatCount = 5
+        group.animations = [anim, anim2, lineWidthAnim]
+        
+        heartLine.add(group, forKey: nil)
+        //heartLine.add(anim, forKey: nil)
+        //heartLine.add(lineWidthAnim, forKey: nil)
     }
 }
 

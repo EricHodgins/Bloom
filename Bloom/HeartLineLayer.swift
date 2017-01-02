@@ -14,7 +14,7 @@ class HeartLineLayer: CALayer {
         layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.clear.cgColor
         layer.opacity = 0.5
-        layer.lineWidth = 4
+        layer.lineWidth = 2
         layer.lineCap = kCALineCapRound
         layer.lineJoin = kCALineJoinRound
         return layer
@@ -67,20 +67,39 @@ class HeartLineLayer: CALayer {
     
     func animateHeartLine() {
         heartLine.path = heartLinePath()
-        let anim = CABasicAnimation(keyPath: "strokeEnd")
-        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        anim.fromValue = 0
-        anim.toValue = 1
-        anim.duration = 1.5
-        anim.repeatCount = .infinity
+        let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeEndAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        strokeEndAnimation.fromValue = 0
+        strokeEndAnimation.toValue = 1
+        
+        let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
+        strokeStartAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        strokeStartAnimation.fromValue = -5
+        strokeStartAnimation.toValue = 1
         
         let lineWidthAnim = CABasicAnimation(keyPath: "lineWidth")
         lineWidthAnim.fromValue = 0
-        lineWidthAnim.toValue = 4
-        lineWidthAnim.duration = 1.5
-        lineWidthAnim.repeatCount = .infinity
+        lineWidthAnim.toValue = 2
         
-        heartLine.add(anim, forKey: nil)
-        heartLine.add(lineWidthAnim, forKey: nil)
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.duration = 2.0
+        groupAnimation.repeatCount = .infinity
+        groupAnimation.animations = [strokeEndAnimation, strokeStartAnimation, lineWidthAnim]
+        
+        heartLine.add(groupAnimation, forKey: nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
