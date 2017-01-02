@@ -30,6 +30,15 @@ func viewWithLayer(layer: CALayer, size: CGSize = CGSize(width: 600, height: 300
 
 class HeatBeatLayer: CALayer {
     
+    fileprivate lazy var heartLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.strokeColor = UIColor.red.cgColor
+        layer.fillColor = UIColor.red.cgColor
+        layer.lineJoin = kCALineJoinRound
+        return layer
+    }()
+    
+    
     fileprivate lazy var heartLine : CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.red.cgColor
@@ -53,11 +62,26 @@ class HeatBeatLayer: CALayer {
     
     func sharedInit() {
         addSublayer(heartLine)
+        addSublayer(heartLayer)
     }
     
     override func layoutSublayers() {
         super.layoutSublayers()
     }
+    
+    func heartPath() -> CGPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 100, y: 100))
+        path.addCurve(to: CGPoint(x:100, y:45), controlPoint1: CGPoint(x: 100, y:100), controlPoint2: CGPoint(x: 170, y: 25))
+        
+        path.move(to: CGPoint(x: 100, y: 100))
+        
+        path.addCurve(to: CGPoint(x: 100, y: 45), controlPoint1: CGPoint(x:100, y:100), controlPoint2: CGPoint(x:30, y: 25))
+        path.close()
+        
+        return path.cgPath
+    }
+    
     
     func heartLinePath() -> CGPath {
         let path = UIBezierPath()
@@ -99,12 +123,24 @@ class HeatBeatLayer: CALayer {
         
         let group = CAAnimationGroup()
         group.duration = 1.5
-        group.repeatCount = 5
+        group.repeatCount = 10
         group.animations = [anim, anim2, lineWidthAnim]
         
         heartLine.add(group, forKey: nil)
-        //heartLine.add(anim, forKey: nil)
-        //heartLine.add(lineWidthAnim, forKey: nil)
+    }
+    
+    func animateHeartPulse() {
+        heartLayer.path = heartPath()
+        heartLayer.frame.origin = CGPoint(x: 75, y: 50)
+        heartLayer.bounds.origin = CGPoint(x: 100, y:60)
+        let anim = CABasicAnimation(keyPath: "transform.scale")
+        anim.fromValue = 0.5
+        anim.toValue = 1.25
+        anim.duration = 1
+        anim.repeatCount = 10
+        anim.autoreverses = true
+        
+        heartLayer.add(anim, forKey: nil)
     }
 }
 
@@ -118,6 +154,7 @@ view
 
 
 hearBeat.animateHeartLine()
+hearBeat.animateHeartPulse()
 PlaygroundPage.current.liveView = view
 
 addGradientLayer(toView: view, belowLayer: hearBeat)

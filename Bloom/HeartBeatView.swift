@@ -39,6 +39,7 @@ class HeartBeatView: UIView {
     
     func startAnimatingHeartLine() {
         heartLineLayer.animateHeartLine()
+        heartLineLayer.animateHeartPulse()
     }
 
 }

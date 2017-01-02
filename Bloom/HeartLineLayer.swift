@@ -20,6 +20,14 @@ class HeartLineLayer: CALayer {
         return layer
     }()
     
+    fileprivate lazy var heartLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.strokeColor = UIColor.red.cgColor
+        layer.fillColor = UIColor.red.cgColor
+        layer.lineJoin = kCALineJoinRound
+        return layer
+    }()
+    
     override init() {
         super.init()
         sharedInit()
@@ -36,6 +44,7 @@ class HeartLineLayer: CALayer {
     
     func sharedInit() {
         addSublayer(heartLine)
+        addSublayer(heartLayer)
     }
     
     override func layoutSublayers() {
@@ -45,6 +54,21 @@ class HeartLineLayer: CALayer {
             heartLine.position = center
         }
         
+        heartLine.path = heartLinePath()
+        heartLayer.path = heartPath()
+    }
+    
+    func heartPath() -> CGPath {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 20, y: 25))
+        path.addCurve(to: CGPoint(x:20, y:15), controlPoint1: CGPoint(x: 20, y:25), controlPoint2: CGPoint(x: 30, y: 10))
+        
+        path.move(to: CGPoint(x: 20, y: 25))
+        
+        path.addCurve(to: CGPoint(x: 20, y: 15), controlPoint1: CGPoint(x:20, y:25), controlPoint2: CGPoint(x:10, y: 10))
+        path.close()
+        
+        return path.cgPath
     }
     
     func heartLinePath() -> CGPath {
@@ -87,6 +111,20 @@ class HeartLineLayer: CALayer {
         groupAnimation.animations = [strokeEndAnimation, strokeStartAnimation, lineWidthAnim]
         
         heartLine.add(groupAnimation, forKey: nil)
+    }
+    
+    func animateHeartPulse() {
+        heartLayer.path = heartPath()
+        heartLayer.frame.origin = CGPoint(x: 20, y: 15)
+        heartLayer.bounds.origin = CGPoint(x: 20, y:20)
+        let anim = CABasicAnimation(keyPath: "transform.scale")
+        anim.fromValue = 0.25
+        anim.toValue = 1.25
+        anim.duration = 1
+        anim.repeatCount = .infinity
+        anim.autoreverses = true
+        
+        heartLayer.add(anim, forKey: nil)
     }
 }
 

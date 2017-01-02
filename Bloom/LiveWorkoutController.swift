@@ -23,6 +23,8 @@ class LiveWorkoutController: UIViewController {
 
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +37,7 @@ class LiveWorkoutController: UIViewController {
     
     @IBAction func workoutFinishedButtonPressed(_ sender: Any) {
     }
+    
     
 }
 

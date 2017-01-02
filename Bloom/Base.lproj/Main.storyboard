@@ -465,7 +465,19 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-P7-7wo" customClass="HeartBeatView" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="149" y="36" width="226" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cj-Ib-Nzi">
+                                        <rect key="frame" x="158" y="36" width="60" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.80044108629999999" green="0.28369447590000002" blue="0.1020190939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6Cj-Ib-Nzi" secondAttribute="bottom" id="XoE-Nd-Lh9"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Cj-Ib-Nzi" secondAttribute="trailing" constant="8" id="lSg-Xm-X0x"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Push-up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkc-jR-eQA">
                                 <rect key="frame" x="16" y="137" width="343" height="30"/>
