@@ -459,8 +459,9 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Recording"/>
+                                    <segment title="List"/>
                                     <segment title="Map"/>
-                                    <segment title="Excercise List"/>
+                                    <segment title="Finish"/>
                                 </segments>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-P7-7wo" customClass="HeartBeatView" customModule="Bloom" customModuleProvider="target">
@@ -485,103 +486,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="21e-yA-fa5">
-                                <rect key="frame" x="0.0" y="176" width="375" height="491"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nxd-54-1aw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="294.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="91" id="t3g-dW-wK8" customClass="LiveWorkoutTableViewCell" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="91"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t3g-dW-wK8" id="n94-XQ-UsW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cH-3k-6AJ">
-                                                            <rect key="frame" x="8" y="30" width="43" height="31"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pmM-c4-DsF">
-                                                            <rect key="frame" x="59" y="30" width="249" height="30"/>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                        </textField>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPN-WV-HaL">
-                                                            <rect key="frame" x="318" y="30" width="51" height="31"/>
-                                                        </switch>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="centerY" secondItem="pmM-c4-DsF" secondAttribute="centerY" id="4HT-La-x7Y"/>
-                                                        <constraint firstItem="KPN-WV-HaL" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="DhB-bP-WZc"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="KPN-WV-HaL" secondAttribute="trailing" id="FhA-AS-sr9"/>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="GDf-5d-wlT"/>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="top" secondItem="pmM-c4-DsF" secondAttribute="top" id="IQR-Te-a2a"/>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="top" secondItem="KPN-WV-HaL" secondAttribute="top" id="IzQ-bt-dAJ"/>
-                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="P15-gp-m8v"/>
-                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="leading" secondItem="7cH-3k-6AJ" secondAttribute="trailing" constant="8" id="a8h-GJ-V1l"/>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="bottom" secondItem="KPN-WV-HaL" secondAttribute="bottom" id="hVd-hb-AW4"/>
-                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="leading" secondItem="7cH-3k-6AJ" secondAttribute="trailing" constant="8" symbolic="YES" id="qmY-80-LZ2"/>
-                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="leading" secondItem="n94-XQ-UsW" secondAttribute="leadingMargin" id="rzO-hK-KeF"/>
-                                                        <constraint firstItem="KPN-WV-HaL" firstAttribute="leading" secondItem="pmM-c4-DsF" secondAttribute="trailing" constant="10" id="vTI-pe-Xpu"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="excerciseLabel" destination="7cH-3k-6AJ" id="4cf-Xh-Hw0"/>
-                                                    <outlet property="excerciseSwitch" destination="KPN-WV-HaL" id="MHo-oo-LYb"/>
-                                                    <outlet property="excerciseTextField" destination="pmM-c4-DsF" id="wTv-tL-2le"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efY-yF-d1X" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="294.5" width="375" height="147.5"/>
-                                        <color key="backgroundColor" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="DONE Next Excercise --&gt;">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.030778333540000001" green="0.52495592830000004" blue="0.99853116269999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.39428913593292236" green="0.84127384424209595" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="nextExcerciseButtonPressed:" destination="EYv-bC-qS5" eventType="touchUpInside" id="QRv-OZ-GJT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-BP-Ezh" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="442" width="375" height="49"/>
-                                        <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Finish Workout">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.99860817193984985" green="0.33764228224754333" blue="0.020136715844273567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="1" green="0.43633037805557251" blue="0.70330071449279785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="workoutFinishedButtonPressed:" destination="EYv-bC-qS5" eventType="touchUpInside" id="i6X-yN-voO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Nxd-54-1aw" firstAttribute="height" secondItem="21e-yA-fa5" secondAttribute="height" multiplier="0.6" id="Wu9-dp-XR1"/>
-                                    <constraint firstItem="efY-yF-d1X" firstAttribute="height" secondItem="21e-yA-fa5" secondAttribute="height" multiplier="0.3" id="uQ1-5F-4UP"/>
-                                </constraints>
-                            </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhK-VJ-Z8Z">
+                                <rect key="frame" x="0.0" y="175" width="375" height="492"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -590,34 +497,106 @@
                             <constraint firstItem="gHR-P7-7wo" firstAttribute="top" secondItem="yGv-lv-VZo" secondAttribute="bottom" constant="6" id="7cb-fj-3AC"/>
                             <constraint firstItem="Fkc-jR-eQA" firstAttribute="top" secondItem="uqZ-Xc-hRZ" secondAttribute="bottom" constant="8" id="8XZ-la-g9U"/>
                             <constraint firstAttribute="leadingMargin" secondItem="uqZ-Xc-hRZ" secondAttribute="leading" id="FS2-6u-at5"/>
-                            <constraint firstItem="21e-yA-fa5" firstAttribute="top" secondItem="Fkc-jR-eQA" secondAttribute="bottom" constant="9" id="I91-Tx-tXo"/>
                             <constraint firstItem="sKD-ZL-zFB" firstAttribute="top" secondItem="C3d-Hr-3qj" secondAttribute="bottom" constant="2" id="JrT-Ht-pT8"/>
                             <constraint firstItem="uqZ-Xc-hRZ" firstAttribute="top" secondItem="sKD-ZL-zFB" secondAttribute="bottom" constant="16" id="PqI-hW-WqR"/>
                             <constraint firstAttribute="trailing" secondItem="gHR-P7-7wo" secondAttribute="trailing" id="Uir-Td-nnH"/>
-                            <constraint firstItem="TB8-XU-409" firstAttribute="top" secondItem="21e-yA-fa5" secondAttribute="bottom" id="V7i-Ay-hdc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="sKD-ZL-zFB" secondAttribute="leading" id="VzO-Yr-9nG"/>
+                            <constraint firstAttribute="trailing" secondItem="DhK-VJ-Z8Z" secondAttribute="trailing" id="aMb-dY-Vgq"/>
                             <constraint firstItem="C3d-Hr-3qj" firstAttribute="top" secondItem="yGv-lv-VZo" secondAttribute="bottom" constant="12" id="dkO-ip-pJe"/>
-                            <constraint firstAttribute="trailing" secondItem="21e-yA-fa5" secondAttribute="trailing" id="fJ5-Yj-B69"/>
+                            <constraint firstItem="DhK-VJ-Z8Z" firstAttribute="top" secondItem="Fkc-jR-eQA" secondAttribute="bottom" constant="8" id="gbg-rF-Lb7"/>
                             <constraint firstAttribute="trailing" secondItem="yGv-lv-VZo" secondAttribute="trailing" id="lXZ-sO-3R1"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Fkc-jR-eQA" secondAttribute="leading" id="nKx-Qn-Mxs"/>
                             <constraint firstItem="gHR-P7-7wo" firstAttribute="leading" secondItem="C3d-Hr-3qj" secondAttribute="trailing" constant="30" id="ord-ea-DcX"/>
                             <constraint firstItem="yGv-lv-VZo" firstAttribute="leading" secondItem="0Z1-9g-JwO" secondAttribute="leading" id="p7U-Qu-NuT"/>
-                            <constraint firstItem="21e-yA-fa5" firstAttribute="leading" secondItem="0Z1-9g-JwO" secondAttribute="leading" id="uwM-7p-oU7"/>
+                            <constraint firstItem="TB8-XU-409" firstAttribute="top" secondItem="DhK-VJ-Z8Z" secondAttribute="bottom" id="sed-Ge-gNH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uqZ-Xc-hRZ" secondAttribute="trailing" id="wdx-BY-bGL"/>
                             <constraint firstItem="yGv-lv-VZo" firstAttribute="top" secondItem="5DU-Pt-H9F" secondAttribute="bottom" constant="8" id="yFA-BF-F7e"/>
+                            <constraint firstItem="DhK-VJ-Z8Z" firstAttribute="leading" secondItem="0Z1-9g-JwO" secondAttribute="leading" id="zJp-2h-8hQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="C3d-Hr-3qj" secondAttribute="leading" id="zfC-8k-9uP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentExcerciseLabel" destination="Fkc-jR-eQA" id="sCn-RF-B7d"/>
                         <outlet property="heartBeatView" destination="gHR-P7-7wo" id="IEq-Zk-yal"/>
-                        <outlet property="tableView" destination="Nxd-54-1aw" id="jhM-lq-1EP"/>
+                        <outlet property="scrollView" destination="DhK-VJ-Z8Z" id="2c7-5U-lIB"/>
                         <outlet property="workoutDurationLabel" destination="sKD-ZL-zFB" id="hQZ-Ac-vAE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKT-lf-ME6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3490.4000000000001" y="298.2008995502249"/>
+        </scene>
+        <!--Record Live Excercise Controller-->
+        <scene sceneID="fsn-bc-aeQ">
+            <objects>
+                <viewController storyboardIdentifier="Record" id="B2Z-Xh-Nrc" customClass="RecordLiveExcerciseController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u88-cS-bHn"/>
+                        <viewControllerLayoutGuide type="bottom" id="CBf-6P-tKO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ffo-Wq-Uaq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gJY-8G-Olt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4177" y="296"/>
+        </scene>
+        <!--Live Excercise List Controller-->
+        <scene sceneID="mNe-1Y-G55">
+            <objects>
+                <viewController storyboardIdentifier="List" id="8Qy-da-cRI" customClass="LiveExcerciseListController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mOW-Ze-fdz"/>
+                        <viewControllerLayoutGuide type="bottom" id="x5Q-mk-tLR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h5Q-wi-kcp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.43633037810000003" blue="0.70330071449999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HK2-Q5-kiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4823" y="298"/>
+        </scene>
+        <!--Live Map View Controller-->
+        <scene sceneID="tCW-ZF-XDL">
+            <objects>
+                <viewController storyboardIdentifier="Map" id="4Xp-c9-JgA" customClass="LiveMapViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="khF-d7-SCK"/>
+                        <viewControllerLayoutGuide type="bottom" id="hIA-FF-d1p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2YK-BB-gCp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mn7-Kp-guu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5482" y="298"/>
+        </scene>
+        <!--Finish Live Workout Controller-->
+        <scene sceneID="rdI-bL-OgD">
+            <objects>
+                <viewController storyboardIdentifier="Finish" id="jAF-YU-cOg" customClass="FinishLiveWorkoutController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GAk-bd-avR"/>
+                        <viewControllerLayoutGuide type="bottom" id="NT5-NK-nxB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OvS-oF-Iy1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.3940448761" green="0.84529596569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6154" y="297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">

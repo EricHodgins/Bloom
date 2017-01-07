@@ -12,13 +12,15 @@ import CoreData
 class LiveWorkoutController: UIViewController {
 
     @IBOutlet weak var workoutDurationLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heartBeatView: HeartBeatView!
     @IBOutlet weak var currentExcerciseLabel: UILabel!
 
     var startTime: TimeInterval!
     var managedContext: NSManagedObjectContext!
     var workout: Workout!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    var pages = [UIViewController]()
     
     lazy var excercises: [Excercise] = {
         var excercises = [Excercise]()
@@ -31,26 +33,35 @@ class LiveWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
         
+        // Start Timer
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        // Setup Pages for scroll view
+        let page1 = createRecordLiveExcerciseController()
+        let page2 = createLiveExcerciseListController()
+        let page3 = createLiveMapController()
+        let page4 = createFinishLiveWorkoutController()
+        
+        pages = [page1, page2, page3, page4]
+        
+        let views: [String: UIView] = ["view": scrollView, "page1": page1.view, "page2": page2.view, "page3": page3.view, "page4": page4.view]
+        
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat:"V:|[page1(==view)]|", options: [], metrics: nil, views: views)
+        NSLayoutConstraint.activate(verticalConstraints)
+        
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)][page2(==view)][page3(==view)][page4(==view)]|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views)
+        NSLayoutConstraint.activate(horizontalConstraints)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startHeartLineAnimation()
     }
-    
-    @IBAction func nextExcerciseButtonPressed(_ sender: Any) {
-    }
-    
-    @IBAction func workoutFinishedButtonPressed(_ sender: Any) {
-    }
-    
-    
 }
 
 extension LiveWorkoutController {
@@ -82,25 +93,53 @@ extension LiveWorkoutController {
     }
 }
 
-extension LiveWorkoutController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+extension LiveWorkoutController {
+    
+    fileprivate func createRecordLiveExcerciseController() -> RecordLiveExcerciseController {
+        let rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
+        rlec.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.addSubview(rlec.view)
+        
+        addChildViewController(rlec)
+        
+        return rlec
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workout.excercises!.count
+    fileprivate func createLiveExcerciseListController() -> LiveExcerciseListController {
+        let lelc = storyboard!.instantiateViewController(withIdentifier: "List") as! LiveExcerciseListController
+        lelc.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.addSubview(lelc.view)
+        
+        addChildViewController(lelc)
+        
+        return lelc
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    fileprivate func createLiveMapController() -> LiveMapViewController {
+        let lmc = storyboard!.instantiateViewController(withIdentifier: "Map") as! LiveMapViewController
+        lmc.view.translatesAutoresizingMaskIntoConstraints = false
         
-        let excercise = excercises[indexPath.row]
-        cell.textLabel?.text = "\(excercise.name!)"
+        scrollView.addSubview(lmc.view)
         
-        return cell
+        addChildViewController(lmc)
+        
+        return lmc
     }
+    
+    fileprivate func createFinishLiveWorkoutController() -> FinishLiveWorkoutController {
+        let flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
+        flwc.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.addSubview(flwc.view)
+        
+        addChildViewController(flwc)
+        
+        return flwc
+    }
+    
 }
-
 
 
 
