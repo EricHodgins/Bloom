@@ -53,9 +53,6 @@ class HeartLineLayer: CALayer {
             heartLine.bounds = bounds
             heartLine.position = center
         }
-        
-        heartLine.path = heartLinePath()
-        heartLayer.path = heartPath()
     }
     
     func heartPath() -> CGPath {
@@ -118,12 +115,21 @@ class HeartLineLayer: CALayer {
         heartLayer.frame.origin = CGPoint(x: 20, y: 15)
         heartLayer.bounds.origin = CGPoint(x: 20, y:20)
         let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
+        pulse.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         pulse.duration = 1.25
         pulse.repeatCount = .infinity
-        pulse.values = [0.75, 0.95, 1.25, 0.75]
-        pulse.keyTimes = [0, 0.75, 0.90, 1]
+        pulse.values = [0.75, 0.95, 1, 1.5, 0.75]
+        pulse.keyTimes = [0, 0.05, 0.4, 0.5, 0.7]
+//        pulse.values = [0.75, 0.95, 1.25, 0.75]
+//        pulse.keyTimes = [0, 0.75, 0.90, 1]
         
         heartLayer.add(pulse, forKey: nil)
+        
+//        let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
+//        pulse.duration = 1
+//        pulse.repeatCount = .infinity
+//        pulse.values = [0.5, 0.6, 0.62, 1, 0.5]
+//        pulse.keyTimes = [0, 0.09, 0.4, 0.5, 0.7]
     }
 }
 

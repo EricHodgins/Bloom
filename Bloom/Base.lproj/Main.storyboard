@@ -404,7 +404,7 @@
                     <navigationItem key="navigationItem" title="Workout Name" id="cHn-7D-3hU">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="u2n-xq-1u7">
                             <connections>
-                                <segue destination="EYv-bC-qS5" kind="presentation" id="rrC-hf-91z"/>
+                                <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" id="rrC-hf-91z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -492,13 +492,49 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="294.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="91" id="t3g-dW-wK8">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="91" id="t3g-dW-wK8" customClass="LiveWorkoutTableViewCell" customModule="Bloom" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t3g-dW-wK8" id="n94-XQ-UsW">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cH-3k-6AJ">
+                                                            <rect key="frame" x="8" y="30" width="43" height="31"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pmM-c4-DsF">
+                                                            <rect key="frame" x="59" y="30" width="249" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                        </textField>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPN-WV-HaL">
+                                                            <rect key="frame" x="318" y="30" width="51" height="31"/>
+                                                        </switch>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="centerY" secondItem="pmM-c4-DsF" secondAttribute="centerY" id="4HT-La-x7Y"/>
+                                                        <constraint firstItem="KPN-WV-HaL" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="DhB-bP-WZc"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="KPN-WV-HaL" secondAttribute="trailing" id="FhA-AS-sr9"/>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="GDf-5d-wlT"/>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="top" secondItem="pmM-c4-DsF" secondAttribute="top" id="IQR-Te-a2a"/>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="top" secondItem="KPN-WV-HaL" secondAttribute="top" id="IzQ-bt-dAJ"/>
+                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="centerY" secondItem="n94-XQ-UsW" secondAttribute="centerY" id="P15-gp-m8v"/>
+                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="leading" secondItem="7cH-3k-6AJ" secondAttribute="trailing" constant="8" id="a8h-GJ-V1l"/>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="bottom" secondItem="KPN-WV-HaL" secondAttribute="bottom" id="hVd-hb-AW4"/>
+                                                        <constraint firstItem="pmM-c4-DsF" firstAttribute="leading" secondItem="7cH-3k-6AJ" secondAttribute="trailing" constant="8" symbolic="YES" id="qmY-80-LZ2"/>
+                                                        <constraint firstItem="7cH-3k-6AJ" firstAttribute="leading" secondItem="n94-XQ-UsW" secondAttribute="leadingMargin" id="rzO-hK-KeF"/>
+                                                        <constraint firstItem="KPN-WV-HaL" firstAttribute="leading" secondItem="pmM-c4-DsF" secondAttribute="trailing" constant="10" id="vTI-pe-Xpu"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="excerciseLabel" destination="7cH-3k-6AJ" id="4cf-Xh-Hw0"/>
+                                                    <outlet property="excerciseSwitch" destination="KPN-WV-HaL" id="MHo-oo-LYb"/>
+                                                    <outlet property="excerciseTextField" destination="pmM-c4-DsF" id="wTv-tL-2le"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -603,6 +639,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6nR-L9-1gv"/>
+        <segue reference="rrC-hf-91z"/>
     </inferredMetricsTieBreakers>
 </document>

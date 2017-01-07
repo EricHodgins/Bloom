@@ -69,7 +69,7 @@ extension WorkoutsController: UITableViewDataSource {
 
 extension WorkoutsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        // Setup in the storyboard
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,6 +78,7 @@ extension WorkoutsController: UITableViewDelegate {
             let workout = workouts[workoutCellIndex.row]
             let startWorkoutController = segue.destination as! StartWorkoutController
             startWorkoutController.workout = workout
+            startWorkoutController.managedContext = managedContext
         }
     }
 }

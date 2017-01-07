@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 //CountDown protoco is in the AppDelegate for now
 class StartWorkoutController: UIViewController, CountDown {
@@ -18,6 +19,8 @@ class StartWorkoutController: UIViewController, CountDown {
     
     var ringAnimationInterval: Int = 3
     var workout: Workout!
+    
+    var managedContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,4 +47,51 @@ extension StartWorkoutController {
     func countDownComplete() {
         performSegue(withIdentifier: "LiveWorkoutSegue", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LiveWorkoutSegue" {
+            let liveWorkoutController = segue.destination as! LiveWorkoutController
+            liveWorkoutController.managedContext = managedContext
+            liveWorkoutController.workout = workout
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

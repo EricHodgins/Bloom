@@ -104,6 +104,12 @@ delay(seconds: 3) {
 
 let stopWatch = StopWatch()
 
+struct Excercise { 
+    
+    func excercise(atIndex index: Int) {
+        
+    }
+}
 
 
 

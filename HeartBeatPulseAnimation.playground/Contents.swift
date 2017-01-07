@@ -71,12 +71,12 @@ class HeatBeatLayer: CALayer {
     
     func heartPath() -> CGPath {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 100, y: 100))
-        path.addCurve(to: CGPoint(x:100, y:45), controlPoint1: CGPoint(x: 100, y:100), controlPoint2: CGPoint(x: 170, y: 25))
-        
-        path.move(to: CGPoint(x: 100, y: 100))
-        
-        path.addCurve(to: CGPoint(x: 100, y: 45), controlPoint1: CGPoint(x:100, y:100), controlPoint2: CGPoint(x:30, y: 25))
+        path.move(to: CGPoint(x: 100, y: 50))
+        path.addQuadCurve(to: CGPoint(x: 140, y: 75), controlPoint: CGPoint(x: 160, y: 20))
+        path.addQuadCurve(to: CGPoint(x: 100, y: 120), controlPoint: CGPoint(x: 140, y: 80))
+        path.move(to: CGPoint(x: 100, y: 50))
+        path.addQuadCurve(to: CGPoint(x: 60, y: 75), controlPoint: CGPoint(x: 40, y: 20))
+        path.addQuadCurve(to: CGPoint(x: 100, y: 120), controlPoint: CGPoint(x: 60, y: 80))
         path.close()
         
         return path.cgPath
@@ -123,7 +123,7 @@ class HeatBeatLayer: CALayer {
         
         let group = CAAnimationGroup()
         group.duration = 1.5
-        group.repeatCount = 10
+        group.repeatCount = .infinity
         group.animations = [anim, anim2, lineWidthAnim]
         
         heartLine.add(group, forKey: nil)
@@ -137,8 +137,8 @@ class HeatBeatLayer: CALayer {
         let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
         pulse.duration = 1
         pulse.repeatCount = .infinity
-        pulse.values = [0.5, 0.75, 1, 0.5]
-        pulse.keyTimes = [0, 0.75, 0.90, 1]
+        pulse.values = [0.5, 0.6, 0.62, 1, 0.5]
+        pulse.keyTimes = [0, 0.09, 0.4, 0.5, 0.7]
         
         heartLayer.add(pulse, forKey: nil)
         

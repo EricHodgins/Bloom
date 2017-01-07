@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LiveWorkoutController: UIViewController {
 
@@ -16,11 +17,22 @@ class LiveWorkoutController: UIViewController {
     @IBOutlet weak var currentExcerciseLabel: UILabel!
 
     var startTime: TimeInterval!
+    var managedContext: NSManagedObjectContext!
+    var workout: Workout!
     
+    lazy var excercises: [Excercise] = {
+        var excercises = [Excercise]()
+        for e in self.workout.excercises! {
+            excercises.append(e as! Excercise)
+        }
+    
+        return excercises
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.dataSource = self
+        
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
         
@@ -70,7 +82,24 @@ extension LiveWorkoutController {
     }
 }
 
-
+extension LiveWorkoutController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workout.excercises!.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let excercise = excercises[indexPath.row]
+        cell.textLabel?.text = "\(excercise.name!)"
+        
+        return cell
+    }
+}
 
 
 
