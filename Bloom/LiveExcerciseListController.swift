@@ -9,12 +9,31 @@
 import UIKit
 
 class LiveExcerciseListController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    
+    var excercises = [Excercise]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
     }
 
 
+}
+
+extension LiveExcerciseListController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return excercises.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let excercise = excercises[indexPath.row]
+        
+        cell.textLabel?.text = "\(excercise.name!)"
+        
+        return cell
+    }
 }

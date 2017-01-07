@@ -463,6 +463,9 @@
                                     <segment title="Map"/>
                                     <segment title="Finish"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControllTapped:" destination="EYv-bC-qS5" eventType="valueChanged" id="LpQ-09-ocX"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-P7-7wo" customClass="HeartBeatView" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="149" y="36" width="226" height="57"/>
@@ -542,10 +545,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-HP-LNW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-z6-0t5" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="267"/>
                                                 <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Reps">
@@ -561,7 +564,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-yG-gtN" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="267"/>
                                                 <color key="backgroundColor" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Weight">
@@ -579,10 +582,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-OE-h1s">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="267" width="375" height="266.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-I3-B7S" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Distance">
@@ -598,7 +601,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-IX-Jaw" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.080622263250000006" green="0.57005900139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <state key="normal" title="Time">
@@ -616,7 +619,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-4s-PXj">
-                                        <rect key="frame" x="0.0" y="400" width="375" height="247"/>
+                                        <rect key="frame" x="0.0" y="533.5" width="375" height="113.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Next Excercise"/>
                                     </button>
@@ -635,7 +638,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aI6-I7-mfQ" firstAttribute="top" secondItem="u88-cS-bHn" secondAttribute="bottom" id="Aih-Nv-Kn4"/>
-                            <constraint firstItem="GUj-OE-h1s" firstAttribute="height" secondItem="Ffo-Wq-Uaq" secondAttribute="height" multiplier="0.3" id="Q8w-8B-Jpc"/>
+                            <constraint firstItem="GUj-OE-h1s" firstAttribute="height" secondItem="Ffo-Wq-Uaq" secondAttribute="height" multiplier="0.4" id="Q8w-8B-Jpc"/>
                             <constraint firstAttribute="trailing" secondItem="aI6-I7-mfQ" secondAttribute="trailing" id="bYR-aT-dos"/>
                             <constraint firstItem="CBf-6P-tKO" firstAttribute="top" secondItem="aI6-I7-mfQ" secondAttribute="bottom" id="vkL-lu-QQh"/>
                             <constraint firstItem="aI6-I7-mfQ" firstAttribute="leading" secondItem="Ffo-Wq-Uaq" secondAttribute="leading" id="zkW-zr-kXB"/>
@@ -654,15 +657,44 @@
                         <viewControllerLayoutGuide type="top" id="mOW-Ze-fdz"/>
                         <viewControllerLayoutGuide type="bottom" id="x5Q-mk-tLR"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h5Q-wi-kcp">
+                    <view key="view" contentMode="scaleToFill" id="h5Q-wi-kcp" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.43633037810000003" blue="0.70330071449999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="peH-Av-yDR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="Yrz-Ce-ZOs">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrz-Ce-ZOs" id="ePL-aV-avV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.99855369329452515" green="0.34559923410415649" blue="0.076147370040416718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="1" green="0.97120735079999998" blue="0.52457887599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="peH-Av-yDR" id="D56-LA-h8O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HK2-Q5-kiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4823" y="298"/>
+            <point key="canvasLocation" x="4821.6000000000004" y="297.30134932533736"/>
         </scene>
         <!--Live Map View Controller-->
         <scene sceneID="tCW-ZF-XDL">
@@ -672,15 +704,40 @@
                         <viewControllerLayoutGuide type="top" id="khF-d7-SCK"/>
                         <viewControllerLayoutGuide type="bottom" id="hIA-FF-d1p"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2YK-BB-gCp">
+                    <view key="view" contentMode="scaleToFill" id="2YK-BB-gCp" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-eO-kCm">
+                                <rect key="frame" x="163" y="28" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Map Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-2d-11a">
+                                <rect key="frame" x="102" y="67" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6g1-2d-11a" firstAttribute="top" secondItem="RJF-eO-kCm" secondAttribute="bottom" constant="8" id="Irs-Ik-yUw"/>
+                            <constraint firstItem="RJF-eO-kCm" firstAttribute="centerX" secondItem="2YK-BB-gCp" secondAttribute="centerX" id="Jbx-1T-SY3"/>
+                            <constraint firstItem="RJF-eO-kCm" firstAttribute="top" secondItem="khF-d7-SCK" secondAttribute="bottom" constant="8" id="jvg-p5-6kF"/>
+                            <constraint firstItem="6g1-2d-11a" firstAttribute="centerX" secondItem="RJF-eO-kCm" secondAttribute="centerX" id="xTY-i6-MSP"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="1" green="0.97120735079999998" blue="0.52457887599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="1" green="0.43633037810000003" blue="0.70330071449999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mn7-Kp-guu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5482" y="298"/>
+            <point key="canvasLocation" x="5480.8000000000002" y="297.30134932533736"/>
         </scene>
         <!--Finish Live Workout Controller-->
         <scene sceneID="rdI-bL-OgD">
@@ -693,12 +750,37 @@
                     <view key="view" contentMode="scaleToFill" id="OvS-oF-Iy1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.3940448761" green="0.84529596569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="16" y="220" width="343" height="227"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Finish Workout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="1" green="0.43633037810000003" blue="0.70330071449999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.57963670830000003" green="0.69602952500000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" id="Cnv-DU-TY7"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="7YX-Z5-EI8" secondAttribute="leading" id="JcO-Iv-Uo4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7YX-Z5-EI8" secondAttribute="trailing" id="cz7-FX-rro"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6154" y="297"/>
+            <point key="canvasLocation" x="6152.8000000000002" y="296.40179910044981"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">

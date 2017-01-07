@@ -33,6 +33,7 @@ class LiveWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.isScrollEnabled = false
         
         // Start Timer
         startTime = Date.timeIntervalSinceReferenceDate
@@ -61,6 +62,14 @@ class LiveWorkoutController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startHeartLineAnimation()
+    }
+    @IBAction func segmentControllTapped(_ sender: UISegmentedControl) {
+        
+        let width = scrollView.bounds.width
+        
+        UIView.animate(withDuration: 0.33) { 
+            self.scrollView.contentOffset.x = width * CGFloat(sender.selectedSegmentIndex)
+        }
     }
 }
 
@@ -109,6 +118,7 @@ extension LiveWorkoutController {
     fileprivate func createLiveExcerciseListController() -> LiveExcerciseListController {
         let lelc = storyboard!.instantiateViewController(withIdentifier: "List") as! LiveExcerciseListController
         lelc.view.translatesAutoresizingMaskIntoConstraints = false
+        lelc.excercises = excercises
         
         scrollView.addSubview(lelc.view)
         
