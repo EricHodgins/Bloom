@@ -44,7 +44,8 @@ class GenericBloomButton: UIButton {
     }
     
     func setup() {
-        layer.addSublayer(gradientLayer)
+        //layer.addSublayer(gradientLayer)
+        layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func layoutSubviews() {

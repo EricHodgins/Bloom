@@ -537,12 +537,114 @@
                     <view key="view" contentMode="scaleToFill" id="Ffo-Wq-Uaq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-I7-mfQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-HP-LNW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-z6-0t5" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
+                                                <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Reps">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.99852412939071655" green="0.34953585267066956" blue="0.10409372299909592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="1" green="0.43219467997550964" blue="0.7033650279045105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-yG-gtN" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
+                                                <color key="backgroundColor" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Weight">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.57963670833316983" green="0.69602952503967919" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-OE-h1s">
+                                        <rect key="frame" x="0.0" y="200" width="375" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-I3-B7S" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
+                                                <color key="backgroundColor" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Distance">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="1" green="0.97120735084584298" blue="0.52457887601034725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-IX-Jaw" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
+                                                <color key="backgroundColor" red="0.080622263250000006" green="0.57005900139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Time">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.029563561081886292" green="0.52908480167388916" blue="0.99847942590713501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.39023542404174805" green="0.83725744485855103" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-4s-PXj">
+                                        <rect key="frame" x="0.0" y="400" width="375" height="247"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Next Excercise"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EXr-HP-LNW" secondAttribute="trailing" id="BjQ-bk-oCE"/>
+                                    <constraint firstAttribute="trailing" secondItem="FUX-4s-PXj" secondAttribute="trailing" id="Ucp-RR-xPd"/>
+                                    <constraint firstItem="FUX-4s-PXj" firstAttribute="leading" secondItem="aI6-I7-mfQ" secondAttribute="leading" id="XuB-DH-k8Y"/>
+                                    <constraint firstItem="GUj-OE-h1s" firstAttribute="height" secondItem="EXr-HP-LNW" secondAttribute="height" id="YLe-9p-67f"/>
+                                    <constraint firstItem="EXr-HP-LNW" firstAttribute="leading" secondItem="aI6-I7-mfQ" secondAttribute="leading" id="YYD-ih-11R"/>
+                                    <constraint firstAttribute="trailing" secondItem="GUj-OE-h1s" secondAttribute="trailing" id="YYK-VN-xQ6"/>
+                                    <constraint firstItem="GUj-OE-h1s" firstAttribute="leading" secondItem="aI6-I7-mfQ" secondAttribute="leading" id="vYM-qq-dSG"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aI6-I7-mfQ" firstAttribute="top" secondItem="u88-cS-bHn" secondAttribute="bottom" id="Aih-Nv-Kn4"/>
+                            <constraint firstItem="GUj-OE-h1s" firstAttribute="height" secondItem="Ffo-Wq-Uaq" secondAttribute="height" multiplier="0.3" id="Q8w-8B-Jpc"/>
+                            <constraint firstAttribute="trailing" secondItem="aI6-I7-mfQ" secondAttribute="trailing" id="bYR-aT-dos"/>
+                            <constraint firstItem="CBf-6P-tKO" firstAttribute="top" secondItem="aI6-I7-mfQ" secondAttribute="bottom" id="vkL-lu-QQh"/>
+                            <constraint firstItem="aI6-I7-mfQ" firstAttribute="leading" secondItem="Ffo-Wq-Uaq" secondAttribute="leading" id="zkW-zr-kXB"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJY-8G-Olt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4177" y="296"/>
+            <point key="canvasLocation" x="4176.8000000000002" y="295.50224887556226"/>
         </scene>
         <!--Live Excercise List Controller-->
         <scene sceneID="mNe-1Y-G55">
