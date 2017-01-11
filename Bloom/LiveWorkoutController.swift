@@ -63,6 +63,7 @@ class LiveWorkoutController: UIViewController {
         super.viewDidAppear(animated)
         startHeartLineAnimation()
     }
+    
     @IBAction func segmentControllTapped(_ sender: UISegmentedControl) {
         
         let width = scrollView.bounds.width
@@ -71,6 +72,9 @@ class LiveWorkoutController: UIViewController {
             self.scrollView.contentOffset.x = width * CGFloat(sender.selectedSegmentIndex)
         }
     }
+    
+    
+    
 }
 
 extension LiveWorkoutController {
@@ -86,7 +90,7 @@ extension LiveWorkoutController {
         
         diff -= TimeInterval(minutes * 60)
         
-        let seconds = Int8(diff)
+        let seconds = Int16(diff)
         
         let hoursFormatted = String(format: "%02d", hours)
         let minutesFormatted = String(format: "%02d", minutes)
@@ -107,6 +111,9 @@ extension LiveWorkoutController {
     fileprivate func createRecordLiveExcerciseController() -> RecordLiveExcerciseController {
         let rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
         rlec.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        rlec.excerciseLabel = currentExcerciseLabel
+        rlec.excercises = excercises
         
         scrollView.addSubview(rlec.view)
         

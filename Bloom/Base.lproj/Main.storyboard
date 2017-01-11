@@ -622,6 +622,9 @@
                                         <rect key="frame" x="0.0" y="533.5" width="375" height="113.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Next Excercise"/>
+                                        <connections>
+                                            <action selector="nextExcerciseTapped:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="xEt-Oy-REo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -670,7 +673,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrz-Ce-ZOs" id="ePL-aV-avV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
