@@ -21,6 +21,7 @@
 		7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */; };
 		7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */; };
 		7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915DA1E10CA9000090D7B /* StartButton.swift */; };
+		7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A796D471E2B05890006DE61 /* MetalImageView.swift */; };
 		7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
@@ -126,6 +127,7 @@
 		7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutsController.swift; sourceTree = "<group>"; };
 		7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutController.swift; sourceTree = "<group>"; };
 		7A7915DA1E10CA9000090D7B /* StartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		7A796D471E2B05890006DE61 /* MetalImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalImageView.swift; sourceTree = "<group>"; };
 		7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,14 @@
 			name = Layers;
 			sourceTree = "<group>";
 		};
+		7A796D461E2B05500006DE61 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				7A796D471E2B05890006DE61 /* MetalImageView.swift */,
+			);
+			name = Metal;
+			sourceTree = "<group>";
+		};
 		7A7E6A7B1E1B541F00D2AEDB /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 		7A84F9401DFE761D00A37C80 /* Bloom */ = {
 			isa = PBXGroup;
 			children = (
+				7A796D461E2B05500006DE61 /* Metal */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
@@ -592,6 +603,7 @@
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
+				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
 				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,
 				7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */,

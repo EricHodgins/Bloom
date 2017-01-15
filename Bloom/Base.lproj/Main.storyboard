@@ -771,6 +771,9 @@
                                         <color key="value" red="0.57963670830000003" green="0.69602952500000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="testAnimation:" destination="jAF-YU-cOg" eventType="touchUpInside" id="uJJ-Lw-cFy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
