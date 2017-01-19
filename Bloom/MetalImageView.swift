@@ -9,6 +9,7 @@
 import MetalKit
 
 class MetalImageView: MTKView {
+    
     var image: CIImage? {
         didSet {
             renderImage()
@@ -16,6 +17,7 @@ class MetalImageView: MTKView {
     }
     
     lazy var ciContext: CIContext = {
+        let context = CIContext()
         return CIContext(mtlDevice: self.device!)
     }()
     
@@ -36,8 +38,9 @@ class MetalImageView: MTKView {
         if super.device == nil {
             fatalError("Device not supported.")
         }
-        
+
         framebufferOnly = false // Allows to write to the View's texture.
+        
     }
     
     
@@ -48,7 +51,9 @@ class MetalImageView: MTKView {
         let bounds = CGRect(origin: .zero, size: drawableSize)
         let commandBuffer = commandQueue.makeCommandBuffer()
         
-        ciContext.render(image, to: targetTexture, commandBuffer: commandBuffer, bounds: bounds, colorSpace: colorSpace)
+        let translatedImage = image.applying(CGAffineTransform(translationX: 0, y: drawableSize.height))
+
+        ciContext.render(translatedImage, to: targetTexture, commandBuffer: commandBuffer, bounds: bounds, colorSpace: colorSpace)
         
         commandBuffer.present(currentDrawable!)
         commandBuffer.commit()

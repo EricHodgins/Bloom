@@ -754,7 +754,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="16" y="220" width="343" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
