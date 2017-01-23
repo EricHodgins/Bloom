@@ -162,11 +162,33 @@ graphImage
 
 
 
+protocol Testable {
+    func testUnit()
+}
+
+class Animal {
+    let name: String
+    init(name: String) {
+        self.name = name
+    }
+    
+    func attack() {
+        print("Attack!...\(self as? Testable)")
+    }
+}
+
+class Penquin: Animal, Testable {
+    func testUnit() {
+        print("Testing...")
+    }
+}
 
 
+let p = Penquin(name: "Penquin")
+p.attack()
 
-
-
+let a = Animal(name: "Animal")
+a.attack()
 
 
 

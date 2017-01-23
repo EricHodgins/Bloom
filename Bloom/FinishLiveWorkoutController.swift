@@ -13,6 +13,7 @@ class FinishLiveWorkoutController: UIViewController {
     
     var timeTracker: Double = 0.0
     var positionTracker: CGFloat = 0.0
+    var sunRadius: CGFloat = 70.0
     var displayLink = CADisplayLink()
     
     lazy var metalView: MetalImageView = {
@@ -22,9 +23,9 @@ class FinishLiveWorkoutController: UIViewController {
     
     private lazy var beamFilter: CIFilter = {
         let filter = CIFilter(name: "CISunbeamsGenerator")!
-        filter.setValue(70, forKeyPath: "inputSunRadius")
-        filter.setValue(8, forKey: "inputMaxStriationRadius")
-        filter.setValue(0.1, forKey: "inputStriationStrength")
+        filter.setValue(self.sunRadius, forKeyPath: "inputSunRadius")
+        filter.setValue(10, forKey: "inputMaxStriationRadius")
+        filter.setValue(0.09, forKey: "inputStriationStrength")
         
         return filter
     }()
@@ -67,7 +68,9 @@ class FinishLiveWorkoutController: UIViewController {
     
     func animate(displayLink: CADisplayLink) {
         timeTracker += 0.00008
-        positionTracker += 0.05
+        positionTracker += 0.0
+        sunRadius += 0.01
+        beamFilter.setValue(sunRadius, forKeyPath: "inputSunRadius")
         beamFilter.setValue(timeTracker, forKey: kCIInputTimeKey)
         beamFilter.setValue(CIVector(x: positionTracker, y: -positionTracker), forKeyPath: "inputCenter")
         metalView.image = additionFilterImage(inputImage: beamFilter.outputImage!)
@@ -86,15 +89,15 @@ extension CIVector {
     
     class func pixelPointForTopLeft(view: UIView) -> CIVector {
         let x: CGFloat = 0
-        let y: CGFloat = view.frame.height * UIScreen.main.scale
+        let y: CGFloat = 0//view.frame.height * UIScreen.main.scale * 0.75
         let point = CGPoint(x: x, y: y)
         
         return CIVector(cgPoint: point)
     }
     
     class func pixelPointForBottomRight(view: UIView) -> CIVector {
-        let x = view.frame.width * UIScreen.main.scale
-        let y: CGFloat = view.frame.height * UIScreen.main.scale
+        let x = view.frame.width * UIScreen.main.scale * 1
+        let y: CGFloat = view.frame.height * UIScreen.main.scale * 0.4
         let point = CGPoint(x: x, y: y)
         
         return CIVector(cgPoint: point)
