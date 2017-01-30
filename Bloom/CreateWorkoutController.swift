@@ -112,10 +112,12 @@ class CreateWorkoutController: UIViewController {
     }
     
     func setupExcerciseViewFrame() -> CGRect {
-        let orientation = UIDevice.current.orientation
         let rect: CGRect
         
-        if orientation == .portrait {
+        let viewWidth = view.bounds.width
+        let viewHeight = view.bounds.height
+        
+        if viewWidth < viewHeight {
            rect = CGRect(x: 25, y: 50, width: view.frame.size.width - 50, height: view.frame.size.height * 0.5)
         } else {
            rect = CGRect(x: 25, y: 25, width: view.frame.size.width - 50, height: view.frame.size.height * 0.8)

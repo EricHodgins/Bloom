@@ -24,9 +24,10 @@ class FinishLiveWorkoutController: UIViewController {
         
     }
     
-    @IBAction func testAnimation(_ sender: Any) {
+    @IBAction func finishWorkoutButtonPressed(_ sender: Any) {
         
     }
+
 }
 
 

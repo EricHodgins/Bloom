@@ -772,7 +772,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="testAnimation:" destination="jAF-YU-cOg" eventType="touchUpInside" id="uJJ-Lw-cFy"/>
+                                    <action selector="finishWorkoutButtonPressed:" destination="jAF-YU-cOg" eventType="touchUpInside" id="Ieb-74-lz6"/>
                                 </connections>
                             </button>
                         </subviews>
