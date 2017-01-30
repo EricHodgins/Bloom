@@ -10,11 +10,7 @@ import MetalKit
 
 class MetalImageView: MTKView {
     
-    var image: CIImage? {
-        didSet {
-            renderImage()
-        }
-    }
+    var image: CIImage?
     
     lazy var ciContext: CIContext = {
         let context = CIContext()
@@ -44,23 +40,7 @@ class MetalImageView: MTKView {
     }
     
     
-    func renderImage() {
-        guard let image = image,
-            let targetTexture = currentDrawable?.texture else { return }
-        
-        let bounds = CGRect(origin: .zero, size: drawableSize)
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        
-        let translatedImage = image.applying(CGAffineTransform(translationX: 0, y: drawableSize.height))
-
-        ciContext.render(translatedImage, to: targetTexture, commandBuffer: commandBuffer, bounds: bounds, colorSpace: colorSpace)
-        
-        commandBuffer.present(currentDrawable!)
-        commandBuffer.commit()
-    }
-    
 }
-
 
 
 
