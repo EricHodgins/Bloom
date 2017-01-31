@@ -68,7 +68,7 @@ class LiveWorkoutController: UIViewController {
         
         let width = scrollView.bounds.width
         
-        UIView.animate(withDuration: 0.33) { 
+        UIView.animate(withDuration: 0.33) {
             self.scrollView.contentOffset.x = width * CGFloat(sender.selectedSegmentIndex)
         }
     }
