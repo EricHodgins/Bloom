@@ -562,6 +562,9 @@
                                                         <color key="value" red="1" green="0.43219467997550964" blue="0.7033650279045105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="repsButtonPushed:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="BEk-Ah-IMm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-yG-gtN" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="267"/>
@@ -578,6 +581,9 @@
                                                         <color key="value" red="0.57963670833316983" green="0.69602952503967919" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="weightsButtonPushed:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="4i0-dU-1Ls"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -599,6 +605,9 @@
                                                         <color key="value" red="1" green="0.97120735084584298" blue="0.52457887601034725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="distanceButtonPushed:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="zI9-bq-e4E"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-IX-Jaw" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="266.5"/>
@@ -615,6 +624,9 @@
                                                         <color key="value" red="0.39023542404174805" green="0.83725744485855103" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="timeButtonPushed:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="70k-L4-lUb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

@@ -48,6 +48,7 @@
 		7AA861321E0F1CB30054B443 /* Excercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */; };
 		7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */; };
 		7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */; };
+		7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6131B1E403B7F00EEAC38 /* RecordLiveStatView.swift */; };
 		7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184001E20BBBB0019AB2F /* RecordLiveExcerciseController.swift */; };
 		7AC184031E20BBE80019AB2F /* LiveExcerciseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184021E20BBE80019AB2F /* LiveExcerciseListController.swift */; };
 		7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */; };
@@ -163,6 +164,7 @@
 		7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBloomView.swift; sourceTree = "<group>"; };
+		7AB6131B1E403B7F00EEAC38 /* RecordLiveStatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiveStatView.swift; sourceTree = "<group>"; };
 		7AC184001E20BBBB0019AB2F /* RecordLiveExcerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordLiveExcerciseController.swift; sourceTree = "<group>"; };
 		7AC184021E20BBE80019AB2F /* LiveExcerciseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveExcerciseListController.swift; sourceTree = "<group>"; };
 		7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
@@ -306,8 +308,9 @@
 				7A7E6A7B1E1B541F00D2AEDB /* Custom Cells */,
 				7A84F9431DFE761D00A37C80 /* MainViewController.swift */,
 				7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */,
-				7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */,
 				7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */,
+				7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */,
+				7AB6131B1E403B7F00EEAC38 /* RecordLiveStatView.swift */,
 				7A7915D61E10A6BD00090D7B /* WorkoutsController.swift */,
 				7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */,
 				7AC183FF1E20BB660019AB2F /* LiveWorkout */,
@@ -597,6 +600,7 @@
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
+				7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */,
 				7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */,
 				7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */,
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,

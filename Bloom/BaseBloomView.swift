@@ -41,6 +41,11 @@ class BaseBloomView: UIView {
         setupLineSeparator()
     }
     
+    convenience init(inView view: UIView) {
+        let rect = BaseBloomView.setupExcerciseViewFrame(inView: view)
+        self.init(frame: rect)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder: ) has not been implemented.")
     }
@@ -81,7 +86,7 @@ class BaseBloomView: UIView {
         
         NSLayoutConstraint.activate([
             textField.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: bounds.size.height/3),
+            textField.topAnchor.constraint(equalTo: topAnchor, constant: bounds.size.height/3 - 20),
             textField.widthAnchor.constraint(equalToConstant: bounds.size.width - 20),
             textField.heightAnchor.constraint(equalToConstant: 30)
             ])
@@ -111,5 +116,20 @@ class BaseBloomView: UIView {
             let scaleX = CGFloat(self.bounds.size.width * 0.9)
             self.lineSeparator.transform = CGAffineTransform(scaleX: scaleX, y: 2)
         }, completion: nil)
+    }
+    
+    class func setupExcerciseViewFrame(inView view: UIView) -> CGRect {
+        let rect: CGRect
+        
+        let viewWidth = view.bounds.width
+        let viewHeight = view.bounds.height
+        
+        if viewWidth < viewHeight {
+            rect = CGRect(x: 25, y: 50, width: view.frame.size.width - 50, height: view.frame.size.height * 0.5)
+        } else {
+            rect = CGRect(x: 25, y: 25, width: view.frame.size.width - 50, height: view.frame.size.height * 0.8)
+        }
+        
+        return rect
     }
 }

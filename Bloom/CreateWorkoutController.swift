@@ -72,13 +72,11 @@ class CreateWorkoutController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         animateLineSeparator()
     }
     
     func addExcerciseView() {
-        let rect = setupExcerciseViewFrame()
-        excerciseView = AddExcerciseView(frame: rect)
+        excerciseView = AddExcerciseView(inView: view)
         excerciseView.completionHandler = { (excerciseName) in
             // Add New Excercise ( Save was pressed.)
             if let excerciseName = excerciseName {
@@ -101,7 +99,7 @@ class CreateWorkoutController: UIViewController {
     }
     
     func reAdjustExcerciseViewOnOrienationChange() {
-        let rect = setupExcerciseViewFrame()
+        let rect = AddExcerciseView.setupExcerciseViewFrame(inView: view)
         UIView.animate(withDuration: 0.5, animations: {
             self.excerciseView.frame.size.width = rect.width
             self.excerciseView.frame.size.height = rect.height
@@ -109,21 +107,6 @@ class CreateWorkoutController: UIViewController {
             self.excerciseView.cancelButton.frame = self.excerciseView.cancelButtonFrame()
         })
     
-    }
-    
-    func setupExcerciseViewFrame() -> CGRect {
-        let rect: CGRect
-        
-        let viewWidth = view.bounds.width
-        let viewHeight = view.bounds.height
-        
-        if viewWidth < viewHeight {
-           rect = CGRect(x: 25, y: 50, width: view.frame.size.width - 50, height: view.frame.size.height * 0.5)
-        } else {
-           rect = CGRect(x: 25, y: 25, width: view.frame.size.width - 50, height: view.frame.size.height * 0.8)
-        }
-        
-        return rect
     }
     
     func setupLineSeparator() {

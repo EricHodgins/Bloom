@@ -13,6 +13,8 @@ class RecordLiveExcerciseController: UIViewController {
     var excercises = [Excercise]()
     weak var excerciseLabel: UILabel!
     var currentExcerciseIndex: Int = -1
+    
+    var recordLiveStatView: RecordLiveStatView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,4 +49,54 @@ class RecordLiveExcerciseController: UIViewController {
     func excerciseListLoopedOver() {
         
     }
+    
+    
+    @IBAction func repsButtonPushed(_ sender: Any) {
+        showRecordRepsView()
+    }
+    
+    @IBAction func weightsButtonPushed(_ sender: Any) {
+    }
+    
+    @IBAction func distanceButtonPushed(_ sender: Any) {
+    }
+    
+    @IBAction func timeButtonPushed(_ sender: Any) {
+    }
+    
+    func showRecordRepsView() {
+        recordLiveStatView = RecordLiveStatView(inView: view)
+        recordLiveStatView.title.text = "Reps"
+        recordLiveStatView.textField.placeholder = "0"
+        view.addSubview(recordLiveStatView)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
