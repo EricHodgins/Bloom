@@ -17,6 +17,7 @@ class RecordLiveStatView: BaseBloomView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        textField.keyboardType = .numberPad
         textField.delegate = self
         
         title = UILabel(frame: .zero)
@@ -85,8 +86,13 @@ class RecordLiveStatView: BaseBloomView {
         ])
     }
     
+    
+    
 }
 
 extension RecordLiveStatView: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
