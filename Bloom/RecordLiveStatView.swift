@@ -11,6 +11,8 @@ import UIKit
 class RecordLiveStatView: BaseBloomView {
     
     var title: UILabel!
+    var plusButton: UIButton!
+    var minusButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +21,13 @@ class RecordLiveStatView: BaseBloomView {
         
         title = UILabel(frame: .zero)
         title.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        
+        plusButton = UIButton(frame: .zero)
+        minusButton = UIButton(frame: .zero)
+        
         setupTitleLabel()
+        setupPlusButton()
+        setupMinusButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,13 +41,50 @@ class RecordLiveStatView: BaseBloomView {
         addSubview(title)
         
         NSLayoutConstraint.activate([
-            title.centerXAnchor.constraint(equalTo: centerXAnchor),
             title.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             title.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            title.rightAnchor.constraint(equalTo: rightAnchor, constant: 10)
+            title.rightAnchor.constraint(equalTo: rightAnchor, constant: -10)
         ])
-        
     }
+    
+    func setupPlusButton() {
+        plusButton.translatesAutoresizingMaskIntoConstraints = false
+        plusButton.setTitleColor(UIColor.blue, for: .normal)
+        plusButton.backgroundColor = UIColor.clear
+        plusButton.setTitle("+", for: .normal)
+        plusButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 40)
+        plusButton.layer.cornerRadius = 10
+        plusButton.layer.borderWidth = 1.0
+        plusButton.layer.borderColor = UIColor.blue.cgColor
+        addSubview(plusButton)
+        
+        NSLayoutConstraint.activate([
+            plusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15),
+            plusButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            plusButton.widthAnchor.constraint(equalToConstant: 60),
+            plusButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    func setupMinusButton() {
+        minusButton.translatesAutoresizingMaskIntoConstraints = false
+        minusButton.setTitleColor(UIColor.blue, for: .normal)
+        minusButton.backgroundColor = UIColor.clear
+        minusButton.setTitle("-", for: .normal)
+        minusButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 40)
+        minusButton.layer.cornerRadius = 10
+        minusButton.layer.borderWidth = 1.0
+        minusButton.layer.borderColor = UIColor.blue.cgColor
+        addSubview(minusButton)
+        
+        NSLayoutConstraint.activate([
+            minusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15),
+            minusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+            minusButton.widthAnchor.constraint(equalToConstant: 60),
+            minusButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
 }
 
 extension RecordLiveStatView: UITextFieldDelegate {

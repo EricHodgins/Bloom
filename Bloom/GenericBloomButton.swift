@@ -20,17 +20,7 @@ class GenericBloomButton: UIButton {
     let gradientLayer = CAGradientLayer()
     
     override func draw(_ rect: CGRect) {
-//        context = UIGraphicsGetCurrentContext()
-//        let colors = [startColor.cgColor, endColor.cgColor] as CFArray
-//        
-//        let colorSpace = CGColorSpaceCreateDeviceRGB()
-//        let colorLocations: [CGFloat] = [0.0, 1.0]
-//        
-//        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: colorLocations)!
-//        let startPoint = CGPoint.zero
-//        let endPoint = CGPoint(x: 0, y: bounds.size.height)
-//        
-//        context!.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
+
     }
     
     override func prepareForInterfaceBuilder() {
