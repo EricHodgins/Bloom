@@ -10,9 +10,17 @@ import UIKit
 
 class RecordLiveExcerciseController: UIViewController {
     
+    enum Stat: Int {
+        case Reps
+        case Weight
+        case Distance
+        case Time
+    }
+    
     var excercises = [Excercise]()
     weak var excerciseLabel: UILabel!
     var currentExcerciseIndex: Int = -1
+    var currentCounter: Double = 0.0
     
     var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
@@ -68,9 +76,11 @@ class RecordLiveExcerciseController: UIViewController {
     
     func showRecordRepsView() {
         recordLiveStatView = RecordLiveStatView(inView: view)
+        recordLiveStatView.tag = Stat.Reps.rawValue
         recordLiveStatView.title.text = "Reps"
         recordLiveStatView.textField.placeholder = "0"
         recordLiveStatView.plusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.plusButtonPushed(sender:)), for: .touchUpInside)
+        recordLiveStatView.minusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.minusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.saveButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.savePressed), for: .touchUpInside)
         recordLiveStatView.cancelButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.cancelPressed), for: .touchUpInside)
         
@@ -88,7 +98,21 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func plusButtonPushed(sender: UIButton) {
+        if sender.tag == Stat.Reps.rawValue {
+            currentCounter += 1.0
+            recordLiveStatView.textField.text = "\(currentCounter)"
+        }
         
+        if sender.tag == Stat.Weight.rawValue {
+            
+        }
+    }
+    
+    func minusButtonPushed(sender: UIButton) {
+        if sender.tag == Stat.Reps.rawValue {
+            currentCounter -= 1.0
+            recordLiveStatView.textField.text = "\(currentCounter)"
+        }
     }
     
     func addBlurEffect() {
