@@ -62,22 +62,29 @@ class RecordLiveExcerciseController: UIViewController {
     
     @IBAction func repsButtonPushed(_ sender: Any) {
         addBlurEffect()
-        showRecordRepsView()
+        showRecordView(withTitle: "Reps", andTag: Stat.Reps)
     }
     
     @IBAction func weightsButtonPushed(_ sender: Any) {
+        addBlurEffect()
+        showRecordView(withTitle: "Weight", andTag: Stat.Weight)
     }
     
     @IBAction func distanceButtonPushed(_ sender: Any) {
+        addBlurEffect()
+        showRecordView(withTitle: "Distance", andTag: Stat.Distance)
     }
     
     @IBAction func timeButtonPushed(_ sender: Any) {
+        addBlurEffect()
+        showRecordView(withTitle: "Time", andTag: Stat.Time)
     }
     
-    func showRecordRepsView() {
+    func showRecordView(withTitle title: String, andTag tag: Stat) {
+        currentCounter = 0.0
         recordLiveStatView = RecordLiveStatView(inView: view)
-        recordLiveStatView.tag = Stat.Reps.rawValue
-        recordLiveStatView.title.text = "Reps"
+        recordLiveStatView.tag = tag.rawValue
+        recordLiveStatView.title.text = title
         recordLiveStatView.textField.placeholder = "0"
         recordLiveStatView.plusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.plusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.minusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.minusButtonPushed(sender:)), for: .touchUpInside)
@@ -98,21 +105,13 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func plusButtonPushed(sender: UIButton) {
-        if sender.tag == Stat.Reps.rawValue {
-            currentCounter += 1.0
-            recordLiveStatView.textField.text = "\(currentCounter)"
-        }
-        
-        if sender.tag == Stat.Weight.rawValue {
-            
-        }
+        currentCounter += 1.0
+        recordLiveStatView.textField.text = "\(currentCounter)"
     }
     
     func minusButtonPushed(sender: UIButton) {
-        if sender.tag == Stat.Reps.rawValue {
-            currentCounter -= 1.0
-            recordLiveStatView.textField.text = "\(currentCounter)"
-        }
+        currentCounter -= 1.0
+        recordLiveStatView.textField.text = "\(currentCounter)"
     }
     
     func addBlurEffect() {
