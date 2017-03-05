@@ -40,7 +40,7 @@ class WorkoutsController: UIViewController {
             print(workout.name! as String)
             for e in workout.excercises! {
                 let excer = e as! Excercise
-                print(excer.name! as String)
+                print("\(excer.name!), reps: \(excer.reps)")
             }
         }
     }

@@ -113,6 +113,7 @@ extension LiveWorkoutController {
         rlec.view.translatesAutoresizingMaskIntoConstraints = false
         
         rlec.excerciseLabel = currentExcerciseLabel
+        rlec.managedContext = managedContext
         rlec.excercises = excercises
         
         scrollView.addSubview(rlec.view)

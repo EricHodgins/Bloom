@@ -15,6 +15,7 @@
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
 		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
 		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
+		7A66583E1E46974C008B41FA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66583D1E46974C008B41FA /* Types.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
 		7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */; };
 		7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEA1E16EF1300736446 /* RingLayer.swift */; };
@@ -124,6 +125,7 @@
 		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
 		7A5346841E1A049A0067E982 /* HeartLineLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineLayer.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
+		7A66583D1E46974C008B41FA /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkoutButton.swift; sourceTree = "<group>"; };
 		7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetBackground.swift; sourceTree = "<group>"; };
 		7A764CEA1E16EF1300736446 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		7AC183FF1E20BB660019AB2F /* LiveWorkout */ = {
 			isa = PBXGroup;
 			children = (
+				7A66583D1E46974C008B41FA /* Types.swift */,
 				7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */,
 				7AC184001E20BBBB0019AB2F /* RecordLiveExcerciseController.swift */,
 				7AC184021E20BBE80019AB2F /* LiveExcerciseListController.swift */,
@@ -588,6 +591,7 @@
 				7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
+				7A66583E1E46974C008B41FA /* Types.swift in Sources */,
 				7AA861301E0F1CB30054B443 /* Workout+CoreDataClass.swift in Sources */,
 				7AC184071E20BC0B0019AB2F /* FinishLiveWorkoutController.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,

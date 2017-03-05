@@ -131,7 +131,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -270,7 +270,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQT-vz-QWC" id="ZHM-OZ-uYI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -685,7 +685,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrz-Ce-ZOs" id="ePL-aV-avV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -773,7 +773,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="220" width="343" height="227"/>
+                                <rect key="frame" x="16" y="133" width="343" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
                                 </constraints>
@@ -796,7 +796,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" id="Cnv-DU-TY7"/>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" constant="-87" id="Cnv-DU-TY7"/>
                             <constraint firstAttribute="leadingMargin" secondItem="7YX-Z5-EI8" secondAttribute="leading" id="JcO-Iv-Uo4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7YX-Z5-EI8" secondAttribute="trailing" id="cz7-FX-rro"/>
                         </constraints>

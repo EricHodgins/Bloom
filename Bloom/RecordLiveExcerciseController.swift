@@ -7,16 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordLiveExcerciseController: UIViewController {
     
-    enum Stat: Int {
-        case Reps
-        case Weight
-        case Distance
-        case Time
-    }
-    
+    var managedContext: NSManagedObjectContext!
     var excercises = [Excercise]()
     weak var excerciseLabel: UILabel!
     var currentExcerciseIndex: Int = -1
@@ -62,28 +57,29 @@ class RecordLiveExcerciseController: UIViewController {
     
     @IBAction func repsButtonPushed(_ sender: Any) {
         addBlurEffect()
-        showRecordView(withTitle: "Reps", andTag: Stat.Reps)
+        showRecordView(withTitle: "Reps", andStat: Stat.Reps)
     }
     
     @IBAction func weightsButtonPushed(_ sender: Any) {
         addBlurEffect()
-        showRecordView(withTitle: "Weight", andTag: Stat.Weight)
+        showRecordView(withTitle: "Weight", andStat: Stat.Weight)
     }
     
     @IBAction func distanceButtonPushed(_ sender: Any) {
         addBlurEffect()
-        showRecordView(withTitle: "Distance", andTag: Stat.Distance)
+        showRecordView(withTitle: "Distance", andStat: Stat.Distance)
     }
     
     @IBAction func timeButtonPushed(_ sender: Any) {
         addBlurEffect()
-        showRecordView(withTitle: "Time", andTag: Stat.Time)
+        showRecordView(withTitle: "Time", andStat: Stat.Time)
     }
     
-    func showRecordView(withTitle title: String, andTag tag: Stat) {
+    func showRecordView(withTitle title: String, andStat stat: Stat) {
+        retriveCurrentExcerciseValue(excercise: excercises[currentExcerciseIndex])
         currentCounter = 0.0
         recordLiveStatView = RecordLiveStatView(inView: view)
-        recordLiveStatView.tag = tag.rawValue
+        recordLiveStatView.stat = stat
         recordLiveStatView.title.text = title
         recordLiveStatView.textField.placeholder = "0"
         recordLiveStatView.plusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.plusButtonPushed(sender:)), for: .touchUpInside)
@@ -91,7 +87,11 @@ class RecordLiveExcerciseController: UIViewController {
         recordLiveStatView.saveButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.savePressed), for: .touchUpInside)
         recordLiveStatView.cancelButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.cancelPressed), for: .touchUpInside)
         
-        recordLiveStatView.completionHandler = { (reps) in
+        recordLiveStatView.completionHandler = { (excerciseValue) in
+            
+            if let value = excerciseValue {
+                self.saveExcerciseValue(forStat: self.recordLiveStatView.stat!, value: value)
+            }
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.blurEffectView.alpha = 0
@@ -102,6 +102,33 @@ class RecordLiveExcerciseController: UIViewController {
         }
         
         view.addSubview(recordLiveStatView)
+    }
+    
+    func retriveCurrentExcerciseValue(excercise: Excercise) {
+        print("\(excercise.name), Reps: \(excercise.reps)")
+    }
+    
+    func saveExcerciseValue(forStat stat: Stat, value: String) {
+        switch stat {
+        case .Reps:
+            let excercise = excercises[currentExcerciseIndex]
+            excercise.reps = Double(value)!
+            saveContext()
+        case .Weight:
+            print("weight")
+        case .Distance:
+            print("distance")
+        case .Time:
+            print("time")
+        }
+    }
+    
+    func saveContext() {
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("save error: \(error), description: \(error.userInfo)")
+        }
     }
     
     func plusButtonPushed(sender: UIButton) {

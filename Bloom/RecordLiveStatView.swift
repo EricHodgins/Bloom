@@ -10,6 +10,8 @@ import UIKit
 
 class RecordLiveStatView: BaseBloomView {
     
+    var stat: Stat?
+    
     var title: UILabel!
     var plusButton: UIButton!
     var minusButton: UIButton!
