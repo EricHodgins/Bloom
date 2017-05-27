@@ -8,7 +8,7 @@
 
 import UIKit
 
-let π = CGFloat(M_PI)
+let π = CGFloat(Double.pi)
 
 @IBDesignable
 class CountDownView: UIView {

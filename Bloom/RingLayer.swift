@@ -10,7 +10,7 @@ import UIKit
 
 public class RingLayer: CALayer {
     
-    fileprivate let angleOffsetForZero = CGFloat(-M_PI_2)
+    fileprivate let angleOffsetForZero = CGFloat(Double.pi / 2)
     
     //:- Layers
     // - backgroundLayer is not used.  But keeping for now ...might needed later.
@@ -110,7 +110,7 @@ extension RingLayer {
     }
     
     fileprivate func angle(value: CGFloat) -> CGFloat {
-        return value * 2 * CGFloat(M_PI) + angleOffsetForZero
+        return value * 2 * CGFloat(Double.pi) + angleOffsetForZero
     }
     
     fileprivate var backgroundPath: CGPath {

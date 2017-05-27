@@ -105,7 +105,7 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func retriveCurrentExcerciseValue(excercise: Excercise) {
-        print("\(excercise.name), Reps: \(excercise.reps)")
+        print("\(String(describing: excercise.name)), Reps: \(excercise.reps)")
     }
     
     func saveExcerciseValue(forStat stat: Stat, value: String) {
