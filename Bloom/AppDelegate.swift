@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mainController = navController.topViewController as? MainViewController else { return true }
         
         mainController.managedContext = coreDataStack.managedContext
+        
+        // Check what has been saved.
+        dataInCoreDataStore()
     
         return true
     }
@@ -53,6 +56,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    //MARK: Helpers
+    func dataInCoreDataStore() {
+        let coreDataTest = CoreDataTest(context: coreDataStack.managedContext)
+        
+        coreDataTest.printAllWorkouts()
+        coreDataTest.printAllWorkoutsAndExcercises()
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

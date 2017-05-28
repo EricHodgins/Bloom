@@ -21,6 +21,7 @@
 		7A6B9BB91EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */; };
 		7A6B9BBA1EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB61EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift */; };
 		7A6B9BBB1EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB71EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */; };
+		7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */; };
 		7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */; };
 		7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEA1E16EF1300736446 /* RingLayer.swift */; };
 		7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEC1E16EFF400736446 /* LayerExtension.swift */; };
@@ -135,6 +136,7 @@
 		7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A6B9BB61EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7A6B9BB71EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetBackground.swift; sourceTree = "<group>"; };
 		7A764CEA1E16EF1300736446 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		7A764CEC1E16EFF400736446 /* LayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtension.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		7A84F9351DFE761D00A37C80 = {
 			isa = PBXGroup;
 			children = (
+				7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */,
 				7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
@@ -608,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */,
 				7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */,
 				7A6B9BB81EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,

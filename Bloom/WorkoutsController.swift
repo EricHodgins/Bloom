@@ -29,22 +29,10 @@ class WorkoutsController: UIViewController {
         
         do {
             workouts = try managedContext.fetch(fetchRequest)
-            testData(workouts: workouts)
         } catch let error as NSError {
             print("Save error: \(error), description: \(error.userInfo)")
         }
     }
-    
-    func testData(workouts: [WorkoutTemplate]) {
-        for workout in workouts {
-            print(workout.name! as String)
-            for e in workout.excercises! {
-                let excer = e as! ExcerciseTemplate
-                print("\t\(excer.name!)")
-            }
-        }
-    }
-
 }
 
 extension WorkoutsController: UITableViewDataSource {
@@ -75,11 +63,25 @@ extension WorkoutsController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartWorkoutSegue" {
             let workoutCellIndex = tableView.indexPathForSelectedRow!
-            let workout = workouts[workoutCellIndex.row]
+            let workoutTemplate = workouts[workoutCellIndex.row]
             let startWorkoutController = segue.destination as! StartWorkoutController
-            //startWorkoutController.workout = workout
+
+            startWorkoutController.workout = createNewWorkout(workoutTemplate: workoutTemplate)
             startWorkoutController.managedContext = managedContext
         }
+    }
+    
+    func createNewWorkout(workoutTemplate: WorkoutTemplate) -> Workout {
+        let workout = Workout(context: managedContext)
+        workout.name = workoutTemplate.name
+        
+        for excerciseTemplate in workoutTemplate.excercises! {
+            let excercise = Excercise(context: managedContext)
+            excercise.name = (excerciseTemplate as! ExcerciseTemplate).name!
+            workout.addToExcercises(excercise)
+        }
+        
+        return workout
     }
 }
 
