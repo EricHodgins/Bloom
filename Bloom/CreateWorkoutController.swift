@@ -20,7 +20,7 @@ class CreateWorkoutController: UIViewController {
     let lineSeparator: UIView = UIView()
     var blurEffectView: UIVisualEffectView!
     
-    var currentWorkout: Workout?
+    var currentWorkout: WorkoutTemplate?
     
     var managedContext: NSManagedObjectContext!
     var excercises: [String] = []
@@ -43,7 +43,7 @@ class CreateWorkoutController: UIViewController {
         //1. Validate Textfield and current workout view
         if let workout = currentWorkout {
             for excerciseString in excercises {
-                let excercise = Excercise(context: managedContext)
+                let excercise = ExcerciseTemplate(context: managedContext)
                 excercise.name = excerciseString
                 workout.addToExcercises(excercise)
             }
@@ -156,8 +156,8 @@ extension CreateWorkoutController: UITextFieldDelegate {
         
         //TODO: Allow ability to update as well
         if workoutNameTextfield.text != "" {
-            let workoutFetch: NSFetchRequest<Workout> = Workout.fetchRequest()
-            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Workout.name), workoutNameTextfield.text!)
+            let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
+            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutNameTextfield.text!)
             
             do {
                 let results = try managedContext.fetch(workoutFetch)
@@ -166,7 +166,7 @@ extension CreateWorkoutController: UITextFieldDelegate {
                     //TODO: - Setup Alert Notifying a workout is already named that.
                 } else {
                     // New Workout Named -> Create a new workout with this name
-                    currentWorkout = Workout(context: managedContext)
+                    currentWorkout = WorkoutTemplate(context: managedContext)
                     currentWorkout?.name = workoutNameTextfield.text!
                     try managedContext.save()
                 }

@@ -17,6 +17,10 @@
 		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
 		7A66583E1E46974C008B41FA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66583D1E46974C008B41FA /* Types.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
+		7A6B9BB81EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */; };
+		7A6B9BB91EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */; };
+		7A6B9BBA1EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB61EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift */; };
+		7A6B9BBB1EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB71EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */; };
 		7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */; };
 		7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEA1E16EF1300736446 /* RingLayer.swift */; };
 		7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEC1E16EFF400736446 /* LayerExtension.swift */; };
@@ -127,6 +131,10 @@
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
 		7A66583D1E46974C008B41FA /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkoutButton.swift; sourceTree = "<group>"; };
+		7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A6B9BB61EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A6B9BB71EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetBackground.swift; sourceTree = "<group>"; };
 		7A764CEA1E16EF1300736446 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		7A764CEC1E16EFF400736446 /* LayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtension.swift; sourceTree = "<group>"; };
@@ -242,6 +250,21 @@
 			name = Playgrounds;
 			sourceTree = "<group>";
 		};
+		7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */,
+				7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */,
+				7A6B9BB61EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift */,
+				7A6B9BB71EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */,
+				7AA8612C1E0F1CB30054B443 /* Workout+CoreDataClass.swift */,
+				7AA8612D1E0F1CB30054B443 /* Workout+CoreDataProperties.swift */,
+				7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */,
+				7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
 		7A764CE91E16EF0400736446 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,10 +295,7 @@
 		7A84F9351DFE761D00A37C80 = {
 			isa = PBXGroup;
 			children = (
-				7AA8612C1E0F1CB30054B443 /* Workout+CoreDataClass.swift */,
-				7AA8612D1E0F1CB30054B443 /* Workout+CoreDataProperties.swift */,
-				7AA8612E1E0F1CB30054B443 /* Excercise+CoreDataClass.swift */,
-				7AA8612F1E0F1CB30054B443 /* Excercise+CoreDataProperties.swift */,
+				7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
 				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
@@ -589,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA861311E0F1CB30054B443 /* Workout+CoreDataProperties.swift in Sources */,
+				7A6B9BB81EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7A66583E1E46974C008B41FA /* Types.swift in Sources */,
@@ -598,6 +619,7 @@
 				7AC184031E20BBE80019AB2F /* LiveExcerciseListController.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */,
+				7A6B9BBA1EDA518500E05D04 /* ExcerciseTemplate+CoreDataClass.swift in Sources */,
 				7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */,
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
@@ -616,10 +638,12 @@
 				7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */,
 				7AA861321E0F1CB30054B443 /* Excercise+CoreDataClass.swift in Sources */,
 				7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */,
+				7A6B9BB91EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
+				7A6B9BBB1EDA518500E05D04 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
 				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,
 				7AA861331E0F1CB30054B443 /* Excercise+CoreDataProperties.swift in Sources */,

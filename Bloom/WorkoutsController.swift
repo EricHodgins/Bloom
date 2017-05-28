@@ -14,7 +14,7 @@ class WorkoutsController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var managedContext: NSManagedObjectContext!
-    var workouts = [Workout]()
+    var workouts = [WorkoutTemplate]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class WorkoutsController: UIViewController {
     }
     
     func fetchWorkouts() {
-        let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
+        let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         
         do {
             workouts = try managedContext.fetch(fetchRequest)
@@ -35,12 +35,12 @@ class WorkoutsController: UIViewController {
         }
     }
     
-    func testData(workouts: [Workout]) {
+    func testData(workouts: [WorkoutTemplate]) {
         for workout in workouts {
             print(workout.name! as String)
             for e in workout.excercises! {
-                let excer = e as! Excercise
-                print("\(excer.name!), reps: \(excer.reps)")
+                let excer = e as! ExcerciseTemplate
+                print("\t\(excer.name!)")
             }
         }
     }
@@ -77,7 +77,7 @@ extension WorkoutsController: UITableViewDelegate {
             let workoutCellIndex = tableView.indexPathForSelectedRow!
             let workout = workouts[workoutCellIndex.row]
             let startWorkoutController = segue.destination as! StartWorkoutController
-            startWorkoutController.workout = workout
+            //startWorkoutController.workout = workout
             startWorkoutController.managedContext = managedContext
         }
     }
