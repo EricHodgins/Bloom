@@ -2,7 +2,7 @@
 //  ExcerciseTemplate+CoreDataProperties.swift
 //  Bloom
 //
-//  Created by Eric Hodgins on 2017-05-27.
+//  Created by Eric Hodgins on 2017-05-28.
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 
@@ -17,6 +17,7 @@ extension ExcerciseTemplate {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var orderNumber: Int16
     @NSManaged public var workout: WorkoutTemplate?
 
 }

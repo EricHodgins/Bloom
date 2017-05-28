@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 
+/*
 import MetalKit
 
 class MetalImageView: MTKView {
@@ -41,7 +42,7 @@ class MetalImageView: MTKView {
     
     
 }
-
+*/
 
 
 

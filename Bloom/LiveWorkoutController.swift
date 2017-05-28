@@ -24,10 +24,10 @@ class LiveWorkoutController: UIViewController {
     
     lazy var excercises: [Excercise] = {
         var excercises = [Excercise]()
-        for e in self.workout.excercises! {
-            excercises.append(e as! Excercise)
-        }
-    
+        excercises = self.workout.excercises!.sorted { (e1, e2) -> Bool in
+            return (e1 as! Excercise).orderNumber < (e2 as! Excercise).orderNumber
+        } as! [Excercise]
+
         return excercises
     }()
     

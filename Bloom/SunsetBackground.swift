@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 
-
+/*
 import MetalKit
 
 class SunsetBackground: MetalImageView {
@@ -122,4 +122,4 @@ extension CIVector {
         return CIVector(cgPoint: point)
     }
 }
-
+*/

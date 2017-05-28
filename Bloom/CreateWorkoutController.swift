@@ -45,6 +45,7 @@ class CreateWorkoutController: UIViewController {
             for excerciseString in excercises {
                 let excercise = ExcerciseTemplate(context: managedContext)
                 excercise.name = excerciseString
+                excercise.orderNumber = Int16(excercises.count - 1)
                 workout.addToExcercises(excercise)
             }
             

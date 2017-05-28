@@ -78,6 +78,7 @@ extension WorkoutsController: UITableViewDelegate {
         for excerciseTemplate in workoutTemplate.excercises! {
             let excercise = Excercise(context: managedContext)
             excercise.name = (excerciseTemplate as! ExcerciseTemplate).name!
+            excercise.orderNumber = Int16((excerciseTemplate as! ExcerciseTemplate).orderNumber)
             workout.addToExcercises(excercise)
         }
         

@@ -11,12 +11,12 @@ import MetalKit
 
 class FinishLiveWorkoutController: UIViewController {
 
-    var sunsetBackground: SunsetBackground!
+    //var sunsetBackground: SunsetBackground!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sunsetBackground = SunsetBackground(frame: view.bounds, device: nil, withView: view)
-        view.insertSubview(sunsetBackground, at: 0)
+        //sunsetBackground = SunsetBackground(frame: view.bounds, device: nil, withView: view)
+        //view.insertSubview(sunsetBackground, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
