@@ -38,5 +38,7 @@ class MainViewController: UIViewController {
             workoutsController.managedContext = managedContext
         }
     }
+    
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
 }
 

@@ -33,12 +33,14 @@ class LiveWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        workout.startTime = NSDate()
         scrollView.isScrollEnabled = false
         
         // Start Timer
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
         
+        // Need to restart the heart beat animation when app leaves foreground and comes back.
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         // Setup Pages for scroll view
@@ -148,6 +150,7 @@ extension LiveWorkoutController {
     
     fileprivate func createFinishLiveWorkoutController() -> FinishLiveWorkoutController {
         let flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
+        flwc.workout = workout
         flwc.view.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(flwc.view)

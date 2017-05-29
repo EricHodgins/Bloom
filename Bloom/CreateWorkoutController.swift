@@ -42,10 +42,10 @@ class CreateWorkoutController: UIViewController {
         // Save the workout and set it's excercises to the tableview
         //1. Validate Textfield and current workout view
         if let workout = currentWorkout {
-            for excerciseString in excercises {
+            for (idx, excerciseString) in excercises.enumerated() {
                 let excercise = ExcerciseTemplate(context: managedContext)
                 excercise.name = excerciseString
-                excercise.orderNumber = Int16(excercises.count - 1)
+                excercise.orderNumber = Int16(idx)
                 workout.addToExcercises(excercise)
             }
             

@@ -48,11 +48,16 @@ class CoreDataTest {
             print("============== Core Data Test ===============")
             let workouts = try managedContext.fetch(fetchRequest)
             for workout in workouts {
-                print("\(workout.name!)")
+                print("\(workout.name!), Started: \(workout.startTime!)")
                 if printExcercises {
                     for excercise in workout.excercises! {
                         let e = excercise as! Excercise
-                        print("\t\(e.name!), Reps: \(e.reps)")
+                        print("\t\(e.name!)")
+                        print("\t\tReps: \(e.reps)")
+                        print("\t\tWeight: \(e.weight)")
+                        print("\t\tDistance: \(e.distance)")
+                        print("\t\tTime: \(String(describing: e.timeRecorded))")
+                        print("\t\tOrderNumber: \(e.orderNumber)")
                     }
                 }
             }

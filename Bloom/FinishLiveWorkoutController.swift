@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MetalKit
 
 class FinishLiveWorkoutController: UIViewController {
 
     //var sunsetBackground: SunsetBackground!
+    var workout: Workout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +25,15 @@ class FinishLiveWorkoutController: UIViewController {
     }
     
     @IBAction func finishWorkoutButtonPressed(_ sender: Any) {
+        workout.endTime = NSDate()
+        do {
+            try workout.managedObjectContext?.save()
+        } catch let error as NSError {
+            print("Save Error at Finish Workout Button: \(error), \(error.userInfo)")
+        }
         
+        performSegue(withIdentifier: "unwindToMenu", sender: self)
     }
-
 }
 
 

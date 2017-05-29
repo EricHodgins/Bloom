@@ -14,7 +14,7 @@ class RecordLiveExcerciseController: UIViewController {
     var managedContext: NSManagedObjectContext!
     var excercises = [Excercise]()
     weak var excerciseLabel: UILabel!
-    var currentExcerciseIndex: Int = -1
+    var currentExcerciseIndex: Int = 0
     var currentCounter: Double = 0.0
     
     var recordLiveStatView: RecordLiveStatView!
@@ -26,11 +26,16 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nextExcerciseTapped(excerciseLabel)
+        excerciseLabel.text = currentExcercise().name!
+        //nextExcerciseTapped(excerciseLabel)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         DispatchQueue.main.async {
+            let currentExcercise = self.currentExcercise()
+            if currentExcercise.timeRecorded == nil {
+                currentExcercise.timeRecorded = NSDate()
+            }
             let exc = self.getNextExcercise()
             self.excerciseLabel.text = exc.name!
         }
@@ -46,7 +51,7 @@ class RecordLiveExcerciseController: UIViewController {
         return excercises[0]
     }
     
-    func getCurrentExcercise() -> Excercise {
+    func currentExcercise() -> Excercise {
        return excercises[currentExcerciseIndex]
     }
     
@@ -109,17 +114,19 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func saveExcerciseValue(forStat stat: Stat, value: String) {
+        let excercise = excercises[currentExcerciseIndex]
         switch stat {
         case .Reps:
-            let excercise = excercises[currentExcerciseIndex]
             excercise.reps = Double(value)!
             saveContext()
         case .Weight:
-            print("weight")
+            excercise.weight = Double(value)!
+            saveContext()
         case .Distance:
-            print("distance")
+            excercise.distance = Double(value)!
+            saveContext()
         case .Time:
-            print("time")
+            excercise.timeRecorded = NSDate()
         }
     }
     
