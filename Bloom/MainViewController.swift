@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    // When a workout is complete (Big Finish button is pressed) it navigates to back here
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
 }
 
