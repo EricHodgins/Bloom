@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         mainController.managedContext = coreDataStack.managedContext
         
+        // Load test data if needed
+        //importJSONTestData()
+        
         // Check what has been saved.
         dataInCoreDataStore()
     
@@ -62,6 +65,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         coreDataTest.printAllWorkouts()
         coreDataTest.printAllWorkoutsAndExcercises()
+    }
+    
+    func importJSONTestData() {
+        let fileURL = Bundle.main.url(forResource: "workoutJsonData", withExtension: "json")!
+        
+        let jsonData = NSData(contentsOf: fileURL)! as Data
+        
+        let jsonDict = try! JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String : AnyObject]
+        
+        let workoutsDict = jsonDict["workouts"] as! [[String : AnyObject]]
+        //print(workoutsDict)
+        let workoutEntity = NSEntityDescription.entity(forEntityName: "Workout", in: coreDataStack.managedContext)!
+        let excerciseEntity = NSEntityDescription.entity(forEntityName: "Excercise", in: coreDataStack.managedContext)!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        for workout in workoutsDict {
+            if let chestWorkouts = workout["chest"] as? [[String : AnyObject]] {
+                for chestWorkout in chestWorkouts {
+                    let wkout = Workout(entity: workoutEntity, insertInto: coreDataStack.managedContext)
+                    wkout.name = "Chest"
+                    let startString = chestWorkout["startTime"]! as! String
+                    let startDate = formatter.date(from: startString)!
+                    wkout.startTime = startDate as NSDate
+                    if let excercises = chestWorkout["Excercises"] as? [String : AnyObject] {
+                        for excercise in excercises {
+                            let exc = Excercise(entity: excerciseEntity, insertInto: coreDataStack.managedContext)
+                            exc.name = excercise.0
+                            exc.reps = Double(excercise.1["Reps"]!! as! NSNumber)
+                            exc.weight = Double(excercise.1["Weight"]!! as! NSNumber)
+                            wkout.addToExcercises(exc)
+                        }
+                    }
+                    let endString = chestWorkout["endTime"]! as! String
+                    let endDate = formatter.date(from: endString)!
+                    wkout.endTime = endDate as NSDate
+                }
+            }
+        }
+        
+        coreDataStack.saveContext()
+
     }
 
 }

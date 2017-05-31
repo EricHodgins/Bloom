@@ -13,6 +13,7 @@
 		7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */; };
 		7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13ED1E06197900330EFB /* GradientView.swift */; };
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
+		7A4065431EDF33FF0024724C /* workoutJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A4065421EDF33FF0024724C /* workoutJsonData.json */; };
 		7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43241B1EDDB0BD00BE9009 /* GraphView.swift */; };
 		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
 		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
@@ -127,6 +128,7 @@
 		7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutController.swift; sourceTree = "<group>"; };
 		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
+		7A4065421EDF33FF0024724C /* workoutJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workoutJsonData.json; sourceTree = "<group>"; };
 		7A43241B1EDDB0BD00BE9009 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7A5346811E198B680067E982 /* HeartBeatPulseAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = HeartBeatPulseAnimation.playground; sourceTree = "<group>"; };
 		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */,
+				7A4065421EDF33FF0024724C /* workoutJsonData.json */,
 				7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
@@ -573,6 +576,7 @@
 				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
+				7A4065431EDF33FF0024724C /* workoutJsonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
