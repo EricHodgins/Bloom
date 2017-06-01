@@ -15,6 +15,12 @@ class GraphView: UIView {
     @IBInspectable var startColor: UIColor = UIColor.red
     @IBInspectable var endColor: UIColor = UIColor.green
     
+    var dataSet: [Double] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     //@IBInspectable var startUnderGraphColor: UIColor = UIColor.blue
     //@IBInspectable var endUnderGraphColor: UIColor = UIColor.white
     
@@ -48,10 +54,10 @@ class GraphView: UIView {
         
         // Calculate X point
         let margin:CGFloat = 20.0
-        let columnXPoint = { (column:Int) -> CGFloat in
+        let columnXPoint = { (column:Double) -> CGFloat in
             //Calculate gap between points
             let spacer = (width - margin*2 - 4) /
-                CGFloat((self.graphPoints.count - 1))
+                CGFloat((self.dataSet.count - 1))
             var x:CGFloat = CGFloat(column) * spacer
             x += margin + 2
             return x
@@ -61,10 +67,11 @@ class GraphView: UIView {
         let topBorder:CGFloat = 60
         let bottomBorder:CGFloat = 50
         let graphHeight = height - topBorder - bottomBorder
-        let maxValue = graphPoints.max()!
-        let columnYPoint = { (graphPoint:Int) -> CGFloat in
-            var y:CGFloat = CGFloat(graphPoint) /
-                CGFloat(maxValue) * graphHeight
+        let maxValue = dataSet.max()!
+        let minValue = dataSet.min()!
+        let diff = maxValue - minValue
+        let columnYPoint = { (graphPoint:Double) -> CGFloat in
+            var y: CGFloat = ((CGFloat(graphPoint) - CGFloat(minValue)) / CGFloat(diff)) * graphHeight
             y = graphHeight + topBorder - y // Flip the graph
             return y
         }
@@ -78,13 +85,13 @@ class GraphView: UIView {
         let graphPath = UIBezierPath()
         //go to start of line
         graphPath.move(to: CGPoint(x:columnXPoint(0),
-                                   y:columnYPoint(graphPoints[0])))
+                                   y:columnYPoint(dataSet[0])))
         
         //add points for each item in the graphPoints array
         //at the correct (x, y) for the point
-        for i in 1..<graphPoints.count {
-            let nextPoint = CGPoint(x:columnXPoint(i),
-                                    y:columnYPoint(graphPoints[i]))
+        for i in 1..<dataSet.count {
+            let nextPoint = CGPoint(x:columnXPoint(Double(i)),
+                                    y:columnYPoint(dataSet[i]))
             graphPath.addLine(to: nextPoint)
         }
         
@@ -98,7 +105,7 @@ class GraphView: UIView {
         
         //3 - add lines to the copied path to complete the clip area
         clippingPath.addLine(to: CGPoint(
-            x: columnXPoint(graphPoints.count - 1),
+            x: columnXPoint(Double(dataSet.count - 1)),
             y:height))
         clippingPath.addLine(to: CGPoint(
             x:columnXPoint(0),
@@ -122,15 +129,34 @@ class GraphView: UIView {
         
         // Draw the circle points
         
-        for i in 0..<graphPoints.count {
-            var point = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
+        for i in 0..<dataSet.count {
+            var point = CGPoint(x: columnXPoint(Double(i)), y: columnYPoint(dataSet[i]))
             point.x -= 5.0/2
             point.y -= 5.0/2
             
             let circle = UIBezierPath(ovalIn: CGRect(origin: point, size: CGSize(width: 5.0, height: 5.0)))
             circle.fill()
         }
-
+        
+        // Draw horizontal lines
+        let linePath = UIBezierPath()
+        
+        // top line
+        linePath.move(to: CGPoint(x: 0, y: 10))
+        linePath.addLine(to: CGPoint(x: width, y: 10))
+        
+        // center line
+        linePath.move(to: CGPoint(x: 0, y: (height - 20) / 2))
+        linePath.addLine(to: CGPoint(x: width, y: (height - 20) / 2))
+        
+        // bottom line
+        linePath.move(to: CGPoint(x: 0, y: height - 10))
+        linePath.addLine(to: CGPoint(x: width, y: height - 10))
+        
+        let color = UIColor(white: 1.0, alpha: 0.3)
+        color.setStroke()
+        linePath.lineWidth = 1.0
+        linePath.stroke()
     }
     
 

@@ -37,6 +37,11 @@ class MainViewController: UIViewController {
             let workoutsController = segue.destination as! WorkoutsController
             workoutsController.managedContext = managedContext
         }
+        
+        if segue.identifier == "Summary" {
+            let summaryController = segue.destination as! SummaryViewController
+            summaryController.managedContext = managedContext
+        }
     }
     
     // When a workout is complete (Big Finish button is pressed) it navigates to back here

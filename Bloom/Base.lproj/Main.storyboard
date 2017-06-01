@@ -86,7 +86,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="fSD-V5-eS1" kind="show" id="eVt-hG-nWv"/>
+                                            <segue destination="fSD-V5-eS1" kind="show" identifier="Summary" id="eVt-hG-nWv"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -226,7 +226,7 @@
         <!--Stats-->
         <scene sceneID="Uel-H4-adw">
             <objects>
-                <viewController id="fSD-V5-eS1" sceneMemberID="viewController">
+                <viewController id="fSD-V5-eS1" customClass="SummaryViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PWc-jC-Gf1"/>
                         <viewControllerLayoutGuide type="bottom" id="xdj-5W-hn8"/>
@@ -247,7 +247,8 @@
                     <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH">
                         <barButtonItem key="rightBarButtonItem" title="TEST" id="Qev-8R-ibB">
                             <connections>
-                                <segue destination="tTO-ql-dMH" kind="show" id="jFs-by-XlD"/>
+                                <action selector="TestButtonPushed:" destination="fSD-V5-eS1" id="YVW-oj-r2V"/>
+                                <segue destination="tTO-ql-dMH" kind="show" identifier="TEST" id="jFs-by-XlD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -256,10 +257,10 @@
             </objects>
             <point key="canvasLocation" x="1892" y="1035"/>
         </scene>
-        <!--View Controller-->
+        <!--Graph View Controller-->
         <scene sceneID="50C-Mg-UVj">
             <objects>
-                <viewController id="tTO-ql-dMH" sceneMemberID="viewController">
+                <viewController id="tTO-ql-dMH" customClass="GraphViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hXS-qF-czz"/>
                         <viewControllerLayoutGuide type="bottom" id="0RR-23-RII"/>
@@ -297,6 +298,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="graphView" destination="UkP-IU-cSh" id="sSa-0z-zCJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-G7-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
