@@ -9,30 +9,20 @@
 
 import UIKit
 
+
 @IBDesignable
 class GraphView: UIView {
 
     @IBInspectable var startColor: UIColor = UIColor.red
     @IBInspectable var endColor: UIColor = UIColor.green
     
-    var dataSet: [Double] = [] {
+    var dataSet: [Double] = [1, 2, 3, 4, 5] {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    //@IBInspectable var startUnderGraphColor: UIColor = UIColor.blue
-    //@IBInspectable var endUnderGraphColor: UIColor = UIColor.white
-    
-    //testing
-    var graphPoints: [Int] {
-        var nums = [Int]()
-        for i in 1...20 {
-            nums.append(i*i*i)
-        }
-        return nums
-    }
-    
+
     override func draw(_ rect: CGRect) {
         let width = rect.width
         let height = rect.height
@@ -53,7 +43,7 @@ class GraphView: UIView {
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
         
         // Calculate X point
-        let margin:CGFloat = 20.0
+        let margin:CGFloat = 40.0
         let columnXPoint = { (column:Double) -> CGFloat in
             //Calculate gap between points
             let spacer = (width - margin*2 - 4) /
@@ -142,24 +132,23 @@ class GraphView: UIView {
         let linePath = UIBezierPath()
         
         // top line
-        linePath.move(to: CGPoint(x: 0, y: 10))
-        linePath.addLine(to: CGPoint(x: width, y: 10))
+        linePath.move(to: CGPoint(x: 0, y: topBorder))
+        linePath.addLine(to: CGPoint(x: width, y: topBorder))
         
         // center line
-        linePath.move(to: CGPoint(x: 0, y: (height - 20) / 2))
-        linePath.addLine(to: CGPoint(x: width, y: (height - 20) / 2))
+        linePath.move(to: CGPoint(x: 0, y: (height - topBorder - bottomBorder) / 2 + topBorder))
+        linePath.addLine(to: CGPoint(x: width, y: (height - topBorder - bottomBorder) / 2 + topBorder))
         
         // bottom line
-        linePath.move(to: CGPoint(x: 0, y: height - 10))
-        linePath.addLine(to: CGPoint(x: width, y: height - 10))
+        linePath.move(to: CGPoint(x: 0, y: height - bottomBorder))
+        linePath.addLine(to: CGPoint(x: width, y: height - bottomBorder))
         
         let color = UIColor(white: 1.0, alpha: 0.3)
         color.setStroke()
         linePath.lineWidth = 1.0
         linePath.stroke()
+ 
     }
-    
-
 }
 
 

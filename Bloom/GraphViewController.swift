@@ -17,12 +17,20 @@ class GraphViewController: UIViewController {
     
     @IBOutlet weak var graphView: GraphView!
     
-    lazy var chestWorkoutPredicate: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Workout.name), "Chest")
-    }()
-    
     lazy var chestWorkoutRepsPredicate: NSPredicate = {
         return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), "Chest")
+    }()
+    
+    lazy var datePredicate: NSPredicate = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        let startDate = formatter.date(from: "2017-04-01 00:00:00")! as NSDate
+        let endDate = formatter.date(from: "2017-04-30 00:00:00")! as NSDate
+
+        let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), startDate, #keyPath(Excercise.workout.startTime), endDate)
+        
+        return predicate
     }()
     
     lazy var workoutDateSortDescriptor: NSSortDescriptor = {
@@ -31,12 +39,13 @@ class GraphViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         testFindAllChestWorkouts()
     }
     
     func testFindAllChestWorkouts() {
         let fetchRequest: NSFetchRequest<Excercise> = Excercise.fetchRequest()
-        fetchRequest.predicate = chestWorkoutRepsPredicate
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [chestWorkoutRepsPredicate, datePredicate])
         fetchRequest.sortDescriptors = [workoutDateSortDescriptor]
         
         do {
