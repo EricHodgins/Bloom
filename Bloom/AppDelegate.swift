@@ -67,12 +67,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataTest.printAllWorkoutsAndExcercises()
     }
     
+    func importJSONWorkoutTemplates(jsonDict: [String : AnyObject]) {
+        let workoutTemplates = jsonDict["templates"] as! [[String : AnyObject]]
+        let workoutEntity = NSEntityDescription.entity(forEntityName: "WorkoutTemplate", in: coreDataStack.managedContext)!
+        let excerciseEntity = NSEntityDescription.entity(forEntityName: "ExcerciseTemplate", in: coreDataStack.managedContext)!
+        
+        for workout in workoutTemplates {
+            print(workout["name"] ?? "")
+            let wkout = WorkoutTemplate(entity: workoutEntity, insertInto: coreDataStack.managedContext)
+            wkout.name = workout["name"]! as? String
+            if let excercises = workout["excercises"] as? [[String : AnyObject]] {
+                for excercise in excercises {
+                    let exc = ExcerciseTemplate(entity: excerciseEntity, insertInto: coreDataStack.managedContext)
+                    exc.name = excercise["name"]! as? String
+                    exc.orderNumber = excercise["order-number"]! as! Int16
+                }
+            }
+        }
+        coreDataStack.saveContext()
+    }
+    
     func importJSONTestData() {
         let fileURL = Bundle.main.url(forResource: "workoutJsonData", withExtension: "json")!
         
         let jsonData = NSData(contentsOf: fileURL)! as Data
         
         let jsonDict = try! JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String : AnyObject]
+        
+        // Import Templates
+        importJSONWorkoutTemplates(jsonDict: jsonDict)
         
         let workoutsDict = jsonDict["workouts"] as! [[String : AnyObject]]
         //print(workoutsDict)

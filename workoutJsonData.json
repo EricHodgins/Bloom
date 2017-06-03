@@ -1,4 +1,15 @@
 {
+  "templates": [
+    {
+      "name": "chest",
+      "excercises": [
+        {
+          "name": "Standard-Push-Up", 
+          "order-number": 0
+        }
+      ]
+    }
+  ],
   "workouts": [
     {
       "chest": [
