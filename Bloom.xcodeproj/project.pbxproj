@@ -16,6 +16,8 @@
 		7A4065461EDF4FB00024724C /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065451EDF4FB00024724C /* GraphViewController.swift */; };
 		7A4065481EDF51490024724C /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065471EDF51490024724C /* SummaryViewController.swift */; };
 		7A40654E1EE269A80024724C /* workoutJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A40654D1EE269A80024724C /* workoutJsonData.json */; };
+		7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40654F1EE2E9520024724C /* ExcercisesController.swift */; };
+		7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065511EE33BE50024724C /* FilterGraphController.swift */; };
 		7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43241B1EDDB0BD00BE9009 /* GraphView.swift */; };
 		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
 		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
@@ -133,6 +135,8 @@
 		7A4065451EDF4FB00024724C /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		7A4065471EDF51490024724C /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		7A40654D1EE269A80024724C /* workoutJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = workoutJsonData.json; sourceTree = "<group>"; };
+		7A40654F1EE2E9520024724C /* ExcercisesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcercisesController.swift; sourceTree = "<group>"; };
+		7A4065511EE33BE50024724C /* FilterGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterGraphController.swift; sourceTree = "<group>"; };
 		7A43241B1EDDB0BD00BE9009 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7A5346811E198B680067E982 /* HeartBeatPulseAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = HeartBeatPulseAnimation.playground; sourceTree = "<group>"; };
 		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
@@ -264,8 +268,10 @@
 		7A4065441EDF4F890024724C /* StatsGroup */ = {
 			isa = PBXGroup;
 			children = (
-				7A4065451EDF4FB00024724C /* GraphViewController.swift */,
 				7A4065471EDF51490024724C /* SummaryViewController.swift */,
+				7A40654F1EE2E9520024724C /* ExcercisesController.swift */,
+				7A4065451EDF4FB00024724C /* GraphViewController.swift */,
+				7A4065511EE33BE50024724C /* FilterGraphController.swift */,
 			);
 			name = StatsGroup;
 			sourceTree = "<group>";
@@ -659,8 +665,10 @@
 				7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */,
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,
 				7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */,
+				7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */,
 				7A6B9BC21EDB4F8700E05D04 /* Workout+CoreDataClass.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
+				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,
 				7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */,
 				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,

@@ -234,7 +234,32 @@
                     <view key="view" contentMode="scaleToFill" id="zzS-OF-Aw4" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-gB-bs3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="lOO-9a-iUo">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOO-9a-iUo" id="nCI-s9-zW3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4cH-qt-Mg5" kind="show" identifier="ShowExcercises" id="Gfp-Kz-a0g"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xdj-5W-hn8" firstAttribute="top" secondItem="qhh-gB-bs3" secondAttribute="bottom" id="8cI-96-Urt"/>
+                            <constraint firstAttribute="trailing" secondItem="qhh-gB-bs3" secondAttribute="trailing" id="XrY-Ti-TA7"/>
+                            <constraint firstItem="qhh-gB-bs3" firstAttribute="top" secondItem="zzS-OF-Aw4" secondAttribute="top" id="Zns-CZ-seA"/>
+                            <constraint firstItem="qhh-gB-bs3" firstAttribute="leading" secondItem="zzS-OF-Aw4" secondAttribute="leading" id="rq4-yF-jk4"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                 <color key="value" red="0.036985583603382111" green="0.53320831060409546" blue="0.99842387437820435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -244,20 +269,70 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH">
-                        <barButtonItem key="rightBarButtonItem" title="TEST" id="Qev-8R-ibB">
-                            <connections>
-                                <action selector="TestButtonPushed:" destination="fSD-V5-eS1" id="YVW-oj-r2V"/>
-                                <segue destination="tTO-ql-dMH" kind="show" identifier="TEST" id="jFs-by-XlD"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH"/>
+                    <connections>
+                        <outlet property="tableView" destination="qhh-gB-bs3" id="xc2-WE-EYj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFc-mg-emR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="1035"/>
+            <point key="canvasLocation" x="1892" y="1034.9325337331336"/>
         </scene>
-        <!--Graph View Controller-->
+        <!--Excercises Controller-->
+        <scene sceneID="WHs-oH-SfT">
+            <objects>
+                <viewController id="4cH-qt-Mg5" customClass="ExcercisesController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lyk-xu-4kI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y2n-IT-ObL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ctb-el-udq" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="69" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YJZ-xI-Bdu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="69" id="Njh-zc-g5w">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Njh-zc-g5w" id="RWU-Bi-LhM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tTO-ql-dMH" kind="show" identifier="ShowGraph" id="F27-af-3X4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YJZ-xI-Bdu" secondAttribute="trailing" id="F6l-hu-Pfu"/>
+                            <constraint firstItem="Y2n-IT-ObL" firstAttribute="top" secondItem="YJZ-xI-Bdu" secondAttribute="bottom" id="FeD-w0-CL6"/>
+                            <constraint firstItem="YJZ-xI-Bdu" firstAttribute="top" secondItem="ctb-el-udq" secondAttribute="top" id="hUa-A6-BJ1"/>
+                            <constraint firstItem="YJZ-xI-Bdu" firstAttribute="leading" secondItem="ctb-el-udq" secondAttribute="leading" id="rPZ-b9-A3c"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.074778802690000007" green="0.56595689059999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.39047962429999999" green="0.83323401210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="YJZ-xI-Bdu" id="6lR-Zp-oP7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v2L-Sj-gSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616.8000000000002" y="1034.9325337331336"/>
+        </scene>
+        <!--ExcerciseName-->
         <scene sceneID="50C-Mg-UVj">
             <objects>
                 <viewController id="tTO-ql-dMH" customClass="GraphViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
@@ -270,7 +345,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkP-IU-cSh" customClass="GraphView" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -298,13 +373,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="ExcerciseName" id="uot-fp-bAv">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="mEb-Jf-uHS"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="graphView" destination="UkP-IU-cSh" id="sSa-0z-zCJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-G7-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616.8000000000002" y="1034.9325337331336"/>
+            <point key="canvasLocation" x="3330" y="1035"/>
         </scene>
         <!--Workouts-->
         <scene sceneID="p4z-y2-8iM">

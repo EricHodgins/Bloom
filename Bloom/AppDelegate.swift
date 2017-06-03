@@ -81,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let exc = ExcerciseTemplate(entity: excerciseEntity, insertInto: coreDataStack.managedContext)
                     exc.name = excercise["name"]! as? String
                     exc.orderNumber = excercise["order-number"]! as! Int16
+                    wkout.addToExcercises(exc)
                 }
             }
         }
@@ -109,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let chestWorkouts = workout["chest"] as? [[String : AnyObject]] {
                 for chestWorkout in chestWorkouts {
                     let wkout = Workout(entity: workoutEntity, insertInto: coreDataStack.managedContext)
-                    wkout.name = "Chest"
+                    wkout.name = "chest"
                     let startString = chestWorkout["startTime"]! as! String
                     let startDate = formatter.date(from: startString)!
                     wkout.startTime = startDate as NSDate
