@@ -147,7 +147,34 @@ class GraphView: UIView {
         color.setStroke()
         linePath.lineWidth = 1.0
         linePath.stroke()
- 
+        
+        // add vertical labels on left
+        let topPt = CGPoint(x: 10, y: topBorder)
+        addLabel(atPoint: topPt, withValue: maxValue)
+        
+        let middlePt = CGPoint(x: 10, y: (height - topBorder - bottomBorder) / 2 + topBorder)
+        addLabel(atPoint: middlePt, withValue: maxValue/2)
+        
+        let bottomPt = CGPoint(x: 10, y: height - bottomBorder)
+        addLabel(atPoint: bottomPt, withValue: minValue)
+    }
+    
+    func addLabel(atPoint point: CGPoint, withValue value: Double) {
+        let label = UILabel(frame: CGRect(origin: point, size: CGSize(width: 20, height: 20)))
+        label.text = "\(value)"
+        label.textColor = UIColor.white
+        label.sizeToFit()
+        
+        addSubview(label)
+        
+    }
+    
+    override func setNeedsDisplay() {
+        // need to remove labels on orientation change.  Otherwise they get re-drawn, doubling each time.
+        for label in subviews {
+            label.removeFromSuperview()
+        }
+        super.setNeedsDisplay()
     }
 }
 
