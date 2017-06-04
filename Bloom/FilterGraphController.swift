@@ -8,11 +8,16 @@
 
 import UIKit
 
-class FilterGraphController: UIViewController {
+class FilterGraphController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
+    @IBAction func cancelPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func showPressed(_ sender: Any) {
+    }
 }

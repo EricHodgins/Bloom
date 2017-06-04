@@ -375,7 +375,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="ExcerciseName" id="uot-fp-bAv">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="mEb-Jf-uHS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="mEb-Jf-uHS">
+                            <connections>
+                                <segue destination="hc4-IQ-gN2" kind="presentation" id="uNz-UK-SRm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -385,6 +389,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-G7-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3330" y="1035"/>
+        </scene>
+        <!--Filter Graph Controller-->
+        <scene sceneID="W4L-Wt-yMB">
+            <objects>
+                <tableViewController id="hc4-IQ-gN2" customClass="FilterGraphController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="EQV-kj-yyf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="hpL-8T-TqC">
+                            <rect key="frame" x="0.0" y="217.5" width="375" height="82"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C62-Fl-gaW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-9X-78D">
+                                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="82"/>
+                                            <color key="backgroundColor" red="0.98823529409999999" green="0.30980392159999998" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cancelPressed:" destination="hc4-IQ-gN2" eventType="touchUpInside" id="3Pd-m6-WUP"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoU-0s-a74">
+                                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="82"/>
+                                            <color key="backgroundColor" red="0.073925293982028961" green="0.57006192207336426" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="Show">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showPressed:" destination="hc4-IQ-gN2" eventType="touchUpInside" id="wFM-2e-qEF"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="C62-Fl-gaW" secondAttribute="bottom" id="89k-2p-PNG"/>
+                                <constraint firstItem="C62-Fl-gaW" firstAttribute="top" secondItem="hpL-8T-TqC" secondAttribute="top" id="Wsj-z9-THp"/>
+                                <constraint firstAttribute="trailing" secondItem="C62-Fl-gaW" secondAttribute="trailing" id="XLb-PM-Dpx"/>
+                                <constraint firstItem="C62-Fl-gaW" firstAttribute="leading" secondItem="hpL-8T-TqC" secondAttribute="leading" id="lzI-2c-W6E"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection headerTitle="Start Date" id="UFU-tt-Wtt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StartDate" textLabel="PT9-mv-6B9" style="IBUITableViewCellStyleDefault" id="fFB-AF-JkW">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFB-AF-JkW" id="Z2K-xE-Pqh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="January 1st, 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PT9-mv-6B9">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="End Date" id="pQh-ug-l5H">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EndDate" textLabel="Vrn-oF-W0z" style="IBUITableViewCellStyleDefault" id="f2Q-BE-gfO">
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f2Q-BE-gfO" id="0aH-tI-sBa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="June 1st, 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vrn-oF-W0z">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="hc4-IQ-gN2" id="PWV-RQ-bnA"/>
+                            <outlet property="delegate" destination="hc4-IQ-gN2" id="gna-Si-Gdg"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsG-63-R0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4101.6000000000004" y="1034.9325337331336"/>
         </scene>
         <!--Workouts-->
         <scene sceneID="p4z-y2-8iM">
