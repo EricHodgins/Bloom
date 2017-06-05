@@ -12,8 +12,10 @@ import CoreData
 class GraphViewController: UIViewController {
     
     var managedContext: NSManagedObjectContext!
+    var fetchRequest: NSFetchRequest<Excercise>!
     var workoutName: String!
     var endDate: NSDate = NSDate()
+    var startDate: NSDate!
     var excercises: [Excercise] = []
     var dataSet: [Double] = []
     
@@ -24,13 +26,7 @@ class GraphViewController: UIViewController {
     }()
     
     lazy var datePredicate: NSPredicate = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        
-        let startDate = formatter.date(from: "2017-04-03 00:25:36")! as NSDate
-        //let endDate = formatter.date(from: "2017-04-30 00:00:00")! as NSDate
-
-        let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), startDate, #keyPath(Excercise.workout.startTime), self.endDate)
+        let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), self.startDate, #keyPath(Excercise.workout.startTime), self.endDate)
         
         return predicate
     }()
@@ -41,6 +37,10 @@ class GraphViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let threeMonthsAgoFromToday = Calendar.current.date(byAdding: .month, value: -3, to: Date())! as NSDate
+        startDate = threeMonthsAgoFromToday
+        
         fetchExcercises()
     }
     
@@ -51,15 +51,15 @@ class GraphViewController: UIViewController {
         
         do {
             excercises = try managedContext.fetch(fetchRequest)
-            poChestWorkouts(excercises: excercises)
+            loadGraphDataSet(excercises: excercises)
         } catch let error as NSError {
             print("Chest workout fetch error: \(error), \(error.userInfo)")
         }
     }
     
-    func poChestWorkouts(excercises: [Excercise]) {
+    func loadGraphDataSet(excercises: [Excercise]) {
+        dataSet = []
         for excercise in excercises {
-            print("\(excercise.reps) - \(String(describing: excercise.workout?.startTime))")
             dataSet.append(excercise.reps)
         }
         graphView.dataSet = dataSet
@@ -69,9 +69,33 @@ class GraphViewController: UIViewController {
         graphView.setNeedsDisplay()
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Filter" {
+            if let navController = segue.destination as? UINavigationController,
+            let filterController = navController.topViewController as? FilterGraphController {
+                filterController.workoutName = workoutName
+                filterController.delegate = self
+            }
+        }
+    }
+    
 }
 
-
+extension GraphViewController: FilterViewControllerDelegate {
+    func filter(withPredicates predicates: [NSPredicate], sortDescriptor: [NSSortDescriptor]) {
+        fetchRequest = Excercise.fetchRequest()
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: predicates)
+        fetchRequest.sortDescriptors = sortDescriptor
+        
+        do {
+            excercises = try managedContext.fetch(fetchRequest)
+            loadGraphDataSet(excercises: excercises)
+        } catch let error as NSError {
+            print("Filter fetch error: \(error.userInfo)")
+        }
+    }
+}
 
 
 

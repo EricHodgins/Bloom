@@ -18,7 +18,7 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        
+        tableView.delegate = self
         fetch()
     }
     
@@ -56,6 +56,20 @@ extension SummaryViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = workouts[indexPath.row]["name"] as? String
         return cell
+    }
+}
+
+// Table View Delegate
+extension SummaryViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.clear
     }
 }
 

@@ -18,7 +18,7 @@ class GraphView: UIView {
     
     var dataSet: [Double] = [1, 2, 3, 4, 5] {
         didSet {
-            guard dataSet.isEmpty else { return }
+            //guard dataSet.isEmpty else { return }
             setNeedsDisplay()
         }
     }
@@ -154,7 +154,7 @@ class GraphView: UIView {
         addLabel(atPoint: topPt, withValue: maxValue)
         
         let middlePt = CGPoint(x: 10, y: (height - topBorder - bottomBorder) / 2 + topBorder)
-        addLabel(atPoint: middlePt, withValue: maxValue/2)
+        addLabel(atPoint: middlePt, withValue: (maxValue - minValue)/2 + minValue)
         
         let bottomPt = CGPoint(x: 10, y: height - bottomBorder)
         addLabel(atPoint: bottomPt, withValue: minValue)
@@ -167,7 +167,6 @@ class GraphView: UIView {
         label.sizeToFit()
         
         addSubview(label)
-        
     }
     
     override func setNeedsDisplay() {
