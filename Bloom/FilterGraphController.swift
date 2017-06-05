@@ -48,4 +48,5 @@ class FilterGraphController: UITableViewController {
         delegate?.filter(withPredicates: [workoutForNamePredicate, datePredicate], sortDescriptor: [workoutDateSortDescriptor])
         dismiss(animated: true, completion: nil)
     }
+    
 }

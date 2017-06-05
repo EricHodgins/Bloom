@@ -43,6 +43,9 @@ class GraphView: UIView {
         
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
         
+        // Make sure there's data first
+        guard !dataSet.isEmpty else { return }
+        
         // Calculate X point
         let margin:CGFloat = 40.0
         let columnXPoint = { (column:Double) -> CGFloat in
