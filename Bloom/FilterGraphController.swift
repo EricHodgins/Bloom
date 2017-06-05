@@ -21,6 +21,11 @@ class FilterGraphController: UITableViewController {
     weak var delegate: FilterViewControllerDelegate?
     
     lazy var datePredicate: NSPredicate = {
+        if self.startDatePicker.date > self.endDatePicker.date {
+            let tempDate = self.startDatePicker.date
+            self.startDatePicker.date = self.endDatePicker.date
+            self.endDatePicker.date = tempDate
+        }
         let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), self.startDatePicker.date as NSDate, #keyPath(Excercise.workout.startTime), self.endDatePicker.date as NSDate)
         
         return predicate
