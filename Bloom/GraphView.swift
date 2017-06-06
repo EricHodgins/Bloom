@@ -161,15 +161,15 @@ class GraphView: UIView {
         let topPt = CGPoint(x: 10, y: topBorder)
         addLabel(atPoint: topPt, withValue: maxValue)
         
-        let middlePt = CGPoint(x: 10, y: (height - topBorder - bottomBorder) / 2 + topBorder)
+        let middlePt = CGPoint(x: 5, y: (height - topBorder - bottomBorder) / 2 + topBorder)
         addLabel(atPoint: middlePt, withValue: (maxValue - minValue)/2 + minValue)
         
-        let bottomPt = CGPoint(x: 10, y: height - bottomBorder)
+        let bottomPt = CGPoint(x: 5, y: height - bottomBorder)
         addLabel(atPoint: bottomPt, withValue: minValue)
     }
     
     func addLabel(atPoint point: CGPoint, withValue value: Double) {
-        let label = UILabel(frame: CGRect(origin: point, size: CGSize(width: 20, height: 20)))
+        let label = UILabel(frame: CGRect(origin: point, size: CGSize(width: 15, height: 15)))
         label.text = "\(value)"
         label.textColor = UIColor.white
         label.sizeToFit()

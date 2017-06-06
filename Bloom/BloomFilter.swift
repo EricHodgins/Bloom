@@ -8,11 +8,15 @@
 
 import Foundation
 import CoreData
-/*
+
 class BloomFilter {
     
     lazy var workoutForNamePredicate = { (workoutName: String) -> NSPredicate in
         return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), workoutName)
+    }
+    
+    lazy var excerciseNamePredicate = { (excerciseName:String) -> NSPredicate in
+        return NSPredicate(format: "%K == %@", #keyPath(Excercise.name), excerciseName)
     }
     
     lazy var workoutDateSortDescriptor: NSSortDescriptor = {
@@ -33,4 +37,4 @@ class BloomFilter {
     }
 
 }
- */
+

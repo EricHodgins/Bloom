@@ -22,24 +22,6 @@ class GraphViewController: UIViewController {
     
     @IBOutlet weak var graphView: GraphView!
     
-    lazy var workoutForNamePredicate: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), self.workoutName)
-    }()
-    
-    lazy var excerciseNamePredicate: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Excercise.name), self.excerciseName)
-    }()
-    
-    lazy var datePredicate: NSPredicate = {
-        let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), self.startDate, #keyPath(Excercise.workout.startTime), self.endDate)
-        
-        return predicate
-    }()
-    
-    lazy var workoutDateSortDescriptor: NSSortDescriptor = {
-        return NSSortDescriptor(key: #keyPath(Excercise.workout.startTime), ascending: true)
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = excerciseName
@@ -51,8 +33,13 @@ class GraphViewController: UIViewController {
     
     func fetchExcercises() {
         let fetchRequest: NSFetchRequest<Excercise> = Excercise.fetchRequest()
-        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutForNamePredicate, excerciseNamePredicate, datePredicate])
-        fetchRequest.sortDescriptors = [workoutDateSortDescriptor]
+        let bloomFilter = BloomFilter()
+        let workoutNamePredicate = bloomFilter.workoutForNamePredicate(workoutName)
+        let excercisenamePredicate = bloomFilter.excerciseNamePredicate(excerciseName)
+        let dPredicate = bloomFilter.datePredicate(startDate as Date, endDate as Date)
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate, dPredicate])
+        fetchRequest.sortDescriptors = [bloomFilter.workoutDateSortDescriptor]
+        
         
         do {
             excercises = try managedContext.fetch(fetchRequest)
@@ -80,6 +67,7 @@ class GraphViewController: UIViewController {
             if let navController = segue.destination as? UINavigationController,
             let filterController = navController.topViewController as? FilterGraphController {
                 filterController.workoutName = workoutName
+                filterController.excerciseName = excerciseName
                 filterController.delegate = self
             }
         }

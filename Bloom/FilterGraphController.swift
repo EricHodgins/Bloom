@@ -18,26 +18,9 @@ class FilterGraphController: UITableViewController {
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
     var workoutName: String!
+    var excerciseName: String!
+    let bloomFilter: BloomFilter = BloomFilter()
     weak var delegate: FilterViewControllerDelegate?
-    
-    lazy var datePredicate: NSPredicate = {
-        if self.startDatePicker.date > self.endDatePicker.date {
-            let tempDate = self.startDatePicker.date
-            self.startDatePicker.date = self.endDatePicker.date
-            self.endDatePicker.date = tempDate
-        }
-        let predicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Excercise.workout.startTime), self.startDatePicker.date as NSDate, #keyPath(Excercise.workout.startTime), self.endDatePicker.date as NSDate)
-        
-        return predicate
-    }()
-    
-    lazy var workoutForNamePredicate: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), self.workoutName)
-    }()
-    
-    lazy var workoutDateSortDescriptor: NSSortDescriptor = {
-        return NSSortDescriptor(key: #keyPath(Excercise.workout.startTime), ascending: true)
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +32,13 @@ class FilterGraphController: UITableViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func showPressed(_ sender: Any) {
-        delegate?.filter(withPredicates: [workoutForNamePredicate, datePredicate], sortDescriptor: [workoutDateSortDescriptor])
+        let workoutNamePredicate = bloomFilter.workoutForNamePredicate(workoutName)
+        let excerciseNamePredicate = bloomFilter.excerciseNamePredicate(excerciseName)
+        let datePredicate = bloomFilter.datePredicate(startDatePicker.date, endDatePicker.date)
+        let workoutDateSortDescriptor = bloomFilter.workoutDateSortDescriptor
+        delegate?.filter(withPredicates: [workoutNamePredicate, excerciseNamePredicate, datePredicate], sortDescriptor: [workoutDateSortDescriptor])
         dismiss(animated: true, completion: nil)
     }
     
