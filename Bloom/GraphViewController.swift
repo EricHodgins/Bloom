@@ -14,6 +14,7 @@ class GraphViewController: UIViewController {
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<Excercise>!
     var workoutName: String!
+    var excerciseName: String!
     var endDate: NSDate = NSDate()
     var startDate: NSDate!
     var excercises: [Excercise] = []
@@ -23,6 +24,10 @@ class GraphViewController: UIViewController {
     
     lazy var workoutForNamePredicate: NSPredicate = {
         return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), self.workoutName)
+    }()
+    
+    lazy var excerciseNamePredicate: NSPredicate = {
+        return NSPredicate(format: "%K == %@", #keyPath(Excercise.name), self.excerciseName)
     }()
     
     lazy var datePredicate: NSPredicate = {
@@ -37,7 +42,7 @@ class GraphViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = excerciseName
         let threeMonthsAgoFromToday = Calendar.current.date(byAdding: .month, value: -3, to: Date())! as NSDate
         startDate = threeMonthsAgoFromToday
         
@@ -46,7 +51,7 @@ class GraphViewController: UIViewController {
     
     func fetchExcercises() {
         let fetchRequest: NSFetchRequest<Excercise> = Excercise.fetchRequest()
-        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutForNamePredicate, datePredicate])
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutForNamePredicate, excerciseNamePredicate, datePredicate])
         fetchRequest.sortDescriptors = [workoutDateSortDescriptor]
         
         do {

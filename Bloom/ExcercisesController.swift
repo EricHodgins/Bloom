@@ -45,6 +45,10 @@ class ExcercisesController: UIViewController {
             let graphViewController = segue.destination as! GraphViewController
             graphViewController.managedContext = managedContext
             graphViewController.workoutName = workoutName
+            
+            let cellIndex = tableView.indexPathForSelectedRow!
+            let name = excercises[cellIndex.row]["name"] as! String
+            graphViewController.excerciseName = name
         }
     }
 

@@ -61,8 +61,13 @@ class GraphView: UIView {
         let topBorder:CGFloat = 60
         let bottomBorder:CGFloat = 50
         let graphHeight = height - topBorder - bottomBorder
-        let maxValue = dataSet.max()!
-        let minValue = dataSet.min()!
+        var maxValue = dataSet.max()!
+        var minValue = dataSet.min()!
+        
+        if maxValue == minValue {
+            maxValue += 1
+            minValue -= 1
+        }
         let diff = maxValue - minValue
         let columnYPoint = { (graphPoint:Double) -> CGFloat in
             var y: CGFloat = ((CGFloat(graphPoint) - CGFloat(minValue)) / CGFloat(diff)) * graphHeight

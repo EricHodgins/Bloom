@@ -56,11 +56,11 @@ class BaseBloomView: UIView {
     }
     
     func saveButtonFrame() -> CGRect {
-        return CGRect(x: 0, y: bounds.size.height - 60, width: bounds.size.width/2, height: 60)
+        return CGRect(x: bounds.size.width/2, y: bounds.size.height - 60, width: bounds.size.width/2, height: 60)
     }
     
     func cancelButtonFrame() -> CGRect {
-        return CGRect(x: bounds.size.width/2, y: bounds.size.height - 60, width: bounds.size.width/2, height: 60)
+        return CGRect(x: 0, y: bounds.size.height - 60, width: bounds.size.width/2, height: 60)
     }
     
     func setupLineSeparator() {
@@ -74,7 +74,7 @@ class BaseBloomView: UIView {
             lineSeparator.centerXAnchor.constraint(equalTo: centerXAnchor),
             lineSeparator.widthAnchor.constraint(equalToConstant: 1),
             lineSeparator.heightAnchor.constraint(equalToConstant: 1)
-            ])
+        ])
     }
     
     func setupTextField() {

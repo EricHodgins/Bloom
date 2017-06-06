@@ -63,7 +63,7 @@ class RecordLiveStatView: BaseBloomView {
         
         NSLayoutConstraint.activate([
             plusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15),
-            plusButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            plusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
             plusButton.widthAnchor.constraint(equalToConstant: 60),
             plusButton.heightAnchor.constraint(equalToConstant: 60)
         ])
@@ -82,7 +82,7 @@ class RecordLiveStatView: BaseBloomView {
         
         NSLayoutConstraint.activate([
             minusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15),
-            minusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+            minusButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             minusButton.widthAnchor.constraint(equalToConstant: 60),
             minusButton.heightAnchor.constraint(equalToConstant: 60)
         ])
