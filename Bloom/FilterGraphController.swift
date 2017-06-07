@@ -25,7 +25,7 @@ class FilterGraphController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let threeMonthsAgoFromToday = Calendar.current.date(byAdding: .month, value: -3, to: Date())!
+        let threeMonthsAgoFromToday = Calendar.current.date(byAdding: .month, value: -2, to: Date())!
         startDatePicker.date = threeMonthsAgoFromToday
     }
 

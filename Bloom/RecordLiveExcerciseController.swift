@@ -12,6 +12,11 @@ import CoreData
 class RecordLiveExcerciseController: UIViewController {
     
     var managedContext: NSManagedObjectContext!
+    var fetchRequest: NSFetchRequest<NSDictionary>!
+    var bloomFilter: BloomFilter!
+    
+    var workoutName: String!
+    var currentExcercise: Excercise!
     var excercises = [Excercise]()
     weak var excerciseLabel: UILabel!
     var currentExcerciseIndex: Int = 0
@@ -26,18 +31,48 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        excerciseLabel.text = currentExcercise().name!
-        //nextExcerciseTapped(excerciseLabel)
+        currentExcercise = excercises[0]
+        excerciseLabel.text = excercises[currentExcerciseIndex].name!
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchMaxValues()
+    }
+    
+    func fetchMaxValues() {
+        
+        fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
+        fetchRequest.resultType = .dictionaryResultType
+        
+        bloomFilter = BloomFilter()
+        let excerciseName = currentExcercise.name!
+        let workoutNamePredicate = bloomFilter.workoutForNamePredicate(workoutName)
+        let excercisenamePredicate = bloomFilter.excerciseNamePredicate(excerciseName)
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate])
+        
+        let repsExpressDescription = bloomFilter.maxRepsExpressionDescription
+        fetchRequest.propertiesToFetch = [repsExpressDescription]
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            let resultDict = results.first!
+            let maxReps = resultDict["maxReps"] as! Double
+            print("Max Reps: \(maxReps)")
+        } catch let error as NSError {
+            print("NSDescription Error: \(error.userInfo)")
+        }
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         DispatchQueue.main.async {
-            let currentExcercise = self.currentExcercise()
-            if currentExcercise.timeRecorded == nil {
-                currentExcercise.timeRecorded = NSDate()
+            self.currentExcercise = self.excercises[self.currentExcerciseIndex]
+            if self.currentExcercise.timeRecorded == nil {
+                self.currentExcercise.timeRecorded = NSDate()
             }
-            let exc = self.getNextExcercise()
-            self.excerciseLabel.text = exc.name!
+            self.currentExcercise = self.getNextExcercise()
+            self.excerciseLabel.text = self.currentExcercise.name!
+            self.fetchMaxValues()
         }
     }
     
@@ -50,15 +85,6 @@ class RecordLiveExcerciseController: UIViewController {
         currentExcerciseIndex = 0
         return excercises[0]
     }
-    
-    func currentExcercise() -> Excercise {
-       return excercises[currentExcerciseIndex]
-    }
-    
-    func excerciseListLoopedOver() {
-        
-    }
-    
     
     @IBAction func repsButtonPushed(_ sender: Any) {
         addBlurEffect()

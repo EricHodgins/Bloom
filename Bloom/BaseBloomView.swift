@@ -23,7 +23,7 @@ class BaseBloomView: UIView {
         
         self.backgroundColor = UIColor.white
         lineSeparator.backgroundColor = UIColor.red
-        self.alpha = 0.75
+        self.alpha = 1.0
         
         textField.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
         

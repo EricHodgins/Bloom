@@ -28,16 +28,17 @@ class GraphViewController: UIViewController {
         let threeMonthsAgoFromToday = Calendar.current.date(byAdding: .month, value: -3, to: Date())! as NSDate
         startDate = threeMonthsAgoFromToday
         
+        fetchRequest = Excercise.fetchRequest()
         fetchExcercises()
     }
     
     func fetchExcercises() {
-        let fetchRequest: NSFetchRequest<Excercise> = Excercise.fetchRequest()
+        
         let bloomFilter = BloomFilter()
         let workoutNamePredicate = bloomFilter.workoutForNamePredicate(workoutName)
         let excercisenamePredicate = bloomFilter.excerciseNamePredicate(excerciseName)
-        let dPredicate = bloomFilter.datePredicate(startDate as Date, endDate as Date)
-        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate, dPredicate])
+        let datePredicate = bloomFilter.datePredicate(startDate as Date, endDate as Date)
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate, datePredicate])
         fetchRequest.sortDescriptors = [bloomFilter.workoutDateSortDescriptor]
         
         
@@ -77,7 +78,6 @@ class GraphViewController: UIViewController {
 
 extension GraphViewController: FilterViewControllerDelegate {
     func filter(withPredicates predicates: [NSPredicate], sortDescriptor: [NSSortDescriptor]) {
-        fetchRequest = Excercise.fetchRequest()
         fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: predicates)
         fetchRequest.sortDescriptors = sortDescriptor
         

@@ -35,6 +35,18 @@ class BloomFilter {
         
         return predicate
     }
+    
+    lazy var maxRepsExpressionDescription: NSExpressionDescription = {
+        let maxRepExpressionDesc = NSExpressionDescription()
+        maxRepExpressionDesc.name = "maxReps"
+        
+        let excerciseRepsDesc = NSExpression(forKeyPath: #keyPath(Excercise.reps))
+        maxRepExpressionDesc.expression = NSExpression(forFunction: "max:", arguments: [excerciseRepsDesc])
+        
+        maxRepExpressionDesc.expressionResultType = .doubleAttributeType
+        
+        return maxRepExpressionDesc
+    }()
 
 }
 

@@ -114,6 +114,7 @@ extension LiveWorkoutController {
         let rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
         rlec.view.translatesAutoresizingMaskIntoConstraints = false
         
+        rlec.workoutName = workout.name!
         rlec.excerciseLabel = currentExcerciseLabel
         rlec.managedContext = managedContext
         rlec.excercises = excercises
