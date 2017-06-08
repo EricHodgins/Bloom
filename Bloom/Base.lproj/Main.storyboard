@@ -1003,7 +1003,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="16" y="133" width="343" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
@@ -1033,6 +1033,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="7YX-Z5-EI8" secondAttribute="trailing" id="cz7-FX-rro"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="finishWorkoutButton" destination="7YX-Z5-EI8" id="5fa-Js-Lsg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="orS-Oh-Hxl" userLabel="Exit" sceneMemberID="exit"/>

@@ -67,6 +67,7 @@
 		7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */; };
 		7AC184071E20BC0B0019AB2F /* FinishLiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */; };
 		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
+		7ACCF2E21EE99A00002B0865 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ACCF2E11EE99A00002B0865 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		7ACBB5241E0A325800CE285A /* BloomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACBB5261E0A325800CE285A /* BloomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomUITests.swift; sourceTree = "<group>"; };
 		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ACCF2E11EE99A00002B0865 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				7A796D461E2B05500006DE61 /* Metal */,
+				7ACCF2E11EE99A00002B0865 /* spark.png */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
@@ -596,6 +599,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ACCF2E21EE99A00002B0865 /* spark.png in Resources */,
 				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
