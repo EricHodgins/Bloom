@@ -18,9 +18,12 @@ class RecordLiveExcerciseController: UIViewController {
     var workoutName: String!
     var currentExcercise: Excercise!
     var excercises = [Excercise]()
+    
+    var maxReps: Double?
+    
     weak var excerciseLabel: UILabel!
     var currentExcerciseIndex: Int = 0
-    var currentCounter: Double = 0.0
+    var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView
     
     var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
@@ -37,10 +40,10 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fetchMaxValues()
+        maxReps = fetchMaxValues()
     }
     
-    func fetchMaxValues() {
+    func fetchMaxValues() -> Double {
         
         fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
         fetchRequest.resultType = .dictionaryResultType
@@ -54,14 +57,18 @@ class RecordLiveExcerciseController: UIViewController {
         let repsExpressDescription = bloomFilter.maxRepsExpressionDescription
         fetchRequest.propertiesToFetch = [repsExpressDescription]
         
+        var maxValue: Double?
+        
         do {
             let results = try managedContext.fetch(fetchRequest)
             let resultDict = results.first!
-            let maxReps = resultDict["maxReps"] as! Double
-            print("Max Reps: \(maxReps)")
+            maxValue = resultDict["maxReps"] as? Double
+            print("Max Reps: \(maxValue ?? 0)")
         } catch let error as NSError {
             print("NSDescription Error: \(error.userInfo)")
         }
+        
+        return maxValue ?? 0
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
@@ -72,7 +79,7 @@ class RecordLiveExcerciseController: UIViewController {
             }
             self.currentExcercise = self.getNextExcercise()
             self.excerciseLabel.text = self.currentExcercise.name!
-            self.fetchMaxValues()
+            self.maxReps = self.fetchMaxValues()
         }
     }
     
@@ -108,11 +115,12 @@ class RecordLiveExcerciseController: UIViewController {
     
     func showRecordView(withTitle title: String, andStat stat: Stat) {
         retriveCurrentExcerciseValue(excercise: excercises[currentExcerciseIndex])
-        currentCounter = 0.0
+        
         recordLiveStatView = RecordLiveStatView(inView: view)
         recordLiveStatView.stat = stat
         recordLiveStatView.title.text = title
-        recordLiveStatView.textField.placeholder = "0"
+        recordLiveStatView.textField.text = "\(maxReps ?? 0)"
+        currentCounter = maxReps ?? 0
         recordLiveStatView.plusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.plusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.minusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.minusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.saveButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.savePressed), for: .touchUpInside)
