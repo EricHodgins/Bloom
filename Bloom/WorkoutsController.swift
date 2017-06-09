@@ -56,9 +56,6 @@ extension WorkoutsController: UITableViewDataSource {
 }
 
 extension WorkoutsController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Setup in the storyboard
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartWorkoutSegue" {
@@ -83,6 +80,16 @@ extension WorkoutsController: UITableViewDelegate {
         }
         
         return workout
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 252/255, green: 123/255, blue: 151/255, alpha: 1.0)
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.clear
     }
 }
 

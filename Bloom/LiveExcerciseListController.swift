@@ -17,6 +17,7 @@ class LiveExcerciseListController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
 
@@ -35,5 +36,17 @@ extension LiveExcerciseListController: UITableViewDataSource {
         cell.textLabel?.text = "\(excercise.name!)"
         
         return cell
+    }
+}
+
+extension LiveExcerciseListController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 252/255, green: 123/255, blue: 151/255, alpha: 1.0)
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentView.backgroundColor = UIColor.clear
     }
 }
