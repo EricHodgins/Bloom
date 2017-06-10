@@ -127,7 +127,7 @@
                                 <rect key="frame" x="0.0" y="240" width="375" height="377"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="RQZ-i4-PSY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="RQZ-i4-PSY">
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
@@ -901,7 +901,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="Yrz-Ce-ZOs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="Yrz-Ce-ZOs">
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrz-Ce-ZOs" id="ePL-aV-avV">
@@ -988,16 +988,16 @@
                         <viewControllerLayoutGuide type="top" id="GAk-bd-avR"/>
                         <viewControllerLayoutGuide type="bottom" id="NT5-NK-nxB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OvS-oF-Iy1">
+                    <view key="view" contentMode="scaleToFill" id="OvS-oF-Iy1" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="133" width="343" height="227"/>
+                                <rect key="frame" x="16" y="220" width="343" height="227"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Finish Workout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1017,10 +1017,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" constant="-87" id="Cnv-DU-TY7"/>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" id="Cnv-DU-TY7"/>
                             <constraint firstAttribute="leadingMargin" secondItem="7YX-Z5-EI8" secondAttribute="leading" id="JcO-Iv-Uo4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7YX-Z5-EI8" secondAttribute="trailing" id="cz7-FX-rro"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="1" green="0.95823734998703003" blue="0.53057324886322021" alpha="0.60194762323943662" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="1" green="0.014190948061973074" blue="0.062004613556233878" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="finishWorkoutButton" destination="7YX-Z5-EI8" id="5fa-Js-Lsg"/>
