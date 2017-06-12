@@ -76,11 +76,14 @@ extension SummaryViewController: UITableViewDelegate {
             segmentView.backgroundColor = UIColor(colorLiteralRed: 9/255, green: 136/255, blue: 255/255, alpha: 1.0)
             
             let segmentControl = UISegmentedControl(frame: segmentView.frame)
+            segmentControl.addTarget(self, action: #selector(SummaryViewController.segmentControlValueChanged(segment:)), for: .valueChanged)
+            segmentControl.addTarget(self, action: #selector(SummaryViewController.segmentControlValueChanged(segment:)), for: .touchUpInside)
             segmentControl.insertSegment(withTitle: "Workouts", at: 0, animated: true)
             segmentControl.insertSegment(withTitle: "Show All", at: 1, animated: true)
             
             let font = UIFont.boldSystemFont(ofSize: 15)
             segmentControl.setTitleTextAttributes([NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+            segmentControl.setTitleTextAttributes([NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.white], for: .selected)
             
             segmentView.addSubview(segmentControl)
             
@@ -98,6 +101,16 @@ extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.contentView.backgroundColor = UIColor.clear
+    }
+    
+    func segmentControlValueChanged(segment: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0 {
+            // Show only types of workouts created
+        }
+        
+        if segment.selectedSegmentIndex == 1 {
+            // Show All Workoutss
+        }
     }
 }
 
