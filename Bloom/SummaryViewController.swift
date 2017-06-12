@@ -62,6 +62,34 @@ extension SummaryViewController: UITableViewDataSource {
 // Table View Delegate
 extension SummaryViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let segmentView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+            segmentView.backgroundColor = UIColor(colorLiteralRed: 9/255, green: 136/255, blue: 255/255, alpha: 1.0)
+            
+            let segmentControl = UISegmentedControl(frame: segmentView.frame)
+            segmentControl.insertSegment(withTitle: "Workouts", at: 0, animated: true)
+            segmentControl.insertSegment(withTitle: "Show All", at: 1, animated: true)
+            
+            let font = UIFont.boldSystemFont(ofSize: 15)
+            segmentControl.setTitleTextAttributes([NSFontAttributeName: font, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+            
+            segmentView.addSubview(segmentControl)
+            
+            return segmentView
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
