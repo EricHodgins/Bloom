@@ -2,7 +2,7 @@
 //  WorkoutTemplate+CoreDataClass.swift
 //  Bloom
 //
-//  Created by Eric Hodgins on 2017-05-27.
+//  Created by Eric Hodgins on 2017-06-10.
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 

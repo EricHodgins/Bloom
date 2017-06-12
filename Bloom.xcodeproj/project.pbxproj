@@ -24,15 +24,7 @@
 		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
 		7A66583E1E46974C008B41FA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66583D1E46974C008B41FA /* Types.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
-		7A6B9BB81EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */; };
-		7A6B9BB91EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */; };
 		7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */; };
-		7A6B9BC21EDB4F8700E05D04 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BBE1EDB4F8700E05D04 /* Workout+CoreDataClass.swift */; };
-		7A6B9BC31EDB4F8700E05D04 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BBF1EDB4F8700E05D04 /* Workout+CoreDataProperties.swift */; };
-		7A6B9BC41EDB4F8700E05D04 /* Excercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BC01EDB4F8700E05D04 /* Excercise+CoreDataClass.swift */; };
-		7A6B9BC51EDB4F8700E05D04 /* Excercise+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BC11EDB4F8700E05D04 /* Excercise+CoreDataProperties.swift */; };
-		7A6B9BC81EDB510100E05D04 /* ExcerciseTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BC61EDB510100E05D04 /* ExcerciseTemplate+CoreDataClass.swift */; };
-		7A6B9BC91EDB510100E05D04 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BC71EDB510100E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */; };
 		7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */; };
 		7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEA1E16EF1300736446 /* RingLayer.swift */; };
 		7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A764CEC1E16EFF400736446 /* LayerExtension.swift */; };
@@ -40,6 +32,14 @@
 		7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */; };
 		7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915DA1E10CA9000090D7B /* StartButton.swift */; };
 		7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A796D471E2B05890006DE61 /* MetalImageView.swift */; };
+		7A7D94881EECE9B200609B88 /* Excercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94801EECE9B200609B88 /* Excercise+CoreDataClass.swift */; };
+		7A7D94891EECE9B200609B88 /* Excercise+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94811EECE9B200609B88 /* Excercise+CoreDataProperties.swift */; };
+		7A7D948A1EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94821EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift */; };
+		7A7D948B1EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94831EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift */; };
+		7A7D948C1EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94841EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift */; };
+		7A7D948D1EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94851EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift */; };
+		7A7D94921EEDDE9B00609B88 /* Workout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94901EEDDE9B00609B88 /* Workout+CoreDataClass.swift */; };
+		7A7D94931EEDDE9B00609B88 /* Workout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94911EEDDE9B00609B88 /* Workout+CoreDataProperties.swift */; };
 		7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
@@ -147,15 +147,7 @@
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
 		7A66583D1E46974C008B41FA /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkoutButton.swift; sourceTree = "<group>"; };
-		7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
-		7A6B9BBE1EDB4F8700E05D04 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Workout+CoreDataClass.swift"; path = "Bloom/Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7A6B9BBF1EDB4F8700E05D04 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Workout+CoreDataProperties.swift"; path = "Bloom/Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7A6B9BC01EDB4F8700E05D04 /* Excercise+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Excercise+CoreDataClass.swift"; path = "Bloom/Excercise+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7A6B9BC11EDB4F8700E05D04 /* Excercise+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Excercise+CoreDataProperties.swift"; path = "Bloom/Excercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7A6B9BC61EDB510100E05D04 /* ExcerciseTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7A6B9BC71EDB510100E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A6DC6ED1E3E715600EC9709 /* SunsetBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunsetBackground.swift; sourceTree = "<group>"; };
 		7A764CEA1E16EF1300736446 /* RingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingLayer.swift; sourceTree = "<group>"; };
 		7A764CEC1E16EFF400736446 /* LayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtension.swift; sourceTree = "<group>"; };
@@ -163,6 +155,14 @@
 		7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutController.swift; sourceTree = "<group>"; };
 		7A7915DA1E10CA9000090D7B /* StartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 		7A796D471E2B05890006DE61 /* MetalImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalImageView.swift; sourceTree = "<group>"; };
+		7A7D94801EECE9B200609B88 /* Excercise+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A7D94811EECE9B200609B88 /* Excercise+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Excercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A7D94821EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A7D94831EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A7D94841EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A7D94851EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExcerciseTemplate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A7D94901EEDDE9B00609B88 /* Workout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7A7D94911EEDDE9B00609B88 /* Workout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
@@ -283,14 +283,14 @@
 		7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				7A6B9BBE1EDB4F8700E05D04 /* Workout+CoreDataClass.swift */,
-				7A6B9BBF1EDB4F8700E05D04 /* Workout+CoreDataProperties.swift */,
-				7A6B9BC01EDB4F8700E05D04 /* Excercise+CoreDataClass.swift */,
-				7A6B9BC11EDB4F8700E05D04 /* Excercise+CoreDataProperties.swift */,
-				7A6B9BB41EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift */,
-				7A6B9BB51EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift */,
-				7A6B9BC61EDB510100E05D04 /* ExcerciseTemplate+CoreDataClass.swift */,
-				7A6B9BC71EDB510100E05D04 /* ExcerciseTemplate+CoreDataProperties.swift */,
+				7A7D94801EECE9B200609B88 /* Excercise+CoreDataClass.swift */,
+				7A7D94811EECE9B200609B88 /* Excercise+CoreDataProperties.swift */,
+				7A7D94821EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift */,
+				7A7D94831EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift */,
+				7A7D94841EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift */,
+				7A7D94851EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift */,
+				7A7D94901EEDDE9B00609B88 /* Workout+CoreDataClass.swift */,
+				7A7D94911EEDDE9B00609B88 /* Workout+CoreDataProperties.swift */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -645,11 +645,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7D948A1EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */,
-				7A6B9BB81EDA518500E05D04 /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */,
+				7A7D94931EEDDE9B00609B88 /* Workout+CoreDataProperties.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
+				7A7D948C1EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift in Sources */,
 				7A66583E1E46974C008B41FA /* Types.swift in Sources */,
 				7AC184071E20BC0B0019AB2F /* FinishLiveWorkoutController.swift in Sources */,
 				7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */,
@@ -662,35 +664,33 @@
 				7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */,
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
-				7A6B9BC81EDB510100E05D04 /* ExcerciseTemplate+CoreDataClass.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
-				7A6B9BC91EDB510100E05D04 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
+				7A7D94881EECE9B200609B88 /* Excercise+CoreDataClass.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
 				7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */,
-				7A6B9BC41EDB4F8700E05D04 /* Excercise+CoreDataClass.swift in Sources */,
 				7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */,
 				7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */,
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,
 				7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */,
 				7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */,
-				7A6B9BC21EDB4F8700E05D04 /* Workout+CoreDataClass.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,
+				7A7D948B1EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
+				7A7D94921EEDDE9B00609B88 /* Workout+CoreDataClass.swift in Sources */,
 				7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */,
 				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
 				7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */,
 				7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */,
-				7A6B9BB91EDA518500E05D04 /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
+				7A7D948D1EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
 				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
-				7A6B9BC31EDB4F8700E05D04 /* Workout+CoreDataProperties.swift in Sources */,
 				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,
-				7A6B9BC51EDB4F8700E05D04 /* Excercise+CoreDataProperties.swift in Sources */,
+				7A7D94891EECE9B200609B88 /* Excercise+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +795,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -845,7 +847,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -870,11 +873,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -887,11 +892,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -905,11 +912,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				IBSC_MODULE = Bloom_WatchKit_Extension;
 				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -923,11 +932,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				IBSC_MODULE = Bloom_WatchKit_Extension;
 				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -940,12 +951,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = Bloom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -954,12 +967,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = Bloom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

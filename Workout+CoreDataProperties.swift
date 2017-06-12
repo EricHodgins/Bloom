@@ -2,7 +2,7 @@
 //  Workout+CoreDataProperties.swift
 //  Bloom
 //
-//  Created by Eric Hodgins on 2017-05-28.
+//  Created by Eric Hodgins on 2017-06-11.
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 
@@ -16,9 +16,9 @@ extension Workout {
         return NSFetchRequest<Workout>(entityName: "Workout")
     }
 
+    @NSManaged public var endTime: NSDate?
     @NSManaged public var name: String?
     @NSManaged public var startTime: NSDate?
-    @NSManaged public var endTime: NSDate?
     @NSManaged public var excercises: NSOrderedSet?
 
 }

@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.hodginsEric.Bloom</string>
+	<string>com.hodginsEric.Bloom.V1.0.0</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
