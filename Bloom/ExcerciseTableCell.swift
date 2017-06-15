@@ -10,6 +10,13 @@ import UIKit
 
 class ExcerciseTableCell: UITableViewCell {
 
+    @IBOutlet weak var excerciseName: UILabel!
+    @IBOutlet weak var repsLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

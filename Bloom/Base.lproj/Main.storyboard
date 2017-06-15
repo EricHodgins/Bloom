@@ -349,6 +349,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="workoutDate" destination="FSq-dM-FNW" id="1nV-c7-K9z"/>
+                                            <outlet property="workoutDuration" destination="fk9-oF-Ngc" id="JME-0F-ZnQ"/>
+                                            <outlet property="workoutName" destination="7KF-0W-mHa" id="lOg-JX-QmX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExcerciseCell" rowHeight="200" id="zI0-60-zZ0" customClass="ExcerciseTableCell" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="164" width="375" height="200"/>
@@ -422,6 +427,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="mm7-Ar-Eds" id="vOh-8N-mnK"/>
+                                            <outlet property="excerciseName" destination="9Zv-lb-SHM" id="bxm-0a-6UN"/>
+                                            <outlet property="repsLabel" destination="Z2a-xe-tnB" id="9rz-kX-Qn9"/>
+                                            <outlet property="timeLabel" destination="99L-Mz-ueV" id="mPM-dL-Xf3"/>
+                                            <outlet property="weightLabel" destination="9gU-Lc-1Lg" id="pk4-vS-ddn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

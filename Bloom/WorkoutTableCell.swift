@@ -9,6 +9,11 @@
 import UIKit
 
 class WorkoutTableCell: UITableViewCell {
+    
+    @IBOutlet weak var workoutName: UILabel!
+    @IBOutlet weak var workoutDate: UILabel!
+    @IBOutlet weak var workoutDuration: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

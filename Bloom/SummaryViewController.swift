@@ -56,6 +56,11 @@ class SummaryViewController: UIViewController {
             excerciseController.managedContext = managedContext
             excerciseController.workoutName = workoutTypes[cellIndex.row]["name"] as! String
         }
+        
+        if segue.identifier == "ShowWorkoutStats" {
+            let workoutDetailController = segue.destination as! WorkoutDetailController
+            workoutDetailController.workout = workouts[tableView.indexPathForSelectedRow!.row]   
+        }
     }
 }
 
