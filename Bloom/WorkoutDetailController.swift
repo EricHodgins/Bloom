@@ -43,6 +43,7 @@ extension WorkoutDetailController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutInfoCell", for: indexPath) as! WorkoutTableCell
             cell.workoutDate.text = "\(dateFormatter.string(from: workout.startTime! as Date))"
             cell.workoutName.text = "\(workout.name!)"
+            cell.workoutDuration.text = workout.startTime!.delta(to: workout.endTime!)
             
             return cell
         }
@@ -67,3 +68,21 @@ extension WorkoutDetailController: UITableViewDelegate {
         return view.bounds.height * 0.333
     }
 }
+
+
+// MARK: - Date Extension
+extension NSDate {
+    public func delta(to: NSDate) -> String {
+        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+        
+        let difference = Calendar.current.dateComponents(dayHourMinuteSecond, from: self as Date, to: to as Date)
+        
+        let seconds = String(format: "%02d", difference.second!)
+        let minutes = String(format: "%02d", difference.minute!)
+        let hours = String(format: "%02d", difference.hour!)
+        
+        return hours + ":" + minutes + ":" + seconds
+    }
+}
+
+
