@@ -61,6 +61,7 @@
 		7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9751DFE761E00A37C80 /* NotificationController.swift */; };
 		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
 		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
+		7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */; };
@@ -194,6 +195,7 @@
 		7A84F9771DFE761F00A37C80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
+		7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
 		7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBloomView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				7A1E13ED1E06197900330EFB /* GradientView.swift */,
 				7A83F94C1E1228FC00451BBA /* CountDownView.swift */,
 				7A5346821E1A03610067E982 /* HeartBeatView.swift */,
+				7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */,
 				7A43241B1EDDB0BD00BE9009 /* GraphView.swift */,
 			);
 			name = "Custom Views";
@@ -657,6 +660,7 @@
 				7A7D948A1EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
+				7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */,
 				7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */,
 				7A7D94931EEDDE9B00609B88 /* Workout+CoreDataProperties.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,

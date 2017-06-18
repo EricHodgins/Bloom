@@ -16,9 +16,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var statsButton: StatsButton!
     
     var managedContext: NSManagedObjectContext!
+    var heartView: HeartView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        heartView = HeartView(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
+        heartView.frame.origin = CGPoint(x: view.frame.width/2 - 75/2, y: view.frame.height/2 + 60)
+        view.addSubview(heartView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        heartView.pulse()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
