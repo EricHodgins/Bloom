@@ -33,7 +33,7 @@ class HeartBeatView: UIView {
         heartLineView = HeartLineView(frame: bounds)
         addSubview(heartLineView)
         
-        heartView = HeartView(frame: CGRect(x: 0, y: 10, width: 15, height: 15))
+        heartView = HeartView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         addSubview(heartView)
         //layer.insertSublayer(heartLineLayer, above: layer)
         //layer.masksToBounds = true
