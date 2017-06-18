@@ -21,7 +21,6 @@
 		7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065511EE33BE50024724C /* FilterGraphController.swift */; };
 		7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43241B1EDDB0BD00BE9009 /* GraphView.swift */; };
 		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
-		7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346841E1A049A0067E982 /* HeartLineLayer.swift */; };
 		7A66583E1E46974C008B41FA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66583D1E46974C008B41FA /* Types.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
 		7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */; };
@@ -148,7 +147,6 @@
 		7A43241B1EDDB0BD00BE9009 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7A5346811E198B680067E982 /* HeartBeatPulseAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = HeartBeatPulseAnimation.playground; sourceTree = "<group>"; };
 		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
-		7A5346841E1A049A0067E982 /* HeartLineLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineLayer.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
 		7A66583D1E46974C008B41FA /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkoutButton.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				7A764CEA1E16EF1300736446 /* RingLayer.swift */,
-				7A5346841E1A049A0067E982 /* HeartLineLayer.swift */,
 				7A764CEC1E16EFF400736446 /* LayerExtension.swift */,
 			);
 			name = Layers;
@@ -709,7 +706,6 @@
 				7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */,
 				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
-				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,
 				7A7D94891EECE9B200609B88 /* Excercise+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
