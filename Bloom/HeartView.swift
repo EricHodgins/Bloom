@@ -11,12 +11,14 @@ import UIKit
 
 class HeartView: UIView {
     
+    private var lineWidth: CGFloat = 1.0
+    
     fileprivate lazy var heartLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.red.cgColor
         layer.opacity = 1.0
-        layer.lineWidth = 1
+        layer.lineWidth = self.lineWidth
         layer.lineCap = kCALineCapRound
         layer.lineJoin = kCALineJoinRound
         return layer
@@ -50,7 +52,7 @@ class HeartView: UIView {
     func heartPath() -> CGPath {
         let path = UIBezierPath()
         
-        let margin: CGFloat = 8
+        let margin: CGFloat = lineWidth
         let middleTop = CGPoint(x: frame.width / 2, y: margin + 4/30*frame.height)//40
         let middleBottom = CGPoint(x: frame.width/2, y: frame.height - margin - margin)
         
