@@ -34,7 +34,6 @@ class GenericBloomButton: UIButton {
     }
     
     func setup() {
-        //layer.addSublayer(gradientLayer)
         layer.insertSublayer(gradientLayer, at: 0)
     }
     

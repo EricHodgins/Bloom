@@ -62,6 +62,7 @@
 		7A84F9781DFE761F00A37C80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A84F9771DFE761F00A37C80 /* Assets.xcassets */; };
 		7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */; };
 		7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */; };
+		7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */; };
@@ -196,6 +197,7 @@
 		7A84F9791DFE761F00A37C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9432FE1E08DD4300A1AE9A /* AddExcerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseView.swift; sourceTree = "<group>"; };
 		7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
+		7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineView.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
 		7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBloomView.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				7A83F94C1E1228FC00451BBA /* CountDownView.swift */,
 				7A5346821E1A03610067E982 /* HeartBeatView.swift */,
 				7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */,
+				7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */,
 				7A43241B1EDDB0BD00BE9009 /* GraphView.swift */,
 			);
 			name = "Custom Views";
@@ -703,6 +706,7 @@
 				7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 				7A7D948D1EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
+				7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */,
 				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,
 				7A5346851E1A049A0067E982 /* HeartLineLayer.swift in Sources */,

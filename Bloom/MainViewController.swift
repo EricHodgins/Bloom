@@ -21,8 +21,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        heartView = HeartView(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
-        heartView.frame.origin = CGPoint(x: view.frame.width/2 - 75/2, y: view.frame.height/2 + 60)
+        heartView = HeartView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        heartView.frame.origin = CGPoint(x: view.frame.width/2 - 25, y: view.frame.height/2 + 60)
         view.addSubview(heartView)
     }
     

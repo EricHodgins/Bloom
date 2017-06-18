@@ -11,11 +11,8 @@ import UIKit
 @IBDesignable
 class HeartBeatView: UIView {
     
-    fileprivate lazy var heartLineLayer: HeartLineLayer = {
-        let layer = HeartLineLayer()
-        return layer
-    }()
-    
+    fileprivate var heartLineView: HeartLineView!
+    fileprivate var heartView: HeartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,17 +26,24 @@ class HeartBeatView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        heartLineLayer.frame = bounds
+        //heartLineLayer.frame = bounds
     }
     
     func setup() {
-        layer.insertSublayer(heartLineLayer, above: layer)
-        layer.masksToBounds = true
+        heartLineView = HeartLineView(frame: bounds)
+        addSubview(heartLineView)
+        
+        heartView = HeartView(frame: CGRect(x: 0, y: 10, width: 15, height: 15))
+        addSubview(heartView)
+        //layer.insertSublayer(heartLineLayer, above: layer)
+        //layer.masksToBounds = true
     }
     
     func startAnimatingHeartLine() {
-        heartLineLayer.animateHeartLine()
-        heartLineLayer.animateHeartPulse()
+        heartLineView.animateLine()
+        heartView.pulse()
+        //heartLineLayer.animateHeartLine()
+        //heartLineLayer.animateHeartPulse()
     }
 
 }
