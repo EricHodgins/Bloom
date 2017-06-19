@@ -237,10 +237,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rRQ-YJ-O4e">
-                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="wpI-Yi-1dt"/>
+                                    <constraint firstAttribute="height" constant="40" id="wpI-Yi-1dt"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Workouts"/>
@@ -252,7 +252,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-gB-bs3">
-                                <rect key="frame" x="0.0" y="92" width="375" height="575"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="lOO-9a-iUo">
@@ -332,14 +332,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xey-Sy-Ddb" userLabel="HeartView" customClass="WorkoutTableCell" customModule="Bloom" customModuleProvider="target">
-                                                    <rect key="frame" x="320" y="8" width="47" height="47"/>
-                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="47" id="fLQ-e2-B1v"/>
-                                                        <constraint firstAttribute="height" constant="47" id="jwk-AG-Irl"/>
-                                                    </constraints>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66H-TL-8HL">
                                                     <rect key="frame" x="10" y="133" width="355" height="1"/>
                                                     <color key="backgroundColor" red="0.57947885990000003" green="0.68747234339999996" blue="0.99859100580000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -353,15 +345,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-an-OzC">
+                                                    <rect key="frame" x="315" y="8" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="ZFu-Wk-qcf"/>
+                                                        <constraint firstAttribute="height" constant="50" id="jh4-r9-1ad"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="topMargin" secondItem="xey-Sy-Ddb" secondAttribute="top" id="M9U-H0-SID"/>
                                                 <constraint firstItem="FSq-dM-FNW" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="P98-yc-zzp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JVk-an-OzC" secondAttribute="trailing" constant="2" id="Qlj-4h-pLb"/>
                                                 <constraint firstItem="fk9-oF-Ngc" firstAttribute="centerY" secondItem="adr-Ib-bfc" secondAttribute="centerY" id="fbe-Q7-uf3"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xey-Sy-Ddb" secondAttribute="trailing" id="fo3-fW-kP0"/>
                                                 <constraint firstAttribute="trailing" secondItem="66H-TL-8HL" secondAttribute="trailing" constant="10" id="keD-9u-xwK"/>
                                                 <constraint firstAttribute="topMargin" secondItem="7KF-0W-mHa" secondAttribute="top" id="lXx-ym-SAY"/>
+                                                <constraint firstItem="JVk-an-OzC" firstAttribute="top" secondItem="adr-Ib-bfc" secondAttribute="topMargin" id="mVO-Ub-3G3"/>
                                                 <constraint firstItem="7KF-0W-mHa" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="sqB-89-qmo"/>
                                                 <constraint firstItem="fk9-oF-Ngc" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="tFC-w8-Ahf"/>
                                                 <constraint firstItem="66H-TL-8HL" firstAttribute="leading" secondItem="adr-Ib-bfc" secondAttribute="leading" constant="10" id="tO4-h8-bXx"/>
@@ -371,6 +371,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="heartViewContainer" destination="JVk-an-OzC" id="uHi-ZA-osc"/>
                                             <outlet property="workoutDate" destination="FSq-dM-FNW" id="1nV-c7-K9z"/>
                                             <outlet property="workoutDuration" destination="fk9-oF-Ngc" id="JME-0F-ZnQ"/>
                                             <outlet property="workoutName" destination="7KF-0W-mHa" id="lOg-JX-QmX"/>
@@ -848,7 +849,7 @@
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
-                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" id="6nR-L9-1gv"/>
+                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" modalTransitionStyle="flipHorizontal" id="6nR-L9-1gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>

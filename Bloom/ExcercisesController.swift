@@ -63,6 +63,7 @@ extension ExcercisesController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         cell.textLabel?.text = excercises[indexPath.row]["name"] as? String
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         
         return cell
     }

@@ -49,6 +49,7 @@ extension WorkoutsController: UITableViewDataSource {
         
         let workout = workouts[indexPath.row]
         cell.textLabel?.text = workout.name
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         
         return cell
     }

@@ -14,10 +14,17 @@ class WorkoutTableCell: UITableViewCell {
     @IBOutlet weak var workoutDate: UILabel!
     @IBOutlet weak var workoutDuration: UILabel!
     
+    @IBOutlet weak var heartViewContainer: UIView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let size = heartViewContainer.frame.width
+        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        heartViewContainer.addSubview(heartView)
+        heartView.pulse()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

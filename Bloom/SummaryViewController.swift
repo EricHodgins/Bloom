@@ -87,6 +87,9 @@ extension SummaryViewController: UITableViewDataSource {
         } else {
             cell.textLabel?.text = workoutTypes[indexPath.row]["name"] as? String
         }
+        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
+        
         return cell
     }
 }
