@@ -11,6 +11,7 @@ import CoreData
 
 class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var managedContext: NSManagedObjectContext!
     var workoutTypes: [NSDictionary] = []
@@ -19,6 +20,9 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        segmentedControl.layer.borderWidth = 1.0
+        segmentedControl.layer.cornerRadius = 8.0
+        segmentedControl.layer.masksToBounds = true
         tableView.dataSource = self
         tableView.delegate = self
         fetchWorkoutTypes()
