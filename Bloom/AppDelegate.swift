@@ -8,15 +8,22 @@
 
 import UIKit
 import CoreData
+import WatchConnectivity
 
 protocol CountDown: class {
     func countDownComplete()
 }
 
+let NotificationLiveWorkoutStarted = "NotificationLiveWorkoutStarted"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
     
     lazy var coreDataStack = CoreDataStack(modelName: "Bloom")
 
@@ -28,11 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         mainController.managedContext = coreDataStack.managedContext
         
-        // Load test data if needed
+        // Test:  - Load test data if needed
         //importJSONTestData()
         
-        // Check what has been saved.
+        // Test:  - Check what has been saved.
         dataInCoreDataStore()
+        
+        // Add Notification Observer for when a workout starts.  This is to ensure the Apple Watch syncs  up with the phone if started later.
+        setupNotifications()
     
         return true
     }
@@ -135,6 +145,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+// MARK: - Watch Connectivity
+extension AppDelegate: WCSessionDelegate {
+    
+    func setupNotifications() {
+        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
+            if let dateStarted = notification.userInfo?["workoutStartDate"] as? NSDate {
+                self.sendStateToWatch(date: dateStarted)
+            }
+        }
+    }
+    
+    func sendStateToWatch(date: NSDate) {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isWatchAppInstalled {
+                do {
+                    let dictionary = ["workoutStartDate" : date]
+                    try session.updateApplicationContext(dictionary)
+                } catch {
+                    print("ERROR (sendStateToWatch): \(error)")
+                }
+            }
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WCSession did become inactive.")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("WCSession Did Deactivate.")
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("WCSession error: \(error.localizedDescription)")
+            return
+        }
+        
+        print("WCSession activation complete. activationState: \(activationState)")
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

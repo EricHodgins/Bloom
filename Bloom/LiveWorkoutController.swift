@@ -40,9 +40,11 @@ class LiveWorkoutController: UIViewController {
         startTime = Date.timeIntervalSinceReferenceDate
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
         
-        // Need to restart the heart beat animation when app leaves foreground and comes back.
-        NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        
+        setupNotifications()
+        setupViewLayout()
+    }
+    
+    func setupViewLayout() {
         // Setup Pages for scroll view
         let page1 = createRecordLiveExcerciseController()
         let page2 = createLiveExcerciseListController()
@@ -58,7 +60,6 @@ class LiveWorkoutController: UIViewController {
         
         let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)][page2(==view)][page3(==view)][page4(==view)]|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views)
         NSLayoutConstraint.activate(horizontalConstraints)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +76,14 @@ class LiveWorkoutController: UIViewController {
         }
     }
     
-    
+    func setupNotifications() {
+        // Need to restart the heart beat animation when app leaves foreground and comes back.
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        // Notify that a workout has started.  Needed to Sync with Apple Watch if Apple watch is not launched and then launched later while iPhone is running the workout.
+        let userInfo = ["workoutStartDate" : workout.startTime!]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
+    }
     
 }
 
