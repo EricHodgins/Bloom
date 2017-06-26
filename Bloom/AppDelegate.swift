@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add Notification Observer for when a workout starts.  This is to ensure the Apple Watch syncs  up with the phone if started later.
         setupNotifications()
+        
+        // Activate Watch Connectivity
+        setupWatchConnectivity()
     
         return true
     }
@@ -150,6 +153,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - Watch Connectivity
 extension AppDelegate: WCSessionDelegate {
     
+    func setupWatchConnectivity() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
+        }
+    }
+    
     func setupNotifications() {
         notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
             if let dateStarted = notification.userInfo?["workoutStartDate"] as? NSDate {
@@ -164,7 +175,7 @@ extension AppDelegate: WCSessionDelegate {
             if session.isWatchAppInstalled {
                 do {
                     let dictionary = ["workoutStartDate" : date]
-                    try session.updateApplicationContext(dictionary)
+                    try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
                 } catch {
                     print("ERROR (sendStateToWatch): \(error)")
                 }

@@ -7,11 +7,13 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        setupWatchConnectivity()
     }
 
     func applicationDidBecomeActive() {
@@ -48,3 +50,51 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
 }
+
+
+extension ExtensionDelegate: WCSessionDelegate {
+    
+    func setupWatchConnectivity() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("activation did complete: \(String(describing: error)), activation state = \(activationState.rawValue)")
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        if let timeStartedOnPhone = applicationContext["workoutStartDate"] as? NSDate {
+            
+            DispatchQueue.main.async(execute: {
+                let contexts = [["workoutStartDate" : timeStartedOnPhone]]
+                WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout"], contexts: contexts)
+            })
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
