@@ -41,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Test:  - Check what has been saved.
         dataInCoreDataStore()
         
-        // Add Notification Observer for when a workout starts.  This is to ensure the Apple Watch syncs  up with the phone if started later.
-        setupNotifications()
         
         // Activate Watch Connectivity
         setupWatchConnectivity()
@@ -151,58 +149,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 // MARK: - Watch Connectivity
-extension AppDelegate: WCSessionDelegate {
+extension AppDelegate {
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
             let session = WCSession.default()
-            session.delegate = self
+            session.delegate = PhoneConnectivityManager()
             session.activate()
         }
     }
-    
-    func setupNotifications() {
-        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
-            if let dateStarted = notification.userInfo?["workoutStartDate"] as? NSDate {
-                self.sendStateToWatch(date: dateStarted)
-            }
-        }
-    }
-    
-    func sendStateToWatch(date: NSDate) {
-        if WCSession.isSupported() {
-            let session = WCSession.default()
-            if session.isWatchAppInstalled {
-                do {
-                    let dictionary = ["workoutStartDate" : date]
-                    try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
-                } catch {
-                    print("ERROR (sendStateToWatch): \(error)")
-                }
-            }
-        }
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        print("WCSession did become inactive.")
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        print("WCSession Did Deactivate.")
-    }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if let error = error {
-            print("WCSession error: \(error.localizedDescription)")
-            return
-        }
-        
-        print("WCSession activation complete. activationState: \(activationState)")
-    }
-    
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        
-    }
+
 }
 
 

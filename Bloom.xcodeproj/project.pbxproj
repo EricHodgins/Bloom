@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0134831F0693E300B13476 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */; };
+		7A0134861F0694D500B13476 /* PhoneConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -63,6 +65,14 @@
 		7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */; };
 		7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */; };
 		7A9CC99F1F003EF300ACE7ED /* WatchLiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */; };
+		7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */; };
+		7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */; };
+		7A9CC9A61F020E7400ACE7ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
+		7A9CC9A71F02148600ACE7ED /* WorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94831EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift */; };
+		7A9CC9A81F02148900ACE7ED /* WorkoutTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94821EECE9B200609B88 /* WorkoutTemplate+CoreDataClass.swift */; };
+		7A9CC9A91F0214C300ACE7ED /* ExcerciseTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94841EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift */; };
+		7A9CC9AA1F0214C600ACE7ED /* ExcerciseTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94851EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift */; };
+		7A9CC9AB1F02152A00ACE7ED /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */; };
@@ -132,6 +142,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneConnectivityManager.swift; sourceTree = "<group>"; };
 		7A1A50561E14D17300B5D84A /* Drawings+CircularGradient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+CircularGradient.playground"; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
@@ -198,6 +210,8 @@
 		7A9CC8F91EF6F4E600ACE7ED /* HeartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
 		7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineView.swift; sourceTree = "<group>"; };
 		7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchLiveWorkoutController.swift; sourceTree = "<group>"; };
+		7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutRowController.swift; sourceTree = "<group>"; };
+		7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
 		7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBloomView.swift; sourceTree = "<group>"; };
@@ -244,6 +258,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0134811F0693A000B13476 /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */,
+			);
+			name = WatchConnectivity;
+			sourceTree = "<group>";
+		};
+		7A0134841F0694C500B13476 /* PhoneConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */,
+			);
+			name = PhoneConnectivity;
+			sourceTree = "<group>";
+		};
 		7A1E13E91E06182600330EFB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +399,7 @@
 			children = (
 				7A796D461E2B05500006DE61 /* Metal */,
 				7ACCF2E11EE99A00002B0865 /* spark.png */,
+				7A0134841F0694C500B13476 /* PhoneConnectivity */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
@@ -414,7 +445,10 @@
 		7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7A0134811F0693A000B13476 /* WatchConnectivity */,
 				7A84F9711DFE761E00A37C80 /* InterfaceController.swift */,
+				7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */,
+				7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */,
 				7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */,
 				7A84F9731DFE761E00A37C80 /* ExtensionDelegate.swift */,
 				7A84F9751DFE761E00A37C80 /* NotificationController.swift */,
@@ -693,6 +727,7 @@
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,
 				7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */,
 				7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */,
+				7A0134861F0694D500B13476 /* PhoneConnectivityManager.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,
 				7A7D948B1EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
@@ -725,8 +760,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9CC9A61F020E7400ACE7ED /* CoreDataStack.swift in Sources */,
+				7A9CC9A81F02148900ACE7ED /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */,
+				7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */,
+				7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */,
 				7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */,
+				7A0134831F0693E300B13476 /* WatchConnectivityManager.swift in Sources */,
+				7A9CC9AA1F0214C600ACE7ED /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
+				7A9CC9AB1F02152A00ACE7ED /* Bloom.xcdatamodeld in Sources */,
+				7A9CC9A71F02148600ACE7ED /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
+				7A9CC9A91F0214C300ACE7ED /* ExcerciseTemplate+CoreDataClass.swift in Sources */,
 				7A9CC99F1F003EF300ACE7ED /* WatchLiveWorkoutController.swift in Sources */,
 				7A84F9721DFE761E00A37C80 /* InterfaceController.swift in Sources */,
 			);
