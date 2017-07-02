@@ -47,7 +47,7 @@
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="workoutLabel" destination="LdZ-CI-XrW" id="3N7-O8-KqX"/>
+                                        <outlet property="titleLabel" destination="Odw-Sv-P2a" id="AaD-AN-iMg"/>
                                     </connections>
                                 </tableRow>
                             </items>

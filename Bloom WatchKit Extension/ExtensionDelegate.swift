@@ -11,15 +11,18 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
+    var watchConnectivityManager: WatchConnectivityManager!
+    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        watchConnectivityManager = WatchConnectivityManager()
         setupWatchConnectivity()
     }
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
             let session = WCSession.default()
-            session.delegate = WatchConnectivityManager()
+            session.delegate = watchConnectivityManager
             session.activate()
         }
     }
@@ -62,7 +65,27 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
 
 
-
+extension ExtensionDelegate: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("WCSession error: \(error.localizedDescription)")
+            return
+        }
+        
+        print("WCSession activation complete. activationState: \(activationState.rawValue)")
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        if let timeStartedOnPhone = applicationContext["workoutStartDate"] as? NSDate {
+            
+            DispatchQueue.main.async(execute: {
+                let contexts = [["workoutStartDate" : timeStartedOnPhone]]
+                WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout"], contexts: contexts)
+            })
+        }
+    }
+}
 
 
 

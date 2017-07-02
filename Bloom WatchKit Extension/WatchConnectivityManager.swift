@@ -9,10 +9,43 @@
 import WatchKit
 import WatchConnectivity
 
-class WatchConnectivityManager: NSObject, WCSessionDelegate {
+let NotificationRequestWorkouts = "NotificationRequestWorkouts"
+
+class WatchConnectivityManager: NSObject {
+    
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
+    
+    override init() {
+        super.init()
+        setupNotifications()
+    }
+    
+    func setupNotifications() {
+        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.requestWorkouts), name: NSNotification.Name(rawValue: NotificationRequestWorkouts), object: nil)
+    }
+    
+    func requestWorkouts() {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: nil)
+            }
+        }
+    }
+}
+
+extension WatchConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("activation did complete: \(String(describing: error)), activation state = \(activationState.rawValue)")
+        if let error = error {
+            print("WCSession error: \(error.localizedDescription)")
+            return
+        }
+        
+        print("WCSession activation complete. activationState: \(activationState.rawValue)")
+        requestWorkouts()
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
@@ -24,4 +57,37 @@ class WatchConnectivityManager: NSObject, WCSessionDelegate {
             })
         }
     }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        if let workouts = message["Workouts"] as? [String] {
+            print(workouts)
+            for workoutName in workouts {
+                WorkoutManager.shared.workouts.append(workoutName)
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

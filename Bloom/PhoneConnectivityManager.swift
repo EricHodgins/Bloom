@@ -6,17 +6,28 @@
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
 import WatchConnectivity
 
+let NotificationLiveWorkoutStarted = "NotificationLiveWorkoutStarted"
+
 class PhoneConnectivityManager: NSObject {
+    
+    lazy var bloomFilter: BloomFilter = {
+        return BloomFilter()
+    }()
     
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
     
-    override init() {
+    var managedContext: NSManagedObjectContext!
+    
+    public init(managedContext: NSManagedObjectContext) {
         super.init()
+        self.managedContext = managedContext
+        sendWorkoutsToWatch()
         setupNotifications()
     }
     
@@ -41,6 +52,19 @@ class PhoneConnectivityManager: NSObject {
             }
         }
     }
+    
+    func sendWorkoutsToWatch() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isWatchAppInstalled {
+                let workouts = bloomFilter.allWorkouts(inManagedContext: managedContext)
+                let workoutNames = workouts.map({ (workoutTemplate) -> String in
+                    return workoutTemplate.name!
+                })
+                session.sendMessage(["Workouts": workoutNames], replyHandler: nil, errorHandler: nil)
+            }
+        }
+    }
 
 }
 
@@ -60,10 +84,37 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             return
         }
         
-        print("WCSession activation complete. activationState: \(activationState)")
+        print("WCSession activation complete. activationState: \(activationState.rawValue)")
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         
     }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        if let _ = message["NeedWorkouts"] {
+            sendWorkoutsToWatch()
+        }
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

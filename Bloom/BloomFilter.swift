@@ -47,6 +47,29 @@ class BloomFilter {
         
         return maxRepExpressionDesc
     }()
+    
+    func allWorkouts(inManagedContext managedContext: NSManagedObjectContext) -> [WorkoutTemplate] {
+        let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
+        var workouts: [WorkoutTemplate] = []
+        do {
+            workouts = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Save error: \(error), description: \(error.userInfo)")
+        }
+        return workouts
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

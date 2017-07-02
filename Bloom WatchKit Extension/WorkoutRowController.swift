@@ -12,5 +12,6 @@ import Foundation
 
 class WorkoutRowController: NSObject {
 
-    @IBOutlet var workoutLabel: WKInterfaceGroup!
+    @IBOutlet var titleLabel: WKInterfaceLabel!
+    
 }

@@ -8,20 +8,20 @@
 
 import WatchKit
 import Foundation
-import CoreData
 
 
 class WorkoutInterfaceController: WKInterfaceController {
     @IBOutlet var table: WKInterfaceTable!
-    
-    lazy var coreDataStack: CoreDataStack = {
-        return CoreDataStack(modelName: "Bloom")
-    }()
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        fetchWorkouts()
+        table.setNumberOfRows(WorkoutManager.shared.workouts.count, withRowType: "WorkoutRowType")
+        
+        for (index, name) in WorkoutManager.shared.workouts.enumerated() {
+            let controller = table.rowController(at: index) as! WorkoutRowController
+            controller.titleLabel.setText(name)
+        }
     }
 
     override func willActivate() {
@@ -34,15 +34,4 @@ class WorkoutInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
-    func fetchWorkouts() {
-        let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
-        
-        do {
-            let workouts = try coreDataStack.managedContext.fetch(fetchRequest)
-            print(workouts)
-        } catch let error as NSError {
-            print("Save error: \(error), description: \(error.userInfo)")
-        }
-    }
-
 }

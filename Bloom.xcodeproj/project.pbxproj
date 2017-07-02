@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A0134831F0693E300B13476 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */; };
 		7A0134861F0694D500B13476 /* PhoneConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */; };
+		7A01348A1F08745B00B13476 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134891F08745B00B13476 /* WorkoutManager.swift */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -144,6 +145,7 @@
 /* Begin PBXFileReference section */
 		7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneConnectivityManager.swift; sourceTree = "<group>"; };
+		7A0134891F08745B00B13476 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		7A1A50561E14D17300B5D84A /* Drawings+CircularGradient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+CircularGradient.playground"; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
@@ -258,20 +260,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A0134811F0693A000B13476 /* WatchConnectivity */ = {
-			isa = PBXGroup;
-			children = (
-				7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */,
-			);
-			name = WatchConnectivity;
-			sourceTree = "<group>";
-		};
 		7A0134841F0694C500B13476 /* PhoneConnectivity */ = {
 			isa = PBXGroup;
 			children = (
 				7A0134851F0694D500B13476 /* PhoneConnectivityManager.swift */,
 			);
 			name = PhoneConnectivity;
+			sourceTree = "<group>";
+		};
+		7A0134881F07550500B13476 /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				7A0134821F0693E300B13476 /* WatchConnectivityManager.swift */,
+			);
+			name = WatchConnectivity;
 			sourceTree = "<group>";
 		};
 		7A1E13E91E06182600330EFB /* Buttons */ = {
@@ -445,8 +447,9 @@
 		7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7A0134811F0693A000B13476 /* WatchConnectivity */,
+				7A0134881F07550500B13476 /* WatchConnectivity */,
 				7A84F9711DFE761E00A37C80 /* InterfaceController.swift */,
+				7A0134891F08745B00B13476 /* WorkoutManager.swift */,
 				7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */,
 				7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */,
 				7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */,
@@ -761,6 +764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9CC9A61F020E7400ACE7ED /* CoreDataStack.swift in Sources */,
+				7A01348A1F08745B00B13476 /* WorkoutManager.swift in Sources */,
 				7A9CC9A81F02148900ACE7ED /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */,
 				7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */,
