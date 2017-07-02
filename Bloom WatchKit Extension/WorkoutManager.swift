@@ -13,4 +13,18 @@ class WorkoutManager {
     private init() {}
     
     var workouts: [String] = []
+    var currentExcercises: [String] = []
+    private var currentExcercise: String?
+    private var excerciseIndex: Int = 0
+    var currentWorkout: String? {
+        didSet {
+            guard let workoutName = self.currentWorkout else { return }
+            WatchConnectivityManager.requestExcercises(forWorkout: workoutName)
+        }
+    }
+    
+    func nextExcercise() -> String {
+        excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
+        return currentExcercises[excerciseIndex]
+    }
 }

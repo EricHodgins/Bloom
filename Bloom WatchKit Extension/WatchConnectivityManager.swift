@@ -34,6 +34,20 @@ class WatchConnectivityManager: NSObject {
             }
         }
     }
+    
+    class func requestExcercises(forWorkout workout: String) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                session.sendMessage(["NeedExcercises": workout], replyHandler: { (reply) in
+                    print(reply)
+                    if let excercises = reply["Excercises"] as? [String] {
+                        WorkoutManager.shared.currentExcercises = excercises
+                    }
+                }, errorHandler: nil)
+            }
+        }
+    }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {

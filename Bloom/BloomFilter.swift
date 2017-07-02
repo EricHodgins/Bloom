@@ -58,6 +58,27 @@ class BloomFilter {
         }
         return workouts
     }
+    
+    class func excercises(forWorkout workoutName: String, inManagedContext managedContext: NSManagedObjectContext) -> [String] {
+        let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
+        fetchRequest.predicate = predicate
+        var workouts: [WorkoutTemplate] = []
+        do {
+            workouts = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Workout fetch error: \(error), \(error.localizedDescription)")
+        }
+        
+        let workoutTemplate = workouts.first
+        var excercises: [String] = []
+        for excercise in workoutTemplate!.excercises! {
+            let excercise = excercise as! ExcerciseTemplate
+            excercises.append(excercise.name!)
+        }
+        
+        return excercises
+    }
 
 }
 

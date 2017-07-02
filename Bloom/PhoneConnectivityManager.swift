@@ -65,6 +65,11 @@ class PhoneConnectivityManager: NSObject {
             }
         }
     }
+    
+    func sendExcercisesToWatch(name: String, replyHandler: (([String : Any]) -> Void)) {
+        let excercises = BloomFilter.excercises(forWorkout: name, inManagedContext: managedContext)
+        replyHandler(["Excercises": excercises])
+    }
 
 }
 
@@ -98,6 +103,12 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let _ = message["NeedWorkouts"] {
             sendWorkoutsToWatch()
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        if let workoutName = message["NeedExcercises"] as? String {
+            sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
         }
     }
     

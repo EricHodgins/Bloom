@@ -13,12 +13,14 @@ import Foundation
 class WatchLiveWorkoutController: WKInterfaceController {
 
     @IBOutlet var timer: WKInterfaceTimer!
+    @IBOutlet var excerciseLabel: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         guard let contextDict = context as? [String : NSDate],
             let timeStarted = contextDict["workoutStartDate"] else {
+                excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
                 timer.start()
             return
         }
@@ -37,5 +39,10 @@ class WatchLiveWorkoutController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    @IBAction func nextExcerciseButtonPressed() {
+        excerciseLabel.setText(WorkoutManager.shared.nextExcercise())
+    }
+    
 
 }

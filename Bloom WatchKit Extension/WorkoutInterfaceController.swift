@@ -34,4 +34,7 @@ class WorkoutInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        return WorkoutManager.shared.workouts[rowIndex]
+    }
 }
