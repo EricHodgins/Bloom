@@ -33,18 +33,22 @@ class PhoneConnectivityManager: NSObject {
     
     func setupNotifications() {
         notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
-            if let dateStarted = notification.userInfo?["workoutStartDate"] as? NSDate {
-                self.sendStateToWatch(date: dateStarted)
+            if let dateStarted = notification.userInfo?["StartDate"] as? NSDate,
+                let name = notification.userInfo?["Name"] as? String,
+                let excercises = notification.userInfo?["Excercises"] as? [String] {
+                self.sendStateToWatch(date: dateStarted, name: name, excercises: excercises)
             }
         }
     }
     
-    func sendStateToWatch(date: NSDate) {
+    func sendStateToWatch(date: NSDate, name: String, excercises: [String]) {
         if WCSession.isSupported() {
             let session = WCSession.default()
             if session.isWatchAppInstalled {
                 do {
-                    let dictionary = ["workoutStartDate" : date]
+                    let dictionary: [String: Any] = ["StartDate" : date,
+                                      "Name": name,
+                                      "Excercises": excercises]
                     try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
                 } catch {
                     print("ERROR (sendStateToWatch): \(error)")

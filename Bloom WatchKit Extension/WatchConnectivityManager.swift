@@ -63,11 +63,16 @@ extension WatchConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let timeStartedOnPhone = applicationContext["workoutStartDate"] as? NSDate {
+        if let timeStartedOnPhone = applicationContext["StartDate"] as? NSDate,
+            let workoutName = applicationContext["Name"] as? String,
+            let excercises = applicationContext["Excercises"] as? [String] {
+            
+            WorkoutManager.shared.currentWorkout = workoutName
+            WorkoutManager.shared.currentExcercises = excercises
             
             DispatchQueue.main.async(execute: {
                 let contexts = [["workoutStartDate" : timeStartedOnPhone]]
-                WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout"], contexts: contexts)
+                WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
             })
         }
     }

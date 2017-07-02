@@ -81,7 +81,13 @@ class LiveWorkoutController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         // Notify that a workout has started.  Needed to Sync with Apple Watch if Apple watch is not launched and then launched later while iPhone is running the workout.
-        let userInfo = ["workoutStartDate" : workout.startTime!]
+        let watchExcercises = excercises.map { (excercise) -> String in
+            return excercise.name!
+        }
+        let userInfo: [String: Any] = ["StartDate" : workout.startTime!,
+                                       "Name": workout.name!,
+                                       "Excercises": watchExcercises
+                                      ]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
     }
     
