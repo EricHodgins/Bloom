@@ -15,19 +15,33 @@ class WatchLiveWorkoutController: WKInterfaceController {
     @IBOutlet var timer: WKInterfaceTimer!
     @IBOutlet var excerciseLabel: WKInterfaceLabel!
     
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        WorkoutManager.shared.workoutStartDate = NSDate()
         guard let contextDict = context as? [String : NSDate],
             let timeStarted = contextDict["workoutStartDate"] else {
                 excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
                 timer.start()
+                setupNotifications()
             return
         }
         
         let diff = Date.timeIntervalSinceReferenceDate - timeStarted.timeIntervalSinceReferenceDate
         timer.setDate(Date(timeIntervalSinceNow: -diff))
         timer.start()
+    }
+    
+    func setupNotifications() {
+        let userInfo: [String : Any] = [
+                                        "StartDate": WorkoutManager.shared.workoutStartDate!,
+                                        "Name": WorkoutManager.shared.currentWorkout!
+                                       ]
+        notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil, userInfo: userInfo)
     }
 
     override func willActivate() {

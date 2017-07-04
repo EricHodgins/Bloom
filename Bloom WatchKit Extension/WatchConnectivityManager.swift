@@ -9,7 +9,7 @@
 import WatchKit
 import WatchConnectivity
 
-let NotificationRequestWorkouts = "NotificationRequestWorkouts"
+let NotificationWorkoutStartedOnWatch = "NotificationWorkoutStartedOnWatch"
 
 class WatchConnectivityManager: NSObject {
     
@@ -23,14 +23,18 @@ class WatchConnectivityManager: NSObject {
     }
     
     func setupNotifications() {
-        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.requestWorkouts), name: NSNotification.Name(rawValue: NotificationRequestWorkouts), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.sendStateToPhone), name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil)
     }
     
     func requestWorkouts() {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
-                session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: nil)
+                session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: { (error) in
+                    print("Request Workouts Error: \(error)")
+                    self.requestWorkouts()
+                })
+                //session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: nil)
             }
         }
     }
@@ -69,11 +73,26 @@ extension WatchConnectivityManager: WCSessionDelegate {
             
             WorkoutManager.shared.currentWorkout = workoutName
             WorkoutManager.shared.currentExcercises = excercises
+            WorkoutManager.shared.workoutStartDate = timeStartedOnPhone
             
             DispatchQueue.main.async(execute: {
                 let contexts = [["workoutStartDate" : timeStartedOnPhone]]
                 WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
             })
+        }
+    }
+    
+    func sendStateToPhone() {
+        if WCSession.isSupported() {
+        let session = WCSession.default()
+            do {
+                let dictionary: [String: Any] = ["StartDate" : WorkoutManager.shared.workoutStartDate!,
+                                                 "Name": WorkoutManager.shared.currentWorkout!
+                                                 ]
+                try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
+            } catch {
+                print("ERROR (sendStateToWatch): \(error)")
+            }
         }
     }
     

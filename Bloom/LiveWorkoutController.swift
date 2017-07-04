@@ -16,6 +16,7 @@ class LiveWorkoutController: UIViewController {
     @IBOutlet weak var currentExcerciseLabel: UILabel!
 
     var startTime: TimeInterval!
+    var currentWatchInterval: TimeInterval!
     var managedContext: NSManagedObjectContext!
     var workout: Workout!
     
@@ -33,7 +34,14 @@ class LiveWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        workout.startTime = NSDate()
+        
+        if WorkoutStateManager.shared.startTime == nil {
+            workout.startTime = NSDate()
+            currentWatchInterval = 0.0
+        } else {
+            currentWatchInterval = Date.timeIntervalSinceReferenceDate - WorkoutStateManager.shared.startTime!.timeIntervalSinceReferenceDate
+        }
+  
         scrollView.isScrollEnabled = false
         
         // Start Timer
@@ -81,21 +89,24 @@ class LiveWorkoutController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         // Notify that a workout has started.  Needed to Sync with Apple Watch if Apple watch is not launched and then launched later while iPhone is running the workout.
-        let watchExcercises = excercises.map { (excercise) -> String in
-            return excercise.name!
-        }
-        let userInfo: [String: Any] = ["StartDate" : workout.startTime!,
+        if WorkoutStateManager.shared.startedOnWatch == false {
+            let watchExcercises = excercises.map { (excercise) -> String in
+                return excercise.name!
+            }
+            let userInfo: [String: Any] = ["StartDate" : workout.startTime!,
                                        "Name": workout.name!,
                                        "Excercises": watchExcercises
                                       ]
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
+        
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
+        }
     }
     
 }
 
 extension LiveWorkoutController {
     func startTimer() {
-        let finish = Date.timeIntervalSinceReferenceDate
+        let finish = Date.timeIntervalSinceReferenceDate + currentWatchInterval
         var diff = finish - startTime
         
         let hours = Int16(diff / 3600)

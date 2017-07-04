@@ -14,7 +14,7 @@
         <!--Bloom-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -860,7 +860,7 @@
         <!--Live Workout Controller-->
         <scene sceneID="6gQ-Ut-eDG">
             <objects>
-                <viewController id="EYv-bC-qS5" customClass="LiveWorkoutController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Live" id="EYv-bC-qS5" customClass="LiveWorkoutController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5DU-Pt-H9F"/>
                         <viewControllerLayoutGuide type="bottom" id="TB8-XU-409"/>

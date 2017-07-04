@@ -27,7 +27,6 @@ class PhoneConnectivityManager: NSObject {
     public init(managedContext: NSManagedObjectContext) {
         super.init()
         self.managedContext = managedContext
-        sendWorkoutsToWatch()
         setupNotifications()
     }
     
@@ -58,20 +57,31 @@ class PhoneConnectivityManager: NSObject {
     }
     
     func sendWorkoutsToWatch() {
-        if WCSession.isSupported() {
-            let session = WCSession.default()
-            if session.isWatchAppInstalled {
-                let workouts = bloomFilter.allWorkouts(inManagedContext: managedContext)
-                let workoutNames = workouts.map({ (workoutTemplate) -> String in
-                    return workoutTemplate.name!
-                })
-                session.sendMessage(["Workouts": workoutNames], replyHandler: nil, errorHandler: nil)
+        if !WCSession.default().isReachable {
+            let delay = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: delay, execute: { 
+                self.sendWorkoutsToWatch()
+            })
+        } else {
+            if WCSession.isSupported() {
+                let session = WCSession.default()
+                if session.isWatchAppInstalled {
+                    let workouts = bloomFilter.allWorkouts(inManagedContext: managedContext)
+                    let workoutNames = workouts.map({ (workoutTemplate) -> String in
+                        return workoutTemplate.name!
+                    })
+                    session.sendMessage(["Workouts": workoutNames], replyHandler: nil, errorHandler: { (error) in
+                        print("Error sending workouts to watch: \(error)")
+                        self.sendWorkoutsToWatch()
+                    })
+                }
             }
         }
     }
     
     func sendExcercisesToWatch(name: String, replyHandler: (([String : Any]) -> Void)) {
         let excercises = BloomFilter.excercises(forWorkout: name, inManagedContext: managedContext)
+        WorkoutStateManager.shared.excercises = excercises
         replyHandler(["Excercises": excercises])
     }
 
@@ -97,7 +107,31 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        
+        if let dateStarted = applicationContext["StartDate"] as? NSDate {
+            
+            WorkoutStateManager.shared.startedOnWatch = true
+            WorkoutStateManager.shared.startTime = dateStarted
+            WorkoutStateManager.shared.managedContext = managedContext
+            WorkoutStateManager.shared.createNewWorkout()
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let window = appDelegate.window
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
+            liveWorkoutController.managedContext = WorkoutStateManager.shared.managedContext
+            liveWorkoutController.workout = WorkoutStateManager.shared.workout
+            
+            
+            let nav = storyboard.instantiateInitialViewController() as! UINavigationController
+            let root = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+            root.managedContext = WorkoutStateManager.shared.managedContext
+            nav.viewControllers = [root]
+            window?.rootViewController = nav
+            
+            DispatchQueue.main.async {
+                window?.rootViewController?.present(liveWorkoutController, animated: true, completion: nil)
+            }
+        }
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
@@ -112,7 +146,12 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         if let workoutName = message["NeedExcercises"] as? String {
+            WorkoutStateManager.shared.workoutName = workoutName
             sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
+        }
+        
+        if let _ = message["WorkoutStartedOnWatch"] as? Bool {
+            
         }
     }
     

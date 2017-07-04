@@ -16,6 +16,7 @@ class WorkoutManager {
     var currentExcercises: [String] = []
     private var currentExcercise: String?
     private var excerciseIndex: Int = 0
+    var workoutStartDate: NSDate?
     var currentWorkout: String? {
         didSet {
             guard let workoutName = self.currentWorkout else { return }

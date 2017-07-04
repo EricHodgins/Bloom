@@ -70,14 +70,18 @@ class BloomFilter {
             print("Workout fetch error: \(error), \(error.localizedDescription)")
         }
         
-        let workoutTemplate = workouts.first
-        var excercises: [String] = []
-        for excercise in workoutTemplate!.excercises! {
-            let excercise = excercise as! ExcerciseTemplate
-            excercises.append(excercise.name!)
+        let workoutTemplate = workouts.first!
+        let excercises: [ExcerciseTemplate] = workoutTemplate.excercises!.sorted { (e1, e2) -> Bool in
+                return (e1 as! ExcerciseTemplate).orderNumber < (e2 as! ExcerciseTemplate).orderNumber
+        } as! [ExcerciseTemplate]
+        
+        
+        var ordererdExcercises: [String] = []
+        for excercise in excercises {
+            ordererdExcercises.append(excercise.name!)
         }
         
-        return excercises
+        return ordererdExcercises
     }
 
 }

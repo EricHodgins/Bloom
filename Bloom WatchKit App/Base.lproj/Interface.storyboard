@@ -41,9 +41,9 @@
                         <table alignment="left" id="v1G-cX-iwT">
                             <items>
                                 <tableRow identifier="WorkoutRowType" id="zfv-sI-mOM" customClass="WorkoutRowController" customModule="Bloom_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.59999999999999998" alignment="left" id="LdZ-CI-XrW">
+                                    <group key="rootItem" width="1" height="0.40000000000000002" heightAdjustment="29" alignment="left" id="LdZ-CI-XrW">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="Chest" id="Odw-Sv-P2a">
+                                            <label alignment="left" verticalAlignment="center" text="Arms &amp; Back" numberOfLines="0" id="Odw-Sv-P2a">
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="font" type="system" pointSize="28"/>
                                             </label>

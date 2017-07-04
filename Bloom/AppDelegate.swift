@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //importJSONTestData()
         
         // Test:  - Check what has been saved.
-        dataInCoreDataStore()
+        //dataInCoreDataStore()
         
         
         // Activate Watch Connectivity
