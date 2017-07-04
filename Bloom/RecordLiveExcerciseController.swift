@@ -44,31 +44,8 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func fetchMaxValues() -> Double {
-        
-        fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
-        fetchRequest.resultType = .dictionaryResultType
-        
         bloomFilter = BloomFilter()
-        let excerciseName = currentExcercise.name!
-        let workoutNamePredicate = bloomFilter.workoutForNamePredicate(workoutName)
-        let excercisenamePredicate = bloomFilter.excerciseNamePredicate(excerciseName)
-        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate])
-        
-        let repsExpressDescription = bloomFilter.maxRepsExpressionDescription
-        fetchRequest.propertiesToFetch = [repsExpressDescription]
-        
-        var maxValue: Double?
-        
-        do {
-            let results = try managedContext.fetch(fetchRequest)
-            let resultDict = results.first!
-            maxValue = resultDict["maxReps"] as? Double
-            print("Max Reps: \(maxValue ?? 0)")
-        } catch let error as NSError {
-            print("NSDescription Error: \(error.userInfo)")
-        }
-        
-        return maxValue ?? 0
+        return bloomFilter.fetchMaxValues(forExcercise: currentExcercise.name!, inWorkout: workoutName, withManagedContext: managedContext)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {

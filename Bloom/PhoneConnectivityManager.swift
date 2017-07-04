@@ -11,6 +11,7 @@ import CoreData
 import WatchConnectivity
 
 let NotificationLiveWorkoutStarted = "NotificationLiveWorkoutStarted"
+let NofiticationNewExcerciseBegan = "NotificationNewExcerciseBegan"
 
 class PhoneConnectivityManager: NSObject {
     
@@ -38,6 +39,10 @@ class PhoneConnectivityManager: NSObject {
                 self.sendStateToWatch(date: dateStarted, name: name, excercises: excercises)
             }
         }
+        
+        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NofiticationNewExcerciseBegan), object: nil, queue: nil) { (notification) in
+            // send excercise values to watch
+        }
     }
     
     func sendStateToWatch(date: NSDate, name: String, excercises: [String]) {
@@ -54,6 +59,10 @@ class PhoneConnectivityManager: NSObject {
                 }
             }
         }
+    }
+    
+    func sendExcerciseStateToWatch() {
+        
     }
     
     func sendWorkoutsToWatch() {
@@ -83,6 +92,10 @@ class PhoneConnectivityManager: NSObject {
         let excercises = BloomFilter.excercises(forWorkout: name, inManagedContext: managedContext)
         WorkoutStateManager.shared.excercises = excercises
         replyHandler(["Excercises": excercises])
+    }
+    
+    func sendMaxReps(forExcercise: String, replyHandler: (([String : Any]) -> Void)) {
+        
     }
 
 }
@@ -151,6 +164,10 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
         
         if let _ = message["WorkoutStartedOnWatch"] as? Bool {
+            
+        }
+        
+        if let maxRepsRequest = message["MaxReps"] as? Bool {
             
         }
     }

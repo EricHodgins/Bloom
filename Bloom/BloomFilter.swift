@@ -59,6 +59,33 @@ class BloomFilter {
         return workouts
     }
     
+    func fetchMaxValues(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
+        let fetchRequest: NSFetchRequest<NSDictionary>
+        fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
+        fetchRequest.resultType = .dictionaryResultType
+        
+        let workoutNamePredicate = workoutForNamePredicate(workout)
+        let excercisenamePredicate = excerciseNamePredicate(excercise)
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate])
+        
+        let repsExpressDescription = maxRepsExpressionDescription
+        fetchRequest.propertiesToFetch = [repsExpressDescription]
+        
+        var maxValue: Double?
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            let resultDict = results.first!
+            maxValue = resultDict["maxReps"] as? Double
+            print("Max Reps: \(maxValue ?? 0)")
+        } catch let error as NSError {
+            print("NSDescription Error: \(error.userInfo)")
+        }
+        
+        return maxValue ?? 0
+    }
+    
+    
     class func excercises(forWorkout workoutName: String, inManagedContext managedContext: NSManagedObjectContext) -> [String] {
         let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         let predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)

@@ -21,6 +21,9 @@ class WorkoutStateManager {
     var workout: Workout?
     var workoutName: String?
     var excercises: [String]?
+    var maxReps: Double?
+    var maxWeight: Double?
+    var maxDistance: Double?
     private var excerciseIndex: Int = 0
     
     func createNewWorkout() {
