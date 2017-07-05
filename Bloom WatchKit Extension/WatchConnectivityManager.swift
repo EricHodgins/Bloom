@@ -34,21 +34,37 @@ class WatchConnectivityManager: NSObject {
                     print("Request Workouts Error: \(error)")
                     self.requestWorkouts()
                 })
-                //session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: nil)
             }
         }
     }
     
-    class func requestExcercises(forWorkout workout: String) {
+    class func requestExcercises(forWorkout workout: String, completion: @escaping (([String]) -> Void)) {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
                 session.sendMessage(["NeedExcercises": workout], replyHandler: { (reply) in
                     print(reply)
                     if let excercises = reply["Excercises"] as? [String] {
-                        WorkoutManager.shared.currentExcercises = excercises
+                        completion(excercises)
                     }
                 }, errorHandler: nil)
+            }
+        }
+    }
+    
+    class func requestMaxReps(forExcercise excercise: String, inWorkout workout: String, completion: @escaping ((Double) -> Void)) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                session.sendMessage(["MaxReps": true, "Excercise": excercise, "Workout": workout], replyHandler: { (maxRepsDict) in
+                    print("Received max reps dict")
+                    if let repsString = maxRepsDict["MaxReps"] as? String {
+                        let reps = Double(repsString)!
+                        completion(reps)
+                    }
+                }, errorHandler: { (error) in
+                    print("Error receving reply from phone for maxReps dict: \(error)")
+                })
             }
         }
     }
@@ -67,6 +83,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        // This should be executed when Phone initiates a workout and watch app is not in a live workout routine
         if let timeStartedOnPhone = applicationContext["StartDate"] as? NSDate,
             let workoutName = applicationContext["Name"] as? String,
             let excercises = applicationContext["Excercises"] as? [String] {
@@ -97,6 +114,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        // This populates the workout table; displaying their names
         if let workouts = message["Workouts"] as? [String] {
             print(workouts)
             for workoutName in workouts {

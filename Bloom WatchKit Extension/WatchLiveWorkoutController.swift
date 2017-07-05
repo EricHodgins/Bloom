@@ -27,16 +27,17 @@ class WatchLiveWorkoutController: WKInterfaceController {
             let timeStarted = contextDict["workoutStartDate"] else {
                 excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
                 timer.start()
-                setupNotifications()
+                postNotificationStarted()
             return
         }
         
+        WorkoutManager.shared.workoutStartDate = timeStarted
         let diff = Date.timeIntervalSinceReferenceDate - timeStarted.timeIntervalSinceReferenceDate
         timer.setDate(Date(timeIntervalSinceNow: -diff))
         timer.start()
     }
     
-    func setupNotifications() {
+    func postNotificationStarted() {
         let userInfo: [String : Any] = [
                                         "StartDate": WorkoutManager.shared.workoutStartDate!,
                                         "Name": WorkoutManager.shared.currentWorkout!

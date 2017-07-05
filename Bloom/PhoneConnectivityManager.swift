@@ -167,8 +167,14 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             
         }
         
-        if let maxRepsRequest = message["MaxReps"] as? Bool {
+        if let _ = message["MaxReps"] as? Bool,
+            let workout = message["Workout"] as? String,
+            let excercise = message["Excercise"] as? String {
             
+            let bloomFilter = BloomFilter()
+            let maxReps = bloomFilter.fetchMaxValues(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
+            let replyDict: [String: String] = ["MaxReps": "\(maxReps)"]
+            replyHandler(replyDict)
         }
     }
     
