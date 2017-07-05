@@ -57,6 +57,7 @@ class WatchLiveWorkoutController: WKInterfaceController {
     
     @IBAction func nextExcerciseButtonPressed() {
         excerciseLabel.setText(WorkoutManager.shared.nextExcercise())
+        WorkoutManager.shared.updateMaxReps()
     }
     
 

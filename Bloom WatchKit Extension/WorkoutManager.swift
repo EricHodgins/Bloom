@@ -27,22 +27,24 @@ class WorkoutManager {
             WatchConnectivityManager.requestExcercises(forWorkout: workoutName) { (excerciseNames) in
                 self.currentExcercises = excerciseNames
                 self.currentExcercise = self.currentExcercises[0]
-                self.requestMaxReps()
+                self.updateMaxReps()
             }
         }
     }
+    var maxReps: Double?
     
     func nextExcercise() -> String {
         excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
         return currentExcercises[excerciseIndex]
     }
     
-    func requestMaxReps() {
+    func updateMaxReps() {
         guard let workout = currentWorkout,
             let excercise = currentExcercise else { return }
         
         WatchConnectivityManager.requestMaxReps(forExcercise: excercise, inWorkout: workout) { (maxReps) in
             print(maxReps)
+            self.maxReps = maxReps
         }
     }
 }

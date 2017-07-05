@@ -126,16 +126,41 @@
         <!--RepsWeight-->
         <scene sceneID="3k3-I2-wLg">
             <objects>
-                <controller identifier="RepsWeight" id="aDo-7C-QOM">
+                <controller identifier="RepsWeight" id="aDo-7C-QOM" customClass="RepsWeightController" customModule="Bloom_WatchKit_Extension">
                     <items>
-                        <button width="1" height="0.5" alignment="left" title="Reps" id="aPj-N8-nfJ">
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.20019130639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="25"/>
-                        </button>
-                        <button width="1" height="0.5" alignment="left" title="Weight" id="T0h-9w-KwG">
-                            <color key="backgroundColor" red="0.70769983530000002" green="0.095412097870000004" blue="0.9991180301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="25"/>
-                        </button>
+                        <label alignment="left" text="Reps: 14" id="ULF-zF-OUX">
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <group width="1" height="0.29999999999999999" alignment="center" id="Tea-5y-m9n">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="-" id="eIC-2i-Fj1">
+                                    <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="+" id="Qzo-h1-1xH">
+                                    <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </button>
+                            </items>
+                        </group>
+                        <separator width="0.90000000000000002" alignment="center" verticalAlignment="center" id="F1X-6W-6gz">
+                            <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </separator>
+                        <label alignment="left" verticalAlignment="bottom" text="Weight: 25 lbs" id="MXP-JO-qKE">
+                            <color key="textColor" red="0.70769983530000002" green="0.095412097870000004" blue="0.9991180301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <group width="1" height="0.29999999999999999" alignment="center" verticalAlignment="bottom" id="K0l-lm-p5z">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="-" id="bPt-JM-hzS">
+                                    <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="+" id="6lv-u3-hYb">
+                                    <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                 </controller>
             </objects>
