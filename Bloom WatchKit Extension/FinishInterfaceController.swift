@@ -29,6 +29,7 @@ class FinishInterfaceController: WKInterfaceController {
     }
 
     @IBAction func finishPressed() {
+        WatchConnectivityManager.sendWorkoutFinishedMessageToPhone()
         WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
     }
 }

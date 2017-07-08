@@ -55,6 +55,19 @@ class WorkoutStateManager {
     func save(reps: Double, forOrderNumber orderNumber: Int16) {
         workoutProxy?.save(reps: reps, forOrderNumber: orderNumber)
     }
+    
+    func reset() {
+        startedOnWatch = false
+        startTime = nil
+        workout = nil
+        workoutName = nil
+        excercises = nil
+        maxReps = nil
+        maxWeight = nil
+        maxDistance = nil
+        excerciseIndex = 0
+        workoutProxy = nil
+    }
 }
 
 

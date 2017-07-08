@@ -55,6 +55,11 @@ class FinishLiveWorkoutController: UIViewController {
             print("Save Error at Finish Workout Button: \(error), \(error.userInfo)")
         }
         
+        PhoneConnectivityManager.sendFinishedMessage()
+        segueToMainMenu()
+    }
+    
+    func segueToMainMenu() {
         performSegue(withIdentifier: "unwindToMenu", sender: self)
     }
 }

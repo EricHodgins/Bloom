@@ -53,6 +53,9 @@ extension StartWorkoutController {
             let liveWorkoutController = segue.destination as! LiveWorkoutController
             liveWorkoutController.managedContext = managedContext
             liveWorkoutController.workout = workout
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.phoneConnectivityManager.liveWorkoutController = liveWorkoutController
         }
     }
 }

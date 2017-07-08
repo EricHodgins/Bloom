@@ -15,6 +15,8 @@ let NofiticationNewExcerciseBegan = "NotificationNewExcerciseBegan"
 
 class PhoneConnectivityManager: NSObject {
     
+    var liveWorkoutController: LiveWorkoutController!
+    
     lazy var bloomFilter: BloomFilter = {
         return BloomFilter()
     }()
@@ -81,6 +83,18 @@ class PhoneConnectivityManager: NSObject {
     
     func sendMaxReps(forExcercise: String, replyHandler: (([String : Any]) -> Void)) {
         
+    }
+    
+    class func sendFinishedMessage() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isWatchAppInstalled {
+                let message = ["Finished": true]
+                session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                    print("Error sending finished message: \(error)")
+                })
+            }
+        }
     }
 
 }
@@ -181,7 +195,9 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
         
         if let _ = message["Finished"] as? Bool {
-            
+            DispatchQueue.main.async {
+                self.liveWorkoutController.workoutFinishedOnWatch()
+            }
         }
     }
     
@@ -190,7 +206,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let window = appDelegate.window
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
+        liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
         liveWorkoutController.managedContext = WorkoutStateManager.shared.managedContext
         liveWorkoutController.workout = WorkoutStateManager.shared.workout
         
@@ -202,7 +218,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         window?.rootViewController = nav
         
         DispatchQueue.main.async {
-            window?.rootViewController?.present(liveWorkoutController, animated: true, completion: nil)
+            window?.rootViewController?.present(self.liveWorkoutController, animated: true, completion: nil)
         }
     }
 }

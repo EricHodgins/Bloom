@@ -102,6 +102,18 @@ class WatchConnectivityManager: NSObject {
             }
         }
     }
+    
+    class func sendWorkoutFinishedMessageToPhone() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isReachable {
+                let dict: [String : Bool] = ["Finished" : true]
+                session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
+                    print("Message error workout finished: \(error)")
+                })
+            }
+        }
+    }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {
@@ -155,6 +167,10 @@ extension WatchConnectivityManager: WCSessionDelegate {
             for workoutName in workouts {
                 WorkoutManager.shared.workouts.append(workoutName)
             }
+        }
+        
+        if let _ = message["Finished"] as? Bool {
+            WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
         }
     }
 }

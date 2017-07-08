@@ -941,9 +941,11 @@
                         <outlet property="heartBeatView" destination="gHR-P7-7wo" id="IEq-Zk-yal"/>
                         <outlet property="scrollView" destination="DhK-VJ-Z8Z" id="2c7-5U-lIB"/>
                         <outlet property="workoutDurationLabel" destination="sKD-ZL-zFB" id="hQZ-Ac-vAE"/>
+                        <segue destination="UIc-tM-drf" kind="unwind" identifier="mainMenu" unwindAction="unwindToMenuWithSegue:" id="VUg-dc-kzk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKT-lf-ME6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UIc-tM-drf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3490.4000000000001" y="298.2008995502249"/>
         </scene>

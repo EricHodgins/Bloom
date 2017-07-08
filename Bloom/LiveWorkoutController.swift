@@ -22,6 +22,7 @@ class LiveWorkoutController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     var pages = [UIViewController]()
+    var flwc: FinishLiveWorkoutController!
     
     lazy var excercises: [Excercise] = {
         var excercises = [Excercise]()
@@ -175,7 +176,7 @@ extension LiveWorkoutController {
     }
     
     fileprivate func createFinishLiveWorkoutController() -> FinishLiveWorkoutController {
-        let flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
+        flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
         flwc.workout = workout
         flwc.view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -188,6 +189,18 @@ extension LiveWorkoutController {
     
 }
 
+extension LiveWorkoutController {
+    func workoutFinishedOnWatch() {
+        workout.endTime = NSDate()
+        do {
+            try workout.managedObjectContext?.save()
+        } catch let error as NSError {
+            print("Save Error at Finish Workout Button: \(error), \(error.userInfo)")
+        }
+        
+        flwc.segueToMainMenu()
+    }
+}
 
 
 
