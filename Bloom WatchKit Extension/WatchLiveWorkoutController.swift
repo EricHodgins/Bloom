@@ -36,14 +36,6 @@ class WatchLiveWorkoutController: WKInterfaceController {
         timer.setDate(Date(timeIntervalSinceNow: -diff))
         timer.start()
     }
-    
-    func postNotificationStarted() {
-        let userInfo: [String : Any] = [
-                                        "StartDate": WorkoutManager.shared.workoutStartDate!,
-                                        "Name": WorkoutManager.shared.currentWorkout!
-                                       ]
-        notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil, userInfo: userInfo)
-    }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

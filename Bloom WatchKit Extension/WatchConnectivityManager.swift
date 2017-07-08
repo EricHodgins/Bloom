@@ -10,7 +10,7 @@ import WatchKit
 import WatchConnectivity
 
 let NotificationWatchConnectivityActive = "NotificationWatchConnectivityActive"
-let NotificationWorkoutStartedOnWatch = "NotificationWorkoutStartedOnWatch"
+let NotificationWorkoutsReceived = "NotificationWorkoutsReceived"
 
 enum ActicationState: String {
     case active
@@ -28,11 +28,6 @@ class WatchConnectivityManager: NSObject {
     
     private override init() {
         super.init()
-        setupNotifications()
-    }
-    
-    func setupNotifications() {
-        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.sendWorkoutStartMessageToPhone), name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil)
     }
     
     class func requestWorkouts(completion: @escaping ([String]) -> Void) {
@@ -161,14 +156,6 @@ extension WatchConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        // This populates the workout table; displaying their names
-        if let workouts = message["Workouts"] as? [String] {
-            print(workouts)
-            for workoutName in workouts {
-                WorkoutManager.shared.workouts.append(workoutName)
-            }
-        }
-        
         if let _ = message["Finished"] as? Bool {
             WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
         }

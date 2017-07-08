@@ -12,16 +12,29 @@ import Foundation
 
 class WorkoutInterfaceController: WKInterfaceController {
     @IBOutlet var table: WKInterfaceTable!
+    
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
+        refresh()
+        setupNotification()
+    }
+    
+    func refresh() {
         table.setNumberOfRows(WorkoutManager.shared.workouts.count, withRowType: "WorkoutRowType")
         
         for (index, name) in WorkoutManager.shared.workouts.enumerated() {
             let controller = table.rowController(at: index) as! WorkoutRowController
             controller.titleLabel.setText(name)
         }
+        print("refreshed.")
+    }
+    
+    func setupNotification() {
+        notificationCenter.addObserver(self, selector: #selector(WorkoutInterfaceController.refresh), name: NSNotification.Name(rawValue: NotificationWorkoutsReceived), object: nil)
     }
 
     override func willActivate() {

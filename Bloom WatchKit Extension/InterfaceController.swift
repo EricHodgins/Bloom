@@ -33,6 +33,7 @@ class InterfaceController: WKInterfaceController {
         WatchConnectivityManager.requestWorkouts() { workoutNames in
             print("WOrkout request complete: \(workoutNames)")
             WorkoutManager.shared.workouts = workoutNames
+            self.notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutsReceived), object: nil)
         }
     }
     
