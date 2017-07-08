@@ -136,10 +136,16 @@
                                 <button width="0.5" height="1" alignment="left" title="-" id="eIC-2i-Fj1">
                                     <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" pointSize="25"/>
+                                    <connections>
+                                        <action selector="repsDecreasePressed" destination="aDo-7C-QOM" id="npX-5a-OYd"/>
+                                    </connections>
                                 </button>
                                 <button width="0.5" height="1" alignment="left" title="+" id="Qzo-h1-1xH">
                                     <color key="titleColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" pointSize="25"/>
+                                    <connections>
+                                        <action selector="repsIncreasePressed" destination="aDo-7C-QOM" id="eZF-SB-WO4"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
@@ -162,6 +168,9 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="repsLabel" destination="ULF-zF-OUX" id="m38-Wq-vI2"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="1232" y="-43"/>

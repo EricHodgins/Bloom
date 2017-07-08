@@ -31,7 +31,7 @@ class WorkoutManager {
             }
         }
     }
-    var maxReps: Double?
+    var reps: Double?
     
     func nextExcercise() -> String {
         excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
@@ -44,7 +44,36 @@ class WorkoutManager {
         
         WatchConnectivityManager.requestMaxReps(forExcercise: excercise, inWorkout: workout) { (maxReps) in
             print(maxReps)
-            self.maxReps = maxReps
+            self.reps = maxReps
         }
     }
+    
+    func save() {
+        guard let reps = reps else { return }
+        let orderNumber = excerciseIndex
+        WatchConnectivityManager.save(reps: "\(reps)", orderNumber: "\(orderNumber)")
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

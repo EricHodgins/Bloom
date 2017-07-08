@@ -12,10 +12,17 @@ import Foundation
 
 class RepsWeightController: WKInterfaceController {
 
+    @IBOutlet var repsLabel: WKInterfaceLabel!
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        // Configure interface objects here.
+        if let reps = WorkoutManager.shared.reps {
+            repsLabel.setText("Reps: \(reps)")
+        } else {
+            repsLabel.setText("Reps: 10")
+        }
+        
     }
 
     override func willActivate() {
@@ -28,4 +35,23 @@ class RepsWeightController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    @IBAction func repsIncreasePressed() {
+        guard let reps = WorkoutManager.shared.reps else {
+            WorkoutManager.shared.reps = 10
+            repsLabel.setText("Reps: 10)")
+            return
+        }
+        WorkoutManager.shared.reps = reps + 1.0
+        repsLabel.setText("Reps: \(WorkoutManager.shared.reps!)")
+    }
+    
+    @IBAction func repsDecreasePressed() {
+        guard let reps = WorkoutManager.shared.reps else {
+            WorkoutManager.shared.reps = 10
+            repsLabel.setText("Reps: 10)")
+            return
+        }
+        WorkoutManager.shared.reps = reps - 1.0
+        repsLabel.setText("Reps: \(WorkoutManager.shared.reps!)")
+    }
 }

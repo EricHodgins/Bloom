@@ -9,30 +9,42 @@
 import WatchKit
 import WatchConnectivity
 
+let NotificationWatchConnectivityActive = "NotificationWatchConnectivityActive"
 let NotificationWorkoutStartedOnWatch = "NotificationWorkoutStartedOnWatch"
 
+enum ActicationState: String {
+    case active
+    case inactive
+}
+
 class WatchConnectivityManager: NSObject {
+    
+    static let shared = WatchConnectivityManager()
+    var state: ActicationState = .inactive
     
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
     
-    override init() {
+    private override init() {
         super.init()
         setupNotifications()
     }
     
     func setupNotifications() {
-        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.sendStateToPhone), name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(WatchConnectivityManager.sendWorkoutStartMessageToPhone), name: NSNotification.Name(rawValue: NotificationWorkoutStartedOnWatch), object: nil)
     }
     
-    func requestWorkouts() {
+    class func requestWorkouts(completion: @escaping ([String]) -> Void) {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
-                session.sendMessage(["NeedWorkouts": true], replyHandler: nil, errorHandler: { (error) in
-                    print("Request Workouts Error: \(error)")
-                    self.requestWorkouts()
+                session.sendMessage(["NeedWorkouts": true], replyHandler: { workouts in
+                    guard let workoutNames = workouts["Workouts"] as? [String] else { return }
+                    print("Reply Handler: \(workoutNames)")
+                    completion(workoutNames)
+                }, errorHandler: { (error) in
+                    print("Error requesting all workout routines: \(error)")
                 })
             }
         }
@@ -68,6 +80,28 @@ class WatchConnectivityManager: NSObject {
             }
         }
     }
+    
+    class func save(reps: String, orderNumber: String) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                let saveDict = ["Reps": reps, "OrderNumber": orderNumber]
+                session.sendMessage(saveDict, replyHandler: nil, errorHandler: { (error) in
+                    print("Could not send message to save: \(error)")
+                })
+            }
+        }
+    }
+    
+    class func sendWorkoutStartMessageToPhone() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isReachable {
+                let dict: [String : Any] = ["Name": WorkoutManager.shared.currentWorkout!, "StartDate": WorkoutManager.shared.workoutStartDate!]
+                session.sendMessage(dict, replyHandler: nil, errorHandler: nil)
+            }
+        }
+    }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {
@@ -79,7 +113,8 @@ extension WatchConnectivityManager: WCSessionDelegate {
         }
         
         print("WCSession activation complete. activationState: \(activationState.rawValue)")
-        requestWorkouts()
+        state = .active
+        notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {

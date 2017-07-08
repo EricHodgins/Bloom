@@ -11,18 +11,15 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    var watchConnectivityManager: WatchConnectivityManager!
-    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        watchConnectivityManager = WatchConnectivityManager()
         setupWatchConnectivity()
     }
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
             let session = WCSession.default()
-            session.delegate = watchConnectivityManager
+            session.delegate = WatchConnectivityManager.shared
             session.activate()
         }
     }

@@ -65,27 +65,12 @@ class PhoneConnectivityManager: NSObject {
         
     }
     
-    func sendWorkoutsToWatch() {
-        if !WCSession.default().isReachable {
-            let delay = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: delay, execute: { 
-                self.sendWorkoutsToWatch()
-            })
-        } else {
-            if WCSession.isSupported() {
-                let session = WCSession.default()
-                if session.isWatchAppInstalled {
-                    let workouts = bloomFilter.allWorkouts(inManagedContext: managedContext)
-                    let workoutNames = workouts.map({ (workoutTemplate) -> String in
-                        return workoutTemplate.name!
-                    })
-                    session.sendMessage(["Workouts": workoutNames], replyHandler: nil, errorHandler: { (error) in
-                        print("Error sending workouts to watch: \(error)")
-                        self.sendWorkoutsToWatch()
-                    })
-                }
-            }
-        }
+    func sendWorkoutsToWatch(replyHandler: (([String : Any]) -> Void)) {
+        let workouts = bloomFilter.allWorkouts(inManagedContext: managedContext)
+        let workoutNames = workouts.map({ (workoutTemplate) -> String in
+            return workoutTemplate.name!
+        })
+        replyHandler(["Workouts": workoutNames])
     }
     
     func sendExcercisesToWatch(name: String, replyHandler: (([String : Any]) -> Void)) {
@@ -120,12 +105,13 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let dateStarted = applicationContext["StartDate"] as? NSDate {
+        print(applicationContext)
+        // When workout starts on watch and then iPhone App is opened.
+        /*
+        if let startTime = applicationContext["StartDate"] as? NSDate {
             
             WorkoutStateManager.shared.startedOnWatch = true
-            WorkoutStateManager.shared.startTime = dateStarted
-            WorkoutStateManager.shared.managedContext = managedContext
-            WorkoutStateManager.shared.createNewWorkout()
+            WorkoutStateManager.shared.startTime = startTime
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let window = appDelegate.window
@@ -145,26 +131,18 @@ extension PhoneConnectivityManager: WCSessionDelegate {
                 window?.rootViewController?.present(liveWorkoutController, animated: true, completion: nil)
             }
         }
+         */
     }
-    
-    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
 
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let _ = message["NeedWorkouts"] {
-            sendWorkoutsToWatch()
-        }
-    }
-    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        if let _ = message["NeedWorkouts"] as? Bool {
+            sendWorkoutsToWatch(replyHandler: replyHandler)
+        }
+        
         if let workoutName = message["NeedExcercises"] as? String {
             WorkoutStateManager.shared.workoutName = workoutName
             sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
-        }
-        
-        if let _ = message["WorkoutStartedOnWatch"] as? Bool {
-            
         }
         
         if let _ = message["MaxReps"] as? Bool,
@@ -178,6 +156,55 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
+        if let workoutName = message["Name"] as? String,
+            let startDate = message["StartDate"] as? NSDate {
+            
+            //Make sure the WorkoutProxy is nil. otherwise workout is still in progress
+            //this message shouldn't happen though during a workout
+            guard WorkoutStateManager.shared.workoutProxy == nil else { return }
+            
+            WorkoutStateManager.shared.startedOnWatch = true
+            WorkoutStateManager.shared.workoutName = workoutName
+            WorkoutStateManager.shared.startTime = startDate
+            WorkoutStateManager.shared.managedContext = managedContext
+            WorkoutStateManager.shared.createWorkout()// this creates the proxy workout as well.
+            segueToLiveWorkout()
+        }
+        
+        // Save called on watch
+        if let reps = message["Reps"] as? String,
+            let orderNumber = message["OrderNumber"] as? String {
+            
+            WorkoutStateManager.shared.save(reps: Double(reps)!, forOrderNumber: Int16(orderNumber)!)
+        }
+        
+        if let _ = message["Finished"] as? Bool {
+            
+        }
+    }
+    
+    func segueToLiveWorkout() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let window = appDelegate.window
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
+        liveWorkoutController.managedContext = WorkoutStateManager.shared.managedContext
+        liveWorkoutController.workout = WorkoutStateManager.shared.workout
+        
+        
+        let nav = storyboard.instantiateInitialViewController() as! UINavigationController
+        let root = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+        root.managedContext = WorkoutStateManager.shared.managedContext
+        nav.viewControllers = [root]
+        window?.rootViewController = nav
+        
+        DispatchQueue.main.async {
+            window?.rootViewController?.present(liveWorkoutController, animated: true, completion: nil)
+        }
+    }
 }
 
 

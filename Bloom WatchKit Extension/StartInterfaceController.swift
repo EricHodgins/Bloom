@@ -34,6 +34,8 @@ class StartInterfaceController: WKInterfaceController {
     }
 
     @IBAction func startButtonPressed() {
+        WorkoutManager.shared.workoutStartDate = NSDate()
+        WatchConnectivityManager.sendWorkoutStartMessageToPhone()
         WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
     }
 }

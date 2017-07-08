@@ -26,14 +26,20 @@ class WorkoutStateManager {
     var maxDistance: Double?
     private var excerciseIndex: Int = 0
     
-    func createNewWorkout() {
+    var workoutProxy: WorkoutProxy?
+    
+    //initializes the proxy workout and creates an actual Workout
+    // the proxy workout will get values from the watch and update the actual Workout.
+    func createWorkout() {
         
         guard let context = managedContext else { return }
         guard let workoutName = workoutName else { return }
+        guard let startTime = startTime else { return }
         guard let excercises = excercises else { return }
         
         let workout = Workout(context: context)
         workout.name = workoutName
+        workout.startTime = startTime
         
         for excercise in excercises {
             let exc = Excercise(context: context)
@@ -42,6 +48,41 @@ class WorkoutStateManager {
         }
         
         self.workout = workout
+        
+        workoutProxy = WorkoutProxy(workout: workout, managedContext: managedContext!)
     }
     
+    func save(reps: Double, forOrderNumber orderNumber: Int16) {
+        workoutProxy?.save(reps: reps, forOrderNumber: orderNumber)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
