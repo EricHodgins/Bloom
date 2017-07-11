@@ -13,6 +13,8 @@ import WatchConnectivity
 let NotificationLiveWorkoutStarted = "NotificationLiveWorkoutStarted"
 let NofiticationNewExcerciseBegan = "NotificationNewExcerciseBegan"
 
+
+
 class PhoneConnectivityManager: NSObject {
     
     var liveWorkoutController: LiveWorkoutController!
@@ -44,6 +46,7 @@ class PhoneConnectivityManager: NSObject {
         
         notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NofiticationNewExcerciseBegan), object: nil, queue: nil) { (notification) in
             // send excercise values to watch
+            // should update the watch state to match the phone state
         }
     }
     
@@ -120,32 +123,6 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         print(applicationContext)
-        // When workout starts on watch and then iPhone App is opened.
-        /*
-        if let startTime = applicationContext["StartDate"] as? NSDate {
-            
-            WorkoutStateManager.shared.startedOnWatch = true
-            WorkoutStateManager.shared.startTime = startTime
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let window = appDelegate.window
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
-            liveWorkoutController.managedContext = WorkoutStateManager.shared.managedContext
-            liveWorkoutController.workout = WorkoutStateManager.shared.workout
-            
-            
-            let nav = storyboard.instantiateInitialViewController() as! UINavigationController
-            let root = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
-            root.managedContext = WorkoutStateManager.shared.managedContext
-            nav.viewControllers = [root]
-            window?.rootViewController = nav
-            
-            DispatchQueue.main.async {
-                window?.rootViewController?.present(liveWorkoutController, animated: true, completion: nil)
-            }
-        }
-         */
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
@@ -172,6 +149,8 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
+        
+        //MARK: - Workout has begun on watch. Transition Phone app to live workout session.
         if let workoutName = message["Name"] as? String,
             let startDate = message["StartDate"] as? NSDate {
             

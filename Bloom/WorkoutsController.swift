@@ -63,6 +63,7 @@ extension WorkoutsController: UITableViewDelegate {
             let workoutCellIndex = tableView.indexPathForSelectedRow!
             let workoutTemplate = workouts[workoutCellIndex.row]
             let startWorkoutController = segue.destination as! StartWorkoutController
+            startWorkoutController.workoutName = workoutTemplate.name
 
             startWorkoutController.workout = createNewWorkout(workoutTemplate: workoutTemplate)
             startWorkoutController.managedContext = managedContext

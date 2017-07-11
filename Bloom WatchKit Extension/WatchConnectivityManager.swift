@@ -157,7 +157,9 @@ extension WatchConnectivityManager: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let _ = message["Finished"] as? Bool {
-            WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+            DispatchQueue.main.async {
+                WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+            }
         }
     }
 }

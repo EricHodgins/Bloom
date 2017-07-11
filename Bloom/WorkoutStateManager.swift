@@ -9,7 +9,14 @@
 import Foundation
 import CoreData
 
+enum ActicationState: String {
+    case active
+    case inactive
+}
+
 class WorkoutStateManager {
+    
+    var state: ActicationState = .inactive
     
     static let shared = WorkoutStateManager()
     private init() {}

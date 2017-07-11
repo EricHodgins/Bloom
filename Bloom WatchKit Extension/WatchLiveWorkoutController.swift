@@ -22,12 +22,10 @@ class WatchLiveWorkoutController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        //WorkoutManager.shared.workoutStartDate = NSDate()
         guard let contextDict = context as? [String : NSDate],
             let timeStarted = contextDict["workoutStartDate"] else {
                 excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
                 timer.start()
-                //postNotificationStarted()
             return
         }
         

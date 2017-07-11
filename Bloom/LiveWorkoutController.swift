@@ -14,7 +14,8 @@ class LiveWorkoutController: UIViewController {
     @IBOutlet weak var workoutDurationLabel: UILabel!
     @IBOutlet weak var heartBeatView: HeartBeatView!
     @IBOutlet weak var currentExcerciseLabel: UILabel!
-
+    
+    var workoutName: String!
     var startTime: TimeInterval!
     var currentWatchInterval: TimeInterval!
     var managedContext: NSManagedObjectContext!
@@ -32,11 +33,12 @@ class LiveWorkoutController: UIViewController {
 
         return excercises
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if WorkoutStateManager.shared.startTime == nil {
+        if WorkoutSessionManager.shared.state == .inactive {
+            WorkoutSessionManager.shared.activate(managedContext: managedContext, workoutName: workoutName, startDate: NSDate())
             workout.startTime = NSDate()
             currentWatchInterval = 0.0
         } else {
@@ -100,6 +102,10 @@ class LiveWorkoutController: UIViewController {
                                       ]
         
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
+            
+            // Setup the WorkoutStateManager Now
+            WorkoutStateManager.shared.managedContext = managedContext
+            WorkoutStateManager.shared.workout = workout
         }
     }
     

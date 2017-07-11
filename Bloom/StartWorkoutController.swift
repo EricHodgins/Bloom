@@ -19,12 +19,13 @@ class StartWorkoutController: UIViewController, CountDown {
     
     var ringAnimationInterval: Int = 3
     var workout: Workout!
+    var workoutName: String!
     
     var managedContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = workout.name
+        navigationItem.title = workoutName
         
         startButton.editWorkoutButton = editWorkoutButton
         countDownView.countDownLabel = countDownLabel
@@ -51,6 +52,7 @@ extension StartWorkoutController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LiveWorkoutSegue" {
             let liveWorkoutController = segue.destination as! LiveWorkoutController
+            liveWorkoutController.workoutName = workoutName
             liveWorkoutController.managedContext = managedContext
             liveWorkoutController.workout = workout
             
