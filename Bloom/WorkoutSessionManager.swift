@@ -27,7 +27,7 @@ class WorkoutSessionManager {
     private init() {}
     
     var deviceInitiation: WorkoutSessionDeviceInitiation = .none
-    private var managedContext: NSManagedObjectContext!
+    fileprivate var managedContext: NSManagedObjectContext!
     var workout: Workout!
     var excercises: [Excercise] = []
     var currentExcercise: Excercise!
@@ -75,12 +75,30 @@ class WorkoutSessionManager {
         currentExcercise = excercises[newIndex]
         return currentExcercise
     }
+    
+    func reset() {
+        //TODO: WIll need to reset
+    }
 }
 
 
 
-
-
+//MARK: - For Watch Methods
+extension WorkoutSessionManager {
+    func save(reps: Double, forOrderNumber orderNumber: Int16) {
+        for excercise in excercises {
+            if excercise.orderNumber == orderNumber {
+                excercise.reps = reps
+            }
+        }
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("save error: \(error), description: \(error.userInfo)")
+        }
+    }
+}
 
 
 

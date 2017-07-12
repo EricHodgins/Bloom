@@ -31,7 +31,7 @@ class LiveWorkoutController: UIViewController {
             WorkoutSessionManager.shared.activate(managedContext: managedContext, workoutName: workoutName, startDate: NSDate(), deviceInitiated: .phone)
             currentWatchInterval = 0.0
         } else {
-            currentWatchInterval = Date.timeIntervalSinceReferenceDate - WorkoutStateManager.shared.startTime!.timeIntervalSinceReferenceDate
+            currentWatchInterval = Date.timeIntervalSinceReferenceDate - WorkoutSessionManager.shared.workout.startTime!.timeIntervalSinceReferenceDate
         }
   
         scrollView.isScrollEnabled = false

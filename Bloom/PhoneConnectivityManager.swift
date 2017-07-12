@@ -80,7 +80,6 @@ class PhoneConnectivityManager: NSObject {
     
     func sendExcercisesToWatch(name: String, replyHandler: (([String : Any]) -> Void)) {
         let excercises = BloomFilter.excercises(forWorkout: name, inManagedContext: managedContext)
-        WorkoutStateManager.shared.excercises = excercises
         replyHandler(["Excercises": excercises])
     }
     
@@ -132,7 +131,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
         
         if let workoutName = message["NeedExcercises"] as? String {
-            WorkoutStateManager.shared.workoutName = workoutName
+            WorkoutSessionManager.shared.workout.name! = workoutName
             sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
         }
         
@@ -166,7 +165,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         if let reps = message["Reps"] as? String,
             let orderNumber = message["OrderNumber"] as? String {
             
-            WorkoutStateManager.shared.save(reps: Double(reps)!, forOrderNumber: Int16(orderNumber)!)
+            WorkoutSessionManager.shared.save(reps: Double(reps)!, forOrderNumber: Int16(orderNumber)!)
         }
         
         if let _ = message["Finished"] as? Bool {
