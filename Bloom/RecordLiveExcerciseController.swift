@@ -11,19 +11,17 @@ import CoreData
 
 class RecordLiveExcerciseController: UIViewController {
     
+    let workoutSession = WorkoutSessionManager.shared
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSDictionary>!
     var bloomFilter: BloomFilter!
     
     var workoutName: String!
-    var currentExcercise: Excercise!
-    var excercises = [Excercise]()
     
     var maxReps: Double?
     
     weak var excerciseLabel: UILabel!
-    var currentExcerciseIndex: Int = 0
-    var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView
+    var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView to increase/decrease values
     
     var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
@@ -34,8 +32,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        currentExcercise = excercises[0]
-        excerciseLabel.text = excercises[currentExcerciseIndex].name!
+        excerciseLabel.text = workoutSession.currentExcercise.name!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,29 +42,20 @@ class RecordLiveExcerciseController: UIViewController {
     
     func fetchMaxValues() -> Double {
         bloomFilter = BloomFilter()
-        return bloomFilter.fetchMaxValues(forExcercise: currentExcercise.name!, inWorkout: workoutName, withManagedContext: managedContext)
+        return bloomFilter.fetchMaxValues(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutName, withManagedContext: managedContext)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         DispatchQueue.main.async {
-            self.currentExcercise = self.excercises[self.currentExcerciseIndex]
-            if self.currentExcercise.timeRecorded == nil {
-                self.currentExcercise.timeRecorded = NSDate()
+            
+            if self.workoutSession.currentExcercise.timeRecorded == nil {
+                self.workoutSession.currentExcercise.timeRecorded = NSDate()
             }
-            self.currentExcercise = self.getNextExcercise()
-            self.excerciseLabel.text = self.currentExcercise.name!
+            
+            _ = self.workoutSession.nextExcercise()
+            self.excerciseLabel.text = self.workoutSession.currentExcercise.name!
             self.maxReps = self.fetchMaxValues()
         }
-    }
-    
-    func getNextExcercise() -> Excercise {
-        currentExcerciseIndex += 1
-        if excercises.count > currentExcerciseIndex {
-            return excercises[currentExcerciseIndex]
-        }
-        
-        currentExcerciseIndex = 0
-        return excercises[0]
     }
     
     @IBAction func repsButtonPushed(_ sender: Any) {
@@ -91,7 +79,7 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func showRecordView(withTitle title: String, andStat stat: Stat) {
-        retriveCurrentExcerciseValue(excercise: excercises[currentExcerciseIndex])
+        retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise)
         
         recordLiveStatView = RecordLiveStatView(inView: view)
         recordLiveStatView.stat = stat
@@ -125,7 +113,8 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func saveExcerciseValue(forStat stat: Stat, value: String) {
-        let excercise = excercises[currentExcerciseIndex]
+        guard let excercise = workoutSession.currentExcercise else { return }
+        
         switch stat {
         case .Reps:
             excercise.reps = Double(value)!

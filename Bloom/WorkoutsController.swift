@@ -63,25 +63,10 @@ extension WorkoutsController: UITableViewDelegate {
             let workoutCellIndex = tableView.indexPathForSelectedRow!
             let workoutTemplate = workouts[workoutCellIndex.row]
             let startWorkoutController = segue.destination as! StartWorkoutController
+            
             startWorkoutController.workoutName = workoutTemplate.name
-
-            startWorkoutController.workout = createNewWorkout(workoutTemplate: workoutTemplate)
             startWorkoutController.managedContext = managedContext
         }
-    }
-    
-    func createNewWorkout(workoutTemplate: WorkoutTemplate) -> Workout {
-        let workout = Workout(context: managedContext)
-        workout.name = workoutTemplate.name
-        
-        for excerciseTemplate in workoutTemplate.excercises! {
-            let excercise = Excercise(context: managedContext)
-            excercise.name = (excerciseTemplate as! ExcerciseTemplate).name!
-            excercise.orderNumber = Int16((excerciseTemplate as! ExcerciseTemplate).orderNumber)
-            workout.addToExcercises(excercise)
-        }
-        
-        return workout
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

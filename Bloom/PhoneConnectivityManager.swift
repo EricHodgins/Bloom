@@ -156,13 +156,9 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             
             //Make sure the WorkoutProxy is nil. otherwise workout is still in progress
             //this message shouldn't happen though during a workout
-            guard WorkoutStateManager.shared.workoutProxy == nil else { return }
+            guard WorkoutSessionManager.shared.state == .inactive else { return }
             
-            WorkoutStateManager.shared.startedOnWatch = true
-            WorkoutStateManager.shared.workoutName = workoutName
-            WorkoutStateManager.shared.startTime = startDate
-            WorkoutStateManager.shared.managedContext = managedContext
-            WorkoutStateManager.shared.createWorkout()// this creates the proxy workout as well.
+            WorkoutSessionManager.shared.activate(managedContext: managedContext, workoutName: workoutName, startDate: startDate, deviceInitiated: .watch)
             segueToLiveWorkout()
         }
         
@@ -186,13 +182,12 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         let window = appDelegate.window
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
-        liveWorkoutController.managedContext = WorkoutStateManager.shared.managedContext
-        liveWorkoutController.workout = WorkoutStateManager.shared.workout
+        liveWorkoutController.managedContext = managedContext
         
         
         let nav = storyboard.instantiateInitialViewController() as! UINavigationController
         let root = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
-        root.managedContext = WorkoutStateManager.shared.managedContext
+        root.managedContext = managedContext
         nav.viewControllers = [root]
         window?.rootViewController = nav
         

@@ -18,7 +18,6 @@ class StartWorkoutController: UIViewController, CountDown {
     @IBOutlet weak var countDownLabel: UILabel!
     
     var ringAnimationInterval: Int = 3
-    var workout: Workout!
     var workoutName: String!
     
     var managedContext: NSManagedObjectContext!
@@ -54,7 +53,6 @@ extension StartWorkoutController {
             let liveWorkoutController = segue.destination as! LiveWorkoutController
             liveWorkoutController.workoutName = workoutName
             liveWorkoutController.managedContext = managedContext
-            liveWorkoutController.workout = workout
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.phoneConnectivityManager.liveWorkoutController = liveWorkoutController

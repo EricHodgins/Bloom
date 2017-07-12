@@ -14,18 +14,29 @@ enum WorkoutSessionManagerState {
     case active
 }
 
+enum WorkoutSessionDeviceInitiation {
+    case phone
+    case watch
+    case none
+}
+
+
 class WorkoutSessionManager {
     var state: WorkoutSessionManagerState = .inactive
     static let shared: WorkoutSessionManager = WorkoutSessionManager()
     private init() {}
     
+    var deviceInitiation: WorkoutSessionDeviceInitiation = .none
     private var managedContext: NSManagedObjectContext!
-    private var workout: Workout!
+    var workout: Workout!
+    var excercises: [Excercise] = []
+    var currentExcercise: Excercise!
     
-    func activate(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate) {
+    func activate(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate, deviceInitiated device: WorkoutSessionDeviceInitiation) {
         guard state == .inactive else { return }
         self.state = .active
         self.managedContext = managedContext
+        self.deviceInitiation = device
         
         createWorkout(name: workoutName, startDate: startDate)
     }
@@ -45,15 +56,24 @@ class WorkoutSessionManager {
         }
         
         self.workout = workout
+        self.excercises = setExcercises()
+        self.currentExcercise = self.excercises[0]
     }
     
-    func excercises() -> [Excercise] {
+    private func setExcercises() -> [Excercise] {
         var excercises = [Excercise]()
         excercises = self.workout.excercises!.sorted { (e1, e2) -> Bool in
             return (e1 as! Excercise).orderNumber < (e2 as! Excercise).orderNumber
             } as! [Excercise]
         
         return excercises
+    }
+    
+    func nextExcercise() -> Excercise {
+        let currentIndex = Int(currentExcercise.orderNumber)
+        let newIndex = (currentIndex + 1) % excercises.count
+        currentExcercise = excercises[newIndex]
+        return currentExcercise
     }
 }
 
