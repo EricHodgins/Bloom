@@ -19,18 +19,9 @@ class WorkoutInterfaceController: WKInterfaceController {
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        refresh()
-        setupNotification()
-    }
-    
-    func refresh() {
-        table.setNumberOfRows(WorkoutManager.shared.workouts.count, withRowType: "WorkoutRowType")
         
-        for (index, name) in WorkoutManager.shared.workouts.enumerated() {
-            let controller = table.rowController(at: index) as! WorkoutRowController
-            controller.titleLabel.setText(name)
-        }
-        print("refreshed.")
+        WorkoutManager.shared.workoutTableDelegate = self
+        refresh()
     }
     
     func setupNotification() {
@@ -51,3 +42,40 @@ class WorkoutInterfaceController: WKInterfaceController {
         return WorkoutManager.shared.workouts[rowIndex]
     }
 }
+
+
+extension WorkoutInterfaceController: UpdateWorkoutsTableDelgate {
+    func refreshTable() {
+        refresh()
+    }
+    
+    func refresh() {
+        table.setNumberOfRows(WorkoutManager.shared.workouts.count, withRowType: "WorkoutRowType")
+        
+        for (index, name) in WorkoutManager.shared.workouts.enumerated() {
+            let controller = table.rowController(at: index) as! WorkoutRowController
+            controller.titleLabel.setText(name)
+        }
+        print("refreshed.")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -131,7 +131,6 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
         
         if let workoutName = message["NeedExcercises"] as? String {
-            WorkoutSessionManager.shared.workout.name! = workoutName
             sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
         }
         
@@ -161,14 +160,23 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             segueToLiveWorkout()
         }
         
-        // Save called on watch
+        // Save Reps: called on watch
         if let reps = message["Reps"] as? String,
             let orderNumber = message["OrderNumber"] as? String {
             
             WorkoutSessionManager.shared.save(reps: Double(reps)!, forOrderNumber: Int16(orderNumber)!)
         }
         
-        if let _ = message["Finished"] as? Bool {
+        // Save Weight: called on watch
+        if let weight = message["Weight"] as? String,
+            let orderNumber = message["OrderNumber"] as? String {
+            
+            WorkoutSessionManager.shared.save(weight: Double(weight)!, forOrderNumber: Int16(orderNumber)!)
+        }
+        
+        // Workout Finished on Watch
+        if let finishDate = message["Finished"] as? NSDate {
+            WorkoutSessionManager.shared.save(finishedDate: finishDate)
             DispatchQueue.main.async {
                 self.liveWorkoutController.workoutFinishedOnWatch()
             }

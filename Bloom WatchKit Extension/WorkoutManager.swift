@@ -8,15 +8,25 @@
 
 import Foundation
 
+protocol UpdateWorkoutsTableDelgate: class {
+    func refreshTable()
+}
+
 class WorkoutManager {
     static let shared = WorkoutManager()
     private init() {}
+    
+    weak var workoutTableDelegate: UpdateWorkoutsTableDelgate?
     
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
     
-    var workouts: [String] = []
+    var workouts: [String] = [] {
+        didSet {
+            workoutTableDelegate?.refreshTable()
+        }
+    }
     var currentExcercises: [String] = []
     private var currentExcercise: String?
     private var excerciseIndex: Int = 0
@@ -32,6 +42,7 @@ class WorkoutManager {
         }
     }
     var reps: Double?
+    var weight: Double?
     
     func nextExcercise() -> String {
         excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
@@ -49,9 +60,14 @@ class WorkoutManager {
     }
     
     func save() {
-        guard let reps = reps else { return }
         let orderNumber = excerciseIndex
-        WatchConnectivityManager.save(reps: "\(reps)", orderNumber: "\(orderNumber)")
+        if let reps = reps {
+            WatchConnectivityManager.save(reps: "\(reps)", orderNumber: "\(orderNumber)")
+        }
+        
+        if let weight = weight {
+            WatchConnectivityManager.save(weight: "\(weight)", orderNumber: "\(orderNumber)")
+        }
     }
 }
 

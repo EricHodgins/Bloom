@@ -30,6 +30,7 @@ class WatchConnectivityManager: NSObject {
         super.init()
     }
     
+    //MARK: - Request Workouts
     class func requestWorkouts(completion: @escaping ([String]) -> Void) {
         let session = WCSession.default()
         if WCSession.isSupported() {
@@ -45,6 +46,7 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Request Excercises
     class func requestExcercises(forWorkout workout: String, completion: @escaping (([String]) -> Void)) {
         let session = WCSession.default()
         if WCSession.isSupported() {
@@ -59,6 +61,7 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Request Max Reps
     class func requestMaxReps(forExcercise excercise: String, inWorkout workout: String, completion: @escaping ((Double) -> Void)) {
         let session = WCSession.default()
         if WCSession.isSupported() {
@@ -76,6 +79,7 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Save Reps
     class func save(reps: String, orderNumber: String) {
         let session = WCSession.default()
         if WCSession.isSupported() {
@@ -88,6 +92,20 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Save Weight
+    class func save(weight: String, orderNumber: String) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                let saveDict = ["Weight": weight, "OrderNumber": orderNumber]
+                session.sendMessage(saveDict, replyHandler: nil, errorHandler: { (error) in
+                    print("Could not send weight save message: \(error)")
+                })
+            }
+        }
+    }
+    
+    //MARK: - Send Workout Started Message
     class func sendWorkoutStartMessageToPhone() {
         if WCSession.isSupported() {
             let session = WCSession.default()
@@ -98,11 +116,12 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Send Workout Finished Message
     class func sendWorkoutFinishedMessageToPhone() {
         if WCSession.isSupported() {
             let session = WCSession.default()
             if session.isReachable {
-                let dict: [String : Bool] = ["Finished" : true]
+                let dict: [String : NSDate] = ["Finished" : NSDate()]
                 session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
                     print("Message error workout finished: \(error)")
                 })
@@ -113,6 +132,7 @@ class WatchConnectivityManager: NSObject {
 
 extension WatchConnectivityManager: WCSessionDelegate {
     
+    //MARK: - Activatin Complete
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WCSession error: \(error.localizedDescription)")
@@ -124,6 +144,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
         notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
     }
     
+    //MARK: - Received Application Context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         // This should be executed when Phone initiates a workout and watch app is not in a live workout routine
         if let timeStartedOnPhone = applicationContext["StartDate"] as? NSDate,
@@ -141,6 +162,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
         }
     }
     
+    //MARK: - Send State to Phone
     func sendStateToPhone() {
         if WCSession.isSupported() {
         let session = WCSession.default()
@@ -155,6 +177,7 @@ extension WatchConnectivityManager: WCSessionDelegate {
         }
     }
     
+    //MARK: - Received Message
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let _ = message["Finished"] as? Bool {
             DispatchQueue.main.async {

@@ -83,15 +83,35 @@ class WorkoutSessionManager {
 
 
 
-//MARK: - For Watch Methods
+//MARK: - For Watch Connectivity Methods
 extension WorkoutSessionManager {
-    func save(reps: Double, forOrderNumber orderNumber: Int16) {
+    private func excercise(forOrderNumber orderNumber: Int16) -> Excercise? {
         for excercise in excercises {
             if excercise.orderNumber == orderNumber {
-                excercise.reps = reps
+                return excercise
             }
         }
-        
+        return nil
+    }
+    
+    func save(reps: Double, forOrderNumber orderNumber: Int16) {
+        guard let excercise = excercise(forOrderNumber: orderNumber) else { return }
+        excercise.reps = reps
+        save()
+    }
+    
+    func save(weight: Double, forOrderNumber orderNumber: Int16) {
+        guard let excercise = excercise(forOrderNumber: orderNumber) else { return }
+        excercise.weight = weight
+        save()
+    }
+    
+    func save(finishedDate date: NSDate) {
+        workout.endTime = date
+        save()
+    }
+    
+    func save() {
         do {
             try managedContext.save()
         } catch let error as NSError {

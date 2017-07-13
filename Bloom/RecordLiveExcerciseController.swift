@@ -42,7 +42,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     func fetchMaxValues() -> Double {
         bloomFilter = BloomFilter()
-        return bloomFilter.fetchMaxValues(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutName, withManagedContext: managedContext)
+        return bloomFilter.fetchMaxValues(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {

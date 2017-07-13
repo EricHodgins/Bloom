@@ -15,16 +15,17 @@ class InterfaceController: WKInterfaceController {
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
-
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
         if WatchConnectivityManager.shared.state == .inactive {
             setupNotications()
         } else {
             requestWorkoutRoutines()
         }
     }
-    
+
     func setupNotications() {
         notificationCenter.addObserver(self, selector: #selector(InterfaceController.requestWorkoutRoutines), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
     }
