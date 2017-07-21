@@ -13,9 +13,15 @@ import Foundation
 class StartInterfaceController: WKInterfaceController {
 
     @IBOutlet var workoutName: WKInterfaceLabel!
+    @IBOutlet var startButton: WKInterfaceButton!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        WorkoutManager.shared.liveWorkoutDelegate = self
+        if WorkoutManager.shared.currentExcercises.count == 0 {
+            startButton.setEnabled(false)
+            startButton.setTitle("Loading...")
+        }
         
         if let workout = context as? String {
             workoutName.setText(workout)
@@ -37,5 +43,15 @@ class StartInterfaceController: WKInterfaceController {
         WorkoutManager.shared.workoutStartDate = NSDate()
         WatchConnectivityManager.sendWorkoutStartMessageToPhone()
         WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+    }
+}
+
+extension StartInterfaceController: LiveWorkoutDelegate {
+    func updateExcercises() {
+        print("Excercises set...")
+        if WorkoutManager.shared.currentExcercises.count > 0 {
+            startButton.setTitle("Start")
+            startButton.setEnabled(true)
+        }
     }
 }

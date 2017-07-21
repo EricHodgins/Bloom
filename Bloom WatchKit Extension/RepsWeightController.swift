@@ -18,11 +18,9 @@ class RepsWeightController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        if let reps = WorkoutManager.shared.reps {
-            repsLabel.setText("Reps: \(reps)")
-        } else {
-            repsLabel.setText("Reps: 10")
-        }
+        WorkoutManager.shared.repsWeightDelegate = self
+        
+        updateReps()
         
         if let weight = WorkoutManager.shared.weight {
             weightLabel.setText("Weight: \(weight) lbs")
@@ -45,49 +43,51 @@ class RepsWeightController: WKInterfaceController {
     @IBAction func repsIncreasePressed() {
         guard let reps = WorkoutManager.shared.reps else {
             WorkoutManager.shared.reps = 10
-            repsLabel.setText("Reps: 10)")
             return
         }
         WorkoutManager.shared.reps = reps + 1.0
-        repsLabel.setText("Reps: \(WorkoutManager.shared.reps!)")
     }
     
     @IBAction func repsDecreasePressed() {
         guard let reps = WorkoutManager.shared.reps else {
             WorkoutManager.shared.reps = 10
-            repsLabel.setText("Reps: 10)")
             return
         }
         WorkoutManager.shared.reps = reps - 1.0
-        repsLabel.setText("Reps: \(WorkoutManager.shared.reps!)")
     }
     
     @IBAction func weightIncreasedPressed() {
         guard let weight = WorkoutManager.shared.weight else {
             WorkoutManager.shared.weight = 10
-            weightLabel.setText("Weight: 10 lbs")
             return
         }
         
         WorkoutManager.shared.weight = weight + 1.0
-        weightLabel.setText("Weight: \(WorkoutManager.shared.weight!) lbs")
     }
     
     @IBAction func weightDecreasedPressed() {
         guard let weight = WorkoutManager.shared.weight else {
             WorkoutManager.shared.weight = 10
-            weightLabel.setText("Weight: 10 lbs")
             return
         }
         
         WorkoutManager.shared.weight = weight - 1.0
-        weightLabel.setText("Weight: \(WorkoutManager.shared.weight!) lbs")
     }
     
     
 }
 
-
+extension RepsWeightController: RepsWeightDelegate {
+    func updateReps() {
+        guard let reps = WorkoutManager.shared.reps else { return }
+        repsLabel.setText("Reps: \(reps)")
+    }
+    
+    func updateWeight() {
+        guard let weight = WorkoutManager.shared.weight else { return }
+        weightLabel.setText("Weight: \(weight) lbs")
+    }
+}
 
 
 

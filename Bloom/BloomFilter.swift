@@ -48,6 +48,18 @@ class BloomFilter {
         return maxRepExpressionDesc
     }()
     
+    lazy var maxWeightExpressionDescription: NSExpressionDescription = {
+        let maxRepExpressionDesc = NSExpressionDescription()
+        maxRepExpressionDesc.name = "maxWeight"
+        
+        let excerciseRepsDesc = NSExpression(forKeyPath: #keyPath(Excercise.weight))
+        maxRepExpressionDesc.expression = NSExpression(forFunction: "max:", arguments: [excerciseRepsDesc])
+        
+        maxRepExpressionDesc.expressionResultType = .doubleAttributeType
+        
+        return maxRepExpressionDesc
+    }()
+    
     func allWorkouts(inManagedContext managedContext: NSManagedObjectContext) -> [WorkoutTemplate] {
         let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         var workouts: [WorkoutTemplate] = []
@@ -59,7 +71,7 @@ class BloomFilter {
         return workouts
     }
     
-    func fetchMaxValues(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
+    func fetchMaxReps(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
         let fetchRequest: NSFetchRequest<NSDictionary>
         fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
         fetchRequest.resultType = .dictionaryResultType
@@ -77,6 +89,32 @@ class BloomFilter {
             let results = try managedContext.fetch(fetchRequest)
             let resultDict = results.first!
             maxValue = resultDict["maxReps"] as? Double
+            print("Max Reps: \(maxValue ?? 0)")
+        } catch let error as NSError {
+            print("NSDescription Error: \(error.userInfo)")
+        }
+        
+        return maxValue ?? 0
+    }
+    
+    func fetchMaxWeight(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
+        let fetchRequest: NSFetchRequest<NSDictionary>
+        fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
+        fetchRequest.resultType = .dictionaryResultType
+        
+        let workoutNamePredicate = workoutForNamePredicate(workout)
+        let excercisenamePredicate = excerciseNamePredicate(excercise)
+        fetchRequest.predicate = NSCompoundPredicate(type: .and, subpredicates: [workoutNamePredicate, excercisenamePredicate])
+        
+        let weightExpressDescription = maxWeightExpressionDescription
+        fetchRequest.propertiesToFetch = [weightExpressDescription]
+        
+        var maxValue: Double?
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            let resultDict = results.first!
+            maxValue = resultDict["maxWeight"] as? Double
             print("Max Reps: \(maxValue ?? 0)")
         } catch let error as NSError {
             print("NSDescription Error: \(error.userInfo)")

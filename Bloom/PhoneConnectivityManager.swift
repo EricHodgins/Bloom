@@ -90,7 +90,7 @@ class PhoneConnectivityManager: NSObject {
     class func sendFinishedMessage() {
         if WCSession.isSupported() {
             let session = WCSession.default()
-            if session.isWatchAppInstalled {
+            if session.isWatchAppInstalled && session.isReachable {
                 let message = ["Finished": true]
                 session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
                     print("Error sending finished message: \(error)")
@@ -139,58 +139,70 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             let excercise = message["Excercise"] as? String {
             
             let bloomFilter = BloomFilter()
-            let maxReps = bloomFilter.fetchMaxValues(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
+            let maxReps = bloomFilter.fetchMaxReps(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
             let replyDict: [String: String] = ["MaxReps": "\(maxReps)"]
             replyHandler(replyDict)
+        }
+        
+        if let _ = message["MaxWeight"] as? Bool,
+            let workout = message["Workout"] as? String,
+            let excercise = message["Excercise"] as? String {
+            
+            let bloomFilter = BloomFilter()
+            let maxWeight = bloomFilter.fetchMaxWeight(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
+            let replyDict: [String: String] = ["MaxWeight": "\(maxWeight)"]
+            replyHandler(replyDict)
+        }
+        
+        //Mark: - Save Excercise Values
+        if let _ = message["SaveAll"] as? Bool,
+            let reps = message["Reps"] as? Double,
+            let weight = message["Weight"] as? Double,
+            let distance = message["Distance"] as? Double,
+            let time = message["Time"] as? NSDate,
+            let orderNumber = message["OrderNumber"] as? Int {
+            
+            replyHandler(["Done": true])
+            liveWorkoutController.workoutSessionManager.save(reps: reps, weight: weight, distance: distance, time: time, orderNumber: Int16(orderNumber))
+        }
+        
+        //MARK: - Workout has begun on watch. Transition Phone app to live workout session.
+        if let workoutName = message["Name"] as? String,
+            let startDate = message["StartDate"] as? NSDate {
+            
+            replyHandler(["PhoneActivated": true])
+            
+            segueToLiveWorkout(workoutName: workoutName, startDate: startDate)
         }
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
         
-        //MARK: - Workout has begun on watch. Transition Phone app to live workout session.
-        if let workoutName = message["Name"] as? String,
-            let startDate = message["StartDate"] as? NSDate {
-            
-            //Make sure the WorkoutProxy is nil. otherwise workout is still in progress
-            //this message shouldn't happen though during a workout
-            guard WorkoutSessionManager.shared.state == .inactive else { return }
-            
-            WorkoutSessionManager.shared.activate(managedContext: managedContext, workoutName: workoutName, startDate: startDate, deviceInitiated: .watch)
-            segueToLiveWorkout()
-        }
-        
-        // Save Reps: called on watch
-        if let reps = message["Reps"] as? String,
-            let orderNumber = message["OrderNumber"] as? String {
-            
-            WorkoutSessionManager.shared.save(reps: Double(reps)!, forOrderNumber: Int16(orderNumber)!)
-        }
-        
-        // Save Weight: called on watch
-        if let weight = message["Weight"] as? String,
-            let orderNumber = message["OrderNumber"] as? String {
-            
-            WorkoutSessionManager.shared.save(weight: Double(weight)!, forOrderNumber: Int16(orderNumber)!)
-        }
-        
         // Workout Finished on Watch
         if let finishDate = message["Finished"] as? NSDate {
-            WorkoutSessionManager.shared.save(finishedDate: finishDate)
+            liveWorkoutController.workoutSessionManager.save(finishedDate: finishDate)
             DispatchQueue.main.async {
                 self.liveWorkoutController.workoutFinishedOnWatch()
             }
         }
     }
+
+}
+
+
+//MARK: - Helper Methods
+extension PhoneConnectivityManager {
     
-    func segueToLiveWorkout() {
+    func segueToLiveWorkout(workoutName: String, startDate: NSDate) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let window = appDelegate.window
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         liveWorkoutController = storyboard.instantiateViewController(withIdentifier: "Live") as! LiveWorkoutController
+        let workoutSessionManager = WorkoutSessionManager(managedContext: managedContext, workoutName: workoutName, startDate: startDate, deviceInitiated: .watch)
+        liveWorkoutController.workoutSessionManager = workoutSessionManager
         liveWorkoutController.managedContext = managedContext
-        
         
         let nav = storyboard.instantiateInitialViewController() as! UINavigationController
         let root = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
@@ -203,7 +215,6 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         }
     }
 }
-
 
 
 

@@ -15,6 +15,7 @@ class LiveWorkoutController: UIViewController {
     @IBOutlet weak var heartBeatView: HeartBeatView!
     @IBOutlet weak var currentExcerciseLabel: UILabel!
     
+    var workoutSessionManager: WorkoutSessionManager!
     var workoutName: String!
     var startTime: TimeInterval!
     var currentWatchInterval: TimeInterval!
@@ -27,11 +28,10 @@ class LiveWorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if WorkoutSessionManager.shared.state == .inactive {
-            WorkoutSessionManager.shared.activate(managedContext: managedContext, workoutName: workoutName, startDate: NSDate(), deviceInitiated: .phone)
+        if workoutSessionManager.deviceInitiation == .phone {
             currentWatchInterval = 0.0
         } else {
-            currentWatchInterval = Date.timeIntervalSinceReferenceDate - WorkoutSessionManager.shared.workout.startTime!.timeIntervalSinceReferenceDate
+            currentWatchInterval = Date.timeIntervalSinceReferenceDate - workoutSessionManager.workout.startTime!.timeIntervalSinceReferenceDate
         }
   
         scrollView.isScrollEnabled = false
@@ -81,9 +81,9 @@ class LiveWorkoutController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
         // Notify that a workout has started.  Needed to Sync with Apple Watch if Apple watch is not launched at the moment. Then launched later while iPhone is running the workout.
-        if WorkoutSessionManager.shared.deviceInitiation == .phone {
-            let startDate = WorkoutSessionManager.shared.workout.startTime!
-            let excercises = WorkoutSessionManager.shared.excercises
+        if workoutSessionManager.deviceInitiation == .phone {
+            let startDate = workoutSessionManager.workout.startTime!
+            let excercises = workoutSessionManager.excercises
             let excerciseNames = excercises.map { (excercise) -> String in
                 return excercise.name!
             }
@@ -134,6 +134,7 @@ extension LiveWorkoutController {
         let rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
         rlec.view.translatesAutoresizingMaskIntoConstraints = false
         
+        rlec.workoutSession = workoutSessionManager
         rlec.workoutName = workoutName
         rlec.excerciseLabel = currentExcerciseLabel
         rlec.managedContext = managedContext
@@ -148,7 +149,7 @@ extension LiveWorkoutController {
     fileprivate func createLiveExcerciseListController() -> LiveExcerciseListController {
         let lelc = storyboard!.instantiateViewController(withIdentifier: "List") as! LiveExcerciseListController
         lelc.view.translatesAutoresizingMaskIntoConstraints = false
-        lelc.excercises = WorkoutSessionManager.shared.excercises
+        lelc.excercises = workoutSessionManager.excercises
         
         scrollView.addSubview(lelc.view)
         
@@ -169,7 +170,7 @@ extension LiveWorkoutController {
     }
     
     fileprivate func createFinishLiveWorkoutController() -> FinishLiveWorkoutController {
-        let workout = WorkoutSessionManager.shared.workout!
+        let workout = workoutSessionManager.workout!
         
         flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
         flwc.workout = workout
@@ -186,7 +187,7 @@ extension LiveWorkoutController {
 
 extension LiveWorkoutController {
     func workoutFinishedOnWatch() {
-        guard let workout = WorkoutSessionManager.shared.workout else { return }
+        guard let workout = workoutSessionManager.workout else { return }
         
         workout.endTime = NSDate()
         do {

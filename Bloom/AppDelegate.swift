@@ -10,10 +10,6 @@ import UIKit
 import CoreData
 import WatchConnectivity
 
-protocol CountDown: class {
-    func countDownComplete()
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

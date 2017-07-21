@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-//CountDown protoco is in the AppDelegate for now
+protocol CountDown: class {
+    func countDownComplete()
+}
+
+
 class StartWorkoutController: UIViewController, CountDown {
     
     @IBOutlet weak var startButton: StartButton!
@@ -36,6 +40,11 @@ class StartWorkoutController: UIViewController, CountDown {
             self.countDownView.animateRing(withSeconds: self.ringAnimationInterval)
         }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(StartWorkoutController.hideNavigation), for: .touchUpInside)
+    }
+    
+    func hideNavigation() {
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -51,6 +60,7 @@ extension StartWorkoutController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LiveWorkoutSegue" {
             let liveWorkoutController = segue.destination as! LiveWorkoutController
+            liveWorkoutController.workoutSessionManager = WorkoutSessionManager(managedContext: managedContext, workoutName: workoutName, startDate: NSDate(), deviceInitiated: .phone)
             liveWorkoutController.workoutName = workoutName
             liveWorkoutController.managedContext = managedContext
             

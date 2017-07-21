@@ -11,7 +11,7 @@ import CoreData
 
 class RecordLiveExcerciseController: UIViewController {
     
-    let workoutSession = WorkoutSessionManager.shared
+    var workoutSession: WorkoutSessionManager!
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSDictionary>!
     var bloomFilter: BloomFilter!
@@ -42,7 +42,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     func fetchMaxValues() -> Double {
         bloomFilter = BloomFilter()
-        return bloomFilter.fetchMaxValues(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
+        return bloomFilter.fetchMaxReps(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {

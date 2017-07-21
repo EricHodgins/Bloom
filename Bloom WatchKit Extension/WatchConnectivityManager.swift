@@ -51,8 +51,9 @@ class WatchConnectivityManager: NSObject {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
+                print("Requesting excercises....")
                 session.sendMessage(["NeedExcercises": workout], replyHandler: { (reply) in
-                    print(reply)
+                    print("Received message for excercises: \(reply)")
                     if let excercises = reply["Excercises"] as? [String] {
                         completion(excercises)
                     }
@@ -79,27 +80,38 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
-    //MARK: - Save Reps
-    class func save(reps: String, orderNumber: String) {
+    //MARK: - Request Max Weight
+    class func requestMaxWeight(forExcercise excercise: String, inWorkout workout: String, completion: @escaping ((Double) -> Void)) {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
-                let saveDict = ["Reps": reps, "OrderNumber": orderNumber]
-                session.sendMessage(saveDict, replyHandler: nil, errorHandler: { (error) in
-                    print("Could not send message to save: \(error)")
+                session.sendMessage(["MaxWeight" : true, "Excercise": excercise, "Workout": workout], replyHandler: { (maxWeightDict) in
+                    if let weightString = maxWeightDict["MaxWeight"] as? String {
+                        let weight = Double(weightString)!
+                        completion(weight)
+                    }
+                }, errorHandler: { (error) in
+                    print("Error receiving reply from phone for max weight: \(error)")
                 })
             }
         }
     }
     
-    //MARK: - Save Weight
-    class func save(weight: String, orderNumber: String) {
+    //Mark: - Save All Values for Excercise
+    class func save(reps: Double, weight: Double, distance: Double, time: NSDate, orderNumber: Int) {
         let session = WCSession.default()
         if WCSession.isSupported() {
             if session.isReachable {
-                let saveDict = ["Weight": weight, "OrderNumber": orderNumber]
-                session.sendMessage(saveDict, replyHandler: nil, errorHandler: { (error) in
-                    print("Could not send weight save message: \(error)")
+                let saveDict: [String: Any] = ["SaveAll": true,
+                                               "Reps": reps,
+                                               "Weight": weight,
+                                               "Distance": distance,
+                                               "Time": time,
+                                               "OrderNumber": orderNumber]
+                session.sendMessage(saveDict, replyHandler: { (reply) in
+                    print("Reply handler received from phone...awesome: \(reply["Done"]!)")
+                }, errorHandler: { (error) in
+                    print("Could not send save dict for all values: \(error)")
                 })
             }
         }
@@ -111,6 +123,11 @@ class WatchConnectivityManager: NSObject {
             let session = WCSession.default()
             if session.isReachable {
                 let dict: [String : Any] = ["Name": WorkoutManager.shared.currentWorkout!, "StartDate": WorkoutManager.shared.workoutStartDate!]
+                session.sendMessage(dict, replyHandler: { (reply) in
+                    print("Phone was activated: \(reply["PhoneActivated"]!)")
+                }, errorHandler: { (error) in
+                    print("Error activating phone when workout started: \(error)")
+                })
                 session.sendMessage(dict, replyHandler: nil, errorHandler: nil)
             }
         }
@@ -162,21 +179,6 @@ extension WatchConnectivityManager: WCSessionDelegate {
         }
     }
     
-    //MARK: - Send State to Phone
-    func sendStateToPhone() {
-        if WCSession.isSupported() {
-        let session = WCSession.default()
-            do {
-                let dictionary: [String: Any] = ["StartDate" : WorkoutManager.shared.workoutStartDate!,
-                                                 "Name": WorkoutManager.shared.currentWorkout!
-                                                 ]
-                try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
-            } catch {
-                print("ERROR (sendStateToWatch): \(error)")
-            }
-        }
-    }
-    
     //MARK: - Received Message
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if let _ = message["Finished"] as? Bool {
@@ -188,7 +190,23 @@ extension WatchConnectivityManager: WCSessionDelegate {
 }
 
 
-
+//MARK: - Helper Methods
+extension WatchConnectivityManager {
+    //MARK: - Send State to Phone
+    func sendStateToPhone() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            do {
+                let dictionary: [String: Any] = ["StartDate" : WorkoutManager.shared.workoutStartDate!,
+                                                 "Name": WorkoutManager.shared.currentWorkout!
+                ]
+                try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
+            } catch {
+                print("ERROR (sendStateToWatch): \(error)")
+            }
+        }
+    }
+}
 
 
 

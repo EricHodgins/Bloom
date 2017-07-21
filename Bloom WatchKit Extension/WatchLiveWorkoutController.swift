@@ -24,7 +24,11 @@ class WatchLiveWorkoutController: WKInterfaceController {
         
         guard let contextDict = context as? [String : NSDate],
             let timeStarted = contextDict["workoutStartDate"] else {
-                excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
+                if WorkoutManager.shared.currentExcercises.count > 0 {
+                    excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
+                } else {
+                    excerciseLabel.setText("Loading Data...")
+                }
                 timer.start()
             return
         }
@@ -49,7 +53,17 @@ class WatchLiveWorkoutController: WKInterfaceController {
         WorkoutManager.shared.save()
         excerciseLabel.setText(WorkoutManager.shared.nextExcercise())
         WorkoutManager.shared.updateMaxReps()
+        WorkoutManager.shared.updateMaxWeight()
     }
     
 
 }
+
+
+
+
+
+
+
+
+

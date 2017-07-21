@@ -23,16 +23,14 @@ enum WorkoutSessionDeviceInitiation {
 
 class WorkoutSessionManager {
     var state: WorkoutSessionManagerState = .inactive
-    static let shared: WorkoutSessionManager = WorkoutSessionManager()
-    private init() {}
-    
     var deviceInitiation: WorkoutSessionDeviceInitiation = .none
+    
     fileprivate var managedContext: NSManagedObjectContext!
     var workout: Workout!
     var excercises: [Excercise] = []
     var currentExcercise: Excercise!
     
-    func activate(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate, deviceInitiated device: WorkoutSessionDeviceInitiation) {
+    init(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate, deviceInitiated device: WorkoutSessionDeviceInitiation) {
         guard state == .inactive else { return }
         self.state = .active
         self.managedContext = managedContext
@@ -76,8 +74,8 @@ class WorkoutSessionManager {
         return currentExcercise
     }
     
-    func reset() {
-        //TODO: WIll need to reset
+    fileprivate func reset() {
+        state = .inactive
     }
 }
 
@@ -92,6 +90,15 @@ extension WorkoutSessionManager {
             }
         }
         return nil
+    }
+    
+    func save(reps: Double, weight: Double, distance: Double, time: NSDate, orderNumber: Int16) {
+        guard let excercise = excercise(forOrderNumber: orderNumber) else { return }
+        excercise.reps = reps
+        excercise.weight = weight
+        excercise.distance = distance
+        excercise.timeRecorded = time
+        save()
     }
     
     func save(reps: Double, forOrderNumber orderNumber: Int16) {
@@ -109,6 +116,7 @@ extension WorkoutSessionManager {
     func save(finishedDate date: NSDate) {
         workout.endTime = date
         save()
+        reset()
     }
     
     func save() {

@@ -84,6 +84,7 @@
                         </label>
                     </items>
                     <connections>
+                        <outlet property="startButton" destination="qoP-01-PY3" id="8OD-Rl-SUw"/>
                         <outlet property="workoutName" destination="SV0-Tt-wbv" id="g15-gZ-npq"/>
                     </connections>
                 </controller>

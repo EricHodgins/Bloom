@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import CoreData
 
 
 class InterfaceController: WKInterfaceController {
@@ -24,6 +25,7 @@ class InterfaceController: WKInterfaceController {
         } else {
             requestWorkoutRoutines()
         }
+
     }
 
     func setupNotications() {

@@ -44,7 +44,7 @@ class WorkoutInterfaceController: WKInterfaceController {
 }
 
 
-extension WorkoutInterfaceController: UpdateWorkoutsTableDelgate {
+extension WorkoutInterfaceController: WorkoutsTableDelegate {
     func refreshTable() {
         refresh()
     }
