@@ -154,31 +154,33 @@ extension CreateWorkoutController: UITextFieldDelegate {
     
     //MARK: - Create Workout Name Textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-        
-        //TODO: Allow ability to update as well
-        if workoutNameTextfield.text != "" {
-            let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
-            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutNameTextfield.text!)
-            
-            do {
-                let results = try managedContext.fetch(workoutFetch)
-                if results.count > 0 {
-                    // Already have a workout called that
-                    //TODO: - Setup Alert Notifying a workout is already named that.
-                } else {
-                    // New Workout Named -> Create a new workout with this name
-                    currentWorkout = WorkoutTemplate(context: managedContext)
-                    currentWorkout?.name = workoutNameTextfield.text!
-                    try managedContext.save()
-                }
-            } catch let error as NSError {
-                print("Fetch error: \(error), \(error.userInfo)")
+        DispatchQueue.main.async {
+            if textField.isFirstResponder {
+                textField.resignFirstResponder()
             }
-        }
+            
+            //TODO: Allow ability to update as well
+            if self.workoutNameTextfield.text != "" {
+                let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
+                let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
+                workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
+                
+                do {
+                    let results = try self.managedContext.fetch(workoutFetch)
+                    if results.count > 0 {
+                        // Already have a workout called that
+                        //TODO: - Setup Alert Notifying a workout is already named that.
+                    } else {
+                        // New Workout Named -> Create a new workout with this name
+                        self.currentWorkout = WorkoutTemplate(context: self.managedContext)
+                        self.currentWorkout?.name = workoutName
+                    }
+                } catch let error as NSError {
+                    print("Fetch error: \(error), \(error.userInfo)")
+                }
+            }
         
+        }
         return true
     }
 }

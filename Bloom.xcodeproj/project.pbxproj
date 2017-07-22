@@ -88,6 +88,7 @@
 		7AC184071E20BC0B0019AB2F /* FinishLiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */; };
 		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
 		7ACCF2E21EE99A00002B0865 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ACCF2E11EE99A00002B0865 /* spark.png */; };
+		7ADD25F91F23CF6E00B434AF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD25F81F23CF6E00B434AF /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +235,7 @@
 		7ACBB5261E0A325800CE285A /* BloomUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomUITests.swift; sourceTree = "<group>"; };
 		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ACCF2E11EE99A00002B0865 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		7ADD25F81F23CF6E00B434AF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 				7ACCF2E11EE99A00002B0865 /* spark.png */,
 				7A0134841F0694C500B13476 /* PhoneConnectivity */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
+				7ADD25F81F23CF6E00B434AF /* Utils.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
 				7A1E13EC1E06195600330EFB /* Custom Views */,
@@ -759,6 +762,7 @@
 				7A6DC6EE1E3E715600EC9709 /* SunsetBackground.swift in Sources */,
 				7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */,
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
+				7ADD25F91F23CF6E00B434AF /* Utils.swift in Sources */,
 				7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */,
 				7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
