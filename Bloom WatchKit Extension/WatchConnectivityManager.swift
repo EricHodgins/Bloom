@@ -177,6 +177,11 @@ extension WatchConnectivityManager: WCSessionDelegate {
                 WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
             })
         }
+        
+        // New Workout Created on the Phone
+        if let _ = applicationContext["WorkoutDateCreated"] as? NSDate {
+            notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
+        }
     }
     
     //MARK: - Received Message

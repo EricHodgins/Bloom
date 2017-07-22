@@ -115,7 +115,7 @@ class BloomFilter {
             let results = try managedContext.fetch(fetchRequest)
             let resultDict = results.first!
             maxValue = resultDict["maxWeight"] as? Double
-            print("Max Reps: \(maxValue ?? 0)")
+            print("Max Weight: \(maxValue ?? 0)")
         } catch let error as NSError {
             print("NSDescription Error: \(error.userInfo)")
         }

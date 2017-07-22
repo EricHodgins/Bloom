@@ -52,6 +52,9 @@ class CreateWorkoutController: UIViewController {
             //2. Save the context to disc
             do {
                 try managedContext.save()
+                
+                // send message to watch to update workouts
+                PhoneConnectivityManager.newWorkoutCreatedMessage()
             } catch let error as NSError {
                 print("Save error: \(error), description: \(error.userInfo)")
             }

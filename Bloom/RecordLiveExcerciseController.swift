@@ -19,6 +19,7 @@ class RecordLiveExcerciseController: UIViewController {
     var workoutName: String!
     
     var maxReps: Double?
+    var maxWeight: Double?
     
     weak var excerciseLabel: UILabel!
     var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView to increase/decrease values
@@ -37,12 +38,17 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        maxReps = fetchMaxValues()
+        maxReps = fetchMaxReps()
     }
     
-    func fetchMaxValues() -> Double {
+    func fetchMaxReps() -> Double {
         bloomFilter = BloomFilter()
         return bloomFilter.fetchMaxReps(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
+    }
+    
+    func fetchMaxWeight() -> Double {
+        bloomFilter = BloomFilter()
+        return bloomFilter.fetchMaxWeight(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
@@ -54,7 +60,8 @@ class RecordLiveExcerciseController: UIViewController {
             
             _ = self.workoutSession.nextExcercise()
             self.excerciseLabel.text = self.workoutSession.currentExcercise.name!
-            self.maxReps = self.fetchMaxValues()
+            self.maxReps = self.fetchMaxReps()
+            self.maxWeight = self.fetchMaxWeight()
         }
     }
     
@@ -79,13 +86,29 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func showRecordView(withTitle title: String, andStat stat: Stat) {
-        retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise)
+        retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise) // debug code
+        
+        let text: String
+        switch stat {
+        case .Reps:
+            text = "\(maxReps ?? 0)"
+            currentCounter = maxReps ?? 0
+        case .Weight:
+            text = "\(maxWeight ?? 0)"
+            currentCounter = maxWeight ?? 0
+        case .Distance:
+            text = "Still need to complete distance values"
+            currentCounter = 0.0
+        case .Time:
+            text = "00:00:00"
+        }
+        
         
         recordLiveStatView = RecordLiveStatView(inView: view)
         recordLiveStatView.stat = stat
         recordLiveStatView.title.text = title
-        recordLiveStatView.textField.text = "\(maxReps ?? 0)"
-        currentCounter = maxReps ?? 0
+        recordLiveStatView.textField.text = text
+
         recordLiveStatView.plusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.plusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.minusButton.addTarget(self, action: #selector(RecordLiveExcerciseController.minusButtonPushed(sender:)), for: .touchUpInside)
         recordLiveStatView.saveButton.addTarget(recordLiveStatView, action: #selector(RecordLiveStatView.savePressed), for: .touchUpInside)
@@ -109,7 +132,7 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func retriveCurrentExcerciseValue(excercise: Excercise) {
-        print("\(String(describing: excercise.name)), Reps: \(excercise.reps)")
+        print("\(String(describing: excercise.name)), Reps: \(excercise.reps), Weight: \(excercise.weight)")
     }
     
     func saveExcerciseValue(forStat stat: Stat, value: String) {

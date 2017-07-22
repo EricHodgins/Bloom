@@ -98,6 +98,20 @@ class PhoneConnectivityManager: NSObject {
             }
         }
     }
+    
+    class func newWorkoutCreatedMessage() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            if session.isWatchAppInstalled {
+                do {
+                    let message = ["WorkoutDateCreated": NSDate()]
+                    try session.updateApplicationContext(message)
+                } catch {
+                    print("Error sending workout create message to watch: \(error)")
+                }
+            }
+        }
+    }
 
 }
 
