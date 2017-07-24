@@ -23,8 +23,21 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        let workoutButtonImageData = UserDefaults.standard.object(forKey: "WorkoutButtonImageData")
+        let statButtonImagedData = UserDefaults.standard.object(forKey: "StatButtonImageData")
+        
+        if let workoutImgData = workoutButtonImageData as? Data,
+            let statImgData = statButtonImagedData as? Data {
+            let workoutBackgroundImage = UIImage(data: workoutImgData)!
+            let statBackgroundImage = UIImage(data: statImgData)!
+            workoutsButton.setBackgroundImage(workoutBackgroundImage)
+            statsButton.setBackgroundImage(statBackgroundImage)
+        } else {
+            notificationCenter.addObserver(self, selector: #selector(InterfaceController.setupGradientImage), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
+        }
+        
         if WatchConnectivityManager.shared.state == .inactive {
-            setupNotications()
+            notificationCenter.addObserver(self, selector: #selector(InterfaceController.requestWorkoutRoutines), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
         } else {
             requestWorkoutRoutines()
         }
@@ -37,6 +50,7 @@ class InterfaceController: WKInterfaceController {
         WatchConnectivityManager.requestWorkoutImageData(height: height, width: width) { (imageData) in
             print("Received image Data: \(imageData)")
             let image = UIImage(data: imageData)!
+            UserDefaults.standard.set(imageData, forKey: "WorkoutButtonImageData")
             DispatchQueue.main.async {
                 self.workoutsButton.setBackgroundImage(image)
             }
@@ -45,15 +59,11 @@ class InterfaceController: WKInterfaceController {
         WatchConnectivityManager.requestStatImageData(height: height, width: width) { (imageData) in
             print("Received stat image data: \(imageData)")
             let image = UIImage(data: imageData)!
+            UserDefaults.standard.set(imageData, forKey: "StatButtonImageData")
             DispatchQueue.main.async {
                 self.statsButton.setBackgroundImage(image)
             }
         }
-    }
-
-    func setupNotications() {
-        notificationCenter.addObserver(self, selector: #selector(InterfaceController.requestWorkoutRoutines), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
-        notificationCenter.addObserver(self, selector: #selector(InterfaceController.setupGradientImage), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
     }
     
     func requestWorkoutRoutines() {
