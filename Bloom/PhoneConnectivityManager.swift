@@ -112,7 +112,6 @@ class PhoneConnectivityManager: NSObject {
             }
         }
     }
-
 }
 
 extension PhoneConnectivityManager: WCSessionDelegate {
@@ -187,6 +186,31 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             replyHandler(["PhoneActivated": true])
             
             segueToLiveWorkout(workoutName: workoutName, startDate: startDate)
+        }
+        
+        //MARK: - Need Image Data
+        if let _ = message["NeedWorkoutButtonImageData"] as? Bool,
+                let height = message["Height"] as? Double,
+                let width = message["Width"] as? Double {
+            
+            let size = CGSize(width: width, height: height)
+            let bottomColor = UIColor(red: 255/255, green: 85/255, blue: 0.0, alpha: 1.0)
+            let topColor = UIColor(red: 255/255, green: 112/255, blue: 189/255, alpha: 1.0)
+            let imageData = UIImage.gradientImageData(size: size, topUIColor: topColor, bottomUIColor: bottomColor)
+            
+            replyHandler(["WorkoutButtonImageData": imageData])
+        }
+        
+        if let _ = message["NeedStatButtonImageData"] as? Bool,
+            let height = message["Height"] as? Double,
+            let width = message["Width"] as? Double  {
+            
+            let size = CGSize(width: width, height: height)
+            let bottomColor = UIColor(red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
+            let topColor = UIColor(red: 105/255, green: 219/255, blue: 255/255, alpha: 1.0)
+            let imageData = UIImage.gradientImageData(size: size, topUIColor: topColor, bottomUIColor: bottomColor)
+            
+            replyHandler(["StatButtonImageData": imageData])
         }
     }
     

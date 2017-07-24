@@ -29,6 +29,10 @@
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="statsButton" destination="r0d-r5-8yb" id="rAm-ye-3yX"/>
+                        <outlet property="workoutsButton" destination="5px-6g-ce7" id="LHY-6E-rx8"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="288"/>

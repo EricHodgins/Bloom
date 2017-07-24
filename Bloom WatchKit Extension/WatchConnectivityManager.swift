@@ -97,6 +97,41 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Request Image Data
+    class func requestWorkoutImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                let dict: [String: Any] = ["NeedWorkoutButtonImageData": true, "Height": height, "Width": width]
+                session.sendMessage(dict, replyHandler: { (dict) in
+                    if let imageData = dict["WorkoutButtonImageData"] as? Data {
+                        completion(imageData)
+                    }
+                    
+                }, errorHandler: { (error) in
+                    print("Error getting image data: \(error)")
+                })
+            }
+        }
+    }
+    
+    class func requestStatImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
+        let session = WCSession.default()
+        if WCSession.isSupported() {
+            if session.isReachable {
+                let dict: [String: Any] = ["NeedStatButtonImageData": true, "Height": height, "Width": width]
+                session.sendMessage(dict, replyHandler: { (dict) in
+                    if let imageData = dict["StatButtonImageData"] as? Data {
+                        completion(imageData)
+                    }
+                    
+                }, errorHandler: { (error) in
+                    print("Error getting image data: \(error)")
+                })
+            }
+        }
+    }
+    
     //Mark: - Save All Values for Excercise
     class func save(reps: Double, weight: Double, distance: Double, time: NSDate, orderNumber: Int) {
         let session = WCSession.default()

@@ -29,6 +29,7 @@ class CreateWorkoutController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
         workoutNameTextfield.delegate = self
     }
 
@@ -65,9 +66,7 @@ class CreateWorkoutController: UIViewController {
     }
     
     @IBAction func addExcercisePressed(_ sender: Any) {
-        lineSeparator.alpha = 0
-        addBlurEffect()
-        addExcerciseView()
+        addExcerciseView(withText: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -79,8 +78,12 @@ class CreateWorkoutController: UIViewController {
         animateLineSeparator()
     }
     
-    func addExcerciseView() {
+    func addExcerciseView(withText text: String?) {
+        lineSeparator.alpha = 0
+        addBlurEffect()
+        
         excerciseView = AddExcerciseView(inView: view)
+        excerciseView.textField.text = text ?? ""
         excerciseView.completionHandler = { (excerciseName) in
             // Add New Excercise ( Save was pressed.)
             if let excerciseName = excerciseName {
@@ -221,7 +224,12 @@ extension CreateWorkoutController: UITableViewDataSource {
 }
 
 
-
+extension CreateWorkoutController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let excercise = excercises[indexPath.row] 
+        addExcerciseView(withText: excercise)
+    }
+}
 
 
 

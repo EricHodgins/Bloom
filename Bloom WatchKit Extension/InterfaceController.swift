@@ -7,7 +7,7 @@
 //
 
 import WatchKit
-import Foundation
+import UIKit
 import CoreData
 
 
@@ -16,6 +16,9 @@ class InterfaceController: WKInterfaceController {
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()
+    
+    @IBOutlet var workoutsButton: WKInterfaceButton!
+    @IBOutlet var statsButton: WKInterfaceButton!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -27,9 +30,30 @@ class InterfaceController: WKInterfaceController {
         }
 
     }
+    
+    func setupGradientImage() {
+        let height = Double(WKInterfaceDevice.current().screenBounds.height / 2)
+        let width = Double(WKInterfaceDevice.current().screenBounds.width)
+        WatchConnectivityManager.requestWorkoutImageData(height: height, width: width) { (imageData) in
+            print("Received image Data: \(imageData)")
+            let image = UIImage(data: imageData)!
+            DispatchQueue.main.async {
+                self.workoutsButton.setBackgroundImage(image)
+            }
+        }
+        
+        WatchConnectivityManager.requestStatImageData(height: height, width: width) { (imageData) in
+            print("Received stat image data: \(imageData)")
+            let image = UIImage(data: imageData)!
+            DispatchQueue.main.async {
+                self.statsButton.setBackgroundImage(image)
+            }
+        }
+    }
 
     func setupNotications() {
         notificationCenter.addObserver(self, selector: #selector(InterfaceController.requestWorkoutRoutines), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(InterfaceController.setupGradientImage), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
     }
     
     func requestWorkoutRoutines() {
