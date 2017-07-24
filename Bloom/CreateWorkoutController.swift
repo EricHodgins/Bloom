@@ -229,6 +229,15 @@ extension CreateWorkoutController: UITableViewDelegate {
         let excercise = excercises[indexPath.row] 
         addExcerciseView(withText: excercise)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        excercises.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
 
