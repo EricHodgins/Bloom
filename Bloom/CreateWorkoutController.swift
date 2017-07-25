@@ -23,14 +23,37 @@ class CreateWorkoutController: UIViewController {
     var currentWorkout: WorkoutTemplate?
     
     var managedContext: NSManagedObjectContext!
+    var workoutName: String? = nil
+    var isEditingExistingWorkout: Bool = false
     var excercises: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let name = workoutName {
+            workoutNameTextfield.text = name
+            fetchWorkoutTemplate(name: name)
+        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         workoutNameTextfield.delegate = self
+    }
+    
+    func fetchWorkoutTemplate(name: String) {
+        let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
+        workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), name)
+        
+        do {
+            currentWorkout = try self.managedContext.fetch(workoutFetch).first!
+            let excerciseTemplates = currentWorkout?.excercises?.allObjects as! [ExcerciseTemplate]
+            for excerciseTemplate in excerciseTemplates {
+                excercises.append(excerciseTemplate.name!)
+            }
+            tableView.reloadData()
+        } catch let error as NSError {
+            print("Fetch error: \(error), \(error.userInfo)")
+        }
     }
 
 
@@ -155,7 +178,7 @@ class CreateWorkoutController: UIViewController {
 
 extension CreateWorkoutController: UITextFieldDelegate {
     
-    //MARK: - Create Workout Name Textfield
+    //MARK: - Create Workout Name Textfield or Start Editing Existing one
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         DispatchQueue.main.async {
             if textField.isFirstResponder {
@@ -174,6 +197,11 @@ extension CreateWorkoutController: UITextFieldDelegate {
                         // Already have a workout called that
                         //TODO: - Setup Alert Notifying a workout is already named that.
                     } else {
+                        // If editing an existing workout template don't create new one.
+                        guard !self.isEditingExistingWorkout else {
+                            self.updateWorkoutTemplate(workoutName: workoutName)
+                            return
+                        }
                         // New Workout Named -> Create a new workout with this name
                         self.currentWorkout = WorkoutTemplate(context: self.managedContext)
                         self.currentWorkout?.name = workoutName
@@ -185,6 +213,10 @@ extension CreateWorkoutController: UITextFieldDelegate {
         
         }
         return true
+    }
+    
+    func updateWorkoutTemplate(workoutName: String) {
+        currentWorkout?.name = workoutName
     }
 }
 

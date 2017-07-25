@@ -50,6 +50,7 @@ class StartWorkoutController: UIViewController, CountDown {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
 
     }
+    
 }
 
 extension StartWorkoutController {
@@ -66,6 +67,13 @@ extension StartWorkoutController {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.phoneConnectivityManager.liveWorkoutController = liveWorkoutController
+        }
+        
+        if segue.identifier == "EditWorkout" {
+            let editWorkoutController = segue.destination as! CreateWorkoutController
+            editWorkoutController.managedContext = managedContext
+            editWorkoutController.workoutName = workoutName
+            editWorkoutController.isEditingExistingWorkout = true
         }
     }
 }
