@@ -15,7 +15,7 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "MainIcon@58.png",
+      "filename" : "MainIcon@58-1.png",
       "scale" : "2x"
     },
     {
@@ -33,19 +33,19 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "MainIcon@120-1.png",
+      "filename" : "MainIcon@120.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "MainIcon@120.png",
+      "filename" : "MainIcon@60@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "180 - iPhone 6 Plus.png",
+      "filename" : "MainIcon@180.png",
       "scale" : "3x"
     }
   ],
