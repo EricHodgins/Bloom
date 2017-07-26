@@ -46,7 +46,9 @@ class CreateWorkoutController: UIViewController {
         
         do {
             currentWorkout = try self.managedContext.fetch(workoutFetch).first!
-            let excerciseTemplates = currentWorkout?.excercises?.allObjects as! [ExcerciseTemplate]
+            let excerciseTemplates = (currentWorkout?.excercises?.allObjects as! [ExcerciseTemplate]).sorted(by: { (e1, e2) -> Bool in
+                return (e1).orderNumber < (e2).orderNumber
+            })
             for excerciseTemplate in excerciseTemplates {
                 excercises.append(excerciseTemplate.name!)
             }
@@ -66,6 +68,7 @@ class CreateWorkoutController: UIViewController {
         // Save the workout and set it's excercises to the tableview
         //1. Validate Textfield and current workout view
         if let workout = currentWorkout {
+            workout.excercises = nil
             for (idx, excerciseString) in excercises.enumerated() {
                 let excercise = ExcerciseTemplate(context: managedContext)
                 excercise.name = excerciseString
