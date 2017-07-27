@@ -288,8 +288,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH"/>
+                    <navigationItem key="navigationItem" title="Stats" id="PnD-56-OAH">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="1Ho-59-fdo">
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="fSD-V5-eS1" id="qec-os-LtB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="deleteBarButtonItem" destination="1Ho-59-fdo" id="Rkg-H4-NRd"/>
                         <outlet property="segmentedControl" destination="rRQ-YJ-O4e" id="lMB-rJ-Iui"/>
                         <outlet property="tableView" destination="qhh-gB-bs3" id="xc2-WE-EYj"/>
                         <segue destination="4cH-qt-Mg5" kind="show" identifier="ShowExcercises" id="EmB-mc-PhW"/>

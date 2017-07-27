@@ -13,6 +13,8 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var deleteBarButtonItem: UIBarButtonItem!
+    
     var managedContext: NSManagedObjectContext!
     var workoutTypes: [NSDictionary] = []
     var workouts: [Workout] = []
@@ -20,6 +22,7 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteBarButtonItem.isEnabled = false
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 8.0
         segmentedControl.layer.masksToBounds = true
@@ -71,6 +74,17 @@ class SummaryViewController: UIViewController {
         segmentControlValueChanged(segment: sender)
     }
     
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        if tableView.isEditing {
+            deleteBarButtonItem.title = "Delete"
+            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 255/255, green: 0, blue: 0, alpha: 1.0)
+            tableView.setEditing(false, animated: true)
+        } else {
+            deleteBarButtonItem.title = "Done"
+            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 61/255, green: 157/255, blue: 148/255, alpha: 1.0)
+            tableView.setEditing(true, animated: true)
+        }
+    }
 }
 
 // Table View Delegate
@@ -127,12 +141,14 @@ extension SummaryViewController: UITableViewDelegate {
         
         if segment.selectedSegmentIndex == 0 {
             // Show only types of workouts created
+            deleteBarButtonItem.isEnabled = false
             isAllWorkouts = false
             tableView.reloadData()
         }
         
         if segment.selectedSegmentIndex == 1 {
             // Show All Workouts
+            deleteBarButtonItem.isEnabled = true
             isAllWorkouts = true
             guard workouts.count == 0 else {
                 tableView.reloadData()
@@ -141,6 +157,31 @@ extension SummaryViewController: UITableViewDelegate {
             
             fetchAllWorkouts()
             tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // only edit Show All
+        if segmentedControl.selectedSegmentIndex == 1 {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard segmentedControl.selectedSegmentIndex == 1 else { return }
+        
+        let workout = workouts[indexPath.row]
+        tableView.beginUpdates()
+        workouts.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
+        
+        managedContext.delete(workout)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error deleting individual workout: \(error.localizedDescription)")
         }
     }
 }
