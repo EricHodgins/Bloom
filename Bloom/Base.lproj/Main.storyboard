@@ -736,8 +736,16 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Workouts" id="aow-71-uXR"/>
+                    <navigationItem key="navigationItem" title="Workouts" id="aow-71-uXR">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="3t8-st-3Sz">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="QG1-RB-hbX" id="kqT-xi-FSu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="deleteBarButtonItem" destination="3t8-st-3Sz" id="caI-3G-beZ"/>
                         <outlet property="tableView" destination="U3t-aI-9Bp" id="3o7-om-iVd"/>
                     </connections>
                 </viewController>
@@ -1282,7 +1290,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="otL-wJ-G1O"/>
         <segue reference="rrC-hf-91z"/>
-        <segue reference="Fop-YP-du9"/>
     </inferredMetricsTieBreakers>
 </document>

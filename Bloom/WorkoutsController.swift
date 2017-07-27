@@ -12,6 +12,7 @@ import CoreData
 class WorkoutsController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var deleteBarButtonItem: UIBarButtonItem!
     
     var managedContext: NSManagedObjectContext!
     var workouts = [WorkoutTemplate]()
@@ -31,6 +32,18 @@ class WorkoutsController: UIViewController {
             workouts = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Save error: \(error), description: \(error.userInfo)")
+        }
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        if tableView.isEditing {
+            deleteBarButtonItem.title = "Delete"
+            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 255/255, green: 0, blue: 0, alpha: 1.0)
+            tableView.setEditing(false, animated: true)
+        } else {
+            deleteBarButtonItem.title = "Done"
+            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 61/255, green: 157/255, blue: 148/255, alpha: 1.0)
+            tableView.setEditing(true, animated: true)
         }
     }
 }
@@ -78,9 +91,32 @@ extension WorkoutsController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.contentView.backgroundColor = UIColor.clear
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if tableView.isEditing {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let workout = workouts[indexPath.row]
+        tableView.beginUpdates()
+        workouts.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
+        
+        managedContext.delete(workout)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error deleting WorkoutTEmplate: \(error.localizedDescription)")
+        }
+        
+    }
 }
-
-
 
 
 

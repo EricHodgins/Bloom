@@ -39,6 +39,7 @@ extension WorkoutDetailController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Header
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutInfoCell", for: indexPath) as! WorkoutTableCell
             cell.workoutDate.text = "\(dateFormatter.string(from: workout.startTime! as Date))"
@@ -48,12 +49,14 @@ extension WorkoutDetailController: UITableViewDataSource {
             return cell
         }
         
+        // Excercise Details
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCell", for: indexPath) as! ExcerciseTableCell
         let excercise = excercises[indexPath.row - 1]
         cell.excerciseName.text = "\(excercise.name!)"
         cell.repsLabel.text = "Reps: \(excercise.reps)"
         cell.weightLabel.text = "Weight: \(excercise.weight) lbs"
         cell.distanceLabel.text = "Distance: \(excercise.distance) Km"
+        cell.timeLabel.text = workout.startTime!.delta(to: excercise.timeRecorded!)
         
         return cell
     }
