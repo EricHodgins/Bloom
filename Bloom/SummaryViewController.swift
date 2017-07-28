@@ -22,6 +22,9 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         deleteBarButtonItem.isEnabled = false
         segmentedControl.layer.borderWidth = 1.0
         segmentedControl.layer.cornerRadius = 8.0
@@ -162,7 +165,7 @@ extension SummaryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // only edit Show All
-        if segmentedControl.selectedSegmentIndex == 1 {
+        if segmentedControl.selectedSegmentIndex == 1 && tableView.isEditing {
             return true
         }
         return false

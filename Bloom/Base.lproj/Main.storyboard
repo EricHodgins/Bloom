@@ -238,11 +238,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-kM-QNf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rRQ-YJ-O4e">
-                                <rect key="frame" x="0.0" y="64" width="375" height="41"/>
+                                <rect key="frame" x="8" y="64" width="359" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="wpI-Yi-1dt"/>
+                                    <constraint firstAttribute="height" constant="30" id="wpI-Yi-1dt"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Workouts"/>
@@ -254,7 +258,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-gB-bs3">
-                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="lOO-9a-iUo">
@@ -271,13 +275,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qhh-gB-bs3" firstAttribute="top" secondItem="rRQ-YJ-O4e" secondAttribute="bottom" id="3cJ-EN-jIM"/>
+                            <constraint firstItem="qhh-gB-bs3" firstAttribute="top" secondItem="WEp-kM-QNf" secondAttribute="bottom" id="0JU-0f-ctM"/>
+                            <constraint firstItem="WEp-kM-QNf" firstAttribute="top" secondItem="zzS-OF-Aw4" secondAttribute="top" id="1q4-jv-sGd"/>
                             <constraint firstItem="xdj-5W-hn8" firstAttribute="top" secondItem="qhh-gB-bs3" secondAttribute="bottom" id="8cI-96-Urt"/>
-                            <constraint firstItem="rRQ-YJ-O4e" firstAttribute="leading" secondItem="zzS-OF-Aw4" secondAttribute="leading" id="Er4-94-5hp"/>
+                            <constraint firstItem="WEp-kM-QNf" firstAttribute="bottom" secondItem="rRQ-YJ-O4e" secondAttribute="bottom" constant="8" id="8o6-Qy-iN0"/>
+                            <constraint firstItem="rRQ-YJ-O4e" firstAttribute="leading" secondItem="zzS-OF-Aw4" secondAttribute="leading" constant="8" id="Er4-94-5hp"/>
                             <constraint firstItem="rRQ-YJ-O4e" firstAttribute="top" secondItem="PWc-jC-Gf1" secondAttribute="bottom" id="JES-hH-AYd"/>
                             <constraint firstAttribute="trailing" secondItem="qhh-gB-bs3" secondAttribute="trailing" id="XrY-Ti-TA7"/>
+                            <constraint firstAttribute="trailing" secondItem="WEp-kM-QNf" secondAttribute="trailing" id="XsM-tk-uRH"/>
+                            <constraint firstItem="WEp-kM-QNf" firstAttribute="leading" secondItem="zzS-OF-Aw4" secondAttribute="leading" id="nsm-HK-6E9"/>
                             <constraint firstItem="qhh-gB-bs3" firstAttribute="leading" secondItem="zzS-OF-Aw4" secondAttribute="leading" id="rq4-yF-jk4"/>
-                            <constraint firstAttribute="trailing" secondItem="rRQ-YJ-O4e" secondAttribute="trailing" id="yZO-0q-fap"/>
+                            <constraint firstAttribute="trailing" secondItem="rRQ-YJ-O4e" secondAttribute="trailing" constant="8" id="yZO-0q-fap"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
