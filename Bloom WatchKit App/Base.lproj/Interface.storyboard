@@ -115,13 +115,14 @@
                                 <action selector="nextExcerciseButtonPressed" destination="iDG-gB-heO" id="L4G-Fx-ubI"/>
                             </connections>
                         </button>
-                        <label width="1" height="0.14999999999999999" alignment="left" verticalAlignment="bottom" text="77 BPM" id="w9B-ce-AGe">
+                        <label width="1" height="0.14999999999999999" alignment="left" verticalAlignment="bottom" text="-- BPM" id="w9B-ce-AGe">
                             <color key="textColor" red="1" green="0.0" blue="0.20019130639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
                     </items>
                     <connections>
                         <outlet property="excerciseLabel" destination="9dt-oI-e36" id="7zt-eC-ewE"/>
+                        <outlet property="heartRateLabel" destination="w9B-ce-AGe" id="Bah-16-7Vn"/>
                         <outlet property="timer" destination="tww-X6-2mh" id="w0F-Rq-0PB"/>
                     </connections>
                 </controller>

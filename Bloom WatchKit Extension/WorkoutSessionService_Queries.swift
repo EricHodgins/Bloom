@@ -47,7 +47,7 @@ extension WorkoutSessionService {
             if let hr = samples.last?.quantity {
                 self.heartRate = hr
                 print("heart rate = \(hr)")
-                //self.sendUpdatedHeartRateToPhone(hr: hr)
+                self.delegate?.workoutSessionService(didUpdateHeartRate: hr.doubleValue(for: hrUnit))
             }
         }
     }

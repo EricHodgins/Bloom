@@ -52,12 +52,27 @@ class StartInterfaceController: WKInterfaceController {
     @IBAction func startButtonPressed() {
         WorkoutManager.shared.workoutStartDate = NSDate()
         WatchConnectivityManager.sendWorkoutStartMessageToPhone()
+        
         workoutSessionService = WorkoutSessionService(configuration: configuration)
         
-        guard let workoutSessionService = workoutSessionService else { return }
-        workoutSessionService.startSession()
+        // If workoutsession is nil
+        guard let workoutSessionService = workoutSessionService else {
+            WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+            return
+        }
         
-        let contexts = [workoutSessionService, workoutSessionService, workoutSessionService, workoutSessionService]
+        // If workouts or Heart Rate data is not authorized by user
+        let workoutAuthorizedStatus = workoutSessionService.workoutAuthorizationStatus()
+        let heartRateAuthorizedStatus = workoutSessionService.heartRateAuthorizationStatus()
+        
+        guard workoutAuthorizedStatus == .sharingAuthorized && heartRateAuthorizedStatus == .sharingAuthorized else {
+            WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+            return
+        }
+        
+        // Everything is Authorized start a workout session to record a workout and heart rate data to HealthKit Store
+        workoutSessionService.startSession()
+        let contexts: [Any] = [["WorkoutSessionService": workoutSessionService], workoutSessionService, workoutSessionService, workoutSessionService]
         WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
     }
 }

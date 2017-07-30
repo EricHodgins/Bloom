@@ -12,6 +12,7 @@ import Foundation
 
 class WatchLiveWorkoutController: WKInterfaceController {
 
+    @IBOutlet var heartRateLabel: WKInterfaceLabel!
     @IBOutlet var timer: WKInterfaceTimer!
     @IBOutlet var excerciseLabel: WKInterfaceLabel!
     
@@ -19,11 +20,21 @@ class WatchLiveWorkoutController: WKInterfaceController {
         return NotificationCenter.default
     }()
     
+    var workoutSessionService: WorkoutSessionService?
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        guard let contextDict = context as? [String : NSDate],
-            let timeStarted = contextDict["workoutStartDate"] else {
+        // Check for WorkoutServiceSession for HeartRate data and Workout for HealthKit Store
+        if let contextDict = context as? [String: Any],
+            let workoutSessionService = contextDict["WorkoutSessionService"] as? WorkoutSessionService {
+            self.workoutSessionService = workoutSessionService
+            self.workoutSessionService?.delegate = self
+        }
+        
+        // Check if initiated by phone
+        guard let contextDict = context as? [String : Any],
+            let timeStarted = contextDict["workoutStartDate"] as? NSDate else {
                 if WorkoutManager.shared.currentExcercises.count > 0 {
                     excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
                 } else {
@@ -55,12 +66,16 @@ class WatchLiveWorkoutController: WKInterfaceController {
         WorkoutManager.shared.updateMaxReps()
         WorkoutManager.shared.updateMaxWeight()
     }
-    
-
 }
 
 
-
+extension WatchLiveWorkoutController: WorkoutSessionServiceDelegate {
+    func workoutSessionService(didUpdateHeartRate heartRate: Double) {
+        DispatchQueue.main.async {
+            self.heartRateLabel.setText("\(heartRate) BPM")
+        }
+    }
+}
 
 
 

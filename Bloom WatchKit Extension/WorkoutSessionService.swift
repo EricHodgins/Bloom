@@ -10,6 +10,10 @@
 import Foundation
 import HealthKit
 
+protocol WorkoutSessionServiceDelegate: class {
+    func workoutSessionService(didUpdateHeartRate heartRate: Double)
+}
+
 let hrUnit = HKUnit(from: "count/min")
 let hrType: HKQuantityType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
 
@@ -26,6 +30,8 @@ class WorkoutSessionService: NSObject {
     
     let hkWorkoutConfiguration: HKWorkoutConfiguration
     let session: HKWorkoutSession
+    
+    weak var delegate: WorkoutSessionServiceDelegate?
     
     init?(configuration: HKWorkoutConfiguration) {
         
@@ -52,6 +58,14 @@ class WorkoutSessionService: NSObject {
     func stopSession() {
         healthService.healthKitStore.stop(heartRateQuery)
         healthService.healthKitStore.end(session)
+    }
+    
+    func workoutAuthorizationStatus() -> HKAuthorizationStatus {
+        return healthService.workoutAuthorizationStatus()
+    }
+    
+    func heartRateAuthorizationStatus() -> HKAuthorizationStatus {
+        return healthService.heartRateAuthorizationStatus()
     }
 }
 

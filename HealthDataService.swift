@@ -27,6 +27,13 @@ class HealthDataService {
         healthKitStore.requestAuthorization(toShare: typesToShare, read: typesToSave) { (success, error) in
             completion(success, error)
         }
-        
+    }
+    
+    func workoutAuthorizationStatus() -> HKAuthorizationStatus {
+        return healthKitStore.authorizationStatus(for: HKObjectType.workoutType())
+    }
+    
+    func heartRateAuthorizationStatus() -> HKAuthorizationStatus {
+        return healthKitStore.authorizationStatus(for: heartRateType)
     }
 }
