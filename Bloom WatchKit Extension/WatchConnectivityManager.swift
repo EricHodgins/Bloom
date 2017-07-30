@@ -8,6 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
+import HealthKit
 
 let NotificationWatchConnectivityActive = "NotificationWatchConnectivityActive"
 let NotificationWorkoutsReceived = "NotificationWorkoutsReceived"
@@ -207,8 +208,19 @@ extension WatchConnectivityManager: WCSessionDelegate {
             WorkoutManager.shared.currentExcercises = excercises
             WorkoutManager.shared.workoutStartDate = timeStartedOnPhone
             
+            let workoutSessionService = setupWorkouSessionService()
+            
             DispatchQueue.main.async(execute: {
-                let contexts = [["workoutStartDate" : timeStartedOnPhone]]
+                let contexts: [Any]
+                guard let workoutSessionService = workoutSessionService else {
+                    contexts = [["workoutStartDate" : timeStartedOnPhone]]
+                    WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+                    return
+                }
+                workoutSessionService.startSession()
+                contexts = [["WorkoutSessionService": workoutSessionService, "workoutStartDate" : timeStartedOnPhone], workoutSessionService, workoutSessionService, workoutSessionService]
+                
+                
                 WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
             })
         }
@@ -245,6 +257,22 @@ extension WatchConnectivityManager {
                 print("ERROR (sendStateToWatch): \(error)")
             }
         }
+    }
+    
+    func setupWorkouSessionService() -> WorkoutSessionService? {
+        let workoutConfiguration = HKWorkoutConfiguration()
+        workoutConfiguration.activityType = .running
+        workoutConfiguration.locationType = .outdoor
+        
+        let workoutSessionService = WorkoutSessionService(configuration: workoutConfiguration)
+        let workoutAuthorizedStatus = workoutSessionService?.workoutAuthorizationStatus()
+        let heartRateAuthorizedStatus = workoutSessionService?.heartRateAuthorizationStatus()
+        
+        if workoutAuthorizedStatus == .sharingAuthorized && heartRateAuthorizedStatus == .sharingAuthorized && workoutSessionService != nil {
+            return workoutSessionService
+        }
+        
+        return nil
     }
 }
 
