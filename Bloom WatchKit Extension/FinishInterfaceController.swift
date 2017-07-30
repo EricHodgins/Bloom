@@ -11,11 +11,15 @@ import Foundation
 
 
 class FinishInterfaceController: WKInterfaceController {
+    
+    var workoutSessionService: WorkoutSessionService?
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        // Configure interface objects here.
+        if let workoutSessionService = context as? WorkoutSessionService {
+            self.workoutSessionService = workoutSessionService
+        }
     }
 
     override func willActivate() {
@@ -29,6 +33,10 @@ class FinishInterfaceController: WKInterfaceController {
     }
 
     @IBAction func finishPressed() {
+        if workoutSessionService != nil {
+            workoutSessionService?.stopSession()
+        }
+        
         WatchConnectivityManager.sendWorkoutFinishedMessageToPhone()
         WorkoutManager.shared.reset()
         WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)

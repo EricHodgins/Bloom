@@ -8,12 +8,22 @@
 
 import WatchKit
 import Foundation
+import HealthKit
 
 
 class StartInterfaceController: WKInterfaceController {
 
     @IBOutlet var workoutName: WKInterfaceLabel!
     @IBOutlet var startButton: WKInterfaceButton!
+    
+    var workoutSessionService: WorkoutSessionService?
+    
+    lazy var configuration: HKWorkoutConfiguration = {
+        let workoutConfiguration = HKWorkoutConfiguration()
+        workoutConfiguration.activityType = .running
+        workoutConfiguration.locationType = .outdoor
+        return workoutConfiguration
+    }()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -42,7 +52,13 @@ class StartInterfaceController: WKInterfaceController {
     @IBAction func startButtonPressed() {
         WorkoutManager.shared.workoutStartDate = NSDate()
         WatchConnectivityManager.sendWorkoutStartMessageToPhone()
-        WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+        workoutSessionService = WorkoutSessionService(configuration: configuration)
+        
+        guard let workoutSessionService = workoutSessionService else { return }
+        workoutSessionService.startSession()
+        
+        let contexts = [workoutSessionService, workoutSessionService, workoutSessionService, workoutSessionService]
+        WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
     }
 }
 

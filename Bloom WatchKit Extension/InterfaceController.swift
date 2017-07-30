@@ -41,7 +41,23 @@ class InterfaceController: WKInterfaceController {
         } else {
             requestWorkoutRoutines()
         }
-
+        
+        authorizeHealthkitAccess()
+    }
+    
+    func authorizeHealthkitAccess() {
+        let healthService: HealthDataService = HealthDataService()
+        
+        healthService.authorizeHealthKitAccess { (success, error) in
+            if success {
+                print("HealthKit authorization received.")
+            } else {
+                print("HealthKit authorization denied.!")
+                if error != nil {
+                    print("\(error?.localizedDescription ?? "No error description.")")
+                }
+            }
+        }
     }
     
     func setupGradientImage() {

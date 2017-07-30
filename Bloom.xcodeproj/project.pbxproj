@@ -89,6 +89,12 @@
 		7ACBB5271E0A325800CE285A /* BloomUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACBB5261E0A325800CE285A /* BloomUITests.swift */; };
 		7ACCF2E21EE99A00002B0865 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ACCF2E11EE99A00002B0865 /* spark.png */; };
 		7ADD25F91F23CF6E00B434AF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD25F81F23CF6E00B434AF /* Utils.swift */; };
+		7ADD26511F2D4DAF00B434AF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ADD26501F2D4DAF00B434AF /* HealthKit.framework */; };
+		7ADD26541F2D4DBA00B434AF /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ADD26531F2D4DBA00B434AF /* HealthKit.framework */; };
+		7ADD26571F2D4EF900B434AF /* HealthDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26561F2D4EF900B434AF /* HealthDataService.swift */; };
+		7ADD26581F2D4EFF00B434AF /* HealthDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26561F2D4EF900B434AF /* HealthDataService.swift */; };
+		7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */; };
+		7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +242,13 @@
 		7ACBB5281E0A325800CE285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ACCF2E11EE99A00002B0865 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		7ADD25F81F23CF6E00B434AF /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7ADD264E1F2D4DAF00B434AF /* Bloom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bloom.entitlements; sourceTree = "<group>"; };
+		7ADD26501F2D4DAF00B434AF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		7ADD26521F2D4DBA00B434AF /* Bloom WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bloom WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		7ADD26531F2D4DBA00B434AF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		7ADD26561F2D4EF900B434AF /* HealthDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService.swift; sourceTree = "<group>"; };
+		7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService.swift; sourceTree = "<group>"; };
+		7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService_Queries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADD26511F2D4DAF00B434AF /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADD26541F2D4DBA00B434AF /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +418,7 @@
 				7ACBB5251E0A325800CE285A /* BloomUITests */,
 				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F93F1DFE761D00A37C80 /* Products */,
+				7ADD264F1F2D4DAF00B434AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -421,6 +437,7 @@
 		7A84F9401DFE761D00A37C80 /* Bloom */ = {
 			isa = PBXGroup;
 			children = (
+				7ADD264E1F2D4DAF00B434AF /* Bloom.entitlements */,
 				7A796D461E2B05500006DE61 /* Metal */,
 				7ACCF2E11EE99A00002B0865 /* spark.png */,
 				7A0134841F0694C500B13476 /* PhoneConnectivity */,
@@ -470,6 +487,8 @@
 		7A84F96E1DFE761E00A37C80 /* Bloom WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7ADD26591F2D537E00B434AF /* Services */,
+				7ADD26521F2D4DBA00B434AF /* Bloom WatchKit Extension.entitlements */,
 				7A0134881F07550500B13476 /* WatchConnectivity */,
 				7A84F9711DFE761E00A37C80 /* InterfaceController.swift */,
 				7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */,
@@ -480,6 +499,7 @@
 				7A84F9751DFE761E00A37C80 /* NotificationController.swift */,
 				7A84F9771DFE761F00A37C80 /* Assets.xcassets */,
 				7A84F9791DFE761F00A37C80 /* Info.plist */,
+				7ADD26551F2D4ECD00B434AF /* Shared */,
 				7A84F96F1DFE761E00A37C80 /* Supporting Files */,
 			);
 			path = "Bloom WatchKit Extension";
@@ -514,6 +534,33 @@
 				7ACBB5281E0A325800CE285A /* Info.plist */,
 			);
 			path = BloomUITests;
+			sourceTree = "<group>";
+		};
+		7ADD264F1F2D4DAF00B434AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD26531F2D4DBA00B434AF /* HealthKit.framework */,
+				7ADD26501F2D4DAF00B434AF /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7ADD26551F2D4ECD00B434AF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD26561F2D4EF900B434AF /* HealthDataService.swift */,
+			);
+			name = Shared;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7ADD26591F2D537E00B434AF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */,
+				7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -622,6 +669,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = E3QZ6M9437;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					7A84F9511DFE761D00A37C80 = {
 						CreatedOnToolsVersion = 8.1;
@@ -638,6 +690,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = E3QZ6M9437;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
 					};
 					7ACBB5231E0A325800CE285A = {
 						CreatedOnToolsVersion = 8.2;
@@ -767,6 +824,7 @@
 				7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
 				7AC184051E20BBF70019AB2F /* LiveMapViewController.swift in Sources */,
+				7ADD26581F2D4EFF00B434AF /* HealthDataService.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 				7A7D948D1EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
 				7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */,
@@ -795,10 +853,13 @@
 				7A9CC9A81F02148900ACE7ED /* WorkoutTemplate+CoreDataClass.swift in Sources */,
 				7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */,
 				7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */,
+				7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */,
 				7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */,
 				7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */,
 				7A0134831F0693E300B13476 /* WatchConnectivityManager.swift in Sources */,
+				7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */,
 				7A9CC9AA1F0214C600ACE7ED /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
+				7ADD26571F2D4EF900B434AF /* HealthDataService.swift in Sources */,
 				7A9CC9AB1F02152A00ACE7ED /* Bloom.xcdatamodeld in Sources */,
 				7A9CC9A71F02148600ACE7ED /* WorkoutTemplate+CoreDataProperties.swift in Sources */,
 				7A0134B71F0C9EC600B13476 /* RepsWeightController.swift in Sources */,
@@ -969,6 +1030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Bloom WatchKit Extension/Bloom WatchKit Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
@@ -988,6 +1050,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Bloom WatchKit Extension/Bloom WatchKit Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
@@ -1047,6 +1110,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bloom/Bloom.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = Bloom/Info.plist;
@@ -1063,6 +1127,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bloom/Bloom.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
 				INFOPLIST_FILE = Bloom/Info.plist;

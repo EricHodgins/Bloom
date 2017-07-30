@@ -19,6 +19,8 @@ class ExcercisesController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
         tableView.dataSource = self
         tableView.delegate = self
         fetchExcercises()

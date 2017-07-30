@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import HealthKit
 import WatchConnectivity
 
 @UIApplicationMain
@@ -65,6 +66,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    //MARK: - HealthKitStore Authorization
+    let healthStore = HKHealthStore()
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        healthStore.handleAuthorizationForExtension { (success, error) in
+            print("Application should request Health Authorization.")
+        }
     }
 
     //MARK: Helpers
