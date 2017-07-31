@@ -23,6 +23,20 @@ class WorkoutsController: UIViewController {
         tableView.delegate = self
         
         fetchWorkouts()
+        authorizeHealthKit()
+    }
+    
+    func authorizeHealthKit() {
+        let healthService:HealthDataService = HealthDataService()
+        healthService.authorizeHealthKitAccess {(accessGranted, error) in
+            DispatchQueue.main.async {
+                if accessGranted {
+                    print("Access granted to HealthKit Store.")
+                } else {
+                    print("HealthKit authorization denied! \n\(error?.localizedDescription ?? "")")
+                }
+            }
+        }
     }
     
     func fetchWorkouts() {

@@ -20,23 +20,9 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        authorizeHealthKit()
         heartView = HeartView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         heartView.frame.origin = CGPoint(x: view.frame.width/2 - 25, y: view.frame.height/2 + 60)
         view.addSubview(heartView)
-    }
-    
-    func authorizeHealthKit() {
-        let healthService:HealthDataService = HealthDataService()
-        healthService.authorizeHealthKitAccess {(accessGranted, error) in
-            DispatchQueue.main.async {
-                if accessGranted {
-                    print("Access granted to HealthKit Store.")
-                } else {
-                    print("HealthKit authorization denied! \n\(error?.localizedDescription ?? "")")
-                }
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -52,7 +52,7 @@ class InterfaceController: WKInterfaceController {
             if success {
                 print("HealthKit authorization received.")
             } else {
-                print("HealthKit authorization denied.!")
+                print("HealthKit authorization denied! \(error ?? "No Description" as! Error)")
                 if error != nil {
                     print("\(error?.localizedDescription ?? "No error description.")")
                 }

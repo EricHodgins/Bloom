@@ -22,9 +22,9 @@ class HealthDataService {
             [HKObjectType.workoutType(), heartRateType]
         )
         
-        let typesToSave = Set([heartRateType])
+        let typesToRead = Set([heartRateType])
         
-        healthKitStore.requestAuthorization(toShare: typesToShare, read: typesToSave) { (success, error) in
+        healthKitStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
             completion(success, error)
         }
     }

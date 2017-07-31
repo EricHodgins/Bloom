@@ -19,7 +19,7 @@ let hrType: HKQuantityType = HKObjectType.quantityType(forIdentifier: HKQuantity
 
 class WorkoutSessionService: NSObject {
     
-    fileprivate let healthService = HealthDataService()
+    let healthService = HealthDataService()
     var startDate: Date?
     var endDate: Date?
     
@@ -100,6 +100,10 @@ extension WorkoutSessionService: HKWorkoutSessionDelegate {
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         print("Did fail with error: \(error)")
+    }
+    
+    func save() {
+        healthService.saveWorkout(workouSessionService: self)
     }
     
 }

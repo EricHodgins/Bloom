@@ -170,11 +170,11 @@ class WatchConnectivityManager: NSObject {
     }
     
     //MARK: - Send Workout Finished Message
-    class func sendWorkoutFinishedMessageToPhone() {
+    class func sendWorkoutFinishedMessageToPhone(date: NSDate) {
         if WCSession.isSupported() {
             let session = WCSession.default()
             if session.isReachable {
-                let dict: [String : NSDate] = ["Finished" : NSDate()]
+                let dict: [String : NSDate] = ["Finished" : date]
                 session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
                     print("Message error workout finished: \(error)")
                 })

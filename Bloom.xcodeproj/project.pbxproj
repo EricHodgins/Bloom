@@ -95,6 +95,7 @@
 		7ADD26581F2D4EFF00B434AF /* HealthDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26561F2D4EF900B434AF /* HealthDataService.swift */; };
 		7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */; };
 		7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */; };
+		7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +250,7 @@
 		7ADD26561F2D4EF900B434AF /* HealthDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService.swift; sourceTree = "<group>"; };
 		7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService.swift; sourceTree = "<group>"; };
 		7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService_Queries.swift; sourceTree = "<group>"; };
+		7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService_Watch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				7ADD26561F2D4EF900B434AF /* HealthDataService.swift */,
+				7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */,
 			);
 			name = Shared;
 			path = ..;
@@ -851,6 +854,7 @@
 				7A01348A1F08745B00B13476 /* WorkoutManager.swift in Sources */,
 				7A01348C1F087BC100B13476 /* StartInterfaceController.swift in Sources */,
 				7A9CC9A81F02148900ACE7ED /* WorkoutTemplate+CoreDataClass.swift in Sources */,
+				7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */,
 				7A84F9761DFE761E00A37C80 /* NotificationController.swift in Sources */,
 				7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */,
 				7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */,

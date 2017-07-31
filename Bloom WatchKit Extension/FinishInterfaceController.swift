@@ -33,11 +33,14 @@ class FinishInterfaceController: WKInterfaceController {
     }
 
     @IBAction func finishPressed() {
+        let finishDate = NSDate()
+        WorkoutManager.shared.workoutEndDate = finishDate
         if workoutSessionService != nil {
             workoutSessionService?.stopSession()
+            workoutSessionService?.save()
         }
         
-        WatchConnectivityManager.sendWorkoutFinishedMessageToPhone()
+        WatchConnectivityManager.sendWorkoutFinishedMessageToPhone(date: finishDate)
         WorkoutManager.shared.reset()
         WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
     }

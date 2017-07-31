@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let healthStore = HKHealthStore()
     func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
         healthStore.handleAuthorizationForExtension { (success, error) in
-            print("Application should request Health Authorization.")
         }
     }
 

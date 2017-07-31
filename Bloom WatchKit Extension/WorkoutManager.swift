@@ -46,6 +46,7 @@ class WorkoutManager {
     fileprivate var currentExcercise: String?
     fileprivate var excerciseIndex: Int = 0
     var workoutStartDate: NSDate?
+    var workoutEndDate: NSDate?
     var currentWorkout: String? {
         didSet {
             guard let workoutName = self.currentWorkout else { return }
@@ -134,6 +135,7 @@ extension WorkoutManager {
         currentExcercise = nil
         excerciseIndex = 0
         workoutStartDate = nil
+        workoutEndDate = nil
     }
 }
 
