@@ -61,6 +61,7 @@ class WatchLiveWorkoutController: WKInterfaceController {
     }
     
     @IBAction func nextExcerciseButtonPressed() {
+        WorkoutManager.shared.timeRecorded = NSDate()
         WorkoutManager.shared.save()
         excerciseLabel.setText(WorkoutManager.shared.nextExcercise())
         WorkoutManager.shared.updateMaxReps()

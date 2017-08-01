@@ -65,6 +65,7 @@ extension WorkoutDetailController: UITableViewDataSource {
         cell.distanceLabel.text = "Distance: \(excercise.distance) Km"
         cell.timeLabel.text = workout.startTime!.delta(to: excercise.timeRecorded!)
         
+        print(excercise.timeRecorded!)
         return cell
     }
     

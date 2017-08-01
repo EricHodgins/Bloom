@@ -118,6 +118,7 @@ class WorkoutManager {
             timeRecorded = NSDate()
         }
         
+        // This saves an excercise based on the order number
         WatchConnectivityManager.save(reps: reps!, weight: weight!, distance: distance!, time: timeRecorded!, orderNumber: orderNumber)
     }
 }

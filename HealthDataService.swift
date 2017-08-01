@@ -47,7 +47,7 @@ class HealthDataService {
             
             guard error == nil else { print("Error: \(error?.localizedDescription ?? "No error msg")"); return }
             
-            self.printQueriedResults(results: results)
+            //self.printQueriedResults(results: results)
             
         })
         

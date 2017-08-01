@@ -19,11 +19,16 @@ class SummaryViewController: UIViewController {
     var workoutTypes: [NSDictionary] = []
     var workouts: [Workout] = []
     var isAllWorkouts: Bool = false
+    
+    var dateFormatter: DateFormatter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
         deleteBarButtonItem.isEnabled = false
         segmentedControl.layer.borderWidth = 1.0
@@ -104,12 +109,14 @@ extension SummaryViewController: UITableViewDataSource {
         
         if isAllWorkouts {
             let workout = workouts[indexPath.row]
-            cell.textLabel?.text = "\(workout.name!): \(workout.startTime!)"
+            let dateString = dateFormatter.string(from: workout.startTime! as Date)
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = "\(workout.name!)\n \(dateString)"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         } else {
             cell.textLabel?.text = workoutTypes[indexPath.row]["name"] as? String
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         }
-        
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         
         return cell
     }
