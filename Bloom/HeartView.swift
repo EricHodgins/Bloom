@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum HeartBeatSpeed {
+    case slow
+    case normal
+    case fast
+}
 
 class HeartView: UIView {
     
@@ -73,15 +78,27 @@ class HeartView: UIView {
         return path.cgPath
     }
     
-    func pulse() {
+    func pulse(speed: HeartBeatSpeed) {
         heartLayer.frame.origin = CGPoint(x: frame.width/2, y: frame.height/2)
         heartLayer.bounds.origin = CGPoint(x: frame.width/2, y:frame.height/2)
         
         let pulse = CAKeyframeAnimation(keyPath: "transform.scale")
-        pulse.duration = 1
+        switch speed {
+        case .slow:
+            pulse.duration = 3
+            pulse.values = [0.5, 0.55, 1.0, 0.55, 0.3]
+            pulse.keyTimes = [0, 0.33, 0.66, 0.99, 1.33, 2]
+        case .normal:
+            pulse.duration = 2
+            pulse.values = [0.5, 0.6, 1.0, 0.55, 0.3]
+            pulse.keyTimes = [0, 0.33, 0.66, 0.99, 1.33, 2]
+        case .fast:
+            pulse.duration = 1
+            pulse.values = [0.5, 0.6, 0.62, 1, 0.5]
+            pulse.keyTimes = [0, 0.09, 0.4, 0.5, 0.7]
+        }
+
         pulse.repeatCount = .infinity
-        pulse.values = [0.5, 0.6, 0.62, 1, 0.5]
-        pulse.keyTimes = [0, 0.09, 0.4, 0.5, 0.7]
         
         heartLayer.add(pulse, forKey: nil)
         

@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-        heartView.pulse()
+        heartView.pulse(speed: .slow)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

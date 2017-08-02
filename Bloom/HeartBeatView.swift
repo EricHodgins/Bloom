@@ -29,7 +29,7 @@ class HeartBeatView: UIView {
         //heartLineLayer.frame = bounds
     }
     
-    func setup() {
+    private func setup() {
         heartLineView = HeartLineView(frame: bounds)
         addSubview(heartLineView)
         
@@ -41,7 +41,7 @@ class HeartBeatView: UIView {
     
     func startAnimatingHeartLine() {
         heartLineView.animateLine()
-        heartView.pulse()
+        heartView.pulse(speed: .fast)
         //heartLineLayer.animateHeartLine()
         //heartLineLayer.animateHeartPulse()
     }
