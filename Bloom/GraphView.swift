@@ -19,7 +19,9 @@ class GraphView: UIView {
     var dataSet: [Double] = [1, 2, 3, 4, 5] {
         didSet {
             //guard dataSet.isEmpty else { return }
-            setNeedsDisplay()
+            DispatchQueue.main.async {
+                self.setNeedsDisplay()
+            }
         }
     }
     

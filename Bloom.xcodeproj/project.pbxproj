@@ -96,6 +96,7 @@
 		7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */; };
 		7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */; };
 		7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */; };
+		7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +252,7 @@
 		7ADD265A1F2D538B00B434AF /* WorkoutSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService.swift; sourceTree = "<group>"; };
 		7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService_Queries.swift; sourceTree = "<group>"; };
 		7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService_Watch.swift; sourceTree = "<group>"; };
+		7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatGraphController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 				7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */,
 				7A7D94B21EF0F43500609B88 /* ExcerciseTableCell.swift */,
 				7A7D94B61EF248F100609B88 /* WorkoutTableCell.swift */,
+				7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */,
 			);
 			name = StatsGroup;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */,
 				7A08C5F51F1483CC007DFD38 /* WorkoutSessionManager.swift in Sources */,
 				7A0134861F0694D500B13476 /* PhoneConnectivityManager.swift in Sources */,
+				7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,
 				7A7D948B1EECE9B200609B88 /* WorkoutTemplate+CoreDataProperties.swift in Sources */,

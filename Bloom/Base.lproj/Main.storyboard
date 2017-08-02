@@ -393,6 +393,7 @@
                                             <outlet property="workoutDate" destination="FSq-dM-FNW" id="1nV-c7-K9z"/>
                                             <outlet property="workoutDuration" destination="fk9-oF-Ngc" id="JME-0F-ZnQ"/>
                                             <outlet property="workoutName" destination="7KF-0W-mHa" id="lOg-JX-QmX"/>
+                                            <segue destination="BbM-FM-AW8" kind="show" identifier="HeartRateSegue" id="cmM-ns-Pnt"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExcerciseCell" rowHeight="200" id="zI0-60-zZ0" customClass="ExcerciseTableCell" customModule="Bloom" customModuleProvider="target">
@@ -1284,6 +1285,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kd0-sW-tN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135" y="139"/>
+        </scene>
+        <!--Heart Beat Graph Controller-->
+        <scene sceneID="eyb-Fh-yD1">
+            <objects>
+                <viewController id="BbM-FM-AW8" customClass="HeartBeatGraphController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hBx-IY-UJb"/>
+                        <viewControllerLayoutGuide type="bottom" id="sSj-06-vN0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gHt-HL-kUw" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubv-qK-Nyx" customClass="GraphView" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.41047936680000002" green="0.85733288529999996" blue="0.99989908930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ubv-qK-Nyx" secondAttribute="trailing" id="0gt-1E-9mC"/>
+                            <constraint firstItem="sSj-06-vN0" firstAttribute="top" secondItem="Ubv-qK-Nyx" secondAttribute="bottom" id="7A5-Pp-8xb"/>
+                            <constraint firstItem="Ubv-qK-Nyx" firstAttribute="leading" secondItem="gHt-HL-kUw" secondAttribute="leading" id="TA4-Ww-rPf"/>
+                            <constraint firstItem="Ubv-qK-Nyx" firstAttribute="top" secondItem="hBx-IY-UJb" secondAttribute="bottom" id="lym-Ib-P1z"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.41047936680000002" green="0.85733288529999996" blue="0.99989908930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="graphView" destination="Ubv-qK-Nyx" id="YBj-Z9-oRp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGZ-GM-h4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616.8000000000002" y="1712.2938530734634"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KRq-wq-FcE">

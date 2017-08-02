@@ -29,13 +29,13 @@ class WorkoutDetailController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        queryHeartRateDataFromHealthStore()
     }
     
-    func queryHeartRateDataFromHealthStore() {
-        let healthService = HealthDataService()
-        healthService.queryHeartRateData(withStartDate: workout.startTime! as Date, toEndDate: workout.endTime! as Date)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HeartRateSegue" {
+            let controller = segue.destination as! HeartBeatGraphController
+            controller.workout = workout
+        }
     }
 
 }

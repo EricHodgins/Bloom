@@ -38,7 +38,7 @@ class HealthDataService {
         return healthKitStore.authorizationStatus(for: heartRateType)
     }
     
-    func queryHeartRateData(withStartDate startDate: Date, toEndDate endDate: Date) {
+    func queryHeartRateData(withStartDate startDate: Date, toEndDate endDate: Date, completion: @escaping ((_ results: [HKSample]?) -> Void)) {
         var heartRateQuery: HKSampleQuery?
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
         let sortDescriptors = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
@@ -47,21 +47,12 @@ class HealthDataService {
             
             guard error == nil else { print("Error: \(error?.localizedDescription ?? "No error msg")"); return }
             
-            //self.printQueriedResults(results: results)
+            completion(results)
             
         })
         
         
         healthKitStore.execute(heartRateQuery!)
-    }
-    
-    //MARK: - Test Code, Remove later
-    func printQueriedResults(results: [HKSample]?) {
-        guard let results = results as? [HKQuantitySample] else { return }
-        for sample in results {
-            let hrValue = sample.quantity.doubleValue(for: hrUnit)
-            print("Queried result: \(hrValue) - started: \(sample.startDate)")
-        }
     }
 }
 
