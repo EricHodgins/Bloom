@@ -364,22 +364,22 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-an-OzC">
-                                                    <rect key="frame" x="315" y="8" width="50" height="50"/>
+                                                    <rect key="frame" x="256" y="56" width="25" height="25"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="ZFu-Wk-qcf"/>
-                                                        <constraint firstAttribute="height" constant="50" id="jh4-r9-1ad"/>
+                                                        <constraint firstAttribute="width" constant="25" id="ZFu-Wk-qcf"/>
+                                                        <constraint firstAttribute="height" constant="25" id="jh4-r9-1ad"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="FSq-dM-FNW" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="P98-yc-zzp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="JVk-an-OzC" secondAttribute="trailing" constant="2" id="Qlj-4h-pLb"/>
+                                                <constraint firstItem="JVk-an-OzC" firstAttribute="top" secondItem="7KF-0W-mHa" secondAttribute="bottom" constant="6" id="aTl-4G-Mi1"/>
                                                 <constraint firstItem="fk9-oF-Ngc" firstAttribute="centerY" secondItem="adr-Ib-bfc" secondAttribute="centerY" id="fbe-Q7-uf3"/>
                                                 <constraint firstAttribute="trailing" secondItem="66H-TL-8HL" secondAttribute="trailing" constant="10" id="keD-9u-xwK"/>
                                                 <constraint firstAttribute="topMargin" secondItem="7KF-0W-mHa" secondAttribute="top" id="lXx-ym-SAY"/>
-                                                <constraint firstItem="JVk-an-OzC" firstAttribute="top" secondItem="adr-Ib-bfc" secondAttribute="topMargin" id="mVO-Ub-3G3"/>
+                                                <constraint firstItem="JVk-an-OzC" firstAttribute="leading" secondItem="fk9-oF-Ngc" secondAttribute="trailing" constant="8" id="ser-gn-5AA"/>
                                                 <constraint firstItem="7KF-0W-mHa" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="sqB-89-qmo"/>
                                                 <constraint firstItem="fk9-oF-Ngc" firstAttribute="centerX" secondItem="adr-Ib-bfc" secondAttribute="centerX" id="tFC-w8-Ahf"/>
                                                 <constraint firstItem="66H-TL-8HL" firstAttribute="leading" secondItem="adr-Ib-bfc" secondAttribute="leading" constant="10" id="tO4-h8-bXx"/>

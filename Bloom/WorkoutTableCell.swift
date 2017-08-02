@@ -23,7 +23,7 @@ class WorkoutTableCell: UITableViewCell {
         let size = heartViewContainer.frame.width
         let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         heartViewContainer.addSubview(heartView)
-        heartView.pulse(speed: .normal)
+        heartView.pulse(speed: .slow)
         
     }
 
