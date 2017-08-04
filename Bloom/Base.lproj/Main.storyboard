@@ -112,6 +112,24 @@
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ZTS-h6-bhF">
+            <objects>
+                <viewController storyboardIdentifier="WorkoutSummary" id="5HP-LI-QZi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7g8-62-qUB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ebU-58-QJR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eTI-kv-37w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AP3-xm-fBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="-525"/>
+        </scene>
         <!--Create Workout Controller-->
         <scene sceneID="pkq-eF-I0h">
             <objects>
@@ -125,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-87-e4Z">
-                                <rect key="frame" x="0.0" y="240" width="375" height="377"/>
+                                <rect key="frame" x="0.0" y="259" width="375" height="408"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="RQZ-i4-PSY">
@@ -141,7 +159,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-lQ-BhY">
-                                <rect key="frame" x="16" y="129" width="152" height="38"/>
+                                <rect key="frame" x="16" y="148" width="152" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="+ Add Excercise">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,7 +169,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your Workout Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GrM-sj-6Z6">
-                                <rect key="frame" x="16" y="51" width="343" height="26"/>
+                                <rect key="frame" x="16" y="78" width="343" height="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -161,49 +179,49 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-aJ-BYb">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiI-Vg-RiG">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cancelPressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="WJs-SS-RSt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAf-oo-5y5">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
-                                        <color key="backgroundColor" red="0.036770290509884514" green="0.68932910132331604" blue="0.66344764010019641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="savePressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="jLr-8R-Zeb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RaD-Ed-hcc"/>
-                                </constraints>
-                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lE-Vn-Wyb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="New Workout" id="sLu-e5-WJb">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="c7g-Py-qZa">
+                                            <color key="tintColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelPressed:" destination="IW1-7m-3vF" id="jZp-H4-gHr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="Eah-iP-aV4">
+                                            <connections>
+                                                <action selector="savePressed:" destination="IW1-7m-3vF" id="rtw-Rg-HKC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Xp-dfX">
+                                <rect key="frame" x="16" y="223" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Picked"/>
+                                    <segment title="Choose Excercises"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tVf-87-e4Z" secondAttribute="trailing" id="1jl-nP-ODg"/>
-                            <constraint firstItem="GrM-sj-6Z6" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" constant="31" id="26I-ke-xew"/>
-                            <constraint firstItem="uMD-lQ-BhY" firstAttribute="top" secondItem="GrM-sj-6Z6" secondAttribute="bottom" constant="52" id="3dX-MF-xqw"/>
+                            <constraint firstItem="uMD-lQ-BhY" firstAttribute="top" secondItem="GrM-sj-6Z6" secondAttribute="bottom" constant="44" id="3dX-MF-xqw"/>
+                            <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="nbS-Xp-dfX" secondAttribute="bottom" constant="8" id="5bg-hp-BeQ"/>
+                            <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="tVf-87-e4Z" secondAttribute="bottom" id="EIb-ml-Yjx"/>
+                            <constraint firstAttribute="trailing" secondItem="0lE-Vn-Wyb" secondAttribute="trailing" id="JTv-gM-mkP"/>
                             <constraint firstItem="tVf-87-e4Z" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="LPS-kZ-ldB"/>
-                            <constraint firstAttribute="trailing" secondItem="Lyg-aJ-BYb" secondAttribute="trailing" id="MEE-zM-Q5N"/>
-                            <constraint firstItem="Lyg-aJ-BYb" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="TeF-ZN-ogQ"/>
+                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" id="MWO-B3-6Is"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="nbS-Xp-dfX" secondAttribute="leading" id="NHZ-KO-3ya"/>
+                            <constraint firstItem="GrM-sj-6Z6" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" constant="58" id="Rki-fH-ApS"/>
                             <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="uMD-lQ-BhY" secondAttribute="bottom" constant="73" id="V5D-FH-Pk1"/>
-                            <constraint firstItem="Lyg-aJ-BYb" firstAttribute="top" secondItem="tVf-87-e4Z" secondAttribute="bottom" id="bhA-Uy-sEV"/>
-                            <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="Lyg-aJ-BYb" secondAttribute="bottom" id="idg-Mc-bZh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nbS-Xp-dfX" secondAttribute="trailing" id="p3z-ea-uGO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="uMD-lQ-BhY" secondAttribute="leading" id="v1C-Li-Qgh"/>
+                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="x54-IO-jUw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="GrM-sj-6Z6" secondAttribute="leading" id="xK0-aL-qY9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GrM-sj-6Z6" secondAttribute="trailing" id="zIT-ud-OeP"/>
                         </constraints>
@@ -218,13 +236,14 @@
                     </view>
                     <connections>
                         <outlet property="addExcerciseButton" destination="uMD-lQ-BhY" id="aES-MZ-kgC"/>
+                        <outlet property="segmentedControl" destination="nbS-Xp-dfX" id="2eP-bL-viX"/>
                         <outlet property="tableView" destination="tVf-87-e4Z" id="c7B-ff-y2b"/>
                         <outlet property="workoutNameTextfield" destination="GrM-sj-6Z6" id="GMe-1G-W82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fS-VI-QQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-454"/>
+            <point key="canvasLocation" x="1892" y="-454.72263868065971"/>
         </scene>
         <!--Stats-->
         <scene sceneID="Uel-H4-adw">
@@ -1306,7 +1325,7 @@
                                         <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="0.41047936680000002" green="0.85733288529999996" blue="0.99989908930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="1" green="0.43923366069999997" blue="0.73984533549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>

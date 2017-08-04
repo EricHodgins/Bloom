@@ -14,6 +14,7 @@ enum HeartBeatSpeed {
     case fast
 }
 
+@IBDesignable
 class HeartView: UIView {
     
     private var lineWidth: CGFloat = 1.0
@@ -39,7 +40,9 @@ class HeartView: UIView {
         let gradient = CAGradientLayer()
         gradient.frame = heartPath().boundingBox
         gradient.bounds = heartPath().boundingBox
-        gradient.colors = [UIColor.red.cgColor, UIColor.orange.cgColor, UIColor.yellow.cgColor]
+        let darkRed = #colorLiteral(red: 1, green: 0.0198914904, blue: 0, alpha: 1).cgColor
+        let lightRed = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1).cgColor
+        gradient.colors = [lightRed, darkRed]
         
         let shapeMask = CAShapeLayer()
         shapeMask.path = heartPath()

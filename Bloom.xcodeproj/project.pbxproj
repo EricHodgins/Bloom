@@ -97,6 +97,7 @@
 		7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */; };
 		7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */; };
 		7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */; };
+		7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268C1F35074E00B434AF /* LensFlare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +254,7 @@
 		7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionService_Queries.swift; sourceTree = "<group>"; };
 		7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService_Watch.swift; sourceTree = "<group>"; };
 		7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatGraphController.swift; sourceTree = "<group>"; };
+		7ADD268C1F35074E00B434AF /* LensFlare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LensFlare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +530,7 @@
 				7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */,
 				7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */,
 				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
+				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
 			);
 			name = LiveWorkout;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */,
 				7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */,
 				7A7D94931EEDDE9B00609B88 /* Workout+CoreDataProperties.swift in Sources */,
+				7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7A7D948C1EECE9B200609B88 /* ExcerciseTemplate+CoreDataClass.swift in Sources */,
 				7A66583E1E46974C008B41FA /* Types.swift in Sources */,

@@ -27,6 +27,8 @@ class CreateWorkoutController: UIViewController {
     var isEditingExistingWorkout: Bool = false
     var excercises: [String] = []
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
