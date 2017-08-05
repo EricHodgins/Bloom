@@ -98,6 +98,9 @@
 		7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */; };
 		7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */; };
 		7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268C1F35074E00B434AF /* LensFlare.swift */; };
+		7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268E1F35084000B434AF /* FinishSummaryController.swift */; };
+		7ADD26911F3508F900B434AF /* FinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26901F3508F900B434AF /* FinishScene.swift */; };
+		7ADD26931F35120D00B434AF /* FinishSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADD26921F35120D00B434AF /* FinishSummaryView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +258,9 @@
 		7ADD26621F2EECB400B434AF /* HealthDataService_Watch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataService_Watch.swift; sourceTree = "<group>"; };
 		7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatGraphController.swift; sourceTree = "<group>"; };
 		7ADD268C1F35074E00B434AF /* LensFlare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LensFlare.swift; sourceTree = "<group>"; };
+		7ADD268E1F35084000B434AF /* FinishSummaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSummaryController.swift; sourceTree = "<group>"; };
+		7ADD26901F3508F900B434AF /* FinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishScene.swift; sourceTree = "<group>"; };
+		7ADD26921F35120D00B434AF /* FinishSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishSummaryView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +537,9 @@
 				7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */,
 				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
 				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
+				7ADD26901F3508F900B434AF /* FinishScene.swift */,
+				7ADD268E1F35084000B434AF /* FinishSummaryController.swift */,
+				7ADD26921F35120D00B434AF /* FinishSummaryView.xib */,
 			);
 			name = LiveWorkout;
 			sourceTree = "<group>";
@@ -742,6 +751,7 @@
 			files = (
 				7ACCF2E21EE99A00002B0865 /* spark.png in Resources */,
 				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
+				7ADD26931F35120D00B434AF /* FinishSummaryView.xib in Resources */,
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
 				7A40654E1EE269A80024724C /* workoutJsonData.json in Resources */,
@@ -791,6 +801,7 @@
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */,
 				7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */,
+				7ADD26911F3508F900B434AF /* FinishScene.swift in Sources */,
 				7A7D94931EEDDE9B00609B88 /* Workout+CoreDataProperties.swift in Sources */,
 				7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
@@ -813,6 +824,7 @@
 				7A7D94B71EF248F100609B88 /* WorkoutTableCell.swift in Sources */,
 				7A7D94881EECE9B200609B88 /* Excercise+CoreDataClass.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
+				7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */,
 				7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */,
 				7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */,
 				7A7D94B51EF1003800609B88 /* WorkoutDetailController.swift in Sources */,

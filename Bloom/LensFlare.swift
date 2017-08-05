@@ -215,7 +215,7 @@ class LensFlare: CIFilter {
     let sunbeamsFilter = CIFilter(name: "CISunbeamsGenerator", withInputParameters:
         [
             "inputStriationStrength": 0.1,
-            "inputMaxStriationRadius": 15,
+            "inputMaxStriationRadius": 20,
             "inputStriationContrast": 0.38
         ])
     
