@@ -164,7 +164,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C8w-J5-bGQ">
-                                        <rect key="frame" x="0.0" y="159" width="281" height="341"/>
+                                        <rect key="frame" x="0.0" y="159" width="281" height="305"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wOA-r2-Plo">
@@ -192,16 +192,30 @@
                                     <constraint firstItem="hHf-Uk-c94" firstAttribute="top" secondItem="Ie8-Ym-bFd" secondAttribute="bottom" constant="8" id="fHs-lQ-tBd"/>
                                     <constraint firstItem="hHf-Uk-c94" firstAttribute="centerX" secondItem="REk-Fx-TUK" secondAttribute="centerX" id="jhJ-6I-MlV"/>
                                     <constraint firstItem="bLE-rN-QcG" firstAttribute="centerX" secondItem="Ie8-Ym-bFd" secondAttribute="centerX" id="pgI-MX-IuN"/>
-                                    <constraint firstAttribute="bottom" secondItem="C8w-J5-bGQ" secondAttribute="bottom" id="stQ-hD-Uqc"/>
                                     <constraint firstItem="o7R-PC-xs3" firstAttribute="centerX" secondItem="REk-Fx-TUK" secondAttribute="centerX" id="vNL-D1-LKU"/>
                                     <constraint firstItem="o7R-PC-xs3" firstAttribute="top" secondItem="enb-sE-UIr" secondAttribute="bottom" constant="8" id="wER-wz-Mem"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiQ-vS-Rpr">
+                                <rect key="frame" x="47" y="547" width="281" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissPressed:" destination="5HP-LI-QZi" eventType="touchUpInside" id="48u-A9-UNM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tiQ-vS-Rpr" firstAttribute="leading" secondItem="REk-Fx-TUK" secondAttribute="leading" id="4wH-tZ-QCk"/>
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="centerX" secondItem="eTI-kv-37w" secondAttribute="centerX" id="GOg-tS-7Gu"/>
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="width" secondItem="eTI-kv-37w" secondAttribute="width" multiplier="0.75" id="NKu-zC-mBA"/>
+                            <constraint firstItem="tiQ-vS-Rpr" firstAttribute="trailing" secondItem="REk-Fx-TUK" secondAttribute="trailing" id="RK4-M4-VyR"/>
+                            <constraint firstItem="tiQ-vS-Rpr" firstAttribute="bottom" secondItem="REk-Fx-TUK" secondAttribute="bottom" id="aOz-fb-wcm"/>
+                            <constraint firstItem="tiQ-vS-Rpr" firstAttribute="top" secondItem="C8w-J5-bGQ" secondAttribute="bottom" id="aSz-BK-hfA"/>
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="height" secondItem="eTI-kv-37w" secondAttribute="height" multiplier="0.75" id="sP9-eP-y6Z"/>
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="centerY" secondItem="eTI-kv-37w" secondAttribute="centerY" id="v04-RJ-V0u"/>
                         </constraints>
