@@ -220,8 +220,12 @@
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="centerY" secondItem="eTI-kv-37w" secondAttribute="centerY" id="v04-RJ-V0u"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="pIx-A2-xCl" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="SSi-Au-7rr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AP3-xm-fBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pIx-A2-xCl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1076" y="-525.78710644677665"/>
         </scene>
@@ -1354,7 +1358,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="finishWorkoutButtonPressed:" destination="jAF-YU-cOg" eventType="touchUpInside" id="Ieb-74-lz6"/>
-                                    <segue destination="orS-Oh-Hxl" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="jOY-6q-2eP"/>
+                                    <segue destination="5HP-LI-QZi" kind="presentation" identifier="SummarySegue" id="JJG-zd-ewo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1366,10 +1370,10 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="1" green="0.95823734998703003" blue="0.53057324886322021" alpha="0.60194762323943662" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="1" green="0.014190948061973074" blue="0.062004613556233878" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.0" green="1" blue="0.78045744294455188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -1378,7 +1382,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="orS-Oh-Hxl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6152.8000000000002" y="296.40179910044981"/>
         </scene>
@@ -1469,6 +1472,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="JJG-zd-ewo"/>
         <segue reference="otL-wJ-G1O"/>
         <segue reference="rrC-hf-91z"/>
     </inferredMetricsTieBreakers>

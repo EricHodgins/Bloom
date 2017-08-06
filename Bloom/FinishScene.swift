@@ -42,7 +42,6 @@ class FinishScene: SKScene {
             sunFlare.inputOrigin = CIVector(x: 0 + (elapsed*3), y: (view.frame.height - 100) + elapsed)//CIVector(x: 50 + (elapsed * 10), y: 75 + (elapsed * 60))
             sunFlare.inputColor = CIVector(x: (elapsed * 2)/255, y: 45/255, z: 135/255)
             self.effectNode.shouldEnableEffects = true
-            print("Uh...\(elapsed)")
         }
         
         effectNode.run(flareAction)

@@ -56,11 +56,11 @@ class FinishLiveWorkoutController: UIViewController {
         }
         
         PhoneConnectivityManager.sendFinishedMessage()
-        segueToMainMenu()
+        //segueToMainMenu()
     }
     
     func segueToMainMenu() {
-        performSegue(withIdentifier: "unwindToMenu", sender: self)
+        performSegue(withIdentifier: "SummarySegue", sender: self)
     }
 }
 

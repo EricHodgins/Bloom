@@ -39,6 +39,7 @@ class RecordLiveExcerciseController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         maxReps = fetchMaxReps()
+        maxWeight = fetchMaxWeight()
     }
     
     func fetchMaxReps() -> Double {

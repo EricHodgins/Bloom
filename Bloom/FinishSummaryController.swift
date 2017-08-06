@@ -32,6 +32,7 @@ class FinishSummaryController: UIViewController {
     @IBAction func dismissPressed(_ sender: Any) {
         scene.removeFlareAction()
         dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "unwindToMenu", sender: self)
     }
     
 }
