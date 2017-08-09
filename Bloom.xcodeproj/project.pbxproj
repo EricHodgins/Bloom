@@ -533,7 +533,7 @@
 				7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */,
 				7AC184001E20BBBB0019AB2F /* RecordLiveExcerciseController.swift */,
 				7AC184021E20BBE80019AB2F /* LiveExcerciseListController.swift */,
-				7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */,
+				7ADD269C1F3ABEC700B434AF /* MapTracker */,
 				7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */,
 				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
 				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
@@ -579,6 +579,14 @@
 				7ADD265C1F2D53F700B434AF /* WorkoutSessionService_Queries.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		7ADD269C1F3ABEC700B434AF /* MapTracker */ = {
+			isa = PBXGroup;
+			children = (
+				7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */,
+			);
+			name = MapTracker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -271,7 +271,7 @@ class LensFlare: CIFilter {
         
         sunbeamsFilter?.setValue(inputOrigin, forKeyPath: kCIInputCenterKey)
         sunbeamsFilter?.setValue(inputColor, forKey: kCIInputColorKey)
-        sunbeamsFilter?.setValue(60, forKey: "inputSunRadius")
+        sunbeamsFilter?.setValue(30, forKey: "inputSunRadius")
         
         let sunbeamsImage = sunbeamsFilter!.outputImage!
         

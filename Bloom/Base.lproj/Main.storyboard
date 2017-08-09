@@ -258,7 +258,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-lQ-BhY">
-                                <rect key="frame" x="16" y="148" width="152" height="38"/>
+                                <rect key="frame" x="111" y="148" width="152" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="+ Add Excercise">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,9 +278,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Xp-dfX">
+                                <rect key="frame" x="16" y="223" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Picked"/>
+                                    <segment title="Choose Excercises"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lE-Vn-Wyb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                 <color key="backgroundColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="ptC-l5-orH"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="New Workout" id="sLu-e5-WJb">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="c7g-Py-qZa">
@@ -297,14 +308,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Xp-dfX">
-                                <rect key="frame" x="16" y="223" width="343" height="29"/>
-                                <segments>
-                                    <segment title="Picked"/>
-                                    <segment title="Choose Excercises"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -314,12 +317,12 @@
                             <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="tVf-87-e4Z" secondAttribute="bottom" id="EIb-ml-Yjx"/>
                             <constraint firstAttribute="trailing" secondItem="0lE-Vn-Wyb" secondAttribute="trailing" id="JTv-gM-mkP"/>
                             <constraint firstItem="tVf-87-e4Z" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="LPS-kZ-ldB"/>
-                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" id="MWO-B3-6Is"/>
+                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" constant="-20" id="MWO-B3-6Is"/>
                             <constraint firstAttribute="leadingMargin" secondItem="nbS-Xp-dfX" secondAttribute="leading" id="NHZ-KO-3ya"/>
                             <constraint firstItem="GrM-sj-6Z6" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" constant="58" id="Rki-fH-ApS"/>
                             <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="uMD-lQ-BhY" secondAttribute="bottom" constant="73" id="V5D-FH-Pk1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nbS-Xp-dfX" secondAttribute="trailing" id="p3z-ea-uGO"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="uMD-lQ-BhY" secondAttribute="leading" id="v1C-Li-Qgh"/>
+                            <constraint firstItem="uMD-lQ-BhY" firstAttribute="centerX" secondItem="dOW-fH-4EG" secondAttribute="centerX" id="syH-8u-sQ8"/>
                             <constraint firstItem="0lE-Vn-Wyb" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="x54-IO-jUw"/>
                             <constraint firstAttribute="leadingMargin" secondItem="GrM-sj-6Z6" secondAttribute="leading" id="xK0-aL-qY9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GrM-sj-6Z6" secondAttribute="trailing" id="zIT-ud-OeP"/>
@@ -1472,7 +1475,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JJG-zd-ewo"/>
+        <segue reference="0m2-Wk-kTV"/>
         <segue reference="otL-wJ-G1O"/>
         <segue reference="rrC-hf-91z"/>
     </inferredMetricsTieBreakers>
