@@ -14,6 +14,8 @@
 		7A01348E1F0883E100B13476 /* FinishInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01348D1F0883E100B13476 /* FinishInterfaceController.swift */; };
 		7A0134B71F0C9EC600B13476 /* RepsWeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0134B61F0C9EC600B13476 /* RepsWeightController.swift */; };
 		7A08C5F51F1483CC007DFD38 /* WorkoutSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08C5F41F1483CC007DFD38 /* WorkoutSessionManager.swift */; };
+		7A1A7FF11F3B64D70013C5AC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1A7FF01F3B64D70013C5AC /* MapKit.framework */; };
+		7A1A7FF31F3B7D9A0013C5AC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A7FF21F3B7D9A0013C5AC /* LocationManager.swift */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -168,6 +170,8 @@
 		7A0134B61F0C9EC600B13476 /* RepsWeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepsWeightController.swift; sourceTree = "<group>"; };
 		7A08C5F41F1483CC007DFD38 /* WorkoutSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSessionManager.swift; sourceTree = "<group>"; };
 		7A1A50561E14D17300B5D84A /* Drawings+CircularGradient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+CircularGradient.playground"; sourceTree = "<group>"; };
+		7A1A7FF01F3B64D70013C5AC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7A1A7FF21F3B7D9A0013C5AC /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1A7FF11F3B64D70013C5AC /* MapKit.framework in Frameworks */,
 				7ADD26511F2D4DAF00B434AF /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +561,7 @@
 		7ADD264F1F2D4DAF00B434AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A1A7FF01F3B64D70013C5AC /* MapKit.framework */,
 				7ADD26531F2D4DBA00B434AF /* HealthKit.framework */,
 				7ADD26501F2D4DAF00B434AF /* HealthKit.framework */,
 			);
@@ -585,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC184041E20BBF70019AB2F /* LiveMapViewController.swift */,
+				7A1A7FF21F3B7D9A0013C5AC /* LocationManager.swift */,
 			);
 			name = MapTracker;
 			sourceTree = "<group>";
@@ -696,7 +703,13 @@
 						DevelopmentTeam = E3QZ6M9437;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};
@@ -858,6 +871,7 @@
 				7ADD26581F2D4EFF00B434AF /* HealthDataService.swift in Sources */,
 				7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */,
 				7A7D948D1EECE9B200609B88 /* ExcerciseTemplate+CoreDataProperties.swift in Sources */,
+				7A1A7FF31F3B7D9A0013C5AC /* LocationManager.swift in Sources */,
 				7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */,
 				7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */,
 				7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */,

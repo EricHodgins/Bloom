@@ -4,6 +4,17 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MKDirectionsRequest</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.maps.directionsrequest</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,8 +29,24 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModePedestrian</string>
+	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Bloom would like to access heart rate data from your watch.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Bloom would like to save heart rate data to HealthKit Store.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bloom needs access to your location to track your workout location.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -35,9 +62,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Bloom would like to save heart rate data to HealthKit Store.</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Bloom would like to access heart rate data from your watch.</string>
 </dict>
 </plist>

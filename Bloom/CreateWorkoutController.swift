@@ -190,7 +190,6 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 textField.resignFirstResponder()
             }
             
-            //TODO: Allow ability to update as well
             if self.workoutNameTextfield.text != "" {
                 let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
                 let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
@@ -199,7 +198,6 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 do {
                     let results = try self.managedContext.fetch(workoutFetch)
                     if results.count > 0 {
-                        // Already have a workout called that
                         //TODO: - Setup Alert Notifying a workout is already named that.
                     } else {
                         // If editing an existing workout template don't create new one.

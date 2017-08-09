@@ -1295,13 +1295,16 @@
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-eO-kCm">
                                 <rect key="frame" x="163" y="28" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchPressed:" destination="4Xp-c9-JgA" eventType="valueChanged" id="QxU-YE-65T"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Map Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-2d-11a">
                                 <rect key="frame" x="102" y="67" width="170" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPH-Qb-ejg">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPH-Qb-ejg" userLabel="mapDetailsContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fV8-Wm-NNv">
@@ -1370,6 +1373,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="mapDetailsContainerView" destination="BPH-Qb-ejg" id="vlE-Pb-lmw"/>
+                        <outlet property="mapSwitch" destination="RJF-eO-kCm" id="TwJ-7r-H5S"/>
+                        <outlet property="mapView" destination="fwq-y3-s6a" id="rXp-Xi-TsD"/>
+                        <outlet property="switchLabel" destination="6g1-2d-11a" id="UUN-p3-akh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mn7-Kp-guu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
