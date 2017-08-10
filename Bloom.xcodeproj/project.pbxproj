@@ -102,7 +102,6 @@
 		7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268C1F35074E00B434AF /* LensFlare.swift */; };
 		7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268E1F35084000B434AF /* FinishSummaryController.swift */; };
 		7ADD26911F3508F900B434AF /* FinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26901F3508F900B434AF /* FinishScene.swift */; };
-		7ADD26931F35120D00B434AF /* FinishSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADD26921F35120D00B434AF /* FinishSummaryView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,7 +263,6 @@
 		7ADD268C1F35074E00B434AF /* LensFlare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LensFlare.swift; sourceTree = "<group>"; };
 		7ADD268E1F35084000B434AF /* FinishSummaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSummaryController.swift; sourceTree = "<group>"; };
 		7ADD26901F3508F900B434AF /* FinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishScene.swift; sourceTree = "<group>"; };
-		7ADD26921F35120D00B434AF /* FinishSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishSummaryView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,7 +542,6 @@
 				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
 				7ADD26901F3508F900B434AF /* FinishScene.swift */,
 				7ADD268E1F35084000B434AF /* FinishSummaryController.swift */,
-				7ADD26921F35120D00B434AF /* FinishSummaryView.xib */,
 			);
 			name = LiveWorkout;
 			sourceTree = "<group>";
@@ -772,7 +769,6 @@
 			files = (
 				7ACCF2E21EE99A00002B0865 /* spark.png in Resources */,
 				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
-				7ADD26931F35120D00B434AF /* FinishSummaryView.xib in Resources */,
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
 				7A40654E1EE269A80024724C /* workoutJsonData.json in Resources */,

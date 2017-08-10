@@ -1327,14 +1327,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.3 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhS-UE-DG6">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="66"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace: 07:17:23 / mile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcJ-Cf-7yi">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:17:23 / mile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcJ-Cf-7yi">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="66"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1374,9 +1374,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="distanceLabel" destination="dhS-UE-DG6" id="IjZ-J3-27M"/>
                         <outlet property="mapDetailsContainerView" destination="BPH-Qb-ejg" id="vlE-Pb-lmw"/>
                         <outlet property="mapSwitch" destination="RJF-eO-kCm" id="TwJ-7r-H5S"/>
                         <outlet property="mapView" destination="fwq-y3-s6a" id="rXp-Xi-TsD"/>
+                        <outlet property="paceLabel" destination="UcJ-Cf-7yi" id="m4e-6m-cWw"/>
                         <outlet property="switchLabel" destination="6g1-2d-11a" id="UUN-p3-akh"/>
                     </connections>
                 </viewController>

@@ -17,20 +17,24 @@ class LiveMapViewController: UIViewController {
     @IBOutlet weak var mapSwitch: UISwitch!
     @IBOutlet weak var switchLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     fileprivate let locationManager = LocationManager.shared
     fileprivate var locationList: [CLLocation] = []
     fileprivate var distance = Measurement(value: 0, unit: UnitLength.meters)
     private var timer: Timer?
+    private var seconds = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        mapView.mapType = .satellite
     }
 
     @IBAction func switchPressed(_ sender: Any) {
         if mapSwitch.isOn {
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
             mapDetailsContainerView.isHidden = false
             mapSwitch.isHidden = true
             switchLabel.isHidden = true
@@ -42,14 +46,34 @@ class LiveMapViewController: UIViewController {
         mapView.removeOverlays(mapView.overlays)
         locationList.removeAll()
         distance = Measurement(value: 0, unit: UnitLength.meters)
+        seconds = 0
         startLocationUpdates()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+            self.eachSecond()
+        })
     }
     
     private func startLocationUpdates() {
         locationManager.delegate = self
         locationManager.activityType = .fitness
         locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
+    }
+    
+    private func eachSecond() {
+        seconds += 1
+        DispatchQueue.main.async {
+            self.updateDisplay()
+        }
+    }
+    
+    private func updateDisplay() {
+        let formattedDistance = FormatDisplay.distance(distance)
+        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+        distanceLabel.text = formattedDistance
+        paceLabel.text = formattedPace
     }
 
 }
