@@ -25,6 +25,8 @@ class WatchLiveWorkoutController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        excerciseLabel.setText(WorkoutManager.shared.currentWorkout!)
+        
         // Check for WorkoutServiceSession for HeartRate data and Workout for HealthKit Store
         if let contextDict = context as? [String: Any],
             let workoutSessionService = contextDict["WorkoutSessionService"] as? WorkoutSessionService {

@@ -1313,6 +1313,10 @@
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fwq-y3-s6a">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                             </mapView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pl-e3-jiy">
+                                                <rect key="frame" x="312" y="571" width="55" height="30"/>
+                                                <state key="normal" title="Satellite"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1320,6 +1324,7 @@
                                             <constraint firstAttribute="trailing" secondItem="fwq-y3-s6a" secondAttribute="trailing" id="TZs-iu-nKI"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="leading" secondItem="fV8-Wm-NNv" secondAttribute="leading" id="cd7-NQ-1gM"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="fV8-Wm-NNv" secondAttribute="top" id="dKc-z3-SeK"/>
+                                            <constraint firstItem="3pl-e3-jiy" firstAttribute="leading" secondItem="fwq-y3-s6a" secondAttribute="trailing" constant="-63" id="wi0-VT-cbo"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-8B-eOU">
@@ -1348,6 +1353,7 @@
                                     <constraint firstItem="fV8-Wm-NNv" firstAttribute="height" secondItem="BPH-Qb-ejg" secondAttribute="height" multiplier="0.9" id="pgO-Ti-1ql"/>
                                     <constraint firstAttribute="bottom" secondItem="b4i-8B-eOU" secondAttribute="bottom" id="tgM-4n-7gK"/>
                                     <constraint firstAttribute="trailing" secondItem="b4i-8B-eOU" secondAttribute="trailing" id="w0v-yE-pis"/>
+                                    <constraint firstItem="UcJ-Cf-7yi" firstAttribute="top" secondItem="3pl-e3-jiy" secondAttribute="bottom" id="w10-sI-BEI"/>
                                     <constraint firstItem="b4i-8B-eOU" firstAttribute="top" secondItem="fwq-y3-s6a" secondAttribute="bottom" id="xkT-mF-AGt"/>
                                     <constraint firstAttribute="trailing" secondItem="fV8-Wm-NNv" secondAttribute="trailing" id="ydw-X2-hMP"/>
                                 </constraints>
