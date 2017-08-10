@@ -27,6 +27,9 @@ class LiveMapViewController: UIViewController {
     private var timer: Timer?
     private var seconds = 0
     
+    fileprivate var startLocation: CLLocationCoordinate2D?
+    fileprivate var finishLocation: CLLocationCoordinate2D?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -106,7 +109,17 @@ extension LiveMapViewController: CLLocationManagerDelegate {
             }
             
             locationList.append(newLocation)
+            addStartLocation()
         }
+    }
+    
+    private func addStartLocation() {
+        guard startLocation == nil else { return }
+        
+        let first = locationList.first
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = first!.coordinate
+        mapView.addAnnotation(annotation)
     }
 }
 
