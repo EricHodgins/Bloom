@@ -14,6 +14,7 @@ class LiveMapViewController: UIViewController {
 
     @IBOutlet weak var mapDetailsContainerView: UIView!
     
+    @IBOutlet weak var mapTypeButton: UIButton!
     @IBOutlet weak var mapSwitch: UISwitch!
     @IBOutlet weak var switchLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -29,7 +30,6 @@ class LiveMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        mapView.mapType = .satellite
     }
 
     @IBAction func switchPressed(_ sender: Any) {
@@ -76,6 +76,15 @@ class LiveMapViewController: UIViewController {
         paceLabel.text = formattedPace
     }
 
+    @IBAction func mapTypeButtonPressed(_ sender: Any) {
+        if mapView.mapType == .satellite {
+            mapView.mapType = .standard
+            mapTypeButton.setTitle("Satellite", for: .normal)
+        } else {
+            mapView.mapType = .satellite
+            mapTypeButton.setTitle("Standard", for: .normal)
+        }
+    }
 }
 
 

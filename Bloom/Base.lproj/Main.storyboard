@@ -1314,8 +1314,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                             </mapView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pl-e3-jiy">
-                                                <rect key="frame" x="312" y="571" width="55" height="30"/>
+                                                <rect key="frame" x="304" y="571" width="55" height="30"/>
                                                 <state key="normal" title="Satellite"/>
+                                                <connections>
+                                                    <action selector="mapTypeButtonPressed:" destination="4Xp-c9-JgA" eventType="touchUpInside" id="8yg-Gl-1dN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1324,7 +1327,7 @@
                                             <constraint firstAttribute="trailing" secondItem="fwq-y3-s6a" secondAttribute="trailing" id="TZs-iu-nKI"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="leading" secondItem="fV8-Wm-NNv" secondAttribute="leading" id="cd7-NQ-1gM"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="fV8-Wm-NNv" secondAttribute="top" id="dKc-z3-SeK"/>
-                                            <constraint firstItem="3pl-e3-jiy" firstAttribute="leading" secondItem="fwq-y3-s6a" secondAttribute="trailing" constant="-63" id="wi0-VT-cbo"/>
+                                            <constraint firstItem="3pl-e3-jiy" firstAttribute="leading" secondItem="fwq-y3-s6a" secondAttribute="trailing" constant="-71" id="wi0-VT-cbo"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-8B-eOU">
@@ -1383,6 +1386,7 @@
                         <outlet property="distanceLabel" destination="dhS-UE-DG6" id="IjZ-J3-27M"/>
                         <outlet property="mapDetailsContainerView" destination="BPH-Qb-ejg" id="vlE-Pb-lmw"/>
                         <outlet property="mapSwitch" destination="RJF-eO-kCm" id="TwJ-7r-H5S"/>
+                        <outlet property="mapTypeButton" destination="3pl-e3-jiy" id="hnX-V6-AUe"/>
                         <outlet property="mapView" destination="fwq-y3-s6a" id="rXp-Xi-TsD"/>
                         <outlet property="paceLabel" destination="UcJ-Cf-7yi" id="m4e-6m-cWw"/>
                         <outlet property="switchLabel" destination="6g1-2d-11a" id="UUN-p3-akh"/>
