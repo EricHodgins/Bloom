@@ -1320,9 +1320,21 @@
                                                     <action selector="mapTypeButtonPressed:" destination="4Xp-c9-JgA" eventType="touchUpInside" id="8yg-Gl-1dN"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTF-hC-cvm">
+                                                <rect key="frame" x="335" y="8" width="32" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Stop">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="stopPressed:" destination="4Xp-c9-JgA" eventType="touchUpInside" id="38P-Da-CLj"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="HTF-hC-cvm" secondAttribute="bottom" constant="-38" id="99G-Ge-MpA"/>
+                                            <constraint firstItem="HTF-hC-cvm" firstAttribute="leading" secondItem="fwq-y3-s6a" secondAttribute="trailing" constant="-40" id="Ch1-7C-9Mb"/>
                                             <constraint firstAttribute="bottom" secondItem="fwq-y3-s6a" secondAttribute="bottom" id="Lif-7F-CBt"/>
                                             <constraint firstAttribute="trailing" secondItem="fwq-y3-s6a" secondAttribute="trailing" id="TZs-iu-nKI"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="leading" secondItem="fV8-Wm-NNv" secondAttribute="leading" id="cd7-NQ-1gM"/>

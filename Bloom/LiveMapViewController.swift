@@ -88,6 +88,12 @@ class LiveMapViewController: UIViewController {
             mapTypeButton.setTitle("Standard", for: .normal)
         }
     }
+    
+    @IBAction func stopPressed(_ sender: Any) {
+        addFinishLocation()
+        locationManager.stopUpdatingLocation()
+        timer?.invalidate()
+    }
 }
 
 
@@ -113,12 +119,19 @@ extension LiveMapViewController: CLLocationManagerDelegate {
         }
     }
     
-    private func addStartLocation() {
+    fileprivate func addStartLocation() {
         guard startLocation == nil else { return }
         
         let first = locationList.first
         let annotation = StateAnnotation(title: "Start", coordinate: first!.coordinate)
         annotation.identifier = "Start"
+        mapView.addAnnotation(annotation)
+    }
+    
+    fileprivate func addFinishLocation() {
+        let last = locationList.last
+        let annotation = StateAnnotation(title: "Finish", coordinate: last!.coordinate)
+        annotation.identifier = "Finish"
         mapView.addAnnotation(annotation)
     }
 }
