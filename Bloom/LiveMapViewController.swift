@@ -117,8 +117,8 @@ extension LiveMapViewController: CLLocationManagerDelegate {
         guard startLocation == nil else { return }
         
         let first = locationList.first
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = first!.coordinate
+        let annotation = StateAnnotation(title: "Start", coordinate: first!.coordinate)
+        annotation.identifier = "Start"
         mapView.addAnnotation(annotation)
     }
 }
@@ -135,8 +135,16 @@ extension LiveMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        annotationView.image = UIImage(named: "StartPin")
+        let annotationView = MKAnnotationView()
+        if let annotation = annotation as? StateAnnotation {
+            if annotation.identifier == "Start" {
+                annotationView.image = UIImage(named: "StartPin")
+            }
+            
+            if annotation.identifier == "Finish" {
+                annotationView.image = UIImage(named: "FinishPin")
+            }
+        }
         
         return annotationView
     }
