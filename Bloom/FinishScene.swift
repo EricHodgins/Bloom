@@ -39,7 +39,7 @@ class FinishScene: SKScene {
         
         let flareAction = SKAction.customAction(withDuration: 300) { (node, elapsed) in
             sunFlare.sunbeamsFilter?.setValue(elapsed*0.009, forKey: kCIInputTimeKey)
-            sunFlare.inputOrigin = CIVector(x: 0 + (elapsed*3), y: (view.frame.height - 100) + elapsed)//CIVector(x: 50 + (elapsed * 10), y: 75 + (elapsed * 60))
+            sunFlare.inputOrigin = CIVector(x: 0 + (elapsed*10), y: (view.frame.height - 100) + elapsed)//CIVector(x: 50 + (elapsed * 10), y: 75 + (elapsed * 60))
             sunFlare.inputColor = CIVector(x: (elapsed * 2)/255, y: 45/255, z: 135/255)
             self.effectNode.shouldEnableEffects = true
         }

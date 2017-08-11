@@ -133,6 +133,13 @@ extension LiveMapViewController: MKMapViewDelegate {
         renderer.lineWidth = 3
         return renderer
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        annotationView.image = UIImage(named: "StartPin")
+        
+        return annotationView
+    }
 }
 
 
