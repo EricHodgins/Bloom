@@ -11,6 +11,8 @@ import CoreLocation
 import MapKit
 
 class LiveMapViewController: UIViewController {
+    
+    var workoutSession: WorkoutSessionManager!
 
     @IBOutlet weak var mapDetailsContainerView: UIView!
     
@@ -61,6 +63,7 @@ class LiveMapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.activityType = .fitness
         locationManager.distanceFilter = 3
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
     }
@@ -158,6 +161,9 @@ extension LiveMapViewController: MKMapViewDelegate {
                 annotationView.image = UIImage(named: "FinishPin")
             }
         }
+        
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = nil
         
         return annotationView
     }
