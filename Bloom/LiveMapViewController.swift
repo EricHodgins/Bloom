@@ -37,7 +37,7 @@ class LiveMapViewController: UIViewController {
 
     @IBAction func switchPressed(_ sender: Any) {
         if mapSwitch.isOn {
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             mapDetailsContainerView.isHidden = false
             mapSwitch.isHidden = true
             switchLabel.isHidden = true
@@ -60,7 +60,7 @@ class LiveMapViewController: UIViewController {
     private func startLocationUpdates() {
         locationManager.delegate = self
         locationManager.activityType = .fitness
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = 3
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
     }

@@ -44,6 +44,14 @@ class LiveWorkoutController: UIViewController {
         setupViewLayout()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation == .portrait {
+            scrollView.isHidden = false
+        } else {
+            scrollView.isHidden = true
+        }
+    }
+    
     func setupViewLayout() {
         // Setup Pages for scroll view
         let page1 = createRecordLiveExcerciseController()
