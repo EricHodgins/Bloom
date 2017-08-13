@@ -31,6 +31,12 @@ class WorkoutDetailController: UIViewController {
         tableView.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HeartRateSegue" {
             let controller = segue.destination as! HeartBeatGraphController
