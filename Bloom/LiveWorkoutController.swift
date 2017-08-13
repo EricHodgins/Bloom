@@ -169,6 +169,7 @@ extension LiveWorkoutController {
     fileprivate func createLiveMapController() -> LiveMapViewController {
         let lmc = storyboard!.instantiateViewController(withIdentifier: "Map") as! LiveMapViewController
         lmc.workoutSession = workoutSessionManager
+        lmc.managedContext = managedContext
         lmc.view.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(lmc.view)

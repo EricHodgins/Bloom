@@ -4,9 +4,9 @@
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="orderNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reps" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reps" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timeRecorded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="excercises" inverseEntity="Workout" syncable="YES"/>
     </entity>
     <entity name="ExcerciseTemplate" representedClassName=".ExcerciseTemplate" syncable="YES" codeGenerationType="class">
@@ -32,10 +32,10 @@
         <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExcerciseTemplate" inverseName="workout" inverseEntity="ExcerciseTemplate" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Excercise" positionX="-18" positionY="27" width="128" height="150"/>
+        <element name="Excercise" positionX="-27" positionY="-36" width="128" height="150"/>
         <element name="ExcerciseTemplate" positionX="43" positionY="-171" width="128" height="90"/>
-        <element name="Workout" positionX="-243" positionY="0" width="128" height="120"/>
-        <element name="WorkoutTemplate" positionX="-144" positionY="-141" width="128" height="75"/>
-        <element name="Location" positionX="-99" positionY="-18" width="128" height="105"/>
+        <element name="Location" positionX="-36" positionY="138" width="128" height="105"/>
+        <element name="Workout" positionX="-218" positionY="60" width="128" height="120"/>
+        <element name="WorkoutTemplate" positionX="-144" positionY="-171" width="128" height="75"/>
     </elements>
 </model>

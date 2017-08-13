@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 import MapKit
 
 class LiveMapViewController: UIViewController {
     
     var workoutSession: WorkoutSessionManager!
+    var managedContext: NSManagedObjectContext!
 
     @IBOutlet weak var mapDetailsContainerView: UIView!
     
@@ -96,6 +98,22 @@ class LiveMapViewController: UIViewController {
         addFinishLocation()
         locationManager.stopUpdatingLocation()
         timer?.invalidate()
+    }
+    
+    private func saveMapRoute() {
+        for location in locationList {
+            let locationObject = Location(context: managedContext)
+            locationObject.latitude = location.coordinate.latitude
+            locationObject.longitude = location.coordinate.longitude
+            locationObject.timeStamp = location.timestamp as NSDate
+            workoutSession.workout.addToLocations(locationObject)
+        }
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("Could not save locations: \(error)")
+        }
     }
 }
 

@@ -49,24 +49,44 @@ extension WorkoutDetailController: UITableViewDataSource {
         // Header
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutInfoCell", for: indexPath) as! WorkoutTableCell
-            cell.workoutDate.text = "\(dateFormatter.string(from: workout.startTime! as Date))"
+            if let workoutStartDate = workout.startTime {
+                cell.workoutDate.text = "\(dateFormatter.string(from: workoutStartDate as Date))"
+            } else {
+                cell.workoutDate.text = "No Date Recorded)"
+            }
+            
             cell.workoutName.text = "\(workout.name!)"
-            cell.workoutDuration.text = workout.startTime!.delta(to: workout.endTime!)
+            
+            if let workoutFinishDate = workout.endTime,
+                let workoutStartDate = workout.startTime {
+                cell.workoutDuration.text = workoutStartDate.delta(to: workoutFinishDate)
+            } else {
+                cell.workoutDuration.text = "Duration unknown"
+            }
+            
             
             return cell
         }
         
         // Excercise Details
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCell", for: indexPath) as! ExcerciseTableCell
+        configureExcerciseCell(cell: cell, indexPath: indexPath)
+        
+        return cell
+    }
+    
+    private func configureExcerciseCell(cell: ExcerciseTableCell, indexPath: IndexPath) {
         let excercise = excercises[indexPath.row - 1]
         cell.excerciseName.text = "\(excercise.name!)"
         cell.repsLabel.text = "Reps: \(excercise.reps)"
         cell.weightLabel.text = "Weight: \(excercise.weight) lbs"
         cell.distanceLabel.text = "Distance: \(excercise.distance) Km"
-        cell.timeLabel.text = workout.startTime!.delta(to: excercise.timeRecorded!)
         
-        print(excercise.timeRecorded!)
-        return cell
+        if excercise.timeRecorded != nil {
+            cell.timeLabel.text = workout.startTime!.delta(to: excercise.timeRecorded!)
+        } else {
+            cell.timeLabel.text = ""
+        }
     }
     
 }
