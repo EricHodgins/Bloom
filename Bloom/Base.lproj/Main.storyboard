@@ -633,6 +633,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvh-Yz-8t5" userLabel="View Map Route">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="83"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon@1x" translatesAutoresizingMaskIntoConstraints="NO" id="R1t-nI-40p">
+                                                <rect key="frame" x="-0.5" y="0.0" width="187.5" height="83"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhn-ZO-pw4">
                                                 <rect key="frame" x="0.0" y="0.0" width="188" height="83"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -640,11 +644,10 @@
                                                 <state key="normal" title="Map">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="Sdo-47-91L" kind="show" identifier="RecordedMap" id="mSF-5n-mR7"/>
+                                                </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon@1x" translatesAutoresizingMaskIntoConstraints="NO" id="R1t-nI-40p">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="83"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1610,6 +1613,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGZ-GM-h4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2616.8000000000002" y="1712.2938530734634"/>
+        </scene>
+        <!--Map Route Detail Controller-->
+        <scene sceneID="mOo-mj-k3b">
+            <objects>
+                <viewController id="Sdo-47-91L" customClass="MapRouteDetailController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GZ4-Ux-Q7w"/>
+                        <viewControllerLayoutGuide type="bottom" id="2SR-zh-cUb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Byy-PM-fic" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-cV-e5x" userLabel="Map Container View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="467"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cef-As-Sbc">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cef-As-Sbc" secondAttribute="trailing" id="5Rw-Dn-sEh"/>
+                                    <constraint firstItem="cef-As-Sbc" firstAttribute="top" secondItem="Xvn-cV-e5x" secondAttribute="top" id="Jgh-ya-zwq"/>
+                                    <constraint firstItem="cef-As-Sbc" firstAttribute="leading" secondItem="Xvn-cV-e5x" secondAttribute="leading" id="RnN-aF-8NP"/>
+                                    <constraint firstAttribute="bottom" secondItem="cef-As-Sbc" secondAttribute="bottom" id="cu8-Ek-KSg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xvn-cV-e5x" firstAttribute="height" secondItem="Byy-PM-fic" secondAttribute="height" multiplier="0.7" id="1l5-bu-VVA"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvn-cV-e5x" secondAttribute="trailing" id="JUI-Hf-kjt"/>
+                            <constraint firstItem="Xvn-cV-e5x" firstAttribute="top" secondItem="GZ4-Ux-Q7w" secondAttribute="bottom" id="KPG-uU-4Md"/>
+                            <constraint firstItem="Xvn-cV-e5x" firstAttribute="leading" secondItem="Byy-PM-fic" secondAttribute="leading" id="SfU-AI-39w"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616.8000000000002" y="2385.1574212893556"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KRq-wq-FcE">

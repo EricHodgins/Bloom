@@ -165,6 +165,24 @@ class BloomFilter {
         
         return workoutTemplate
     }
+    
+    //MARK: - Location Queries
+    class func fetchLocations(startDate: Date, finishDate: Date, inManagedContext managedContext: NSManagedObjectContext) -> [Location] {
+        
+        let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+        let datePredicate = NSPredicate(format: "%K >= %@ && %K <= %@", #keyPath(Location.timeStamp), startDate as NSDate, #keyPath(Location.timeStamp), finishDate as NSDate)
+        
+        fetchRequest.predicate = datePredicate
+        var locations: [Location] = []
+        
+        do {
+            locations = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch location objects: \(error.localizedDescription)")
+        }
+        
+        return locations
+    }
 
 }
 

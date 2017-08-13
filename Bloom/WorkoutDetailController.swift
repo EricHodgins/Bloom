@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class WorkoutDetailController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var workout: Workout!
+    var managedContext: NSManagedObjectContext!
     var excercises: [Excercise] = []
     
     var dateFormatter: DateFormatter!
@@ -41,6 +43,12 @@ class WorkoutDetailController: UIViewController {
         if segue.identifier == "HeartRateSegue" {
             let controller = segue.destination as! HeartBeatGraphController
             controller.workout = workout
+        }
+        
+        if segue.identifier == "RecordedMap" {
+            let controller = segue.destination as! MapRouteDetailController
+            controller.workout = workout
+            controller.managedContext = managedContext
         }
     }
 

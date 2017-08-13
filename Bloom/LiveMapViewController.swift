@@ -98,6 +98,9 @@ class LiveMapViewController: UIViewController {
         addFinishLocation()
         locationManager.stopUpdatingLocation()
         timer?.invalidate()
+        
+        //TEMP - Test
+        saveMapRoute()
     }
     
     private func saveMapRoute() {
