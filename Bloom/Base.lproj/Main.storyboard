@@ -1658,6 +1658,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="cef-As-Sbc" id="kJn-Kc-OWj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

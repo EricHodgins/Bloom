@@ -8,24 +8,128 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import MapKit
 
 class MapRouteDetailController: UIViewController {
     
     var workout: Workout!
     var managedContext: NSManagedObjectContext!
+    
+    @IBOutlet weak var mapView: MKMapView!
+    var locations: [Location] = []
+    var speeds: [Double] = []
+    var segments: [MultiColorPolyLine] = []
+    var segmentCoordinates: [(CLLocation, CLLocation)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
+        // 1. This must be first
         fetchLocationObjects()
+        
+        // 2. Set Map View from location objects if any
+        configureMapRegion()
+        
+        // 3. Add Overlays for speed
+        addOverlays()
     }
     
     private func fetchLocationObjects() {
-        guard let start = workout.startTime as Date?,
-              let finish = workout.endTime as Date? else { return }
-        let locations = BloomFilter.fetchLocations(startDate: start, finishDate: finish, inManagedContext: managedContext)
+        locations = workout.locations?.array as! [Location]
+    }
+    
+    private func mapRegion() -> MKCoordinateRegion? {
+        guard locations.count > 0 else {
+                return nil
+        }
         
-        for location in locations {
-            print("\(location.latitude) - \(location.longitude): \(location.timeStamp ?? NSDate())")
+        let latitudes = locations.map { location -> Double in
+            return location.latitude
+        }
+        
+        let longitudes = locations.map { location -> Double in
+            return location.longitude
+        }
+        
+        let maxLat = latitudes.max()!
+        let minLat = latitudes.min()!
+        let maxLong = longitudes.max()!
+        let minLong = longitudes.min()!
+        
+        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
+                                            longitude: (minLong + maxLong) / 2)
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
+                                    longitudeDelta: (maxLong - minLong) * 1.3)
+        return MKCoordinateRegion(center: center, span: span)
+    }
+    
+    private func configureMapRegion() {
+        let calculatedRegion = mapRegion()
+        guard let region = calculatedRegion else {
+            //TODO: - Setup alert controller for user
+            return
+        }
+        mapView.setRegion(region, animated: true)
+    }
+    
+    private func calculateSpeeds() {
+        for (first, second) in zip(locations, locations.dropFirst()) {
+            let start = CLLocation(latitude: first.latitude, longitude: first.longitude)
+            let end = CLLocation(latitude: second.latitude, longitude: second.longitude)
+            
+            // V = d/t
+            let distance = end.distance(from: start)
+            let time = second.timeStamp!.timeIntervalSince(first.timeStamp! as Date)
+            let speed = time > 0 ? distance / time : 0
+            
+            speeds.append(speed)
+            
+            segmentCoordinates.append((start, end))
         }
     }
+    
+    private func calculateSegmentColors() {
+        for ((start, end), speed) in zip(segmentCoordinates, speeds) {
+            let coords = [start.coordinate, end.coordinate]
+            let segment = MultiColorPolyLine(coordinates: coords, count: 2)
+            segment.color = UIColor.red
+            segments.append(segment)
+        }
+    }
+    
+    private func addOverlays() {
+        calculateSpeeds()
+        calculateSegmentColors()
+        mapView.addOverlays(segments)
+    }
 }
+
+
+extension MapRouteDetailController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyline = overlay as? MultiColorPolyLine else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
+        let renderer = MKPolylineRenderer(polyline: polyline)
+        renderer.strokeColor = polyline.color
+        renderer.lineWidth = 3
+        return renderer
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
