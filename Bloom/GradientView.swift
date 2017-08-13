@@ -14,6 +14,7 @@ class GradientView: UIView {
     let gradientLayer = CAGradientLayer()
     @IBInspectable var startColor: UIColor = UIColor.green
     @IBInspectable var endColor: UIColor = UIColor.white
+    @IBInspectable var isRounded: Bool = false
 
 
     override func draw(_ rect: CGRect) {
@@ -28,6 +29,11 @@ class GradientView: UIView {
         let endPoint = CGPoint(x: 0, y: bounds.size.height)
         
         context!.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
+        
+        if isRounded {
+            layer.masksToBounds = true
+            layer.cornerRadius = 8.0
+        }
     }
 
 }

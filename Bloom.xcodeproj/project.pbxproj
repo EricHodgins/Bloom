@@ -362,13 +362,6 @@
 			name = StatsGroup;
 			sourceTree = "<group>";
 		};
-		7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ManagedObjects;
-			sourceTree = "<group>";
-		};
 		7A764CE91E16EF0400736446 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,7 +393,6 @@
 			children = (
 				7A40654D1EE269A80024724C /* workoutJsonData.json */,
 				7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */,
-				7A6B9B9B1EDA4D3B00E05D04 /* ManagedObjects */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
 				7A84F95F1DFE761E00A37C80 /* Bloom WatchKit App */,
