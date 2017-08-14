@@ -12,6 +12,7 @@ import HealthKit
 
 let NotificationWatchConnectivityActive = "NotificationWatchConnectivityActive"
 let NotificationWorkoutsReceived = "NotificationWorkoutsReceived"
+let NotificationWorkoutHasFinishedOnPhone = "NotificationWorkoutHasFinishedOnPhone"
 
 enum ActicationState: String {
     case active
@@ -229,15 +230,21 @@ extension WatchConnectivityManager: WCSessionDelegate {
         if let _ = applicationContext["WorkoutDateCreated"] as? NSDate {
             notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
         }
-    }
-    
-    //MARK: - Received Message
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let _ = message["Finished"] as? Bool {
+        
+        // Finish workout.  Hit Finish button on phone
+        if let _ = applicationContext["Finished"] as? Bool {
+            //1. Notify to stop workout session
+            notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutHasFinishedOnPhone), object: nil)
+            //2.
             DispatchQueue.main.async {
                 WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
             }
         }
+    }
+    
+    //MARK: - Received Message
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+
     }
 }
 

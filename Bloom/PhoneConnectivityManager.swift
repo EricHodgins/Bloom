@@ -90,11 +90,13 @@ class PhoneConnectivityManager: NSObject {
     class func sendFinishedMessage() {
         if WCSession.isSupported() {
             let session = WCSession.default()
-            if session.isWatchAppInstalled && session.isReachable {
+            if session.isWatchAppInstalled {
                 let message = ["Finished": true]
-                session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
-                    print("Error sending finished message: \(error)")
-                })
+                do {
+                    try session.updateApplicationContext(message)
+                } catch {
+                    print("Error sending Finish message to watch: \(error)")
+                }
             }
         }
     }
