@@ -1632,21 +1632,61 @@
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cef-As-Sbc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                                     </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe5-lX-g0A">
+                                        <rect key="frame" x="297" y="429" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5Te-4W-GAJ"/>
+                                            <constraint firstAttribute="width" constant="70" id="DrA-lY-RiS"/>
+                                        </constraints>
+                                        <state key="normal" title="Satellite"/>
+                                        <connections>
+                                            <action selector="mapTypeButtonPressed:" destination="Sdo-47-91L" eventType="touchUpInside" id="l4t-Hg-bpr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cef-As-Sbc" secondAttribute="trailing" id="5Rw-Dn-sEh"/>
+                                    <constraint firstAttribute="bottom" secondItem="qe5-lX-g0A" secondAttribute="bottom" constant="8" id="77a-jo-Nqg"/>
                                     <constraint firstItem="cef-As-Sbc" firstAttribute="top" secondItem="Xvn-cV-e5x" secondAttribute="top" id="Jgh-ya-zwq"/>
                                     <constraint firstItem="cef-As-Sbc" firstAttribute="leading" secondItem="Xvn-cV-e5x" secondAttribute="leading" id="RnN-aF-8NP"/>
+                                    <constraint firstAttribute="trailing" secondItem="qe5-lX-g0A" secondAttribute="trailing" constant="8" id="cnJ-co-qdh"/>
                                     <constraint firstAttribute="bottom" secondItem="cef-As-Sbc" secondAttribute="bottom" id="cu8-Ek-KSg"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xbU-KB-NrU">
+                                <rect key="frame" x="12" y="531" width="363" height="136"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySo-7Z-gJN">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKF-x1-jsf">
+                                        <rect key="frame" x="0.0" y="45.5" width="101" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO5-s5-CuJ">
+                                        <rect key="frame" x="0.0" y="90.5" width="135" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Xvn-cV-e5x" firstAttribute="height" secondItem="Byy-PM-fic" secondAttribute="height" multiplier="0.7" id="1l5-bu-VVA"/>
+                            <constraint firstItem="xbU-KB-NrU" firstAttribute="leading" secondItem="Byy-PM-fic" secondAttribute="leading" constant="12" id="8W8-g7-6oh"/>
+                            <constraint firstItem="xbU-KB-NrU" firstAttribute="top" secondItem="cef-As-Sbc" secondAttribute="bottom" id="ALY-g5-sQP"/>
+                            <constraint firstItem="2SR-zh-cUb" firstAttribute="top" secondItem="xbU-KB-NrU" secondAttribute="bottom" id="EWF-jD-GWU"/>
                             <constraint firstAttribute="trailing" secondItem="Xvn-cV-e5x" secondAttribute="trailing" id="JUI-Hf-kjt"/>
                             <constraint firstItem="Xvn-cV-e5x" firstAttribute="top" secondItem="GZ4-Ux-Q7w" secondAttribute="bottom" id="KPG-uU-4Md"/>
+                            <constraint firstAttribute="trailing" secondItem="xbU-KB-NrU" secondAttribute="trailing" id="Pc8-6Y-E9E"/>
                             <constraint firstItem="Xvn-cV-e5x" firstAttribute="leading" secondItem="Byy-PM-fic" secondAttribute="leading" id="SfU-AI-39w"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -1659,7 +1699,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="averageSpeedLabel" destination="lO5-s5-CuJ" id="oOi-Ro-8mi"/>
+                        <outlet property="mapTypeButton" destination="qe5-lX-g0A" id="L6a-pz-aoX"/>
                         <outlet property="mapView" destination="cef-As-Sbc" id="kJn-Kc-OWj"/>
+                        <outlet property="maxSpeedLabel" destination="ySo-7Z-gJN" id="6jk-vM-EpZ"/>
+                        <outlet property="minSpeedLabel" destination="zKF-x1-jsf" id="wSt-OX-TrD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>

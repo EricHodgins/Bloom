@@ -17,6 +17,13 @@ class MapRouteDetailController: UIViewController {
     var managedContext: NSManagedObjectContext!
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapTypeButton: UIButton!
+    
+    @IBOutlet weak var maxSpeedLabel: UILabel!
+    @IBOutlet weak var minSpeedLabel: UILabel!
+    @IBOutlet weak var averageSpeedLabel: UILabel!
+    
+    
     var locations: [Location] = []
     var speeds: [Double] = []
     var segments: [MultiColorPolyLine] = []
@@ -90,10 +97,16 @@ class MapRouteDetailController: UIViewController {
     }
     
     private func calculateSegmentColors() {
+        let maxSpeed = speeds.max()!
+        let minSpeed = speeds.min()!
+        let avgSpeed: Double = speeds.reduce(0, +) / Double(speeds.count)
+        
+        configureLabels(max: maxSpeed, min: minSpeed, avg: avgSpeed)
+        
         for ((start, end), speed) in zip(segmentCoordinates, speeds) {
             let coords = [start.coordinate, end.coordinate]
             let segment = MultiColorPolyLine(coordinates: coords, count: 2)
-            segment.color = UIColor.red
+            segment.color = MultiColorPolyLine.segmentColor(max: maxSpeed, min: minSpeed, avg: avgSpeed, speed: speed)
             segments.append(segment)
         }
     }
@@ -103,6 +116,23 @@ class MapRouteDetailController: UIViewController {
         calculateSegmentColors()
         mapView.addOverlays(segments)
     }
+    
+    @IBAction func mapTypeButtonPressed(_ sender: Any) {
+        if mapView.mapType == .standard {
+            mapView.mapType = .satellite
+            mapTypeButton.setTitle("Standard", for: .normal)
+        } else {
+            mapView.mapType = .standard
+            mapTypeButton.setTitle("Satellite", for: .normal)
+        }
+    }
+    
+    private func configureLabels(max: Double, min: Double, avg: Double) {
+        maxSpeedLabel.text = "\(max) m/s"
+        minSpeedLabel.text = "\(min) m/s"
+        averageSpeedLabel.text = "\(avg) m/s"
+    }
+    
 }
 
 
