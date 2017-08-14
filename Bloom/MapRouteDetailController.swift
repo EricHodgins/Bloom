@@ -97,6 +97,7 @@ class MapRouteDetailController: UIViewController {
     }
     
     private func calculateSegmentColors() {
+        guard speeds.count > 0 else { return }
         let maxSpeed = speeds.max()!
         let minSpeed = speeds.min()!
         let avgSpeed: Double = speeds.reduce(0, +) / Double(speeds.count)
