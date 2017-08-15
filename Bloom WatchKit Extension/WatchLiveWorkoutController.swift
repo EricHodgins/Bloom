@@ -25,8 +25,6 @@ class WatchLiveWorkoutController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        excerciseLabel.setText(WorkoutManager.shared.currentWorkout!)
-        
         // Check for WorkoutServiceSession for HeartRate data and Workout for HealthKit Store
         if let contextDict = context as? [String: Any],
             let workoutSessionService = contextDict["WorkoutSessionService"] as? WorkoutSessionService {
@@ -34,7 +32,7 @@ class WatchLiveWorkoutController: WKInterfaceController {
             self.workoutSessionService?.delegate = self
         }
         
-        // Check if initiated by phone
+        // Check if initiated by phone.  If not drop into guard statement
         guard let contextDict = context as? [String : Any],
             let timeStarted = contextDict["workoutStartDate"] as? NSDate else {
                 if WorkoutManager.shared.currentExcercises.count > 0 {
@@ -46,6 +44,7 @@ class WatchLiveWorkoutController: WKInterfaceController {
             return
         }
         
+        excerciseLabel.setText(WorkoutManager.shared.currentExcercises[0])
         WorkoutManager.shared.workoutStartDate = timeStarted
         let diff = Date.timeIntervalSinceReferenceDate - timeStarted.timeIntervalSinceReferenceDate
         timer.setDate(Date(timeIntervalSinceNow: -diff))

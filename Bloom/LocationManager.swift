@@ -8,7 +8,21 @@
 
 import CoreLocation
 
-class LocationManager {
-    static let shared = CLLocationManager()
-    private init() { }
+class LocationManager: CLLocationManager {
+    var isUpdatingLocation: Bool = false
+    
+    static let shared = LocationManager()
+    private override init() {
+        super.init()
+    }
+    
+    override func startUpdatingLocation() {
+        super.startUpdatingLocation()
+        isUpdatingLocation = true
+    }
+    
+    override func stopUpdatingLocation() {
+        super.stopUpdatingLocation()
+        isUpdatingLocation = false
+    }
 }

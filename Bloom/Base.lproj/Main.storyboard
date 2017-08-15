@@ -1398,7 +1398,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FH-MI-MtF" userLabel="InfoButtonContainerView" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="327" y="17" width="40" height="55"/>
+                                                <rect key="frame" x="327" y="95" width="40" height="55"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTF-hC-cvm">
                                                         <rect key="frame" x="9.5" y="16.5" width="22" height="22"/>
@@ -1407,7 +1407,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="stopPressed:" destination="4Xp-c9-JgA" eventType="touchUpInside" id="38P-Da-CLj"/>
+                                                            <action selector="infoButtonPressed:" destination="4Xp-c9-JgA" eventType="touchUpInside" id="f2F-BH-YBS"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1433,7 +1433,7 @@
                                         <constraints>
                                             <constraint firstItem="3pl-e3-jiy" firstAttribute="top" secondItem="fwq-y3-s6a" secondAttribute="bottom" constant="-30" id="BEA-sd-fpt"/>
                                             <constraint firstAttribute="bottom" secondItem="fwq-y3-s6a" secondAttribute="bottom" id="Lif-7F-CBt"/>
-                                            <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="7FH-MI-MtF" secondAttribute="bottom" constant="-72" id="NP2-UD-5gD"/>
+                                            <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="7FH-MI-MtF" secondAttribute="bottom" constant="-150" id="NP2-UD-5gD"/>
                                             <constraint firstAttribute="trailing" secondItem="fwq-y3-s6a" secondAttribute="trailing" id="TZs-iu-nKI"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="leading" secondItem="fV8-Wm-NNv" secondAttribute="leading" id="cd7-NQ-1gM"/>
                                             <constraint firstItem="fwq-y3-s6a" firstAttribute="top" secondItem="fV8-Wm-NNv" secondAttribute="top" id="dKc-z3-SeK"/>

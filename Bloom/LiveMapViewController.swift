@@ -25,7 +25,7 @@ class LiveMapViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     
-    fileprivate let locationManager = LocationManager.shared
+    fileprivate let locationManager: LocationManager = LocationManager.shared
     fileprivate var locationList: [CLLocation] = []
     fileprivate var distance = Measurement(value: 0, unit: UnitLength.meters)
     private var timer: Timer?
@@ -40,12 +40,16 @@ class LiveMapViewController: UIViewController {
     }
 
     @IBAction func switchPressed(_ sender: Any) {
-        if mapSwitch.isOn {
-            locationManager.requestWhenInUseAuthorization()
-            mapDetailsContainerView.isHidden = false
-            mapSwitch.isHidden = true
-            switchLabel.isHidden = true
-            startMapTracking()
+        if CLLocationManager.locationServicesEnabled() {
+            if mapSwitch.isOn {
+                locationManager.requestWhenInUseAuthorization()
+                mapDetailsContainerView.isHidden = false
+                mapSwitch.isHidden = true
+                switchLabel.isHidden = true
+                startMapTracking()
+            }
+        } else {
+            
         }
     }
     
@@ -94,13 +98,8 @@ class LiveMapViewController: UIViewController {
         }
     }
     
-    @IBAction func stopPressed(_ sender: Any) {
-        addFinishLocation()
-        locationManager.stopUpdatingLocation()
-        timer?.invalidate()
-        
-        //TEMP - Test
-        saveMapRoute()
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        presentAlertViewController()
     }
     
     private func saveMapRoute() {
@@ -117,6 +116,40 @@ class LiveMapViewController: UIViewController {
         } catch {
             print("Could not save locations: \(error)")
         }
+    }
+    
+    private func presentAlertViewController() {
+        let alertController = UIAlertController(title: "Route Tracking", message: "What would you like to do?", preferredStyle: .actionSheet)
+        
+        let saveButton = UIAlertAction(title: "Save and Stop", style: .default, handler: { (action) -> Void in
+            print("Saving map route..")
+            self.addFinishLocation()
+            self.locationManager.stopUpdatingLocation()
+            self.timer?.invalidate()
+            self.saveMapRoute()
+        })
+        
+        let stateButton: UIAlertAction
+        if locationManager.isUpdatingLocation {
+            stateButton = UIAlertAction(title: "Pause", style: .destructive, handler: { (action) -> Void in
+                print("Pausing location updates")
+                self.locationManager.stopUpdatingLocation()
+            })
+        } else {
+            stateButton = UIAlertAction(title: "Resume", style: .destructive, handler: { (action) -> Void in
+                print("Resuming location updates")
+                self.locationManager.startUpdatingLocation()
+            })
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        
+        alertController.addAction(saveButton)
+        alertController.addAction(stateButton)
+        alertController.addAction(cancelButton)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -153,6 +186,8 @@ extension LiveMapViewController: CLLocationManagerDelegate {
     }
     
     fileprivate func addFinishLocation() {
+        guard finishLocation == nil else { return }
+        
         let last = locationList.last
         let annotation = StateAnnotation(title: "Finish", coordinate: last!.coordinate)
         annotation.identifier = "Finish"
