@@ -174,6 +174,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -221,6 +222,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="avgBPMLabel" destination="o7R-PC-xs3" id="0eg-33-rc9"/>
+                        <outlet property="durationLabel" destination="Ie8-Ym-bFd" id="r8b-gf-UkG"/>
+                        <outlet property="highBPMLabel" destination="hHf-Uk-c94" id="ypT-Po-zri"/>
+                        <outlet property="lowBPMLabel" destination="enb-sE-UIr" id="nOL-go-tn5"/>
+                        <outlet property="tableView" destination="C8w-J5-bGQ" id="8IS-Bk-9mp"/>
+                        <outlet property="workoutNameLabel" destination="bLE-rN-QcG" id="Ukm-gN-Guy"/>
                         <segue destination="pIx-A2-xCl" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="SSi-Au-7rr"/>
                     </connections>
                 </viewController>
@@ -1742,8 +1749,8 @@
         <image name="MapIcon@1x" width="188" height="81"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0m2-Wk-kTV"/>
         <segue reference="otL-wJ-G1O"/>
         <segue reference="rrC-hf-91z"/>
+        <segue reference="JJG-zd-ewo"/>
     </inferredMetricsTieBreakers>
 </document>

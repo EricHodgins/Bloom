@@ -11,13 +11,12 @@ import UIKit
 class FinishLiveWorkoutController: UIViewController {
 
     @IBOutlet weak var finishWorkoutButton: GenericBloomButton!
-    //var sunsetBackground: SunsetBackground!
     var workout: Workout!
+    
+    var workoutSession: WorkoutSessionManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //sunsetBackground = SunsetBackground(frame: view.bounds, device: nil, withView: view)
-        //view.insertSubview(sunsetBackground, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +55,13 @@ class FinishLiveWorkoutController: UIViewController {
         }
         
         PhoneConnectivityManager.sendFinishedMessage()
-        //segueToMainMenu()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SummarySegue" {
+            let summary = segue.destination as! FinishSummaryController
+            summary.workout = workout
+        }
     }
     
     func segueToMainMenu() {

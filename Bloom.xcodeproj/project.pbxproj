@@ -314,6 +314,16 @@
 			name = LiveWorkout;
 			sourceTree = "<group>";
 		};
+		7A1A7FFE1F42A4FA0013C5AC /* FinishedSummary */ = {
+			isa = PBXGroup;
+			children = (
+				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
+				7ADD26901F3508F900B434AF /* FinishScene.swift */,
+				7ADD268E1F35084000B434AF /* FinishSummaryController.swift */,
+			);
+			name = FinishedSummary;
+			sourceTree = "<group>";
+		};
 		7A1E13E91E06182600330EFB /* App Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +441,7 @@
 				7A0134841F0694C500B13476 /* PhoneConnectivity */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7ADD25F81F23CF6E00B434AF /* Utils.swift */,
+				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
 				7A1E13EC1E06195600330EFB /* Custom Views */,
@@ -510,10 +521,7 @@
 				7AC184021E20BBE80019AB2F /* LiveExcerciseListController.swift */,
 				7ADD269C1F3ABEC700B434AF /* MapTracker */,
 				7AC184061E20BC0B0019AB2F /* FinishLiveWorkoutController.swift */,
-				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
-				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
-				7ADD26901F3508F900B434AF /* FinishScene.swift */,
-				7ADD268E1F35084000B434AF /* FinishSummaryController.swift */,
+				7A1A7FFE1F42A4FA0013C5AC /* FinishedSummary */,
 			);
 			name = LiveWorkout;
 			sourceTree = "<group>";

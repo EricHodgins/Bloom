@@ -15,10 +15,18 @@ class FinishSummaryController: UIViewController {
         return FinishScene(size: self.view.frame.size)
     }()
 
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var workoutNameLabel: UILabel!
+    @IBOutlet weak var highBPMLabel: UILabel!
+    @IBOutlet weak var lowBPMLabel: UILabel!
+    @IBOutlet weak var avgBPMLabel: UILabel!
+    
+    var workout: Workout!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let scene = FinishScene(size: self.view.frame.size)
+    
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -26,6 +34,9 @@ class FinishSummaryController: UIViewController {
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
         skView.presentScene(scene)
+        
+        tableView.dataSource = self
+        tableView.tableHeaderView = nil
     }
     
     
@@ -36,3 +47,47 @@ class FinishSummaryController: UIViewController {
     }
     
 }
+
+extension FinishSummaryController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = "Test"
+        
+        
+        return cell
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
