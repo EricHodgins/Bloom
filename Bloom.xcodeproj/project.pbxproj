@@ -19,6 +19,7 @@
 		7A1A7FF51F3D586E0013C5AC /* StateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A7FF41F3D586E0013C5AC /* StateAnnotation.swift */; };
 		7A1A7FFB1F40DAB60013C5AC /* MapRouteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A7FFA1F40DAB60013C5AC /* MapRouteDetailController.swift */; };
 		7A1A7FFD1F40FC1F0013C5AC /* MultiColorPolyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A7FFC1F40FC1F0013C5AC /* MultiColorPolyLine.swift */; };
+		7A1A80001F42AC130013C5AC /* WorkoutSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A7FFF1F42AC130013C5AC /* WorkoutSummary.swift */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -165,6 +166,7 @@
 		7A1A7FF41F3D586E0013C5AC /* StateAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateAnnotation.swift; sourceTree = "<group>"; };
 		7A1A7FFA1F40DAB60013C5AC /* MapRouteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouteDetailController.swift; sourceTree = "<group>"; };
 		7A1A7FFC1F40FC1F0013C5AC /* MultiColorPolyLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiColorPolyLine.swift; sourceTree = "<group>"; };
+		7A1A7FFF1F42AC130013C5AC /* WorkoutSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSummary.swift; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				7ADD268C1F35074E00B434AF /* LensFlare.swift */,
 				7ADD26901F3508F900B434AF /* FinishScene.swift */,
 				7ADD268E1F35084000B434AF /* FinishSummaryController.swift */,
+				7A1A7FFF1F42AC130013C5AC /* WorkoutSummary.swift */,
 			);
 			name = FinishedSummary;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */,
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,
 				7A1A7FFB1F40DAB60013C5AC /* MapRouteDetailController.swift in Sources */,
+				7A1A80001F42AC130013C5AC /* WorkoutSummary.swift in Sources */,
 				7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */,
 				7A4065501EE2E9520024724C /* ExcercisesController.swift in Sources */,
 				7A08C5F51F1483CC007DFD38 /* WorkoutSessionManager.swift in Sources */,
