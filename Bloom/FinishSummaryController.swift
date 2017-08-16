@@ -22,7 +22,11 @@ class FinishSummaryController: UIViewController {
     @IBOutlet weak var avgBPMLabel: UILabel!
     
     var workout: Workout!
+    var excercises: [Excercise]!
     @IBOutlet weak var tableView: UITableView!
+    
+    var sections: [String] = []
+    var rows: [[String]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,45 @@ class FinishSummaryController: UIViewController {
         
         tableView.dataSource = self
         tableView.tableHeaderView = nil
+        
+        workoutDetailsDisplay()
+        setupExcerciseData()
+    }
+    
+    private func setupExcerciseData() {
+        guard workout != nil,
+            workout.excercises != nil else { return }
+        
+        excercises = workout.excercises?.sorted(by: { (e1, e2) -> Bool in
+            return (e1 as! Excercise).orderNumber < (e2 as! Excercise).orderNumber
+        }) as! [Excercise]
+        
+        sections = excercises.map({ (excercise) -> String in
+            return excercise.name!
+        })
+        
+        rows = excercises.map({ (excercise) -> [String] in
+            var data: [String] = []
+            if excercise.reps != 0 { data.append("\(excercise.reps)") }
+            if excercise.weight != 0 { data.append("\(excercise.weight)") }
+            if excercise.distance != 0 { data.append("\(excercise.distance)") }
+            
+            return data
+        })
+    }
+    
+    private func workoutDetailsDisplay() {
+        guard workout != nil else { return }
+        let summarizer = WorkoutSummary(workout: workout)
+        summarizer.delegate = self
+        
+        if let name = workout.name {
+            workoutNameLabel.text = name
+        }
+        
+        if let duration = summarizer.durationString() {
+            durationLabel.text = duration
+        }
     }
     
     
@@ -50,16 +93,23 @@ class FinishSummaryController: UIViewController {
 
 extension FinishSummaryController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return rows[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Test"
+        
+        let letter = rows[indexPath.section][indexPath.row]
+        
+        cell.textLabel?.text = letter
         
         
         return cell
@@ -67,9 +117,26 @@ extension FinishSummaryController: UITableViewDataSource {
     
 }
 
-
-
-
+extension FinishSummaryController: WorkoutSummarizer {
+    func maxBPM(bpm: Double?) {
+        if let max = bpm {
+            highBPMLabel.text = "High: \(max) BPM"
+        }
+    }
+    
+    func minBPM(bpm: Double?) {
+        if let min = bpm {
+            lowBPMLabel.text = "Low: \(min) BPM"
+        }
+    }
+    
+    func avgBPM(bpm: Double?) {
+        if let avg = bpm {
+            let formattedAvgString = String(format: "%.0f", avg)
+            avgBPMLabel.text = "Avg: \(formattedAvgString) BPM"
+        }
+    }
+}
 
 
 

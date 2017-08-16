@@ -16,9 +16,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak var statsButton: StatsButton!
     
     var managedContext: NSManagedObjectContext!
+    var workout: Workout?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchLastWorkout()
+    }
+    
+    func fetchLastWorkout() {
+        workout = BloomFilter.fetchLastWorkout(inManagedContext: managedContext)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +52,11 @@ class MainViewController: UIViewController {
         if segue.identifier == "Summary" {
             let summaryController = segue.destination as! SummaryViewController
             summaryController.managedContext = managedContext
+        }
+        
+        if segue.identifier == "LastWorkoutSegue" {
+            let lastWorkoutSummaryController = segue.destination as! FinishSummaryController
+            lastWorkoutSummaryController.workout = workout
         }
     }
     

@@ -166,6 +166,23 @@ class BloomFilter {
         return workoutTemplate
     }
     
+    class func fetchLastWorkout(inManagedContext managedContext: NSManagedObjectContext) -> Workout? {
+        let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.startTime), ascending: false)]
+        fetchRequest.fetchLimit = 1
+        
+        var workout: [Workout] = []
+        do {
+            workout = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch latest workout: \(error.localizedDescription)")
+        }
+        
+        if workout.count == 0 { return nil }
+        
+        return workout.first!
+    }
+    
     //MARK: - Location Queries
     class func fetchLocations(startDate: Date, finishDate: Date, inManagedContext managedContext: NSManagedObjectContext) -> [Location] {
         

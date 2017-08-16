@@ -10,22 +10,24 @@ import Foundation
 import HealthKit
 
 protocol WorkoutSummarizer: class {
-    func maxBPM() -> Double?
-    func minBPM() -> Double?
-    func avgBPM() -> Double?
-    func durationString() -> String?
+    func maxBPM(bpm: Double?)
+    func minBPM(bpm: Double?)
+    func avgBPM(bpm: Double?)
 }
 
-class WorkoutSummary: WorkoutSummarizer {
+class WorkoutSummary {
     
     private var healthService: HealthDataService
     private let hrUnit = HKUnit(from: "count/min")
     private var heartRateData: [Double]?
     var workout: Workout
     
+    weak var delegate: WorkoutSummarizer?
+    
     init(workout: Workout) {
         self.workout = workout
         self.healthService = HealthDataService()
+        queryHeartData()
     }
     
     private func queryHeartData() {
@@ -40,42 +42,52 @@ class WorkoutSummary: WorkoutSummarizer {
                 dataSet.append(hrValue)
             }
             self.heartRateData = dataSet
+            self.sendMaxBPM()
+            self.sendMinBPM()
+            self.sendAvgBPM()
         }
         
     }
     
-    func maxBPM() -> Double? {
+    private func sendMaxBPM() {
         guard let data = heartRateData,
           data.count > 0 else {
-            return nil
+            delegate?.maxBPM(bpm: nil)
+            return
         }
         
         let max = data.max()!
-        return max
+        delegate?.maxBPM(bpm: max)
     }
     
-    func minBPM() -> Double? {
+    private func sendMinBPM() {
         guard let data = heartRateData,
             data.count > 0 else {
-                return nil
+                delegate?.minBPM(bpm: nil)
+                return
         }
         
         let min = data.min()!
-        return min
+        delegate?.minBPM(bpm: min)
     }
     
-    func avgBPM() -> Double? {
+    private func sendAvgBPM() {
         guard let data = heartRateData,
             data.count > 0 else {
-                return nil
+                delegate?.avgBPM(bpm: nil)
+                return
         }
         
         let avg = data.reduce(0, +) / Double(data.count)
-        return avg
+        delegate?.avgBPM(bpm: avg)
     }
     
     func durationString() -> String? {
-        return nil
+        guard let start = workout.startTime,
+            let end = workout.endTime else { return nil }
+        
+        let formattedDuration = start.delta(to: end)
+        return formattedDuration
     }
 }
 

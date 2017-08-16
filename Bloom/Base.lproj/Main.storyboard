@@ -104,7 +104,7 @@
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
                         <barButtonItem key="rightBarButtonItem" title="Test" id="6JB-Ss-m1W">
                             <connections>
-                                <segue destination="5HP-LI-QZi" kind="presentation" id="0m2-Wk-kTV"/>
+                                <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="0m2-Wk-kTV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1750,7 +1750,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="otL-wJ-G1O"/>
+        <segue reference="0m2-Wk-kTV"/>
         <segue reference="rrC-hf-91z"/>
-        <segue reference="JJG-zd-ewo"/>
     </inferredMetricsTieBreakers>
 </document>
