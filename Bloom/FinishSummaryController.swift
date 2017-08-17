@@ -30,6 +30,8 @@ class FinishSummaryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
     
         let skView = self.view as! SKView
         skView.showsFPS = true
@@ -40,6 +42,7 @@ class FinishSummaryController: UIViewController {
         skView.presentScene(scene)
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.tableHeaderView = nil
         
         workoutDetailsDisplay()
@@ -60,14 +63,14 @@ class FinishSummaryController: UIViewController {
         
         rows = excercises.map({ (excercise) -> [String] in
             var data: [String] = []
-            if excercise.reps != 0 { data.append("\(excercise.reps)") }
-            if excercise.weight != 0 { data.append("\(excercise.weight)") }
-            if excercise.distance != 0 { data.append("\(excercise.distance)") }
+            if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
+            if excercise.weight != 0 { data.append("Weight: \(excercise.weight)") }
+            if excercise.distance != 0 { data.append("Distance: \(excercise.distance)") }
             
             return data
         })
     }
-    
+
     private func workoutDetailsDisplay() {
         guard workout != nil else { return }
         let summarizer = WorkoutSummary(workout: workout)
@@ -107,14 +110,23 @@ extension FinishSummaryController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let letter = rows[indexPath.section][indexPath.row]
+        let excerciseMetric = rows[indexPath.section][indexPath.row]
         
-        cell.textLabel?.text = letter
-        
+        cell.textLabel?.text = excerciseMetric
+        cell.textLabel?.textColor = UIColor.white
         
         return cell
     }
-    
+}
+
+extension FinishSummaryController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.red
+        
+    }
 }
 
 extension FinishSummaryController: WorkoutSummarizer {

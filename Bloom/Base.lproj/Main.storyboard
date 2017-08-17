@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REk-Fx-TUK">
-                                <rect key="frame" x="47" y="83.5" width="281" height="500"/>
+                                <rect key="frame" x="47" y="66.5" width="281" height="534"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WorkoutName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLE-rN-QcG">
                                         <rect key="frame" x="8" y="8" width="265" height="27"/>
@@ -163,15 +163,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C8w-J5-bGQ">
-                                        <rect key="frame" x="0.0" y="159" width="281" height="305"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="C8w-J5-bGQ">
+                                        <rect key="frame" x="0.0" y="159" width="281" height="339"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wOA-r2-Plo">
-                                                <rect key="frame" x="0.0" y="28" width="281" height="44"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="281" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wOA-r2-Plo" id="Lsm-Jg-gcx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -198,7 +199,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiQ-vS-Rpr">
-                                <rect key="frame" x="47" y="547.5" width="281" height="36"/>
+                                <rect key="frame" x="47" y="564.5" width="281" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Dismiss">
@@ -217,7 +218,7 @@
                             <constraint firstItem="tiQ-vS-Rpr" firstAttribute="trailing" secondItem="REk-Fx-TUK" secondAttribute="trailing" id="RK4-M4-VyR"/>
                             <constraint firstItem="tiQ-vS-Rpr" firstAttribute="bottom" secondItem="REk-Fx-TUK" secondAttribute="bottom" id="aOz-fb-wcm"/>
                             <constraint firstItem="tiQ-vS-Rpr" firstAttribute="top" secondItem="C8w-J5-bGQ" secondAttribute="bottom" id="aSz-BK-hfA"/>
-                            <constraint firstItem="REk-Fx-TUK" firstAttribute="height" secondItem="eTI-kv-37w" secondAttribute="height" multiplier="0.75" id="sP9-eP-y6Z"/>
+                            <constraint firstItem="REk-Fx-TUK" firstAttribute="height" secondItem="eTI-kv-37w" secondAttribute="height" multiplier="0.8" id="sP9-eP-y6Z"/>
                             <constraint firstItem="REk-Fx-TUK" firstAttribute="centerY" secondItem="eTI-kv-37w" secondAttribute="centerY" id="v04-RJ-V0u"/>
                         </constraints>
                     </view>
