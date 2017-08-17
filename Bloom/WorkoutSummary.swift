@@ -42,9 +42,11 @@ class WorkoutSummary {
                 dataSet.append(hrValue)
             }
             self.heartRateData = dataSet
-            self.sendMaxBPM()
-            self.sendMinBPM()
-            self.sendAvgBPM()
+            DispatchQueue.main.async {
+                self.sendMaxBPM()
+                self.sendMinBPM()
+                self.sendAvgBPM()
+            }
         }
         
     }
