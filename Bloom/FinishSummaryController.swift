@@ -34,8 +34,8 @@ class FinishSummaryController: UIViewController {
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
     
         let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        //skView.showsFPS = true
+        //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = false
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear

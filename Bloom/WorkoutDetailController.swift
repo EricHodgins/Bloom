@@ -12,6 +12,7 @@ import CoreData
 class WorkoutDetailController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var heartContainerView: UIView!
     
     var workout: Workout!
     var managedContext: NSManagedObjectContext!
@@ -21,7 +22,7 @@ class WorkoutDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupHeartBeat()
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
@@ -37,6 +38,13 @@ class WorkoutDetailController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
+    }
+    
+    func setupHeartBeat() {
+        let size = heartContainerView.frame.width
+        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        heartContainerView.addSubview(heartView)
+        heartView.pulse(speed: .slow)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

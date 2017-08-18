@@ -8,8 +8,15 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 class MainViewController: UIViewController {
+    
+    lazy var scene: FinishScene! = {
+        return FinishScene(size: self.lastWorkoutView.frame.size)
+    }()
+    @IBOutlet weak var lastWorkoutView: SKView!
+    @IBOutlet weak var heartContainerView: UIView!
     
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
     @IBOutlet weak var beginWorkoutButton: BeginWorkoutButton!
@@ -20,7 +27,22 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupHeartBeat()
         fetchLastWorkout()
+        
+        let skView = lastWorkoutView!
+        skView.ignoresSiblingOrder = false
+        scene.scaleMode = .aspectFill
+        skView.backgroundColor = UIColor.clear
+        skView.presentScene(scene)
+        
+    }
+    
+    func setupHeartBeat() {
+        let size = heartContainerView.frame.width
+        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        heartContainerView.addSubview(heartView)
+        heartView.pulse(speed: .slow)
     }
     
     func fetchLastWorkout() {

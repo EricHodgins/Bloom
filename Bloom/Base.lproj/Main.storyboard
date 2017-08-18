@@ -24,10 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-39-VQU">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Create Workout Routine">
                                             <color key="titleColor" red="0.97148927979999999" green="1" blue="0.97109420769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +48,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="375" height="201"/>
+                                        <rect key="frame" x="0.0" y="133.5" width="375" height="133"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Workouts">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,7 +69,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="402" width="375" height="201"/>
+                                        <rect key="frame" x="0.0" y="266.5" width="375" height="133.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="View Stats">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,13 +92,106 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhY-hI-Lh1" customClass="SKView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="203"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WorkoutName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4n-0F-sOK">
+                                        <rect key="frame" x="132.5" y="8" width="109.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:43:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXE-Nu-e1G">
+                                        <rect key="frame" x="153" y="36" width="68" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uxp-sN-7pp">
+                                        <rect key="frame" x="75" y="64" width="225" height="61"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3D-25-tyA" userLabel="HeartRateContainer">
+                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhJ-P4-gHP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Heart Rate"/>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD3-Sp-iz8" userLabel="heartContainerView">
+                                                        <rect key="frame" x="46" y="41" width="20" height="20"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="lod-gK-Coi"/>
+                                                            <constraint firstAttribute="height" constant="20" id="zgJ-6n-Vzm"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="lhJ-P4-gHP" firstAttribute="top" secondItem="z3D-25-tyA" secondAttribute="top" id="3Rz-iR-3qg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sD3-Sp-iz8" secondAttribute="bottom" id="5dj-6Q-phe"/>
+                                                    <constraint firstItem="sD3-Sp-iz8" firstAttribute="top" secondItem="lhJ-P4-gHP" secondAttribute="bottom" constant="-20" id="G7G-h3-Bar"/>
+                                                    <constraint firstItem="sD3-Sp-iz8" firstAttribute="centerX" secondItem="lhJ-P4-gHP" secondAttribute="centerX" id="JTf-8w-4eP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="lhJ-P4-gHP" secondAttribute="bottom" id="UAw-CR-XZl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lhJ-P4-gHP" secondAttribute="trailing" id="Ucv-jQ-sbp"/>
+                                                    <constraint firstItem="lhJ-P4-gHP" firstAttribute="leading" secondItem="z3D-25-tyA" secondAttribute="leading" id="xef-55-Ls9"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-ib-SDD" userLabel="MapContainer">
+                                                <rect key="frame" x="112.5" y="0.0" width="112.5" height="61"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WR1-ul-WRl">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Map"/>
+                                                    </button>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon@1x" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-CP-LKQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="WR1-ul-WRl" firstAttribute="leading" secondItem="2wb-ib-SDD" secondAttribute="leading" id="B5G-LC-Hql"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WR1-ul-WRl" secondAttribute="bottom" id="OXO-uz-hMt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hZB-CP-LKQ" secondAttribute="bottom" id="Poa-5A-wL4"/>
+                                                    <constraint firstItem="WR1-ul-WRl" firstAttribute="top" secondItem="2wb-ib-SDD" secondAttribute="top" id="RI6-BL-n8S"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WR1-ul-WRl" secondAttribute="trailing" id="SWe-eA-pfr"/>
+                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="leading" secondItem="2wb-ib-SDD" secondAttribute="leading" id="Vq5-JK-f5k"/>
+                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="top" secondItem="2wb-ib-SDD" secondAttribute="top" id="XJT-cP-wvX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hZB-CP-LKQ" secondAttribute="trailing" id="wa1-VK-VO4"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="height" secondItem="ZhY-hI-Lh1" secondAttribute="height" multiplier="0.3" id="3K7-HI-GSG"/>
+                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="width" secondItem="ZhY-hI-Lh1" secondAttribute="width" multiplier="0.6" id="ERg-qd-cLU"/>
+                                    <constraint firstItem="EXE-Nu-e1G" firstAttribute="top" secondItem="b4n-0F-sOK" secondAttribute="bottom" constant="8" id="MoE-en-wKy"/>
+                                    <constraint firstItem="EXE-Nu-e1G" firstAttribute="centerX" secondItem="b4n-0F-sOK" secondAttribute="centerX" id="jE5-va-Pvu"/>
+                                    <constraint firstItem="b4n-0F-sOK" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="nke-Zl-HeV"/>
+                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="top" secondItem="EXE-Nu-e1G" secondAttribute="bottom" constant="8" id="qAL-BQ-QSA"/>
+                                    <constraint firstItem="b4n-0F-sOK" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="top" constant="8" id="sA0-El-R7N"/>
+                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="vZa-Cd-Gm9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0G0-dZ-faS"/>
+                            <constraint firstAttribute="trailing" secondItem="ZhY-hI-Lh1" secondAttribute="trailing" id="8Q4-WP-XZd"/>
+                            <constraint firstItem="ZhY-hI-Lh1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9WL-o1-kDG"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Joo-TH-SjP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" id="Oed-la-BIZ"/>
+                            <constraint firstItem="ZhY-hI-Lh1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SCK-z1-rBx"/>
                             <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" id="aHA-tH-S6H"/>
+                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="bottom" id="utl-lE-jUw"/>
+                            <constraint firstItem="4Ja-39-VQU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="uzi-qZ-02m"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
@@ -111,6 +204,8 @@
                     <connections>
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
+                        <outlet property="heartContainerView" destination="sD3-Sp-iz8" id="1oz-Dk-jdl"/>
+                        <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
                     </connections>
                 </viewController>
@@ -514,7 +609,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="heartViewContainer" destination="JVk-an-OzC" id="uHi-ZA-osc"/>
                                             <outlet property="workoutDate" destination="FSq-dM-FNW" id="1nV-c7-K9z"/>
                                             <outlet property="workoutDuration" destination="fk9-oF-Ngc" id="JME-0F-ZnQ"/>
                                             <outlet property="workoutName" destination="7KF-0W-mHa" id="lOg-JX-QmX"/>
@@ -702,6 +796,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="heartContainerView" destination="JVk-an-OzC" id="AXI-BU-JN5"/>
                         <outlet property="tableView" destination="g8P-OI-gNC" id="p1r-gN-WRB"/>
                     </connections>
                 </viewController>
