@@ -149,7 +149,7 @@
                                                         <state key="normal" title="Map"/>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon@1x" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-CP-LKQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <rect key="frame" x="0.0" y="41" width="113" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </imageView>
                                                 </subviews>
@@ -161,7 +161,7 @@
                                                     <constraint firstItem="WR1-ul-WRl" firstAttribute="top" secondItem="2wb-ib-SDD" secondAttribute="top" id="RI6-BL-n8S"/>
                                                     <constraint firstAttribute="trailing" secondItem="WR1-ul-WRl" secondAttribute="trailing" id="SWe-eA-pfr"/>
                                                     <constraint firstItem="hZB-CP-LKQ" firstAttribute="leading" secondItem="2wb-ib-SDD" secondAttribute="leading" id="Vq5-JK-f5k"/>
-                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="top" secondItem="2wb-ib-SDD" secondAttribute="top" id="XJT-cP-wvX"/>
+                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="top" secondItem="WR1-ul-WRl" secondAttribute="bottom" constant="-20" id="hXd-q7-0bh"/>
                                                     <constraint firstAttribute="trailing" secondItem="hZB-CP-LKQ" secondAttribute="trailing" id="wa1-VK-VO4"/>
                                                 </constraints>
                                             </view>
@@ -1842,7 +1842,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MapIcon@1x" width="188" height="81"/>
+        <image name="MapIcon@1x" width="72" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="otL-wJ-G1O"/>

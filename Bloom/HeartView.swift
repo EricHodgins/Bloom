@@ -41,7 +41,7 @@ class HeartView: UIView {
         gradient.frame = heartPath().boundingBox
         gradient.bounds = heartPath().boundingBox
         let darkRed = #colorLiteral(red: 1, green: 0.0198914904, blue: 0, alpha: 1).cgColor
-        let lightRed = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1).cgColor
+        let lightRed = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
         gradient.colors = [lightRed, darkRed]
         
         let shapeMask = CAShapeLayer()

@@ -53,7 +53,7 @@ class FinishScene: SKScene {
     func startSunFlareAction() {
 
         
-        let speed: CGFloat = 10
+        let speed: CGFloat = 20
         var distance: CGFloat = 0
         var dt: CGFloat = 0
         var lastUpdateTime: CGFloat = 0
@@ -69,9 +69,9 @@ class FinishScene: SKScene {
             self.sunFlare.sunbeamsFilter?.setValue(elapsed*0.009, forKey: kCIInputTimeKey)
             
             
-            if self.sunFlare.inputOrigin.x >= self.sceneView.frame.width {
+            if distance >= self.sceneView.frame.width {
                 goRight = false
-            } else if self.sunFlare.inputOrigin.x <= 0 {
+            } else if distance <= 0 {
                 goRight = true
             }
             
