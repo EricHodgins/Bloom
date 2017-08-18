@@ -17,7 +17,7 @@ class LensFlare: CIFilter {
     var inputSize:CIVector!
     
     var inputColor = CIVector(x: 0/255, y: 45/255, z: 135/255)
-    var inputReflectionBrightness: CGFloat = 0.25
+    var inputReflectionBrightness: CGFloat = 0.1
     
     var inputPositionOne: CGFloat = 0.15
     var inputPositionTwo: CGFloat = 0.3

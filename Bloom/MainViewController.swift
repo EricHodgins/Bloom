@@ -52,6 +52,12 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
+        scene.startSunFlareAction()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        scene.removeFlareAction()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

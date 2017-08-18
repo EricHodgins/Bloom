@@ -88,12 +88,21 @@ class MapRouteDetailController: UIViewController {
             // V = d/t
             let distance = end.distance(from: start)
             let time = second.timeStamp!.timeIntervalSince(first.timeStamp! as Date)
-            let speed = time > 0 ? distance / time : 0
+            let speed = time > 0 ? distance / time : 0 // metres / second
             
-            speeds.append(speed)
-            
-            segmentCoordinates.append((start, end))
+            if isRationalSpeed(speed) {
+                speeds.append(speed)
+                segmentCoordinates.append((start, end))
+            }
         }
+    }
+    
+    // The fastest speed a human has run is around 40-45 km/hr (11 m/s)
+    private func isRationalSpeed(_ speed: Double) -> Bool {
+        if speed > 11 {
+            return false
+        }
+        return true
     }
     
     private func calculateSegmentColors() {
