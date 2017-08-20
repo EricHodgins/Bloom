@@ -147,6 +147,9 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Map"/>
+                                                        <connections>
+                                                            <segue destination="Sdo-47-91L" kind="show" identifier="LastMapRouteSegue" id="HL2-Mf-Iac"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapIcon@1x" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-CP-LKQ">
                                                         <rect key="frame" x="0.0" y="41" width="113" height="20"/>
@@ -1846,6 +1849,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="otL-wJ-G1O"/>
+        <segue reference="HL2-Mf-Iac"/>
         <segue reference="0m2-Wk-kTV"/>
         <segue reference="rrC-hf-91z"/>
     </inferredMetricsTieBreakers>

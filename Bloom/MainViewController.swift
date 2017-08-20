@@ -86,6 +86,11 @@ class MainViewController: UIViewController {
             let lastWorkoutSummaryController = segue.destination as! FinishSummaryController
             lastWorkoutSummaryController.workout = workout
         }
+        
+        if segue.identifier == "LastMapRouteSegue" {
+            let mapRouteDetailController = segue.destination as! MapRouteDetailController
+            mapRouteDetailController.workout = workout
+        }
     }
     
     // When a workout is complete (Big Finish button is pressed) it navigates to back here

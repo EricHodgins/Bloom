@@ -138,9 +138,9 @@ class MapRouteDetailController: UIViewController {
     }
     
     private func configureLabels(max: Double, min: Double, avg: Double) {
-        maxSpeedLabel.text = "\(max) m/s"
-        minSpeedLabel.text = "\(min) m/s"
-        averageSpeedLabel.text = "\(avg) m/s"
+        maxSpeedLabel.text = "Max Speed: \(max) m/s"
+        minSpeedLabel.text = "Min Speed: \(min) m/s"
+        averageSpeedLabel.text = "Avg Speed: \(avg) m/s"
     }
     
 }
