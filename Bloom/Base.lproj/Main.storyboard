@@ -118,6 +118,9 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Heart Rate"/>
+                                                        <connections>
+                                                            <segue destination="BbM-FM-AW8" kind="show" identifier="LastHeartRateSegue" id="DCD-pO-VED"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD3-Sp-iz8" userLabel="heartContainerView">
                                                         <rect key="frame" x="46" y="41" width="20" height="20"/>
@@ -1848,6 +1851,7 @@
         <image name="MapIcon@1x" width="72" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="DCD-pO-VED"/>
         <segue reference="otL-wJ-G1O"/>
         <segue reference="HL2-Mf-Iac"/>
         <segue reference="0m2-Wk-kTV"/>

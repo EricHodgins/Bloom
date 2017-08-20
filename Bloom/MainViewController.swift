@@ -91,6 +91,11 @@ class MainViewController: UIViewController {
             let mapRouteDetailController = segue.destination as! MapRouteDetailController
             mapRouteDetailController.workout = workout
         }
+        
+        if segue.identifier == "LastHeartRateSegue" {
+            let heartRateController = segue.destination as! HeartBeatGraphController
+            heartRateController.workout = workout
+        }
     }
     
     // When a workout is complete (Big Finish button is pressed) it navigates to back here
