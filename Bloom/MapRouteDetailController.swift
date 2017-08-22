@@ -128,13 +128,14 @@ class MapRouteDetailController: UIViewController {
     private func addOverlays() {
         calculateSpeeds()
         calculateSegmentColors()
-
-        for segment in segments {
-            let when = DispatchTime.now() + 1
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                print("Adding...")
-                self.mapView.add(segment)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timer) in
+            guard self.segments.count != 0 else {
+                timer.invalidate()
+                return
             }
+            let segment = self.segments.removeFirst()
+            self.mapView.add(segment)
         }
         //mapView.addOverlays(segments)
     }
@@ -164,6 +165,12 @@ class MapRouteDetailController: UIViewController {
     
 }
 
+class AnimationRenderer: MKOverlayRenderer {
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+        
+    }
+}
+
 
 extension MapRouteDetailController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -174,6 +181,7 @@ extension MapRouteDetailController: MKMapViewDelegate {
         let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.strokeColor = polyline.color
         renderer.lineWidth = 3
+        
         return renderer
     }
 }

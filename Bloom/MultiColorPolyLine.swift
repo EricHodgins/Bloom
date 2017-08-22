@@ -11,6 +11,7 @@ import MapKit
 
 // This will color the map for speeds and heart rate 
 
+
 class MultiColorPolyLine: MKPolyline {
     var color = UIColor.black
     
