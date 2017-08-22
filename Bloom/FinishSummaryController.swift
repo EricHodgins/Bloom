@@ -148,6 +148,10 @@ extension FinishSummaryController: WorkoutSummarizer {
             avgBPMLabel.text = "Avg: \(formattedAvgString) BPM"
         }
     }
+    
+    func totalDistance(inMetres metres: Measurement<UnitLength>) {
+        
+    }
 }
 
 

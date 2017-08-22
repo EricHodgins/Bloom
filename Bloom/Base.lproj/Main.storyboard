@@ -1781,14 +1781,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKF-x1-jsf">
-                                        <rect key="frame" x="0.0" y="45.5" width="101" height="45"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO5-s5-CuJ">
+                                        <rect key="frame" x="0.0" y="45.5" width="135" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Speed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lO5-s5-CuJ">
-                                        <rect key="frame" x="0.0" y="90.5" width="135" height="45.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0Q-3l-pB5">
+                                        <rect key="frame" x="0.0" y="90.5" width="86.5" height="45.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1818,10 +1818,10 @@
                     </view>
                     <connections>
                         <outlet property="averageSpeedLabel" destination="lO5-s5-CuJ" id="oOi-Ro-8mi"/>
+                        <outlet property="distanceLabel" destination="X0Q-3l-pB5" id="sR1-C4-7VT"/>
                         <outlet property="mapTypeButton" destination="qe5-lX-g0A" id="L6a-pz-aoX"/>
                         <outlet property="mapView" destination="cef-As-Sbc" id="kJn-Kc-OWj"/>
                         <outlet property="maxSpeedLabel" destination="ySo-7Z-gJN" id="6jk-vM-EpZ"/>
-                        <outlet property="minSpeedLabel" destination="zKF-x1-jsf" id="wSt-OX-TrD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>

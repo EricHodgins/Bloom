@@ -20,17 +20,20 @@ class MapRouteDetailController: UIViewController {
     @IBOutlet weak var mapTypeButton: UIButton!
     
     @IBOutlet weak var maxSpeedLabel: UILabel!
-    @IBOutlet weak var minSpeedLabel: UILabel!
     @IBOutlet weak var averageSpeedLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     
     var locations: [Location] = []
     var speeds: [Double] = []
+    var totalDistance = Measurement(value: 0, unit: UnitLength.meters)
     var segments: [MultiColorPolyLine] = []
     var segmentCoordinates: [(CLLocation, CLLocation)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let summarizer = WorkoutSummary(workout: workout)
+        summarizer.delegate = self
         mapView.delegate = self
         // 1. This must be first
         fetchLocationObjects()
@@ -87,6 +90,7 @@ class MapRouteDetailController: UIViewController {
             
             // V = d/t
             let distance = end.distance(from: start)
+            totalDistance = totalDistance + Measurement(value: distance, unit: UnitLength.meters)
             let time = second.timeStamp!.timeIntervalSince(first.timeStamp! as Date)
             let speed = time > 0 ? distance / time : 0 // metres / second
             
@@ -124,7 +128,15 @@ class MapRouteDetailController: UIViewController {
     private func addOverlays() {
         calculateSpeeds()
         calculateSegmentColors()
-        mapView.addOverlays(segments)
+
+        for segment in segments {
+            let when = DispatchTime.now() + 1
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                print("Adding...")
+                self.mapView.add(segment)
+            }
+        }
+        //mapView.addOverlays(segments)
     }
     
     @IBAction func mapTypeButtonPressed(_ sender: Any) {
@@ -138,9 +150,16 @@ class MapRouteDetailController: UIViewController {
     }
     
     private func configureLabels(max: Double, min: Double, avg: Double) {
-        maxSpeedLabel.text = "Max Speed: \(max) m/s"
-        minSpeedLabel.text = "Min Speed: \(min) m/s"
-        averageSpeedLabel.text = "Avg Speed: \(avg) m/s"
+        let maxSpeed = Measurement(value: max, unit: UnitSpeed.metersPerSecond)
+        let avgSpeed = Measurement(value: avg, unit: UnitSpeed.metersPerSecond)
+        
+        let maxMetric = maxSpeed.converted(to: UnitSpeed.kilometersPerHour)
+        let avgMetric = avgSpeed.converted(to: UnitSpeed.kilometersPerHour)
+        
+        let fmtMax = String(format: "%.2f", maxMetric.value)
+        let fmtMin = String(format: "%.2f", avgMetric.value)
+        maxSpeedLabel.text = "Max Speed: \(fmtMax) \(maxMetric.unit.symbol)"
+        averageSpeedLabel.text = "Avg Speed: \(fmtMin) \(avgMetric.unit.symbol)"
     }
     
 }
@@ -151,6 +170,7 @@ extension MapRouteDetailController: MKMapViewDelegate {
         guard let polyline = overlay as? MultiColorPolyLine else {
             return MKOverlayRenderer(overlay: overlay)
         }
+        
         let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.strokeColor = polyline.color
         renderer.lineWidth = 3
@@ -159,8 +179,25 @@ extension MapRouteDetailController: MKMapViewDelegate {
 }
 
 
-
-
+extension MapRouteDetailController: WorkoutSummarizer {
+    func maxBPM(bpm: Double?) {
+        
+    }
+    
+    func minBPM(bpm: Double?) {
+        
+    }
+    
+    func avgBPM(bpm: Double?) {
+        
+    }
+    
+    func totalDistance(inMetres metres: Measurement<UnitLength>) {
+        let metric = metres.converted(to: UnitLength.kilometers)
+        let formattedValue = String(format: "%.2f", metric.value)
+        distanceLabel.text = "Distance: \(formattedValue) \(metric.unit.symbol)"
+    }
+}
 
 
 

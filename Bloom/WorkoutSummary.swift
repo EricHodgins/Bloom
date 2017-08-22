@@ -8,11 +8,13 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 protocol WorkoutSummarizer: class {
     func maxBPM(bpm: Double?)
     func minBPM(bpm: Double?)
     func avgBPM(bpm: Double?)
+    func totalDistance(inMetres metres: Measurement<UnitLength>)
 }
 
 class WorkoutSummary {
@@ -21,6 +23,8 @@ class WorkoutSummary {
     private let hrUnit = HKUnit(from: "count/min")
     private var heartRateData: [Double]?
     var workout: Workout
+    var distance = Measurement(value: 0, unit: UnitLength.meters)
+    
     
     weak var delegate: WorkoutSummarizer?
     
@@ -28,6 +32,7 @@ class WorkoutSummary {
         self.workout = workout
         self.healthService = HealthDataService()
         queryHeartData()
+        sendDistance()
     }
     
     private func queryHeartData() {
@@ -82,6 +87,22 @@ class WorkoutSummary {
         
         let avg = data.reduce(0, +) / Double(data.count)
         delegate?.avgBPM(bpm: avg)
+    }
+    
+    private func sendDistance() {
+        let locations = workout.locations?.array as! [Location]
+        
+        
+        for (first, second) in zip(locations, locations.dropFirst()) {
+            let start = CLLocation(latitude: first.latitude, longitude: first.longitude)
+            let end = CLLocation(latitude: second.latitude, longitude: second.longitude)
+            let delta = end.distance(from: start)
+            distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+        }
+        
+        DispatchQueue.main.async {
+            self.delegate?.totalDistance(inMetres: self.distance)
+        }
     }
     
     func durationString() -> String? {
