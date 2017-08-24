@@ -49,7 +49,7 @@ class GraphView: UIView {
         guard !dataSet.isEmpty else { return }
         
         // Calculate X point
-        let margin:CGFloat = 40.0
+        let margin:CGFloat = 50.0
         let columnXPoint = { (column:Double) -> CGFloat in
             //Calculate gap between points
             let spacer = (width - margin*2 - 4) /

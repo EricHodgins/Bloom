@@ -124,7 +124,7 @@ extension FinishSummaryController: UITableViewDelegate {
         view.tintColor = UIColor.clear
         
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.red
+        header.textLabel?.textColor = UIColor(colorLiteralRed: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
         
     }
 }

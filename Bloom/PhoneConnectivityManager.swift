@@ -219,8 +219,9 @@ extension PhoneConnectivityManager: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
         
-        // Workout Finished on Watch
+        //MARK: - Workout Finished on Watch
         if let finishDate = message["Finished"] as? NSDate {
+            
             liveWorkoutController.workoutSessionManager.save(finishedDate: finishDate)
             DispatchQueue.main.async {
                 self.liveWorkoutController.workoutFinishedOnWatch()

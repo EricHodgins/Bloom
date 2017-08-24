@@ -14,6 +14,7 @@ class WorkoutDetailController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var heartContainerView: UIView!
     
+    @IBOutlet weak var heartMapStackView: UIStackView!
     var workout: Workout!
     var managedContext: NSManagedObjectContext!
     var excercises: [Excercise] = []
@@ -116,9 +117,9 @@ extension WorkoutDetailController: UITableViewDataSource {
 extension WorkoutDetailController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return view.bounds.height * 0.25
+            return view.bounds.height * 0.15
         }
-        return view.bounds.height * 0.333
+        return view.bounds.height * 0.2
     }
 }
 
