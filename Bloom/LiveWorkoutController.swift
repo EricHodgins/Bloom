@@ -184,6 +184,7 @@ extension LiveWorkoutController {
         
         flwc = storyboard!.instantiateViewController(withIdentifier: "Finish") as! FinishLiveWorkoutController
         flwc.workout = workout
+        flwc.workoutSession = workoutSessionManager
         flwc.view.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(flwc.view)

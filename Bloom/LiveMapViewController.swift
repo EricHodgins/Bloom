@@ -11,6 +11,10 @@ import CoreLocation
 import CoreData
 import MapKit
 
+protocol MapRouteDelegate: class {
+    func saveRoute()
+}
+
 class LiveMapViewController: UIViewController {
     
     var workoutSession: WorkoutSessionManager!
@@ -36,6 +40,7 @@ class LiveMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        workoutSession.mapRouteDelegate = self
         mapView.delegate = self
     }
 
@@ -102,7 +107,7 @@ class LiveMapViewController: UIViewController {
         presentAlertViewController()
     }
     
-    private func saveMapRoute() {
+    fileprivate func saveMapRoute() {
         for location in locationList {
             let locationObject = Location(context: managedContext)
             locationObject.latitude = location.coordinate.latitude
@@ -227,10 +232,11 @@ extension LiveMapViewController: MKMapViewDelegate {
 
 
 
-
-
-
-
+extension LiveMapViewController: MapRouteDelegate {
+    func saveRoute() {
+        saveMapRoute()
+    }
+}
 
 
 

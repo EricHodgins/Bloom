@@ -5,6 +5,7 @@
 //  Created by Eric Hodgins on 2017-07-10.
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
+// This is mostly trying to keep phone and watch in sync
 
 import Foundation
 import CoreData
@@ -29,6 +30,8 @@ class WorkoutSessionManager {
     var workout: Workout!
     var excercises: [Excercise] = []
     var currentExcercise: Excercise!
+    
+    weak var mapRouteDelegate: MapRouteDelegate?
     
     init(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate, deviceInitiated device: WorkoutSessionDeviceInitiation) {
         guard state == .inactive else { return }
@@ -72,6 +75,10 @@ class WorkoutSessionManager {
         let newIndex = (currentIndex + 1) % excercises.count
         currentExcercise = excercises[newIndex]
         return currentExcercise
+    }
+    
+    func saveMapRoute() {
+        mapRouteDelegate?.saveRoute()
     }
     
     fileprivate func reset() {

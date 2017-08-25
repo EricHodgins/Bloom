@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FinishLiveWorkoutController: UIViewController {
 
     @IBOutlet weak var finishWorkoutButton: GenericBloomButton!
@@ -47,6 +48,7 @@ class FinishLiveWorkoutController: UIViewController {
     }
     
     @IBAction func finishWorkoutButtonPressed(_ sender: Any) {
+        workoutSession.saveMapRoute()
         workout.endTime = NSDate()
         do {
             try workout.managedObjectContext?.save()

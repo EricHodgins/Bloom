@@ -26,6 +26,7 @@ class WorkoutDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = workout.name!
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
         setupHeartBeat()
         dateFormatter = DateFormatter()
