@@ -12,6 +12,10 @@ import SpriteKit
 
 class MainViewController: UIViewController {
     
+    
+    @IBOutlet weak var lastWorkoutNameLabel: UILabel!
+    @IBOutlet weak var lastWorkoutDuration: UILabel!
+    
     lazy var scene: FinishScene! = {
         return FinishScene(size: self.lastWorkoutView.frame.size)
     }()
@@ -28,7 +32,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHeartBeat()
-        fetchLastWorkout()
         
         let skView = lastWorkoutView!
         skView.ignoresSiblingOrder = false
@@ -53,6 +56,21 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
         scene.startSunFlareAction()
+        fetchLastWorkout()
+        fillINLastWorkoutValues()
+    }
+    
+    func fillINLastWorkoutValues() {
+        guard let lastWorkout = workout,
+         let start = lastWorkout.startTime,
+            let end = lastWorkout.endTime else {
+                lastWorkoutNameLabel.text = "No workout data."
+                lastWorkoutDuration.text = "--"
+                return
+        }
+        
+        lastWorkoutNameLabel.text = lastWorkout.name ?? ""
+        lastWorkoutDuration.text = start.delta(to: end)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -210,6 +210,8 @@
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
                         <outlet property="heartContainerView" destination="sD3-Sp-iz8" id="1oz-Dk-jdl"/>
+                        <outlet property="lastWorkoutDuration" destination="EXE-Nu-e1G" id="Jsh-Ey-ukk"/>
+                        <outlet property="lastWorkoutNameLabel" destination="b4n-0F-sOK" id="0lO-X2-gUp"/>
                         <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
                     </connections>
@@ -393,6 +395,9 @@
                                     <segment title="Choose Excercises"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentControllPressed:" destination="IW1-7m-3vF" eventType="valueChanged" id="kvG-Gq-VYf"/>
+                                </connections>
                             </segmentedControl>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lE-Vn-Wyb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
@@ -1737,9 +1742,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="otL-wJ-G1O"/>
+        <segue reference="HL2-Mf-Iac"/>
+        <segue reference="DCD-pO-VED"/>
         <segue reference="0m2-Wk-kTV"/>
         <segue reference="rrC-hf-91z"/>
-        <segue reference="DbZ-qU-jhR"/>
-        <segue reference="mSF-5n-mR7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,22 +26,30 @@ class CreateWorkoutController: UIViewController {
     var workoutName: String? = nil
     var isEditingExistingWorkout: Bool = false
     var excercises: [String] = []
+    var existingExcercises: [String] = []
+    var selectedRows: [Bool] = []
+    var selectedExcercises: [String] = []
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // When Editing a workout
         if let name = workoutName {
             workoutNameTextfield.text = name
             fetchWorkoutTemplate(name: name)
         }
         
+        fetchAllExistingExcercises()
+        
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsMultipleSelection =  true
         workoutNameTextfield.delegate = self
     }
     
+    // When Editing a current workout
     func fetchWorkoutTemplate(name: String) {
         let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
         workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), name)
@@ -59,7 +67,31 @@ class CreateWorkoutController: UIViewController {
             print("Fetch error: \(error), \(error.userInfo)")
         }
     }
+    
+    func fetchAllExistingExcercises() {
+        let allExecercises = BloomFilter.fetchAllExcercises(inManagedContext: managedContext)
+        if let all = allExecercises {
+            existingExcercises = all
+            selectedRows = Array(repeating: false, count: existingExcercises.count)
+            selectedExcercises = Array(repeating: "", count: existingExcercises.count)
+        }
+    }
 
+    @IBAction func segmentControllPressed(_ sender: Any) {
+        if segmentedControl.selectedSegmentIndex == 1 {
+            selectedRows = Array(repeating: false, count: existingExcercises.count)
+            selectedExcercises = Array(repeating: "", count: existingExcercises.count)
+        }
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            for name in selectedExcercises {
+                if name != "" {
+                    excercises.append(name)
+                }
+            }
+        }
+        tableView.reloadData()
+    }
 
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -183,6 +215,13 @@ class CreateWorkoutController: UIViewController {
 
 extension CreateWorkoutController: UITextFieldDelegate {
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if workoutNameTextfield.isFirstResponder {
+            workoutNameTextfield.resignFirstResponder()
+            checkAndTrimWorkoutName()
+        }
+    }
+    
     //MARK: - Create Workout Name Textfield or Start Editing Existing one
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         DispatchQueue.main.async {
@@ -190,33 +229,38 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 textField.resignFirstResponder()
             }
             
-            if self.workoutNameTextfield.text != "" {
-                let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
-                let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
-                workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
-                
-                do {
-                    let results = try self.managedContext.fetch(workoutFetch)
-                    if results.count > 0 {
-                        //TODO: - Setup Alert Notifying a workout is already named that.
-                    } else {
-                        // If editing an existing workout template don't create new one.
-                        guard !self.isEditingExistingWorkout else {
-                            self.updateWorkoutTemplate(workoutName: workoutName)
-                            return
-                        }
-                        // New Workout Named -> Create a new workout with this name
-                        self.currentWorkout = WorkoutTemplate(context: self.managedContext)
-                        self.currentWorkout?.name = workoutName
-                    }
-                } catch let error as NSError {
-                    print("Fetch error: \(error), \(error.userInfo)")
-                }
-            }
+            self.checkAndTrimWorkoutName()
         
         }
         return true
     }
+    
+    func checkAndTrimWorkoutName() {
+        if self.workoutNameTextfield.text != "" {
+            let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
+            let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
+            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
+            
+            do {
+                let results = try self.managedContext.fetch(workoutFetch)
+                if results.count > 0 {
+                    //TODO: - Setup Alert Notifying a workout is already named that.
+                } else {
+                    // If editing an existing workout template don't create new one.
+                    guard !self.isEditingExistingWorkout else {
+                        self.updateWorkoutTemplate(workoutName: workoutName)
+                        return
+                    }
+                    // New Workout Named -> Create a new workout with this name
+                    self.currentWorkout = WorkoutTemplate(context: self.managedContext)
+                    self.currentWorkout?.name = workoutName
+                }
+            } catch let error as NSError {
+                print("Fetch error: \(error), \(error.userInfo)")
+            }
+        }
+    }
+
     
     func updateWorkoutTemplate(workoutName: String) {
         currentWorkout?.name = workoutName
@@ -244,25 +288,64 @@ extension CreateWorkoutController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return excercises.count
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return excercises.count
+        }
+        
+        if segmentedControl.selectedSegmentIndex == 1 {
+            return existingExcercises.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let excercise = excercises[indexPath.row]
-        
-        cell.textLabel?.text = excercise
-        
-        return cell
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let excercise = excercises[indexPath.row]
+            
+            cell.textLabel?.text = excercise
+            cell.accessoryType = .none
+            return cell
+        } else {
+            let existing = existingExcercises[indexPath.row]
+            cell.textLabel?.text = existing
+            if selectedRows[indexPath.row] == true {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            return cell
+        }
     }
 }
 
 
 extension CreateWorkoutController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let excercise = excercises[indexPath.row] 
-        addExcerciseView(withText: excercise)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let excercise = excercises[indexPath.row]
+            addExcerciseView(withText: excercise)
+        }
+        
+        if segmentedControl.selectedSegmentIndex == 1 {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .checkmark
+                selectedRows[indexPath.row] = true
+                selectedExcercises[indexPath.row] = existingExcercises[indexPath.row]
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if segmentedControl.selectedSegmentIndex == 1 {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .none
+                selectedRows[indexPath.row] = false
+                selectedExcercises[indexPath.row] = ""
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

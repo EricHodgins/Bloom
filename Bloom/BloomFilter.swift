@@ -183,6 +183,26 @@ class BloomFilter {
         return workout.first!
     }
     
+    class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [String]? {
+        let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
+        
+        var excercises: [ExcerciseTemplate] = []
+        do {
+            excercises = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch all excercises: \(error.localizedDescription)")
+        }
+        
+        guard excercises.count != 0 else { return nil }
+        
+        var names: [String] = []
+        for excercise in excercises {
+            names.append(excercise.name!)
+        }
+        
+        return names
+    }
+    
     //MARK: - Location Queries
     class func fetchLocations(startDate: Date, finishDate: Date, inManagedContext managedContext: NSManagedObjectContext) -> [Location] {
         
