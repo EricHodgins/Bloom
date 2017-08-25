@@ -44,9 +44,7 @@
 		7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */; };
 		7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7915DA1E10CA9000090D7B /* StartButton.swift */; };
 		7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A796D471E2B05890006DE61 /* MetalImageView.swift */; };
-		7A7D94B31EF0F43500609B88 /* ExcerciseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94B21EF0F43500609B88 /* ExcerciseTableCell.swift */; };
 		7A7D94B51EF1003800609B88 /* WorkoutDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */; };
-		7A7D94B71EF248F100609B88 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94B61EF248F100609B88 /* WorkoutTableCell.swift */; };
 		7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
@@ -193,9 +191,7 @@
 		7A7915D81E10BF3C00090D7B /* StartWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutController.swift; sourceTree = "<group>"; };
 		7A7915DA1E10CA9000090D7B /* StartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 		7A796D471E2B05890006DE61 /* MetalImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalImageView.swift; sourceTree = "<group>"; };
-		7A7D94B21EF0F43500609B88 /* ExcerciseTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcerciseTableCell.swift; sourceTree = "<group>"; };
 		7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDetailController.swift; sourceTree = "<group>"; };
-		7A7D94B61EF248F100609B88 /* WorkoutTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableCell.swift; sourceTree = "<group>"; };
 		7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
@@ -372,8 +368,6 @@
 				7A4065451EDF4FB00024724C /* GraphViewController.swift */,
 				7A4065511EE33BE50024724C /* FilterGraphController.swift */,
 				7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */,
-				7A7D94B21EF0F43500609B88 /* ExcerciseTableCell.swift */,
-				7A7D94B61EF248F100609B88 /* WorkoutTableCell.swift */,
 				7ADD268A1F32913200B434AF /* HeartBeatGraphController.swift */,
 				7A1A7FFA1F40DAB60013C5AC /* MapRouteDetailController.swift */,
 				7A1A7FFC1F40FC1F0013C5AC /* MultiColorPolyLine.swift */,
@@ -811,7 +805,6 @@
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7AC184031E20BBE80019AB2F /* LiveExcerciseListController.swift in Sources */,
 				7A4065461EDF4FB00024724C /* GraphViewController.swift in Sources */,
-				7A7D94B31EF0F43500609B88 /* ExcerciseTableCell.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */,
 				7A1A7FFD1F40FC1F0013C5AC /* MultiColorPolyLine.swift in Sources */,
@@ -821,7 +814,6 @@
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
 				7A1A7FF51F3D586E0013C5AC /* StateAnnotation.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
-				7A7D94B71EF248F100609B88 /* WorkoutTableCell.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
 				7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */,
 				7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */,

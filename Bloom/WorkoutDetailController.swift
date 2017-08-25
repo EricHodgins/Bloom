@@ -21,8 +21,12 @@ class WorkoutDetailController: UIViewController {
     
     var dateFormatter: DateFormatter!
     
+    var sections: [String] = []
+    var rows: [[String]] = [[]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
         setupHeartBeat()
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
@@ -33,12 +37,29 @@ class WorkoutDetailController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        setupExcerciseTableData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
+    }
+    
+    func setupExcerciseTableData() {
+        sections = excercises.map({ (excercise) -> String in
+            return excercise.name!
+        })
+        
+        rows = excercises.map({ (excercise) -> [String] in
+            var data: [String] = []
+            if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
+            if excercise.weight != 0 { data.append("Weight: \(excercise.weight)") }
+            if excercise.distance != 0 { data.append("Distance: \(excercise.distance)") }
+            
+            return data
+        })
     }
     
     func setupHeartBeat() {
@@ -64,65 +85,47 @@ class WorkoutDetailController: UIViewController {
 }
 
 extension WorkoutDetailController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return excercises.count + 1
+        return rows[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Header
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutInfoCell", for: indexPath) as! WorkoutTableCell
-            if let workoutStartDate = workout.startTime {
-                cell.workoutDate.text = "\(dateFormatter.string(from: workoutStartDate as Date))"
-            } else {
-                cell.workoutDate.text = "No Date Recorded)"
-            }
-            
-            cell.workoutName.text = "\(workout.name!)"
-            
-            if let workoutFinishDate = workout.endTime,
-                let workoutStartDate = workout.startTime {
-                cell.workoutDuration.text = workoutStartDate.delta(to: workoutFinishDate)
-            } else {
-                cell.workoutDuration.text = "Duration unknown"
-            }
-            
-            
-            return cell
-        }
         
         // Excercise Details
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCell", for: indexPath) as! ExcerciseTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExcerciseCell", for: indexPath)
         configureExcerciseCell(cell: cell, indexPath: indexPath)
         
         return cell
     }
     
-    private func configureExcerciseCell(cell: ExcerciseTableCell, indexPath: IndexPath) {
-        let excercise = excercises[indexPath.row - 1]
-        cell.excerciseName.text = "\(excercise.name!)"
-        cell.repsLabel.text = "Reps: \(excercise.reps)"
-        cell.weightLabel.text = "Weight: \(excercise.weight) lbs"
-        cell.distanceLabel.text = "Distance: \(excercise.distance) Km"
+    private func configureExcerciseCell(cell: UITableViewCell, indexPath: IndexPath) {
+        let excerciseMetric = rows[indexPath.section][indexPath.row]
         
-        if excercise.timeRecorded != nil {
-            cell.timeLabel.text = workout.startTime!.delta(to: excercise.timeRecorded!)
-        } else {
-            cell.timeLabel.text = ""
-        }
+        cell.textLabel?.text = excerciseMetric
+        cell.textLabel?.textColor = UIColor.white
     }
     
 }
 
 extension WorkoutDetailController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return view.bounds.height * 0.15
-        }
-        return view.bounds.height * 0.2
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
     }
 }
-
 
 
 
