@@ -21,6 +21,9 @@ class SummaryViewController: UIViewController {
     var isAllWorkouts: Bool = false
     
     var dateFormatter: DateFormatter!
+    
+    var fetchedResultsController: NSFetchedResultsController<NSDictionary>!
+    var fetchedResultsControllerAll: NSFetchedResultsController<Workout>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +49,12 @@ class SummaryViewController: UIViewController {
         fetchRequest.returnsDistinctResults = true
         fetchRequest.propertiesToFetch = ["name"]
         
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
         do {
-            workoutTypes = try managedContext.fetch(fetchRequest)
+            try fetchedResultsController.performFetch()
         } catch let error as NSError {
-            print("Workout template fetch error: \(error.userInfo)")
+           print("Workout template fetch error: \(error.userInfo)")
         }
     }
     
@@ -57,8 +62,10 @@ class SummaryViewController: UIViewController {
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.name), ascending: true)]
         
+        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: nil)
+        
         do {
-            workouts = try managedContext.fetch(fetchRequest)
+            try fetchedResultsControllerAll.performFetch()
         } catch let error as NSError {
             print("All workout fetch error: \(error.userInfo)")
         }
@@ -98,24 +105,40 @@ class SummaryViewController: UIViewController {
 
 // Table View Delegate
 extension SummaryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if isAllWorkouts {
+            let sectionInfo = fetchedResultsControllerAll.sections?[section]
+            return sectionInfo?.name
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isAllWorkouts {
-            return workouts.count
+            guard let sectionInfo = fetchedResultsControllerAll.sections?[section] else { return 0 }
+            return sectionInfo.numberOfObjects
         }
-        return workoutTypes.count
+        // Workout Names
+        guard let sectionInfo = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if isAllWorkouts {
-            let workout = workouts[indexPath.row]
+            let workout = fetchedResultsControllerAll.object(at: indexPath)
             let dateString = dateFormatter.string(from: workout.startTime! as Date)
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = "\(workout.name!)\n \(dateString)"
             cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         } else {
-            cell.textLabel?.text = workoutTypes[indexPath.row]["name"] as? String
+            let workoutDict = fetchedResultsController.object(at: indexPath)
+            cell.textLabel?.text = workoutDict["name"] as? String
             cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         }
         
@@ -127,7 +150,15 @@ extension SummaryViewController: UITableViewDataSource {
 extension SummaryViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if segmentedControl.selectedSegmentIndex == 0 {
+            guard let sections = fetchedResultsController.sections else {
+                return 0
+            }
+            return sections.count
+        }
+        
+        guard let sections = fetchedResultsControllerAll.sections else { return 0 }
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
