@@ -40,9 +40,12 @@ class SummaryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         fetchWorkoutTypes()
+        
     }
     
     func fetchWorkoutTypes() {
+        guard fetchedResultsController == nil else { return }
+        
         let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "WorkoutTemplate")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(WorkoutTemplate.name), ascending: true)]
         fetchRequest.resultType = .dictionaryResultType
@@ -59,10 +62,14 @@ class SummaryViewController: UIViewController {
     }
     
     func fetchAllWorkouts() {
+        guard fetchedResultsControllerAll == nil else { return }
+        
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.name), ascending: true)]
         
-        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: nil)
+        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: "AllWorkoutsCache")
+        
+        fetchedResultsControllerAll.delegate = self
         
         do {
             try fetchedResultsControllerAll.performFetch()
@@ -74,14 +81,17 @@ class SummaryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowExcercises" {
             let excerciseController = segue.destination as! ExcercisesController
-            let cellIndex = tableView.indexPathForSelectedRow!
+            let indexPath = tableView.indexPathForSelectedRow!
+            let workoutDict = fetchedResultsController.object(at: indexPath)
+            
             excerciseController.managedContext = managedContext
-            excerciseController.workoutName = workoutTypes[cellIndex.row]["name"] as! String
+            excerciseController.workoutName = workoutDict["name"] as? String
         }
         
         if segue.identifier == "ShowWorkoutStats" {
             let workoutDetailController = segue.destination as! WorkoutDetailController
-            workoutDetailController.workout = workouts[tableView.indexPathForSelectedRow!.row]
+            let workout = fetchedResultsControllerAll.object(at: tableView.indexPathForSelectedRow!)
+            workoutDetailController.workout = workout
             workoutDetailController.managedContext = managedContext
         }
     }
@@ -213,11 +223,7 @@ extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard segmentedControl.selectedSegmentIndex == 1 else { return }
         
-        let workout = workouts[indexPath.row]
-        tableView.beginUpdates()
-        workouts.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        tableView.endUpdates()
+        let workout = fetchedResultsControllerAll.object(at: indexPath)
         
         managedContext.delete(workout)
         do {
@@ -229,7 +235,30 @@ extension SummaryViewController: UITableViewDelegate {
 }
 
 
-
+extension SummaryViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            break
+        case .move:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
 
 
 
