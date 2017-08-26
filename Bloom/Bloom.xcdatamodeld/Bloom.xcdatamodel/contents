@@ -29,7 +29,7 @@
     </entity>
     <entity name="WorkoutTemplate" representedClassName=".WorkoutTemplate" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExcerciseTemplate" inverseName="workout" inverseEntity="ExcerciseTemplate" syncable="YES"/>
+        <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExcerciseTemplate" inverseName="workout" inverseEntity="ExcerciseTemplate" syncable="YES"/>
     </entity>
     <elements>
         <element name="Excercise" positionX="-27" positionY="-36" width="128" height="150"/>

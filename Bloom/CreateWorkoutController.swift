@@ -36,7 +36,7 @@ class CreateWorkoutController: UIViewController {
         super.viewDidLoad()
         tableView.isEditing = true
         
-        // When Editing a workout
+        // When Editing a existing workout
         if let name = workoutName {
             workoutNameTextfield.text = name
             fetchWorkoutTemplate(name: name)
@@ -102,6 +102,16 @@ class CreateWorkoutController: UIViewController {
 
     @IBAction func savePressed(_ sender: Any) {
         
+        guard currentWorkout != nil else {
+            checkAndTrimWorkoutName()
+            saveWorkoutAndDismissController()
+            return
+        }
+        
+        saveWorkoutAndDismissController()
+    }
+    
+    func saveWorkoutAndDismissController() {
         // Save the workout and set it's excercises to the tableview
         //1. Validate Textfield and current workout view
         if let workout = currentWorkout {
@@ -254,13 +264,15 @@ extension CreateWorkoutController: UITextFieldDelegate {
                         self.updateWorkoutTemplate(workoutName: workoutName)
                         return
                     }
-                    // New Workout Named -> Create a new workout with this name
+                    // Brand New Workout Named -> Create a new workout with this name
                     self.currentWorkout = WorkoutTemplate(context: self.managedContext)
                     self.currentWorkout?.name = workoutName
                 }
             } catch let error as NSError {
                 print("Fetch error: \(error), \(error.userInfo)")
             }
+        } else {
+            //TODO: Alert - Workout name has not been named
         }
     }
 
