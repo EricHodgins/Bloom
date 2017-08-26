@@ -200,7 +200,11 @@ class BloomFilter {
             names.append(excercise.name!)
         }
         
-        return names
+        let setNames = Set(names)
+        var arrayNames = Array(setNames)
+        arrayNames.sort()
+        
+        return arrayNames
     }
     
     //MARK: - Location Queries

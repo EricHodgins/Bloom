@@ -34,6 +34,7 @@ class CreateWorkoutController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.isEditing = true
         
         // When Editing a workout
         if let name = workoutName {
@@ -79,11 +80,13 @@ class CreateWorkoutController: UIViewController {
 
     @IBAction func segmentControllPressed(_ sender: Any) {
         if segmentedControl.selectedSegmentIndex == 1 {
+            tableView.isEditing = false
             selectedRows = Array(repeating: false, count: existingExcercises.count)
             selectedExcercises = Array(repeating: "", count: existingExcercises.count)
         }
         
         if segmentedControl.selectedSegmentIndex == 0 {
+            tableView.isEditing = true
             for name in selectedExcercises {
                 if name != "" {
                     excercises.append(name)
@@ -357,6 +360,14 @@ extension CreateWorkoutController: UITableViewDelegate {
         excercises.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let movedWorkout = excercises[sourceIndexPath.row]
+            excercises.remove(at: sourceIndexPath.row)
+            excercises.insert(movedWorkout, at: destinationIndexPath.row)
+        }
     }
 }
 
