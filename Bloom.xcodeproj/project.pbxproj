@@ -46,6 +46,7 @@
 		7A796D481E2B05890006DE61 /* MetalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A796D471E2B05890006DE61 /* MetalImageView.swift */; };
 		7A7D94B51EF1003800609B88 /* WorkoutDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */; };
 		7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */; };
+		7A7FD8041F51ED5200B87269 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD8031F51ED5200B87269 /* AlertManager.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
@@ -193,6 +194,7 @@
 		7A796D471E2B05890006DE61 /* MetalImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalImageView.swift; sourceTree = "<group>"; };
 		7A7D94B41EF1003800609B88 /* WorkoutDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDetailController.swift; sourceTree = "<group>"; };
 		7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		7A7FD8031F51ED5200B87269 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +441,7 @@
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7ADD25F81F23CF6E00B434AF /* Utils.swift */,
 				7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */,
+				7A7FD8031F51ED5200B87269 /* AlertManager.swift */,
 				7AA861271E0F17510054B443 /* CoreDataStack.swift */,
 				7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */,
 				7A1E13EC1E06195600330EFB /* Custom Views */,
@@ -799,6 +802,7 @@
 				7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */,
 				7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */,
 				7A66583E1E46974C008B41FA /* Types.swift in Sources */,
+				7A7FD8041F51ED5200B87269 /* AlertManager.swift in Sources */,
 				7AC184071E20BC0B0019AB2F /* FinishLiveWorkoutController.swift in Sources */,
 				7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */,
 				7A4065481EDF51490024724C /* SummaryViewController.swift in Sources */,
