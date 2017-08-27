@@ -108,6 +108,10 @@ class LiveMapViewController: UIViewController {
     }
     
     fileprivate func saveMapRoute() {
+        if locationManager.isUpdatingLocation {
+            locationManager.stopUpdatingLocation()
+        }
+        
         for location in locationList {
             let locationObject = Location(context: managedContext)
             locationObject.latitude = location.coordinate.latitude

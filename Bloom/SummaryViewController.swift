@@ -21,11 +21,16 @@ class SummaryViewController: UIViewController {
     var isAllWorkouts: Bool = false
     
     var dateFormatter: DateFormatter!
+    
+    var fetchedResultsController: NSFetchedResultsController<NSDictionary>!
+    var fetchedResultsControllerAll: NSFetchedResultsController<Workout>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
         
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
@@ -37,28 +42,39 @@ class SummaryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         fetchWorkoutTypes()
+        
     }
     
     func fetchWorkoutTypes() {
+        guard fetchedResultsController == nil else { return }
+        
         let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "WorkoutTemplate")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(WorkoutTemplate.name), ascending: true)]
         fetchRequest.resultType = .dictionaryResultType
         fetchRequest.returnsDistinctResults = true
         fetchRequest.propertiesToFetch = ["name"]
         
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
         do {
-            workoutTypes = try managedContext.fetch(fetchRequest)
+            try fetchedResultsController.performFetch()
         } catch let error as NSError {
-            print("Workout template fetch error: \(error.userInfo)")
+           print("Workout template fetch error: \(error.userInfo)")
         }
     }
     
     func fetchAllWorkouts() {
+        guard fetchedResultsControllerAll == nil else { return }
+        
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.name), ascending: true)]
         
+        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: nil)
+        
+        fetchedResultsControllerAll.delegate = self
+        
         do {
-            workouts = try managedContext.fetch(fetchRequest)
+            try fetchedResultsControllerAll.performFetch()
         } catch let error as NSError {
             print("All workout fetch error: \(error.userInfo)")
         }
@@ -67,14 +83,17 @@ class SummaryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowExcercises" {
             let excerciseController = segue.destination as! ExcercisesController
-            let cellIndex = tableView.indexPathForSelectedRow!
+            let indexPath = tableView.indexPathForSelectedRow!
+            let workoutDict = fetchedResultsController.object(at: indexPath)
+            
             excerciseController.managedContext = managedContext
-            excerciseController.workoutName = workoutTypes[cellIndex.row]["name"] as! String
+            excerciseController.workoutName = workoutDict["name"] as? String
         }
         
         if segue.identifier == "ShowWorkoutStats" {
             let workoutDetailController = segue.destination as! WorkoutDetailController
-            workoutDetailController.workout = workouts[tableView.indexPathForSelectedRow!.row]
+            let workout = fetchedResultsControllerAll.object(at: tableView.indexPathForSelectedRow!)
+            workoutDetailController.workout = workout
             workoutDetailController.managedContext = managedContext
         }
     }
@@ -98,24 +117,53 @@ class SummaryViewController: UIViewController {
 
 // Table View Delegate
 extension SummaryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.backgroundView?.backgroundColor = #colorLiteral(red: 0.0369855836, green: 0.5332083106, blue: 0.9984238744, alpha: 1)
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isAllWorkouts {
+            return 60
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if isAllWorkouts {
+            let sectionInfo = fetchedResultsControllerAll.sections?[section]
+            return sectionInfo?.name
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isAllWorkouts {
-            return workouts.count
+            guard let sectionInfo = fetchedResultsControllerAll.sections?[section] else { return 0 }
+            return sectionInfo.numberOfObjects
         }
-        return workoutTypes.count
+        // Workout Names
+        guard let sectionInfo = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if isAllWorkouts {
-            let workout = workouts[indexPath.row]
+            let workout = fetchedResultsControllerAll.object(at: indexPath)
             let dateString = dateFormatter.string(from: workout.startTime! as Date)
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = "\(workout.name!)\n \(dateString)"
             cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         } else {
-            cell.textLabel?.text = workoutTypes[indexPath.row]["name"] as? String
+            let workoutDict = fetchedResultsController.object(at: indexPath)
+            cell.textLabel?.text = workoutDict["name"] as? String
             cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         }
         
@@ -127,7 +175,15 @@ extension SummaryViewController: UITableViewDataSource {
 extension SummaryViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if segmentedControl.selectedSegmentIndex == 0 {
+            guard let sections = fetchedResultsController.sections else {
+                return 0
+            }
+            return sections.count
+        }
+        
+        guard let sections = fetchedResultsControllerAll.sections else { return 0 }
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -182,11 +238,7 @@ extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard segmentedControl.selectedSegmentIndex == 1 else { return }
         
-        let workout = workouts[indexPath.row]
-        tableView.beginUpdates()
-        workouts.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        tableView.endUpdates()
+        let workout = fetchedResultsControllerAll.object(at: indexPath)
         
         managedContext.delete(workout)
         do {
@@ -198,7 +250,30 @@ extension SummaryViewController: UITableViewDelegate {
 }
 
 
-
+extension SummaryViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            break
+        case .move:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
 
 
 
