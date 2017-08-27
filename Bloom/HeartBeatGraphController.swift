@@ -22,8 +22,17 @@ class HeartBeatGraphController: UIViewController {
     }
     
     func queryHeartRateDataFromHealthStore() {
+        guard let workout = workout ,
+            let start = workout.startTime,
+            let end = workout.endTime else {
+                //Present no workout data
+                present(AlertManager.alert(title: "No Workout Data.", message: "You're last workout heart rate data will appear here.", style: .alert), animated: true)
+                return
+        }
+        
+        
         let healthService = HealthDataService()
-        healthService.queryHeartRateData(withStartDate: workout.startTime! as Date, toEndDate: workout.endTime! as Date) { results in
+        healthService.queryHeartRateData(withStartDate: start as Date, toEndDate: end as Date) { results in
             self.printQueriedResults(results: results)
         }
     }

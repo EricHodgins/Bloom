@@ -23,77 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-39-VQU">
-                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <state key="normal" title="Create Workout Routine">
-                                            <color key="titleColor" red="0.97148927979999999" green="1" blue="0.97109420769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.24026602506637573" green="0.61729735136032104" blue="0.58178645372390747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.47695761919021606" green="0.9448046088218689" blue="0.40673577785491943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                                <color key="value" red="0.74529534578323364" green="0.99853819608688354" blue="0.90455156564712524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="IW1-7m-3vF" kind="presentation" identifier="CreateWorkout" id="otL-wJ-G1O"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="133.5" width="375" height="133"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <state key="normal" title="Workouts">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.99863356351852417" green="0.33362942934036255" blue="0.00073126255301758647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="1" green="0.43923366069793701" blue="0.73984533548355103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                                <color key="value" red="0.9999043345451355" green="0.83545953035354614" blue="0.78380119800567627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="QG1-RB-hbX" kind="show" identifier="Workouts" id="Lrb-56-Xkh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="266.5" width="375" height="133.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <state key="normal" title="View Stats">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                <color key="value" red="0.016745710745453835" green="0.51669448614120483" blue="0.99863952398300171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                <color key="value" red="0.41047936677932739" green="0.85733288526535034" blue="0.99989908933639526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                                <color key="value" red="0.83378636837005615" green="0.86821842193603516" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="fSD-V5-eS1" kind="show" identifier="Summary" id="eVt-hG-nWv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhY-hI-Lh1" customClass="SKView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="203"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WorkoutName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4n-0F-sOK">
                                         <rect key="frame" x="123.5" y="8" width="128.5" height="24"/>
@@ -108,10 +39,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uxp-sN-7pp">
-                                        <rect key="frame" x="75" y="67.5" width="225" height="61"/>
+                                        <rect key="frame" x="75" y="67.5" width="225" height="60.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3D-25-tyA" userLabel="HeartRateContainer">
-                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="112.5" height="60.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD3-Sp-iz8" userLabel="heartContainerView">
                                                         <rect key="frame" x="41" y="15" width="30" height="30"/>
@@ -122,7 +53,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhJ-P4-gHP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="60.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <connections>
@@ -141,7 +72,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-ib-SDD" userLabel="MapContainer">
-                                                <rect key="frame" x="112.5" y="0.0" width="112.5" height="61"/>
+                                                <rect key="frame" x="112.5" y="0.0" width="112.5" height="60.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartPin" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-CP-LKQ">
                                                         <rect key="frame" x="41.5" y="15.5" width="30" height="30"/>
@@ -152,7 +83,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WR1-ul-WRl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="61"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="60.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <connections>
@@ -176,7 +107,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="height" secondItem="ZhY-hI-Lh1" secondAttribute="height" multiplier="0.3" id="3K7-HI-GSG"/>
+                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="height" secondItem="ZhY-hI-Lh1" secondAttribute="height" multiplier="0.1" id="3K7-HI-GSG"/>
                                     <constraint firstItem="Uxp-sN-7pp" firstAttribute="width" secondItem="ZhY-hI-Lh1" secondAttribute="width" multiplier="0.6" id="ERg-qd-cLU"/>
                                     <constraint firstItem="EXE-Nu-e1G" firstAttribute="top" secondItem="b4n-0F-sOK" secondAttribute="bottom" constant="8" id="MoE-en-wKy"/>
                                     <constraint firstItem="EXE-Nu-e1G" firstAttribute="centerX" secondItem="b4n-0F-sOK" secondAttribute="centerX" id="jE5-va-Pvu"/>
@@ -186,16 +117,85 @@
                                     <constraint firstItem="Uxp-sN-7pp" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="vZa-Cd-Gm9"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-39-VQU">
+                                <rect key="frame" x="8" y="259" width="359" height="400"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="130"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="Create Workout Routine">
+                                            <color key="titleColor" red="0.97148927979999999" green="1" blue="0.97109420769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.24026602506637573" green="0.61729735136032104" blue="0.58178645372390747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.47695761919021606" green="0.9448046088218689" blue="0.40673577785491943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.74529534578323364" green="0.99853819608688354" blue="0.90455156564712524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="IW1-7m-3vF" kind="presentation" identifier="CreateWorkout" id="otL-wJ-G1O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="135" width="359" height="130"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="Workouts">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.99863356351852417" green="0.33362942934036255" blue="0.00073126255301758647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="1" green="0.43923366069793701" blue="0.73984533548355103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.9999043345451355" green="0.83545953035354614" blue="0.78380119800567627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="QG1-RB-hbX" kind="show" identifier="Workouts" id="Lrb-56-Xkh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="270" width="359" height="130"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="View Stats">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.016745710745453835" green="0.51669448614120483" blue="0.99863952398300171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.41047936677932739" green="0.85733288526535034" blue="0.99989908933639526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                <color key="value" red="0.83378636837005615" green="0.86821842193603516" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="fSD-V5-eS1" kind="show" identifier="Summary" id="eVt-hG-nWv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZhY-hI-Lh1" secondAttribute="trailing" id="8Q4-WP-XZd"/>
                             <constraint firstItem="ZhY-hI-Lh1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9WL-o1-kDG"/>
-                            <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Joo-TH-SjP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" id="Oed-la-BIZ"/>
+                            <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Joo-TH-SjP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" constant="8" id="Oed-la-BIZ"/>
                             <constraint firstItem="ZhY-hI-Lh1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SCK-z1-rBx"/>
-                            <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" id="aHA-tH-S6H"/>
-                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="bottom" id="utl-lE-jUw"/>
+                            <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" constant="8" id="aHA-tH-S6H"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="bottom" id="cjY-hA-hb1"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="uzi-qZ-02m"/>
                         </constraints>
                     </view>
@@ -1116,7 +1116,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cj-Ib-Nzi">
                                         <rect key="frame" x="190.5" y="35" width="60" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.80044108629999999" green="0.28369447590000002" blue="0.1020190939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1130,7 +1130,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Push-up" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkc-jR-eQA">
                                 <rect key="frame" x="16" y="160" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhK-VJ-Z8Z">
@@ -1143,7 +1143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Fkc-jR-eQA" secondAttribute="trailing" id="3VB-h3-kUK"/>
                             <constraint firstItem="Fkc-jR-eQA" firstAttribute="top" secondItem="uqZ-Xc-hRZ" secondAttribute="bottom" constant="15" id="8XZ-la-g9U"/>
@@ -1187,14 +1187,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-I7-mfQ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aI6-I7-mfQ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-HP-LNW">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-HP-LNW">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="266.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-z6-0t5" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="266.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.99858003849999999" green="0.34159666300000002" blue="0.060211099679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Reps">
@@ -1213,7 +1213,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-yG-gtN" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="266.5"/>
+                                                <rect key="frame" x="191.5" y="0.0" width="183.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.70757941300000005" green="0.088054117619999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Weight">
@@ -1233,11 +1233,11 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-OE-h1s">
-                                        <rect key="frame" x="0.0" y="266.5" width="375" height="266.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-OE-h1s">
+                                        <rect key="frame" x="0.0" y="274.5" width="375" height="266.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-I3-B7S" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="266.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Distance">
@@ -1256,7 +1256,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-IX-Jaw" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="266.5"/>
+                                                <rect key="frame" x="191.5" y="0.0" width="183.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.080622263250000006" green="0.57005900139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Time">
@@ -1277,7 +1277,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-4s-PXj">
-                                        <rect key="frame" x="0.0" y="533" width="375" height="114"/>
+                                        <rect key="frame" x="0.0" y="549" width="375" height="98"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Next Excercise"/>
                                         <connections>
@@ -1296,7 +1296,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aI6-I7-mfQ" firstAttribute="top" secondItem="u88-cS-bHn" secondAttribute="bottom" id="Aih-Nv-Kn4"/>
                             <constraint firstItem="GUj-OE-h1s" firstAttribute="height" secondItem="Ffo-Wq-Uaq" secondAttribute="height" multiplier="0.4" id="Q8w-8B-Jpc"/>
@@ -1378,6 +1378,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Map Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g1-2d-11a">
                                 <rect key="frame" x="102" y="67" width="170" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPH-Qb-ejg" userLabel="Main Container View">
@@ -1741,10 +1742,10 @@
         <image name="StartPin" width="17" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="otL-wJ-G1O"/>
         <segue reference="HL2-Mf-Iac"/>
         <segue reference="DCD-pO-VED"/>
-        <segue reference="0m2-Wk-kTV"/>
+        <segue reference="Fop-YP-du9"/>
         <segue reference="rrC-hf-91z"/>
+        <segue reference="JJG-zd-ewo"/>
     </inferredMetricsTieBreakers>
 </document>

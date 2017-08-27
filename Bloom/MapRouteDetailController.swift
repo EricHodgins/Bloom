@@ -32,6 +32,15 @@ class MapRouteDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let workout = workout,
+            let _ = workout.startTime,
+            let _ = workout.endTime else {
+                //Present no workout data
+                present(AlertManager.alert(title: "No Workout Data.", message: "You're last workout map data will appear here.", style: .alert), animated: true)
+                return
+        }
+        
         let summarizer = WorkoutSummary(workout: workout)
         summarizer.delegate = self
         mapView.delegate = self

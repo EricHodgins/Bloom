@@ -20,7 +20,7 @@ class GenericBloomButton: UIButton {
     let gradientLayer = CAGradientLayer()
     
     override func draw(_ rect: CGRect) {
-
+        
     }
     
     override func prepareForInterfaceBuilder() {
@@ -34,6 +34,8 @@ class GenericBloomButton: UIButton {
     }
     
     func setup() {
+        layer.masksToBounds = true
+        layer.cornerRadius = 20
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
@@ -49,6 +51,7 @@ class GenericBloomButton: UIButton {
         gradientLayer.locations = locations
         
         gradientLayer.frame = bounds
+        
     }
     
 }

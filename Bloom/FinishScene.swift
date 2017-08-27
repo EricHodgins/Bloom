@@ -54,10 +54,12 @@ class FinishScene: SKScene {
 
         
         let speed: CGFloat = 20
-        var distance: CGFloat = 0
+        var widthDistance: CGFloat = 0
+        var heightDistance: CGFloat = 0
         var dt: CGFloat = 0
         var lastUpdateTime: CGFloat = 0
         var goRight: Bool = true
+        var goUp: Bool = true
         let flareAction = SKAction.customAction(withDuration: 300) { (node, elapsed) in
             if lastUpdateTime == 0 {
                 dt = elapsed
@@ -69,19 +71,31 @@ class FinishScene: SKScene {
             self.sunFlare.sunbeamsFilter?.setValue(elapsed*0.009, forKey: kCIInputTimeKey)
             
             
-            if distance >= self.sceneView.frame.width {
+            if widthDistance >= self.sceneView.frame.width {
                 goRight = false
-            } else if distance <= 0 {
+            } else if widthDistance <= 0 {
                 goRight = true
             }
             
             if goRight {
-                distance += speed * dt
+                widthDistance += speed * dt
             } else {
-                distance -= speed * dt
+                widthDistance -= speed * dt
             }
             
-            self.sunFlare.inputOrigin = CIVector(x: distance, y: (self.sceneView.frame.height*0))
+            if heightDistance >= self.sceneView.frame.height {
+                goUp = false
+            } else if heightDistance <= 0 {
+                goUp = true
+            }
+            
+            if goUp {
+                heightDistance += speed * dt
+            } else {
+                heightDistance -= speed * dt
+            }
+            
+            self.sunFlare.inputOrigin = CIVector(x: widthDistance, y: heightDistance)
             self.sunFlare.inputColor = CIVector(x: (elapsed * 5)/255, y: 45/255, z: 135/255)
             
             
