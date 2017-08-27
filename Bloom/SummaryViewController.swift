@@ -169,6 +169,7 @@ extension SummaryViewController: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 // Table View Delegate
@@ -177,12 +178,14 @@ extension SummaryViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         if segmentedControl.selectedSegmentIndex == 0 {
             guard let sections = fetchedResultsController.sections else {
-                return 0
+                return 1
             }
             return sections.count
         }
         
-        guard let sections = fetchedResultsControllerAll.sections else { return 0 }
+        guard let sections = fetchedResultsControllerAll.sections else {
+            return 1
+        }
         return sections.count
     }
     
@@ -247,6 +250,7 @@ extension SummaryViewController: UITableViewDelegate {
             print("Error deleting individual workout: \(error.localizedDescription)")
         }
     }
+    
 }
 
 
@@ -260,13 +264,19 @@ extension SummaryViewController: NSFetchedResultsControllerDelegate {
         
         switch type {
         case .insert:
-            break
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
+            if indexPath?.row != 0 {
+                tableView.deleteRows(at: [indexPath!], with: .fade)
+            } else {
+                let indexSet = IndexSet(integer: indexPath!.section)
+                tableView.deleteSections(indexSet, with: .fade)
+            }
         case .update:
-            break
+            self.tableView.reloadRows(at: [indexPath!], with: .fade)
         case .move:
-            break
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
+            self.tableView.deleteRows(at: [indexPath!], with: .fade)
         }
     }
     
