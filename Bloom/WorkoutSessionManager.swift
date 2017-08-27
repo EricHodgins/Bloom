@@ -121,6 +121,7 @@ extension WorkoutSessionManager {
     }
     
     func save(finishedDate date: NSDate) {
+        mapRouteDelegate?.saveRoute()
         workout.endTime = date
         save()
         reset()

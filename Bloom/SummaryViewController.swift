@@ -30,6 +30,8 @@ class SummaryViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
+        
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
@@ -67,7 +69,7 @@ class SummaryViewController: UIViewController {
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.name), ascending: true)]
         
-        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: "AllWorkoutsCache")
+        fetchedResultsControllerAll = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: #keyPath(Workout.name), cacheName: nil)
         
         fetchedResultsControllerAll.delegate = self
         
@@ -115,6 +117,19 @@ class SummaryViewController: UIViewController {
 
 // Table View Delegate
 extension SummaryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.backgroundView?.backgroundColor = #colorLiteral(red: 0.0369855836, green: 0.5332083106, blue: 0.9984238744, alpha: 1)
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isAllWorkouts {
+            return 60
+        }
+        return 0
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isAllWorkouts {
