@@ -53,9 +53,9 @@ class FinishScene: SKScene {
     func startSunFlareAction() {
 
         
-        let speed: CGFloat = 20
+        let speed: CGFloat = 10
         var widthDistance: CGFloat = 0
-        var heightDistance: CGFloat = 0
+        var heightDistance: CGFloat = sceneView.frame.height * 0.75
         var dt: CGFloat = 0
         var lastUpdateTime: CGFloat = 0
         var goRight: Bool = true

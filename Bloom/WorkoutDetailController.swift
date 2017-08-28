@@ -19,6 +19,7 @@ class WorkoutDetailController: UIViewController {
     var managedContext: NSManagedObjectContext!
     var excercises: [Excercise] = []
     
+    @IBOutlet weak var durationLabel: UILabel!
     var dateFormatter: DateFormatter!
     
     var sections: [String] = []
@@ -38,6 +39,8 @@ class WorkoutDetailController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        durationLabel.text = workout.startTime?.delta(to: workout.endTime!)
         
         setupExcerciseTableData()
     }

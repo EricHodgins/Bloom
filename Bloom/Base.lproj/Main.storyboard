@@ -391,7 +391,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Xp-dfX">
                                 <rect key="frame" x="16" y="223" width="343" height="29"/>
                                 <segments>
-                                    <segment title="Picked"/>
+                                    <segment title="Chosen"/>
                                     <segment title="Choose Excercises"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -691,6 +691,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="durationLabel" destination="fk9-oF-Ngc" id="dSY-w9-fv0"/>
                         <outlet property="heartContainerView" destination="JVk-an-OzC" id="AXI-BU-JN5"/>
                         <outlet property="heartMapStackView" destination="MiW-JO-z64" id="8dQ-Yb-OAo"/>
                         <outlet property="tableView" destination="g8P-OI-gNC" id="p1r-gN-WRB"/>
@@ -1048,7 +1049,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="p3D-HA-Msd" firstAttribute="top" secondItem="YUB-yP-vwd" secondAttribute="bottom" constant="8" id="3Qx-sj-kFg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="V1N-kZ-qpk" secondAttribute="leading" id="5b8-dE-KSh"/>
@@ -1742,10 +1743,10 @@
         <image name="StartPin" width="17" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HL2-Mf-Iac"/>
-        <segue reference="DCD-pO-VED"/>
-        <segue reference="Fop-YP-du9"/>
+        <segue reference="otL-wJ-G1O"/>
+        <segue reference="0m2-Wk-kTV"/>
         <segue reference="rrC-hf-91z"/>
-        <segue reference="JJG-zd-ewo"/>
+        <segue reference="mSF-5n-mR7"/>
+        <segue reference="DbZ-qU-jhR"/>
     </inferredMetricsTieBreakers>
 </document>

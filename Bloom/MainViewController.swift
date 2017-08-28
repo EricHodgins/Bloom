@@ -62,12 +62,23 @@ class MainViewController: UIViewController {
     
     func fillINLastWorkoutValues() {
         guard let lastWorkout = workout,
-         let start = lastWorkout.startTime,
-            let end = lastWorkout.endTime else {
+         let start = lastWorkout.startTime else {
                 lastWorkoutNameLabel.text = "No workout data."
                 lastWorkoutDuration.text = "--"
                 return
         }
+        
+        // This check is mostly for when the apple watch hits finish.  One time the endTime was not saved.
+        if lastWorkout.endTime == nil {
+            lastWorkout.endTime = NSDate()
+            do {
+             try managedContext.save()
+            } catch {
+                print("Error saving workout end time when it was not saved originally for some reason.")
+            }
+        }
+        
+        let end = lastWorkout.endTime!
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
