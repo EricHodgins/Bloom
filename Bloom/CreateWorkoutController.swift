@@ -11,6 +11,10 @@ import CoreData
 
 class CreateWorkoutController: UIViewController {
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    
+    @IBOutlet weak var enterWorkoutNameContainerView: UIView!
     var excerciseView: AddExcerciseView!
 
     @IBOutlet weak var addExcerciseButton: UIButton!
@@ -95,6 +99,29 @@ class CreateWorkoutController: UIViewController {
         }
         tableView.reloadData()
     }
+    
+    @IBAction func workoutNameNextButtonPressed(_ sender: Any) {
+        if isCheckedAndTrimmedWorkoutNamePassed() {
+            removeWorkoutNameContainerView()
+        }
+        
+        if workoutNameTextfield.isFirstResponder {
+            workoutNameTextfield.resignFirstResponder()
+        }
+    }
+    
+    fileprivate func removeWorkoutNameContainerView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.enterWorkoutNameContainerView.alpha = 0
+        }) { (isFinished) in
+            self.enterWorkoutNameContainerView.isHidden = true
+            self.lineSeparator.removeFromSuperview()
+        }
+    }
+    
+    @IBAction func workoutNameCanceButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -103,7 +130,7 @@ class CreateWorkoutController: UIViewController {
     @IBAction func savePressed(_ sender: Any) {
         
         guard currentWorkout != nil else {
-            checkAndTrimWorkoutName()
+            isCheckedAndTrimmedWorkoutNamePassed()
             saveWorkoutAndDismissController()
             return
         }
@@ -191,7 +218,7 @@ class CreateWorkoutController: UIViewController {
     func setupLineSeparator() {
         lineSeparator.translatesAutoresizingMaskIntoConstraints = false
         lineSeparator.backgroundColor = UIColor.white
-        view.addSubview(lineSeparator)
+        enterWorkoutNameContainerView.addSubview(lineSeparator)
         
         NSLayoutConstraint.activate([
             lineSeparator.topAnchor.constraint(equalTo: workoutNameTextfield.bottomAnchor, constant: 10),
@@ -230,7 +257,9 @@ extension CreateWorkoutController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if workoutNameTextfield.isFirstResponder {
             workoutNameTextfield.resignFirstResponder()
-            checkAndTrimWorkoutName()
+            if isCheckedAndTrimmedWorkoutNamePassed() {
+                removeWorkoutNameContainerView()
+            }
         }
     }
     
@@ -241,13 +270,15 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 textField.resignFirstResponder()
             }
             
-            self.checkAndTrimWorkoutName()
+            if self.isCheckedAndTrimmedWorkoutNamePassed() {
+                self.removeWorkoutNameContainerView()
+            }
         
         }
         return true
     }
     
-    func checkAndTrimWorkoutName() {
+    func isCheckedAndTrimmedWorkoutNamePassed() -> Bool {
         if self.workoutNameTextfield.text != "" {
             let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
             let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
@@ -258,15 +289,19 @@ extension CreateWorkoutController: UITextFieldDelegate {
                 if results.count > 0 {
                     //Alert Notifying a workout is already named that.
                     present(AlertManager.alert(title: "Workout already exists.", message: "A workout is already named that. Please choose a different name.", style: .alert), animated: true)
+                    return false
                 } else {
                     // If editing an existing workout template don't create new one.
                     guard !self.isEditingExistingWorkout else {
                         self.updateWorkoutTemplate(workoutName: workoutName)
-                        return
+                        return true
                     }
                     // Brand New Workout Named -> Create a new workout with this name
+                    self.navigationBar.topItem?.title = workoutName
                     self.currentWorkout = WorkoutTemplate(context: self.managedContext)
                     self.currentWorkout?.name = workoutName
+                    
+                    return true
                 }
             } catch let error as NSError {
                 print("Fetch error: \(error), \(error.userInfo)")
@@ -274,7 +309,11 @@ extension CreateWorkoutController: UITextFieldDelegate {
         } else {
             //Alert - Workout name has not been named
             present(AlertManager.alert(title: "A workout must have a name.", message: "Please name your workout.", style: .alert), animated: true)
+            return false
         }
+        
+        present(AlertManager.alert(title: "Workout Name is Blank.", message: "Please name your workout.", style: .alert), animated: true)
+        return false
     }
 
     
