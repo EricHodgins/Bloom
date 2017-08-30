@@ -110,7 +110,8 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateWorkout" {
-            let createController = segue.destination as! CreateWorkoutController
+            let navController = segue.destination as! UINavigationController
+            let createController = navController.topViewController as! CreateWorkoutController
             createController.managedContext = managedContext
         }
         

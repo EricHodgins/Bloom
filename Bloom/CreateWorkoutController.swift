@@ -11,13 +11,19 @@ import CoreData
 
 class CreateWorkoutController: UIViewController {
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var tableViewContainerView: UIView!
+    @IBOutlet weak var findButton: GenericBloomButton!
+    @IBOutlet weak var createNewExcerciseButton: UIButton!
     
+    @IBOutlet weak var numberOfExcercisesLabel: UILabel!
     @IBOutlet weak var enterWorkoutNameContainerView: UIView!
     var excerciseView: AddExcerciseView!
 
     @IBOutlet weak var addExcerciseButton: UIButton!
+    var isAddingExcercise: Bool = false
     @IBOutlet weak var workoutNameTextfield: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,6 +45,9 @@ class CreateWorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isEditing = true
+        
+        findButton.isHidden = true
+        createNewExcerciseButton.isHidden = true
         
         // When Editing a existing workout
         if let name = workoutName {
@@ -122,21 +131,61 @@ class CreateWorkoutController: UIViewController {
     @IBAction func workoutNameCanceButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    //MARK: - Cancel Pressed
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    //MARK: - Save Pressed
     @IBAction func savePressed(_ sender: Any) {
         
         guard currentWorkout != nil else {
-            isCheckedAndTrimmedWorkoutNamePassed()
+            let _ = isCheckedAndTrimmedWorkoutNamePassed()
             saveWorkoutAndDismissController()
             return
         }
         
         saveWorkoutAndDismissController()
     }
+    
+    //MARK: - Done Pressed
+    @IBAction func donePressed(_ sender: Any) {
+        isAddingExcercise = false
+        UIView.animate(withDuration: 0.1) {
+            self.findButton.isHidden = true
+            self.createNewExcerciseButton.isHidden = true
+            self.addExcerciseButton.isHidden = false
+            self.numberOfExcercisesLabel.isHidden = false
+            self.saveButton.isEnabled = true
+            self.doneButton.isEnabled = false
+        }
+        
+        tableView.isEditing = true
+        for name in selectedExcercises {
+            if name != "" {
+                excercises.append(name)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func findButtonPressed(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.3) {
+            self.tableViewContainerView.alpha = 1
+        }
+        
+        isAddingExcercise = true
+        tableView.isEditing = false
+        selectedRows = Array(repeating: false, count: existingExcercises.count)
+        selectedExcercises = Array(repeating: "", count: existingExcercises.count)
+        tableView.reloadData()
+    }
+    
+    @IBAction func createNewExcerciseButtonPressed(_ sender: Any) {
+    }
+    
     
     func saveWorkoutAndDismissController() {
         // Save the workout and set it's excercises to the tableview
@@ -164,8 +213,27 @@ class CreateWorkoutController: UIViewController {
         }
     }
     
+    //MARK: - Add Excercise Button Pressed
     @IBAction func addExcercisePressed(_ sender: Any) {
-        addExcerciseView(withText: nil)
+        animateToAddingExcerciseView()
+        doneButton.isEnabled = true
+        saveButton.isEnabled = false
+        
+        isAddingExcercise = true
+        tableView.isEditing = false
+        selectedRows = Array(repeating: false, count: existingExcercises.count)
+        selectedExcercises = Array(repeating: "", count: existingExcercises.count)
+        tableView.reloadData()
+    }
+    
+    private func animateToAddingExcerciseView() {
+        self.tableViewContainerView.alpha = 0
+        UIView.animate(withDuration: 0.1) {
+            self.findButton.isHidden = false
+            self.createNewExcerciseButton.isHidden = false
+            self.addExcerciseButton.isHidden = true
+            self.numberOfExcercisesLabel.isHidden = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -297,7 +365,7 @@ extension CreateWorkoutController: UITextFieldDelegate {
                         return true
                     }
                     // Brand New Workout Named -> Create a new workout with this name
-                    self.navigationBar.topItem?.title = workoutName
+                    self.navigationController?.title = workoutName
                     self.currentWorkout = WorkoutTemplate(context: self.managedContext)
                     self.currentWorkout?.name = workoutName
                     
@@ -343,11 +411,11 @@ extension CreateWorkoutController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if !isAddingExcercise {
             return excercises.count
         }
         
-        if segmentedControl.selectedSegmentIndex == 1 {
+        if isAddingExcercise {
             return existingExcercises.count
         }
         
@@ -357,7 +425,7 @@ extension CreateWorkoutController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if !isAddingExcercise {
             let excercise = excercises[indexPath.row]
             
             cell.textLabel?.text = excercise
@@ -366,6 +434,7 @@ extension CreateWorkoutController: UITableViewDataSource {
         } else {
             let existing = existingExcercises[indexPath.row]
             cell.textLabel?.text = existing
+            cell.textLabel?.textColor = UIColor.white
             if selectedRows[indexPath.row] == true {
                 cell.accessoryType = .checkmark
             } else {
@@ -379,12 +448,12 @@ extension CreateWorkoutController: UITableViewDataSource {
 
 extension CreateWorkoutController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if !isAddingExcercise {
             let excercise = excercises[indexPath.row]
             addExcerciseView(withText: excercise)
         }
         
-        if segmentedControl.selectedSegmentIndex == 1 {
+        if isAddingExcercise {
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
                 selectedRows[indexPath.row] = true
@@ -394,7 +463,7 @@ extension CreateWorkoutController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if segmentedControl.selectedSegmentIndex == 1 {
+        if isAddingExcercise {
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .none
                 selectedRows[indexPath.row] = false
@@ -415,7 +484,7 @@ extension CreateWorkoutController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if !isAddingExcercise {
             let movedWorkout = excercises[sourceIndexPath.row]
             excercises.remove(at: sourceIndexPath.row)
             excercises.insert(movedWorkout, at: destinationIndexPath.row)

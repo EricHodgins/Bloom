@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -138,7 +139,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="IW1-7m-3vF" kind="presentation" identifier="CreateWorkout" id="otL-wJ-G1O"/>
+                                            <segue destination="1zT-FY-DAJ" kind="presentation" identifier="CreateWorkout" id="otL-wJ-G1O"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
@@ -351,70 +352,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-87-e4Z">
-                                <rect key="frame" x="0.0" y="293" width="375" height="374"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="RQZ-i4-PSY">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </tableViewCellContentView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3zc-qf-nOA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Excercises: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUo-7h-K5A">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-dx-JWJ" userLabel="TableViewContainerView">
+                                        <rect key="frame" x="0.0" y="57.5" width="375" height="482"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tVf-87-e4Z">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="482"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="5Wp-6Y-UZ5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </searchBar>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="RQZ-i4-PSY">
+                                                        <rect key="frame" x="0.0" y="72" width="375" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RQZ-i4-PSY" id="f1s-LO-Hfz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-lQ-BhY">
-                                <rect key="frame" x="111.5" y="182" width="152" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="+ Add Excercise">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addExcercisePressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="pzn-wh-qrN"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nbS-Xp-dfX">
-                                <rect key="frame" x="16" y="257" width="343" height="29"/>
-                                <segments>
-                                    <segment title="Chosen"/>
-                                    <segment title="Choose Excercises"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="segmentControllPressed:" destination="IW1-7m-3vF" eventType="valueChanged" id="kvG-Gq-VYf"/>
-                                </connections>
-                            </segmentedControl>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lE-Vn-Wyb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
-                                <color key="backgroundColor" red="0.0" green="0.60984051169999998" blue="0.47009506049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="tVf-87-e4Z" secondAttribute="bottom" id="FW2-jI-Blj"/>
+                                            <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="FnK-dx-JWJ" secondAttribute="top" id="HUK-EL-Coh"/>
+                                            <constraint firstItem="tVf-87-e4Z" firstAttribute="leading" secondItem="FnK-dx-JWJ" secondAttribute="leading" id="NGA-nz-W74"/>
+                                            <constraint firstAttribute="trailing" secondItem="tVf-87-e4Z" secondAttribute="trailing" id="tW9-3Q-MSz"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="6Ig-UG-S6v">
+                                        <rect key="frame" x="0.0" y="542.5" width="375" height="60.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJh-E0-vHI" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="123" height="60.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Find">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="1" green="0.1720513416638294" blue="0.015082935781968176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="1" green="0.48713419905241884" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="findButtonPressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="qs7-TZ-HQl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zu-JT-rjK" userLabel="CreateNewExcerciseButton" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="126" y="0.0" width="123" height="60.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="+Create New">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.65933494130000003" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.57936191558837891" green="0.69153285026550293" blue="0.99851924180984497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addExcercisePressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="1QP-bW-hbh"/>
+                                                    <action selector="createNewExcerciseButtonPressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="I3X-pX-PJW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMD-lQ-BhY" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="252" y="0.0" width="123" height="60.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="+ Add Excercise">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.02362398617" green="0.52082663770000004" blue="0.99858564139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.40671145920000001" green="0.8493874669" blue="0.99606269599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addExcercisePressed:" destination="IW1-7m-3vF" eventType="touchUpInside" id="pzn-wh-qrN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="ptC-l5-orH"/>
+                                    <constraint firstItem="ZUo-7h-K5A" firstAttribute="leading" secondItem="3zc-qf-nOA" secondAttribute="leading" id="6py-4k-MqH"/>
+                                    <constraint firstItem="ZUo-7h-K5A" firstAttribute="height" secondItem="3zc-qf-nOA" secondAttribute="height" multiplier="0.1" priority="750" id="A6M-3s-31R"/>
+                                    <constraint firstItem="6Ig-UG-S6v" firstAttribute="leading" secondItem="3zc-qf-nOA" secondAttribute="leading" id="CY6-Db-aVa"/>
+                                    <constraint firstItem="6Ig-UG-S6v" firstAttribute="height" secondItem="3zc-qf-nOA" secondAttribute="height" multiplier="0.1" id="G4m-dp-h1S"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZUo-7h-K5A" secondAttribute="trailing" id="Kkv-Xr-Fmt"/>
+                                    <constraint firstAttribute="trailing" secondItem="FnK-dx-JWJ" secondAttribute="trailing" id="TBb-bf-e3M"/>
+                                    <constraint firstItem="FnK-dx-JWJ" firstAttribute="leading" secondItem="3zc-qf-nOA" secondAttribute="leading" id="jNe-pF-izD"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ig-UG-S6v" secondAttribute="trailing" id="rnt-ex-FZt"/>
                                 </constraints>
-                                <items>
-                                    <navigationItem title="New Workout" id="sLu-e5-WJb">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="c7g-Py-qZa">
-                                            <color key="tintColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="cancelPressed:" destination="IW1-7m-3vF" id="jZp-H4-gHr"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="Eah-iP-aV4">
-                                            <connections>
-                                                <action selector="savePressed:" destination="IW1-7m-3vF" id="rtw-Rg-HKC"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTd-88-xQ5" userLabel="EnterWorkoutNameContainerView" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your Workout Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R7T-8c-Hiv">
                                         <rect key="frame" x="8" y="220" width="359" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="TC0-s7-lmT"/>
+                                        </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -425,10 +485,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="q01-5Y-hQg">
-                                        <rect key="frame" x="24" y="281" width="327" height="66.5"/>
+                                        <rect key="frame" x="24" y="281" width="327" height="38"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBo-OS-kdS" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="66.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -446,7 +506,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICR-7j-iH4" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="167.5" y="0.0" width="159.5" height="66.5"/>
+                                                <rect key="frame" x="167.5" y="0.0" width="159.5" height="38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Next">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -468,13 +528,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="R7T-8c-Hiv" secondAttribute="trailing" constant="8" id="4Wq-cx-sVw"/>
-                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="top" secondItem="zTd-88-xQ5" secondAttribute="top" constant="220" id="57Z-jg-YY9"/>
-                                    <constraint firstItem="q01-5Y-hQg" firstAttribute="leading" secondItem="zTd-88-xQ5" secondAttribute="leading" constant="24" id="66v-eX-EZb"/>
-                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="leading" secondItem="zTd-88-xQ5" secondAttribute="leading" constant="8" id="7Xi-DV-eCe"/>
-                                    <constraint firstItem="q01-5Y-hQg" firstAttribute="top" secondItem="R7T-8c-Hiv" secondAttribute="bottom" constant="35" id="8ih-FH-mcB"/>
-                                    <constraint firstAttribute="trailing" secondItem="q01-5Y-hQg" secondAttribute="trailing" constant="24" id="f2W-Pp-fN6"/>
-                                    <constraint firstItem="q01-5Y-hQg" firstAttribute="height" secondItem="zTd-88-xQ5" secondAttribute="height" multiplier="0.1" id="ym4-KI-qzt"/>
+                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="leading" secondItem="zTd-88-xQ5" secondAttribute="leadingMargin" id="ExU-Yu-xic"/>
+                                    <constraint firstItem="q01-5Y-hQg" firstAttribute="top" secondItem="R7T-8c-Hiv" secondAttribute="bottom" constant="35" id="Ldl-Ck-i2t"/>
+                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="centerX" secondItem="q01-5Y-hQg" secondAttribute="centerX" id="MwQ-58-Xjp"/>
+                                    <constraint firstItem="q01-5Y-hQg" firstAttribute="leading" secondItem="zTd-88-xQ5" secondAttribute="leading" constant="24" id="grN-iu-L5G"/>
+                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="trailing" secondItem="zTd-88-xQ5" secondAttribute="trailingMargin" id="nIs-I8-H1t"/>
+                                    <constraint firstItem="R7T-8c-Hiv" firstAttribute="top" secondItem="zTd-88-xQ5" secondAttribute="top" constant="220" id="x2m-4P-T0Q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -488,43 +547,60 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="tVf-87-e4Z" secondAttribute="trailing" id="1jl-nP-ODg"/>
-                            <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="nbS-Xp-dfX" secondAttribute="bottom" constant="8" id="5bg-hp-BeQ"/>
-                            <constraint firstAttribute="trailing" secondItem="zTd-88-xQ5" secondAttribute="trailing" id="BJ5-eM-GQ7"/>
-                            <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="tVf-87-e4Z" secondAttribute="bottom" id="EIb-ml-Yjx"/>
-                            <constraint firstAttribute="trailing" secondItem="0lE-Vn-Wyb" secondAttribute="trailing" id="JTv-gM-mkP"/>
-                            <constraint firstItem="tVf-87-e4Z" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="LPS-kZ-ldB"/>
-                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" constant="-20" id="MWO-B3-6Is"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="nbS-Xp-dfX" secondAttribute="leading" id="NHZ-KO-3ya"/>
-                            <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="zTd-88-xQ5" secondAttribute="bottom" id="SZm-dL-Sfk"/>
-                            <constraint firstItem="tVf-87-e4Z" firstAttribute="top" secondItem="uMD-lQ-BhY" secondAttribute="bottom" constant="73" id="V5D-FH-Pk1"/>
-                            <constraint firstItem="zTd-88-xQ5" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="ZW4-85-mOa"/>
-                            <constraint firstItem="zTd-88-xQ5" firstAttribute="top" secondItem="dOW-fH-4EG" secondAttribute="top" id="nQq-i7-pfA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nbS-Xp-dfX" secondAttribute="trailing" id="p3z-ea-uGO"/>
-                            <constraint firstItem="uMD-lQ-BhY" firstAttribute="centerX" secondItem="dOW-fH-4EG" secondAttribute="centerX" id="syH-8u-sQ8"/>
-                            <constraint firstItem="0lE-Vn-Wyb" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="x54-IO-jUw"/>
+                            <constraint firstAttribute="trailing" secondItem="3zc-qf-nOA" secondAttribute="trailing" id="KkD-cp-UZo"/>
+                            <constraint firstItem="zTd-88-xQ5" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" id="Yna-G6-wCe"/>
+                            <constraint firstItem="zTd-88-xQ5" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="fWG-4e-XnY"/>
+                            <constraint firstAttribute="trailing" secondItem="zTd-88-xQ5" secondAttribute="trailing" id="iMR-BX-j58"/>
+                            <constraint firstItem="UFe-uc-zPR" firstAttribute="top" secondItem="3zc-qf-nOA" secondAttribute="bottom" id="mGP-0x-VRc"/>
+                            <constraint firstItem="3zc-qf-nOA" firstAttribute="leading" secondItem="dOW-fH-4EG" secondAttribute="leading" id="oii-NJ-kKS"/>
+                            <constraint firstItem="3zc-qf-nOA" firstAttribute="top" secondItem="k9X-7g-SFb" secondAttribute="bottom" id="okU-4Z-wue"/>
+                            <constraint firstItem="zTd-88-xQ5" firstAttribute="bottom" secondItem="UFe-uc-zPR" secondAttribute="top" id="zYC-f4-tbO"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                 <color key="value" red="0.24410119652748108" green="0.62535160779953003" blue="0.57744663953781128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.47297006845474243" green="0.94084292650222778" blue="0.40712958574295044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.0" green="0.2088349937" blue="0.1237557747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" id="KDi-3L-cuQ">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="c7g-Py-qZa">
+                            <color key="tintColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="IW1-7m-3vF" id="jZp-H4-gHr"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Save" id="Eah-iP-aV4">
+                                <connections>
+                                    <action selector="savePressed:" destination="IW1-7m-3vF" id="rtw-Rg-HKC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="done" id="QT2-HT-Ueb">
+                                <connections>
+                                    <action selector="donePressed:" destination="IW1-7m-3vF" id="I1f-nQ-Ts1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addExcerciseButton" destination="uMD-lQ-BhY" id="aES-MZ-kgC"/>
+                        <outlet property="addExcerciseButton" destination="uMD-lQ-BhY" id="im3-ub-Z41"/>
+                        <outlet property="createNewExcerciseButton" destination="3zu-JT-rjK" id="NPM-hG-bN7"/>
+                        <outlet property="doneButton" destination="QT2-HT-Ueb" id="EB7-IA-1wJ"/>
                         <outlet property="enterWorkoutNameContainerView" destination="zTd-88-xQ5" id="Tiz-mF-TTC"/>
-                        <outlet property="navigationBar" destination="0lE-Vn-Wyb" id="eDi-bF-U3Z"/>
-                        <outlet property="segmentedControl" destination="nbS-Xp-dfX" id="2eP-bL-viX"/>
+                        <outlet property="findButton" destination="QJh-E0-vHI" id="pav-sj-HjV"/>
+                        <outlet property="numberOfExcercisesLabel" destination="ZUo-7h-K5A" id="VeQ-Me-e80"/>
+                        <outlet property="saveButton" destination="Eah-iP-aV4" id="Vtp-xg-rqA"/>
                         <outlet property="tableView" destination="tVf-87-e4Z" id="c7B-ff-y2b"/>
+                        <outlet property="tableViewContainerView" destination="FnK-dx-JWJ" id="eAR-Un-e3H"/>
                         <outlet property="workoutNameTextfield" destination="R7T-8c-Hiv" id="O63-cE-5MR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fS-VI-QQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-454.72263868065971"/>
+            <point key="canvasLocation" x="2831.1999999999998" y="-454.72263868065971"/>
         </scene>
         <!--Stats-->
         <scene sceneID="Uel-H4-adw">
@@ -1087,7 +1163,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="IW1-7m-3vF" kind="presentation" identifier="EditWorkout" id="Fop-YP-du9"/>
+                                    <segue destination="1zT-FY-DAJ" kind="presentation" identifier="EditWorkout" id="Fop-YP-du9"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-kZ-qpk" customClass="CountDownView" customModule="Bloom" customModuleProvider="target">
@@ -1206,7 +1282,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:29:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKD-ZL-zFB">
                                 <rect key="frame" x="143" y="20" width="89" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1803,6 +1879,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6Y-Tp-IhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3328.8000000000002" y="1808.5457271364319"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fXm-lH-1cm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1zT-FY-DAJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBk-0z-Hqp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IW1-7m-3vF" kind="relationship" relationship="rootViewController" id="JUd-7m-S1z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aC3-IX-mh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="-454.72263868065971"/>
         </scene>
     </scenes>
     <resources>
