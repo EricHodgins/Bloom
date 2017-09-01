@@ -363,6 +363,9 @@
                     <navigationItem key="navigationItem" title="New Workout" id="2M3-3D-fgL">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="jgs-Fw-xaK">
                             <color key="tintColor" red="1" green="0.1720513417" blue="0.015082935780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelPressed:" destination="Yyo-jw-jFz" id="THA-xX-YoJ"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="wgg-Mh-gOo"/>
                     </navigationItem>

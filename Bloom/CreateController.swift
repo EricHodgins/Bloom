@@ -28,6 +28,14 @@ class CreateController: UIViewController {
         super.viewDidAppear(true)
         nameWorkoutViewManager.animateLineSeparator()
     }
+    
+    @IBAction func cancelPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        view.setNeedsDisplay()
+    }
 }
 
 extension CreateController: NameWorkoutProtocol {
@@ -37,5 +45,27 @@ extension CreateController: NameWorkoutProtocol {
     
     func nextPressedFromNameWorkoutView() {
         print("Next Pressed.")
+        addExcerciseViewManager = AddExcerciseViewManager(controller: self)
     }
 }
+
+
+extension CreateController: AddExcerciseProtocol {
+    func addPressedFromAddExcerciseView() {
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
