@@ -11,7 +11,12 @@ import CoreData
 
 class CreateWorkoutController: UIViewController {
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var createStackView: UIStackView!
+    @IBOutlet weak var findCreateStackView: UIStackView!
+    @IBOutlet weak var mainStackViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var cancelStackButton: GenericBloomButton!
+    @IBOutlet weak var doneButton: GenericBloomButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var tableViewContainerView: UIView!
@@ -45,9 +50,13 @@ class CreateWorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isEditing = true
-        
+        createStackView.isHidden = true
+        findCreateStackView.isHidden = true
         findButton.isHidden = true
         createNewExcerciseButton.isHidden = true
+        
+        cancelStackButton.isHidden = true
+        doneButton.isHidden = true
         
         // When Editing a existing workout
         if let name = workoutName {
@@ -132,6 +141,22 @@ class CreateWorkoutController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    //MARK: - Cancel Stack Button Pressed
+    @IBAction func cancelStackButtonPressed(_ sender: Any) {
+        isAddingExcercise = false
+        self.createStackView.isHidden = true
+        UIView.animate(withDuration: 0.1) {
+            self.cancelStackButton.isHidden = true
+            self.doneButton.isHidden = true
+            self.numberOfExcercisesLabel.isHidden = false
+            self.addExcerciseButton.isHidden = false
+            self.saveButton.isEnabled = true
+        }
+        tableView.reloadData()
+        tableView.isEditing = true
+    }
+    
     //MARK: - Cancel Pressed
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -153,12 +178,11 @@ class CreateWorkoutController: UIViewController {
     @IBAction func donePressed(_ sender: Any) {
         isAddingExcercise = false
         UIView.animate(withDuration: 0.1) {
-            self.findButton.isHidden = true
-            self.createNewExcerciseButton.isHidden = true
+            self.cancelStackButton.isHidden = true
+            self.doneButton.isHidden = true
             self.addExcerciseButton.isHidden = false
             self.numberOfExcercisesLabel.isHidden = false
             self.saveButton.isEnabled = true
-            self.doneButton.isEnabled = false
         }
         
         tableView.isEditing = true
@@ -170,10 +194,19 @@ class CreateWorkoutController: UIViewController {
         tableView.reloadData()
     }
     
+    //MARK: - Find Pressed
     @IBAction func findButtonPressed(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.0) {
+            self.findCreateStackView.isHidden = true
+            self.findButton.isHidden = true
+            self.createNewExcerciseButton.isHidden = true
+        }
+        
+        UIView.animate(withDuration: 0.1) {
             self.tableViewContainerView.alpha = 1
+            self.cancelStackButton.isHidden = false
+            self.doneButton.isHidden = false
         }
         
         isAddingExcercise = true
@@ -183,7 +216,16 @@ class CreateWorkoutController: UIViewController {
         tableView.reloadData()
     }
     
+    //MARK: - Create New Excercise
     @IBAction func createNewExcerciseButtonPressed(_ sender: Any) {
+        findCreateStackView.isHidden = true
+        findButton.isHidden = true
+        createNewExcerciseButton.isHidden = true
+        createStackView.isHidden = false
+        UIView.animate(withDuration: 0.1) {
+            self.cancelStackButton.isHidden = false
+            self.doneButton.isHidden = false
+        }
     }
     
     
@@ -216,8 +258,6 @@ class CreateWorkoutController: UIViewController {
     //MARK: - Add Excercise Button Pressed
     @IBAction func addExcercisePressed(_ sender: Any) {
         animateToAddingExcerciseView()
-        doneButton.isEnabled = true
-        saveButton.isEnabled = false
         
         isAddingExcercise = true
         tableView.isEditing = false
@@ -228,12 +268,17 @@ class CreateWorkoutController: UIViewController {
     
     private func animateToAddingExcerciseView() {
         self.tableViewContainerView.alpha = 0
-        UIView.animate(withDuration: 0.1) {
+        self.addExcerciseButton.isHidden = true
+        self.numberOfExcercisesLabel.isHidden = true
+        self.findCreateStackView.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             self.findButton.isHidden = false
-            self.createNewExcerciseButton.isHidden = false
-            self.addExcerciseButton.isHidden = true
-            self.numberOfExcercisesLabel.isHidden = true
-        }
+        }, completion: { (isDone) in
+            UIView.animate(withDuration: 0.1, animations: { 
+                self.createNewExcerciseButton.isHidden = false
+            })
+        })
     }
     
     override func viewDidLayoutSubviews() {
