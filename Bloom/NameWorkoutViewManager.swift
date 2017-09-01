@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol NameWorkoutProtocol: class {
+    func cancelPressedFromNameWorkoutView()
+    func nextPressedFromNameWorkoutView()
+}
+
 class NameWorkoutViewManager {
     
     let view: UIView
@@ -15,6 +20,8 @@ class NameWorkoutViewManager {
     var lineSeparator: UIView!
     var cancelButton: GenericBloomButton!
     var nextButton: GenericBloomButton!
+    
+    weak var delegate: NameWorkoutProtocol?
     
     init(view: UIView) {
         self.view = view
@@ -67,6 +74,8 @@ class NameWorkoutViewManager {
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         
+        cancelButton.addTarget(self, action: #selector(NameWorkoutViewManager.cancelPushed), for: .touchUpInside)
+        
         view.addSubview(cancelButton)
         cancelButton.setup() // This Draws the button to screen.
         
@@ -87,6 +96,8 @@ class NameWorkoutViewManager {
         nextButton.setTitleColor(UIColor.white, for: .normal)
         nextButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         
+        nextButton.addTarget(self, action: #selector(NameWorkoutViewManager.nextPushed), for: .touchUpInside)
+        
         view.addSubview(nextButton)
         nextButton.setup() // This Draws the button to screen.
         
@@ -98,11 +109,48 @@ class NameWorkoutViewManager {
         ])
     }
     
+    @objc fileprivate func cancelPushed() {
+        delegate?.cancelPressedFromNameWorkoutView()
+    }
+    
+    @objc fileprivate func nextPushed() {
+        animateButtonsFromView { 
+            self.delegate?.nextPressedFromNameWorkoutView()
+        }
+    }
+    
     public func animateLineSeparator() {
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
             let scaleX = CGFloat(self.view.bounds.size.width * 0.9)
             self.lineSeparator.transform = CGAffineTransform(scaleX: scaleX, y: 2)
         }, completion: nil)
+    }
+    
+    private func animateButtonsFromView(completion: (() -> Void)?) {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                self.cancelButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+                self.nextButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+                self.lineSeparator.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+                self.textField.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+                self.cancelButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                self.nextButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                self.lineSeparator.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+                self.textField.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+            })
+            
+        }, completion: {_ in
+            self.lineSeparator.removeFromSuperview()
+            self.textField.removeFromSuperview()
+            self.cancelButton.removeFromSuperview()
+            self.nextButton.removeFromSuperview()
+            completion?()
+        })
     }
 }
 

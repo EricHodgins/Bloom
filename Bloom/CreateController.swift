@@ -21,10 +21,21 @@ class CreateController: UIViewController {
         super.viewDidLoad()
 
         nameWorkoutViewManager = NameWorkoutViewManager(view: self.view)
+        nameWorkoutViewManager.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         nameWorkoutViewManager.animateLineSeparator()
+    }
+}
+
+extension CreateController: NameWorkoutProtocol {
+    func cancelPressedFromNameWorkoutView() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func nextPressedFromNameWorkoutView() {
+        print("Next Pressed.")
     }
 }
