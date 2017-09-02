@@ -25,9 +25,8 @@ class AddExcerciseViewManager {
     init(controller: CreateController) {
         self.view = controller.view
         self.controller = controller
-        setupNumberOfExcercisesLabel()
         setupAddExcerciseButton()
-        setupTableView()
+        animateAddButtonOnScreen()
     }
     
     private func setupNumberOfExcercisesLabel() {
@@ -84,11 +83,13 @@ class AddExcerciseViewManager {
             addExcercisesButton.leftAnchor.constraint(equalTo: view.leftAnchor),
             addExcercisesButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        addExcercisesButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
     }
     
     @objc private func addPushed() {
 
-        animate() {
+        animateAddButtonOffScreen() {
             self.tableView.removeFromSuperview()
             self.numberLabel.removeFromSuperview()
             self.addExcercisesButton.removeFromSuperview()
@@ -96,7 +97,25 @@ class AddExcerciseViewManager {
         }
     }
     
-    private func animate(completion: (() -> Void)?) {
+    //MARK: - Animations
+    private func animateAddButtonOnScreen() {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                self.addExcercisesButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+                self.addExcercisesButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            })
+            
+        }, completion: {_ in
+            self.setupNumberOfExcercisesLabel()
+            self.setupTableView()
+        })
+    }
+    
+    private func animateAddButtonOffScreen(completion: (() -> Void)?) {
         
         UIView.animate(withDuration: 0.1) { 
             self.tableView.alpha = 0

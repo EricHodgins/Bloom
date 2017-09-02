@@ -83,7 +83,7 @@ class NameWorkoutViewManager {
             cancelButton.topAnchor.constraint(equalTo: lineSeparator.bottomAnchor, constant: 8),
             cancelButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             cancelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
-            cancelButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5, constant: -16)
+            cancelButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5, constant: -12)
         ])
     }
     
@@ -105,7 +105,7 @@ class NameWorkoutViewManager {
             nextButton.topAnchor.constraint(equalTo: lineSeparator.bottomAnchor, constant: 8),
             nextButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
-            nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5, constant: -16)
+            nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5, constant: -12)
         ])
     }
     
@@ -127,6 +127,13 @@ class NameWorkoutViewManager {
     }
     
     private func animateButtonsFromView(completion: (() -> Void)?) {
+        
+        UIView.animate(withDuration: 0.25) {
+            let yCoord: CGFloat = self.view.frame.height - (self.cancelButton.frame.height / 2)
+            self.cancelButton.center = CGPoint(x: self.cancelButton.center.x, y: yCoord)
+            self.nextButton.center = CGPoint(x: self.nextButton.center.x, y: yCoord)
+        }
+        
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
             
             

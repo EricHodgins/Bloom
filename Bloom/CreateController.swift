@@ -66,22 +66,35 @@ extension CreateController: FindAndCreateViewProtocol {
     }
     
     func createButtonPressed() {
-        
+        createViewManager = CreateViewManager(view: view)
+        createViewManager.delegate = self
     }
 }
 
 extension CreateController: FindViewManagerProtocol {
     func cancelPressedFromFindViewManager() {
-        print("Cancel pressed.")
+        addExcerciseViewManager = AddExcerciseViewManager(controller: self)
+        addExcerciseViewManager.delegate = self
     }
     
     func donePressedFromFindViewManager() {
-        
+        addExcerciseViewManager = AddExcerciseViewManager(controller: self)
+        addExcerciseViewManager.delegate = self
     }
     
 }
 
-
+extension CreateController: CreateViewManagerDelegate {
+    func cancelPressedFromCreateView() {
+        addExcerciseViewManager = AddExcerciseViewManager(controller: self)
+        addExcerciseViewManager.delegate = self
+    }
+    
+    func donePressedFromCreateView() {
+        addExcerciseViewManager = AddExcerciseViewManager(controller: self)
+        addExcerciseViewManager.delegate = self
+    }
+}
 
 
 

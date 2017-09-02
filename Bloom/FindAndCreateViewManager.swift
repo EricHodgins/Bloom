@@ -60,7 +60,7 @@ class FindAndCreateViewManager {
         createButton.setTitleColor(UIColor.white, for: .normal)
         createButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         
-        createButton.addTarget(self, action: #selector(FindAndCreateViewManager.findPushed), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(FindAndCreateViewManager.createPushed), for: .touchUpInside)
         
         view.addSubview(createButton)
         createButton.setup() // This Draws the button to screen.
