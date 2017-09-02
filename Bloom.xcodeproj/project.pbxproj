@@ -52,6 +52,7 @@
 		7A7FD8291F58F1D700B87269 /* AddExcerciseViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD8281F58F1D700B87269 /* AddExcerciseViewManager.swift */; };
 		7A7FD82B1F58F26C00B87269 /* FindViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD82A1F58F26C00B87269 /* FindViewManager.swift */; };
 		7A7FD82D1F58F27700B87269 /* CreateViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */; };
+		7A7FD82F1F5A339700B87269 /* FindAndCreateViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD82E1F5A339700B87269 /* FindAndCreateViewManager.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
@@ -205,6 +206,7 @@
 		7A7FD8281F58F1D700B87269 /* AddExcerciseViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExcerciseViewManager.swift; sourceTree = "<group>"; };
 		7A7FD82A1F58F26C00B87269 /* FindViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewManager.swift; sourceTree = "<group>"; };
 		7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewManager.swift; sourceTree = "<group>"; };
+		7A7FD82E1F5A339700B87269 /* FindAndCreateViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAndCreateViewManager.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -419,6 +421,7 @@
 				7A7FD8241F58EFCA00B87269 /* CreateController.swift */,
 				7A7FD8261F58F1A200B87269 /* NameWorkoutViewManager.swift */,
 				7A7FD8281F58F1D700B87269 /* AddExcerciseViewManager.swift */,
+				7A7FD82E1F5A339700B87269 /* FindAndCreateViewManager.swift */,
 				7A7FD82A1F58F26C00B87269 /* FindViewManager.swift */,
 				7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */,
 			);
@@ -832,6 +835,7 @@
 				7A4065481EDF51490024724C /* SummaryViewController.swift in Sources */,
 				7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */,
 				7AC184031E20BBE80019AB2F /* LiveExcerciseListController.swift in Sources */,
+				7A7FD82F1F5A339700B87269 /* FindAndCreateViewManager.swift in Sources */,
 				7A4065461EDF4FB00024724C /* GraphViewController.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */,

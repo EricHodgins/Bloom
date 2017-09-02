@@ -14,6 +14,7 @@ class CreateController: UIViewController {
     
     var nameWorkoutViewManager: NameWorkoutViewManager!
     var addExcerciseViewManager: AddExcerciseViewManager!
+    var findAndCreateViewManager: FindAndCreateViewManager!
     var findViewManager: FindViewManager!
     var createViewManager: CreateViewManager!
 
@@ -46,15 +47,57 @@ extension CreateController: NameWorkoutProtocol {
     func nextPressedFromNameWorkoutView() {
         print("Next Pressed.")
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
+        addExcerciseViewManager.delegate = self
     }
 }
 
 
 extension CreateController: AddExcerciseProtocol {
     func addPressedFromAddExcerciseView() {
-    
+        findAndCreateViewManager = FindAndCreateViewManager(view: view)
+        findAndCreateViewManager.delegate = self
     }
 }
+
+
+extension CreateController: FindAndCreateViewProtocol {
+    func findButtonPressed() {
+        findViewManager = FindViewManager(controller: self)
+    }
+    
+    func createButtonPressed() {
+        
+    }
+}
+
+extension CreateController: FindViewManagerProtocol {
+    func cancelPressedFromFindViewManager() {
+        print("Cancel pressed.")
+    }
+    
+    func donePressedFromFindViewManager() {
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
