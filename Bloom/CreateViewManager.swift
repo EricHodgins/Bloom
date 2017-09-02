@@ -191,8 +191,8 @@ class CreateViewManager {
     private func setupCancelButton() {
         cancelButton = GenericBloomButton()
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.startColor = UIColor.red
-        cancelButton.endColor = UIColor.orange
+        cancelButton.startColor = UIColor.cancelStart
+        cancelButton.endColor = UIColor.cancelEnd
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.lightGray, for: .highlighted)
@@ -215,8 +215,8 @@ class CreateViewManager {
     private func setupDoneButton() {
         doneButton = GenericBloomButton()
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.startColor = UIColor.blue
-        doneButton.endColor = UIColor.white
+        doneButton.startColor = UIColor.doneStart
+        doneButton.endColor = UIColor.doneEnd
         doneButton.setTitle("Done", for: .normal)
         doneButton.setTitleColor(UIColor.white, for: .normal)
         doneButton.setTitleColor(UIColor.lightGray, for: .highlighted)

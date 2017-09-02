@@ -30,8 +30,8 @@ class FindAndCreateViewManager {
     private func setupFindButton() {
         findButton = GenericBloomButton()
         findButton.translatesAutoresizingMaskIntoConstraints = false
-        findButton.startColor = UIColor.red
-        findButton.endColor = UIColor.orange
+        findButton.startColor = UIColor.findStart
+        findButton.endColor = UIColor.findEnd
         findButton.setTitle("Find", for: .normal)
         findButton.setTitleColor(UIColor.white, for: .normal)
         findButton.setTitleColor(UIColor.lightGray, for: .highlighted)
@@ -54,8 +54,8 @@ class FindAndCreateViewManager {
     private func setupCreateButton() {
         createButton = GenericBloomButton()
         createButton.translatesAutoresizingMaskIntoConstraints = false
-        createButton.startColor = UIColor.purple
-        createButton.endColor = UIColor.blue
+        createButton.startColor = UIColor.createStart
+        createButton.endColor = UIColor.createEnd
         createButton.setTitle("Create", for: .normal)
         createButton.setTitleColor(UIColor.white, for: .normal)
         createButton.setTitleColor(UIColor.lightGray, for: .highlighted)

@@ -66,8 +66,8 @@ class AddExcerciseViewManager {
     private func setupAddExcerciseButton() {
         addExcercisesButton = GenericBloomButton()
         addExcercisesButton.translatesAutoresizingMaskIntoConstraints = false
-        addExcercisesButton.startColor = UIColor.blue
-        addExcercisesButton.endColor = UIColor.white
+        addExcercisesButton.startColor = UIColor.addStart
+        addExcercisesButton.endColor = UIColor.addEnd
         addExcercisesButton.setTitle("Add Excercise", for: .normal)
         addExcercisesButton.setTitleColor(UIColor.white, for: .normal)
         addExcercisesButton.setTitleColor(UIColor.lightGray, for: .highlighted)

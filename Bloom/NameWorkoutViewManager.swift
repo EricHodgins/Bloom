@@ -68,8 +68,8 @@ class NameWorkoutViewManager {
     fileprivate func setupCancelButton() {
         cancelButton = GenericBloomButton()
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.startColor = UIColor.red
-        cancelButton.endColor = UIColor.orange
+        cancelButton.startColor = UIColor.cancelStart
+        cancelButton.endColor = UIColor.cancelEnd
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.lightGray, for: .highlighted)
@@ -90,8 +90,8 @@ class NameWorkoutViewManager {
     fileprivate func setupNextButton() {
         nextButton = GenericBloomButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.startColor = UIColor.blue
-        nextButton.endColor = UIColor.white
+        nextButton.startColor = UIColor.nextStart
+        nextButton.endColor = UIColor.nextEnd
         nextButton.setTitle("Next", for: .normal)
         nextButton.setTitleColor(UIColor.white, for: .normal)
         nextButton.setTitleColor(UIColor.lightGray, for: .highlighted)

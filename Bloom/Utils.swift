@@ -115,7 +115,27 @@ extension NSDate {
     }
 }
 
+// MARK: - UIColor App Extension
 
+extension UIColor {
+    static let cancelStart = #colorLiteral(red: 1, green: 0.3333333333, blue: 0.01176470588, alpha: 1)
+    static let cancelEnd = #colorLiteral(red: 1, green: 0.4392156863, blue: 0.7333333333, alpha: 1)
+    
+    static let doneStart = #colorLiteral(red: 0.02352941176, green: 0.5215686275, blue: 1, alpha: 1)
+    static let doneEnd = #colorLiteral(red: 0.3921568627, green: 0.8392156863, blue: 1, alpha: 1)
+    
+    static let nextStart = #colorLiteral(red: 0.02352941176, green: 0.4392156863, blue: 0.7333333333, alpha: 1)
+    static let nextEnd = #colorLiteral(red: 0.4078431373, green: 0.8509803922, blue: 0.9960784314, alpha: 1)
+    
+    static let addStart = #colorLiteral(red: 0.2431372549, green: 0.6235294118, blue: 0.5764705882, alpha: 1)
+    static let addEnd = #colorLiteral(red: 0.4078431373, green: 0.8509803922, blue: 0.9960784314, alpha: 1)
+    
+    static let findStart = #colorLiteral(red: 1, green: 0.1725490196, blue: 0.01568627451, alpha: 1)
+    static let findEnd = #colorLiteral(red: 1, green: 0.4862745098, blue: 0, alpha: 1)
+    
+    static let createStart = #colorLiteral(red: 0.6588235294, green: 0, blue: 1, alpha: 1)
+    static let createEnd = #colorLiteral(red: 0.5803921569, green: 0.6901960784, blue: 1, alpha: 1)
+}
 
 
 
