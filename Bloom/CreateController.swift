@@ -20,7 +20,6 @@ class CreateController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         nameWorkoutViewManager = NameWorkoutViewManager(view: self.view)
         nameWorkoutViewManager.delegate = self
     }
@@ -39,6 +38,7 @@ class CreateController: UIViewController {
     }
 }
 
+//MARK: - Name Workout
 extension CreateController: NameWorkoutProtocol {
     func cancelPressedFromNameWorkoutView() {
         dismiss(animated: true, completion: nil)
@@ -51,7 +51,7 @@ extension CreateController: NameWorkoutProtocol {
     }
 }
 
-
+//MARK: - Add Excercise
 extension CreateController: AddExcerciseProtocol {
     func addPressedFromAddExcerciseView() {
         findAndCreateViewManager = FindAndCreateViewManager(view: view)
@@ -59,18 +59,20 @@ extension CreateController: AddExcerciseProtocol {
     }
 }
 
-
+//MARK: - Find or Create
 extension CreateController: FindAndCreateViewProtocol {
     func findButtonPressed() {
         findViewManager = FindViewManager(controller: self)
+        findViewManager.delegate = self
     }
     
     func createButtonPressed() {
-        createViewManager = CreateViewManager(view: view)
+        createViewManager = CreateViewManager(controller: self)
         createViewManager.delegate = self
     }
 }
 
+//MARK: - Find
 extension CreateController: FindViewManagerProtocol {
     func cancelPressedFromFindViewManager() {
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
@@ -84,6 +86,7 @@ extension CreateController: FindViewManagerProtocol {
     
 }
 
+//MARK: - Create
 extension CreateController: CreateViewManagerDelegate {
     func cancelPressedFromCreateView() {
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)

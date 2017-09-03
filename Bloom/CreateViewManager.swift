@@ -32,8 +32,8 @@ class CreateViewManager {
     
     let view: UIView
     
-    init(view: UIView) {
-        self.view = view
+    init(controller: CreateController) {
+        self.view = controller.view
         setupCancelButton()
         setupDoneButton()
         animateButtonsOnScreen()

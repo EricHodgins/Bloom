@@ -22,6 +22,7 @@ class FindViewManager {
     let controller: CreateController
     
     weak var delegate: FindViewManagerProtocol?
+    var createDataManager: CreateDataManager!
     
     init(controller: CreateController) {
         self.view = controller.view
@@ -87,6 +88,8 @@ class FindViewManager {
         
         tableView.backgroundColor = UIColor.clear
         
+        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: true, tableView: tableView)
+        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -148,6 +151,7 @@ class FindViewManager {
             completion?()
         })
     }
+
 }
 
 
