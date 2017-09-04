@@ -2,14 +2,23 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Excercise" representedClassName=".Excercise" syncable="YES" codeGenerationType="class">
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingDistance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingReps" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingSets" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingWeight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="orderNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reps" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timeRecorded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weight" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Workout" inverseName="excercises" inverseEntity="Workout" syncable="YES"/>
     </entity>
     <entity name="ExcerciseTemplate" representedClassName=".ExcerciseTemplate" syncable="YES" codeGenerationType="class">
+        <attribute name="isRecordingDistance" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingReps" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingSets" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRecordingWeight" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="orderNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutTemplate" inverseName="excercises" inverseEntity="WorkoutTemplate" syncable="YES"/>
@@ -32,8 +41,8 @@
         <relationship name="excercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExcerciseTemplate" inverseName="workout" inverseEntity="ExcerciseTemplate" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Excercise" positionX="-27" positionY="-36" width="128" height="150"/>
-        <element name="ExcerciseTemplate" positionX="43" positionY="-171" width="128" height="90"/>
+        <element name="Excercise" positionX="-27" positionY="-36" width="128" height="225"/>
+        <element name="ExcerciseTemplate" positionX="43" positionY="-171" width="128" height="150"/>
         <element name="Location" positionX="-36" positionY="138" width="128" height="105"/>
         <element name="Workout" positionX="-218" positionY="60" width="128" height="120"/>
         <element name="WorkoutTemplate" positionX="-144" positionY="-171" width="128" height="75"/>

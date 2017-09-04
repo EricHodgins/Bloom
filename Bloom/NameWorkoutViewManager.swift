@@ -10,12 +10,13 @@ import UIKit
 
 protocol NameWorkoutProtocol: class {
     func cancelPressedFromNameWorkoutView()
-    func nextPressedFromNameWorkoutView()
+    func nextPressedFromNameWorkoutView(withName name: String)
 }
 
 class NameWorkoutViewManager {
     
     let view: UIView
+    var controller: CreateController!
     var textField: UITextField!
     var lineSeparator: UIView!
     var cancelButton: GenericBloomButton!
@@ -23,8 +24,9 @@ class NameWorkoutViewManager {
     
     weak var delegate: NameWorkoutProtocol?
     
-    init(view: UIView) {
-        self.view = view
+    init(controller: CreateController) {
+        self.view = controller.view
+        self.controller = controller
         setupTextField()
         setupLineSeparator()
         setupCancelButton()
@@ -40,6 +42,7 @@ class NameWorkoutViewManager {
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(16, 0, 0)
         textField.attributedPlaceholder = NSAttributedString(string: "Name Your Workout",
                                                              attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        textField.delegate = controller
         view.addSubview(textField)
         
         NSLayoutConstraint.activate([
@@ -114,8 +117,18 @@ class NameWorkoutViewManager {
     }
     
     @objc fileprivate func nextPushed() {
-        animateButtonsFromView { 
-            self.delegate?.nextPressedFromNameWorkoutView()
+        
+        let name = textField.text
+        let validation = controller.update(workoutName: name)
+        
+        if validation == .pass {
+            animateButtonsFromView() {
+                self.lineSeparator.removeFromSuperview()
+                self.textField.removeFromSuperview()
+                self.cancelButton.removeFromSuperview()
+                self.nextButton.removeFromSuperview()
+                self.delegate?.nextPressedFromNameWorkoutView(withName: name!)
+            }
         }
     }
     
@@ -128,13 +141,13 @@ class NameWorkoutViewManager {
     
     private func animateButtonsFromView(completion: (() -> Void)?) {
         
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25) { 
             let yCoord: CGFloat = self.view.frame.height - (self.cancelButton.frame.height / 2)
             self.cancelButton.center = CGPoint(x: self.cancelButton.center.x, y: yCoord)
             self.nextButton.center = CGPoint(x: self.nextButton.center.x, y: yCoord)
         }
-        
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, options: [], animations: {
             
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
@@ -152,10 +165,6 @@ class NameWorkoutViewManager {
             })
             
         }, completion: {_ in
-            self.lineSeparator.removeFromSuperview()
-            self.textField.removeFromSuperview()
-            self.cancelButton.removeFromSuperview()
-            self.nextButton.removeFromSuperview()
             completion?()
         })
     }

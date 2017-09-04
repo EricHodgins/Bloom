@@ -183,8 +183,9 @@ class BloomFilter {
         return workout.first!
     }
     
-    class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [String]? {
+    class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseTemplate]? {
         let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ExcerciseTemplate.name), ascending: true)]
         
         var excercises: [ExcerciseTemplate] = []
         do {
@@ -194,17 +195,22 @@ class BloomFilter {
         }
         
         guard excercises.count != 0 else { return nil }
-        
-        var names: [String] = []
-        for excercise in excercises {
-            names.append(excercise.name!)
+        var uniqueExcercises: [ExcerciseTemplate] = []
+        var set = Set<String>()
+        for template in excercises {
+            if let excerciseName = template.name,
+                !set.contains(excerciseName) {
+                set.insert(excerciseName)
+                let newTemplate = ExcerciseTemplate(context: managedContext)
+                newTemplate.name = excerciseName
+                newTemplate.isRecordingReps = template.isRecordingReps
+                newTemplate.isRecordingSets = template.isRecordingSets
+                newTemplate.isRecordingWeight = template.isRecordingWeight
+                newTemplate.isRecordingDistance = template.isRecordingDistance
+                uniqueExcercises.append(newTemplate)
+            }
         }
-        
-        let setNames = Set(names)
-        var arrayNames = Array(setNames)
-        arrayNames.sort()
-        
-        return arrayNames
+        return uniqueExcercises
     }
     
     //MARK: - Location Queries

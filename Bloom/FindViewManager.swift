@@ -10,7 +10,7 @@ import UIKit
 
 protocol FindViewManagerProtocol: class {
     func cancelPressedFromFindViewManager()
-    func donePressedFromFindViewManager()
+    func donePressedFromFindViewManager(withFoundExcerciseTemplates pickedExcercises: [ExcerciseTemplate]?)
 }
 
 
@@ -88,7 +88,7 @@ class FindViewManager {
         
         tableView.backgroundColor = UIColor.clear
         
-        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: true, tableView: tableView)
+        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: true, tableView: tableView, withExcerciseTemplates: nil)
         
         view.addSubview(tableView)
         
@@ -107,8 +107,9 @@ class FindViewManager {
     }
     
     @objc func donePressed() {
-        animateButtonsOffScreen { 
-            self.delegate?.donePressedFromFindViewManager()
+        animateButtonsOffScreen {
+            let templates = self.createDataManager.fetchChosenExercises()
+            self.delegate?.donePressedFromFindViewManager(withFoundExcerciseTemplates: templates)
         }
     }
     

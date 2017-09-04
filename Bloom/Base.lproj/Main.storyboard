@@ -367,8 +367,15 @@
                                 <action selector="cancelPressed:" destination="Yyo-jw-jFz" id="THA-xX-YoJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="wgg-Mh-gOo"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="wgg-Mh-gOo">
+                            <connections>
+                                <action selector="savePressed:" destination="Yyo-jw-jFz" id="DXU-xh-8oQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="wgg-Mh-gOo" id="mYR-jG-gYi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUr-jR-1lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1500,6 +1507,9 @@
                                         <color key="value" red="0.39428913593292236" green="0.84127384424209595" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="avR-dH-UFH" kind="presentation" identifier="EditWorkout" id="Tcu-ra-Bxx"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-kZ-qpk" customClass="CountDownView" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="16" y="180" width="343" height="359"/>
@@ -2242,5 +2252,6 @@
         <segue reference="DCD-pO-VED"/>
         <segue reference="0m2-Wk-kTV"/>
         <segue reference="rrC-hf-91z"/>
+        <segue reference="Tcu-ra-Bxx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -23,6 +23,7 @@ class StartWorkoutController: UIViewController, CountDown {
     
     var ringAnimationInterval: Int = 3
     var workoutName: String!
+    var workoutTemplate: WorkoutTemplate!
     
     var managedContext: NSManagedObjectContext!
 
@@ -70,9 +71,10 @@ extension StartWorkoutController {
         }
         
         if segue.identifier == "EditWorkout" {
-            let editWorkoutController = segue.destination as! CreateWorkoutController
+            let nav = segue.destination as! UINavigationController
+            let editWorkoutController = nav.topViewController as! CreateController
             editWorkoutController.managedContext = managedContext
-            editWorkoutController.workoutName = workoutName
+            editWorkoutController.workout = workoutTemplate
             editWorkoutController.isEditingExistingWorkout = true
         }
     }

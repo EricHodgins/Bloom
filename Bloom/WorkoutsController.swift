@@ -92,6 +92,7 @@ extension WorkoutsController: UITableViewDelegate {
             let startWorkoutController = segue.destination as! StartWorkoutController
             
             startWorkoutController.workoutName = workoutTemplate.name
+            startWorkoutController.workoutTemplate = workoutTemplate
             startWorkoutController.managedContext = managedContext
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddExcerciseProtocol: class {
     func addPressedFromAddExcerciseView()
+    func cellSelectedToEditFromAddExcerciseView(excercise: ExcerciseTemplate)
 }
 
 class AddExcerciseViewManager {
@@ -21,6 +22,8 @@ class AddExcerciseViewManager {
     let view: UIView
     
     weak var delegate: AddExcerciseProtocol?
+    weak var createManagerTableViewDelegate: CreateDataManagerDelegate?
+    var createDataManager: CreateDataManager!
     
     init(controller: CreateController) {
         self.view = controller.view
@@ -32,7 +35,7 @@ class AddExcerciseViewManager {
     private func setupNumberOfExcercisesLabel() {
         numberLabel = UILabel()
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
-        numberLabel.text = "Number of Excercises: 0"
+        numberLabel.text = "Number of Excercises: \(controller.currentExcercises.count)"
         numberLabel.textColor = UIColor.white
         numberLabel.font = .systemFont(ofSize: 21)
         
@@ -52,6 +55,9 @@ class AddExcerciseViewManager {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         tableView.backgroundColor = UIColor.clear
+        
+        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: false, tableView: tableView, withExcerciseTemplates: controller.currentExcercises)
+        createDataManager.delegate = self
         
         view.addSubview(tableView)
         
@@ -97,6 +103,10 @@ class AddExcerciseViewManager {
         }
     }
     
+    public func choosenExcercises() -> [ExcerciseTemplate]? {
+        return createDataManager.fetchChosenExercises()
+    }
+    
     //MARK: - Animations
     private func animateAddButtonOnScreen() {
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
@@ -115,7 +125,7 @@ class AddExcerciseViewManager {
         })
     }
     
-    private func animateAddButtonOffScreen(completion: (() -> Void)?) {
+    fileprivate func animateAddButtonOffScreen(completion: (() -> Void)?) {
         
         UIView.animate(withDuration: 0.1) { 
             self.tableView.alpha = 0
@@ -143,7 +153,16 @@ class AddExcerciseViewManager {
 }
 
 
-
+extension AddExcerciseViewManager: CreateDataManagerDelegate {
+    func createDataManagerCellSelectedInAddExcerciseView(excerciseTemplate: ExcerciseTemplate) {
+        animateAddButtonOffScreen { 
+            self.tableView.removeFromSuperview()
+            self.numberLabel.removeFromSuperview()
+            self.addExcercisesButton.removeFromSuperview()
+            self.delegate?.cellSelectedToEditFromAddExcerciseView(excercise: excerciseTemplate)
+        }
+    }
+}
 
 
 

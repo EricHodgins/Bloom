@@ -54,6 +54,7 @@
 		7A7FD82D1F58F27700B87269 /* CreateViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */; };
 		7A7FD82F1F5A339700B87269 /* FindAndCreateViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD82E1F5A339700B87269 /* FindAndCreateViewManager.swift */; };
 		7A7FD8311F5B649800B87269 /* CreateDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD8301F5B649700B87269 /* CreateDataManager.swift */; };
+		7A7FD8371F5C9E4300B87269 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7FD8361F5C9E4300B87269 /* Validate.swift */; };
 		7A8396B51E18DE78006CE5FB /* LiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */; };
 		7A83F94D1E1228FC00451BBA /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A83F94C1E1228FC00451BBA /* CountDownView.swift */; };
 		7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84F9411DFE761D00A37C80 /* AppDelegate.swift */; };
@@ -209,6 +210,7 @@
 		7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewManager.swift; sourceTree = "<group>"; };
 		7A7FD82E1F5A339700B87269 /* FindAndCreateViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAndCreateViewManager.swift; sourceTree = "<group>"; };
 		7A7FD8301F5B649700B87269 /* CreateDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDataManager.swift; sourceTree = "<group>"; };
+		7A7FD8361F5C9E4300B87269 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		7A8396B41E18DE78006CE5FB /* LiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A83F94C1E1228FC00451BBA /* CountDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
 		7A84F93E1DFE761D00A37C80 /* Bloom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +429,7 @@
 				7A7FD82A1F58F26C00B87269 /* FindViewManager.swift */,
 				7A7FD82C1F58F27700B87269 /* CreateViewManager.swift */,
 				7A7FD8301F5B649700B87269 /* CreateDataManager.swift */,
+				7A7FD8361F5C9E4300B87269 /* Validate.swift */,
 			);
 			name = CreateWorkout;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */,
 				7AB6131C1E403B7F00EEAC38 /* RecordLiveStatView.swift in Sources */,
 				7AB6131A1E4035AD00EEAC38 /* BaseBloomView.swift in Sources */,
+				7A7FD8371F5C9E4300B87269 /* Validate.swift in Sources */,
 				7A7D94B51EF1003800609B88 /* WorkoutDetailController.swift in Sources */,
 				7A7FD8311F5B649800B87269 /* CreateDataManager.swift in Sources */,
 				7A7FD82D1F58F27700B87269 /* CreateViewManager.swift in Sources */,

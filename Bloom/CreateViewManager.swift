@@ -10,10 +10,13 @@ import UIKit
 
 protocol CreateViewManagerDelegate: class {
     func cancelPressedFromCreateView()
-    func donePressedFromCreateView()
+    func donePressedFromCreateView(withExcerciseTemplate template: ExcerciseTemplate, isEditing: Bool)
 }
 
 class CreateViewManager {
+    
+    var exerciseTemplate: ExcerciseTemplate?
+    var isEditing: Bool = false
     
     var textField: UITextField!
     var setsLabel: UILabel!
@@ -31,8 +34,10 @@ class CreateViewManager {
     weak var delegate: CreateViewManagerDelegate?
     
     let view: UIView
+    let controller: CreateController
     
     init(controller: CreateController) {
+        self.controller = controller
         self.view = controller.view
         setupCancelButton()
         setupDoneButton()
@@ -49,6 +54,9 @@ class CreateViewManager {
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(16, 0, 0)
         textField.attributedPlaceholder = NSAttributedString(string: "Name Your Excercise",
                                                              attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        if let excercise = exerciseTemplate {
+            textField.text = excercise.name
+        }
         view.addSubview(textField)
         
         NSLayoutConstraint.activate([
@@ -80,7 +88,11 @@ class CreateViewManager {
     private func setupSetsSwitch() {
         setsSwitch = UISwitch()
         setsSwitch.translatesAutoresizingMaskIntoConstraints = false
-        setsSwitch.setOn(false, animated: false)
+        if let excercise = exerciseTemplate {
+            setsSwitch.setOn(excercise.isRecordingSets, animated: true)
+        } else {
+            setsSwitch.setOn(false, animated: true)
+        }
         
         view.addSubview(setsSwitch)
         
@@ -112,7 +124,11 @@ class CreateViewManager {
     private func setupRepsSwitch() {
         repsSwitch = UISwitch()
         repsSwitch.translatesAutoresizingMaskIntoConstraints = false
-        repsSwitch.setOn(false, animated: false)
+        if let excercise = exerciseTemplate {
+            repsSwitch.setOn(excercise.isRecordingReps, animated: true)
+        } else {
+            repsSwitch.setOn(false, animated: true)
+        }
         
         view.addSubview(repsSwitch)
         
@@ -144,7 +160,11 @@ class CreateViewManager {
     private func setupWeightSwitch() {
         weightSwitch = UISwitch()
         weightSwitch.translatesAutoresizingMaskIntoConstraints = false
-        weightSwitch.setOn(false, animated: false)
+        if let excercise = exerciseTemplate {
+            weightSwitch.setOn(excercise.isRecordingWeight, animated: true)
+        } else {
+            weightSwitch.setOn(false, animated: true)
+        }
         
         view.addSubview(weightSwitch)
         
@@ -176,7 +196,11 @@ class CreateViewManager {
     private func setupDistanceSwitch() {
         distanceSwitch = UISwitch()
         distanceSwitch.translatesAutoresizingMaskIntoConstraints = false
-        distanceSwitch.setOn(false, animated: false)
+        if let excercise = exerciseTemplate {
+            distanceSwitch.setOn(excercise.isRecordingDistance, animated: true)
+        } else {
+            distanceSwitch.setOn(false, animated: true)
+        }
         
         view.addSubview(distanceSwitch)
         
@@ -244,8 +268,26 @@ class CreateViewManager {
     }
     
     @objc func donePressed() {
-        animateButtonsOffScreen { 
-            self.delegate?.donePressedFromCreateView()
+        let validation = controller.validateExcercise(name: textField.text)
+        if validation == .pass {
+            animateButtonsOffScreen {
+                if !self.isEditing {
+                    let excerciseTemplate = ExcerciseTemplate(context: self.controller.managedContext)
+                    excerciseTemplate.name = self.textField.text
+                    excerciseTemplate.isRecordingSets = self.setsSwitch.isOn
+                    excerciseTemplate.isRecordingReps = self.repsSwitch.isOn
+                    excerciseTemplate.isRecordingWeight = self.weightSwitch.isOn
+                    excerciseTemplate.isRecordingDistance = self.distanceSwitch.isOn
+                    self.delegate?.donePressedFromCreateView(withExcerciseTemplate: excerciseTemplate, isEditing: self.isEditing)
+                } else {
+                    self.exerciseTemplate!.name = self.textField.text
+                    self.exerciseTemplate!.isRecordingSets = self.setsSwitch.isOn
+                    self.exerciseTemplate!.isRecordingReps = self.repsSwitch.isOn
+                    self.exerciseTemplate!.isRecordingWeight = self.weightSwitch.isOn
+                    self.exerciseTemplate!.isRecordingDistance = self.distanceSwitch.isOn
+                    self.delegate?.donePressedFromCreateView(withExcerciseTemplate: self.exerciseTemplate!, isEditing: self.isEditing)
+                }
+            }
         }
     }
     

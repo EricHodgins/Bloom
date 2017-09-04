@@ -93,8 +93,8 @@ class CreateWorkoutController: UIViewController {
     
     func fetchAllExistingExcercises() {
         let allExecercises = BloomFilter.fetchAllExcercises(inManagedContext: managedContext)
-        if let all = allExecercises {
-            existingExcercises = all
+        if let _ = allExecercises {
+            //existingExcercises = all
             selectedRows = Array(repeating: false, count: existingExcercises.count)
             selectedExcercises = Array(repeating: "", count: existingExcercises.count)
         }
