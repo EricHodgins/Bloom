@@ -75,6 +75,7 @@ class WorkoutSessionManager {
     }
     
     func nextExcercise() -> Excercise {
+        save()
         let currentIndex = Int(currentExcercise.orderNumber)
         let newIndex = (currentIndex + 1) % excercises.count
         currentExcercise = excercises[newIndex]

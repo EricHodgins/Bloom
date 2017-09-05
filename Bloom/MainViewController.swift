@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
         skView.presentScene(scene)
-        
     }
     
     func setupHeartBeat() {

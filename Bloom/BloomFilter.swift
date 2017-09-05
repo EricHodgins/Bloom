@@ -213,6 +213,25 @@ class BloomFilter {
         return uniqueExcercises
     }
     
+    class func fetchPrevious(workout: Workout, inManagedContext context: NSManagedObjectContext) -> Workout? {
+        let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
+        let predicate = NSPredicate(format: "%K == %@", #keyPath(Workout.name), workout.name!)
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.startTime), ascending: false)]
+        fetchRequest.fetchLimit = 2
+        
+        var workout: [Workout] = []
+        do {
+            workout = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Error fetching previous workout: \(error.localizedDescription)")
+        }
+        
+        if workout.isEmpty { return nil }
+        if workout.count == 1 { return workout.first! }
+        return workout.last!
+    }
+    
     //MARK: - Location Queries
     class func fetchLocations(startDate: Date, finishDate: Date, inManagedContext managedContext: NSManagedObjectContext) -> [Location] {
         

@@ -24,6 +24,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     var workoutName: String!
     
+    var previousWorkout: Workout?
     var maxReps: Double?
     var maxWeight: Double?
     
@@ -35,6 +36,11 @@ class RecordLiveExcerciseController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setsButton.titleLabel?.lineBreakMode = .byWordWrapping
+        repsButton.titleLabel?.lineBreakMode = .byWordWrapping
+        weightButton.titleLabel?.lineBreakMode = .byWordWrapping
+        distaneButton.titleLabel?.lineBreakMode = .byWordWrapping
+        timeButton.titleLabel?.lineBreakMode = .byWordWrapping
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +50,8 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configureButtonsUI(forExercise: workoutSession.currentExcercise)
+        previousWorkout = BloomFilter.fetchPrevious(workout: workoutSession.workout, inManagedContext: managedContext)
+        configureButtonsUI(forExercise: workoutSession.currentExcercise, previousWorkout: previousWorkout)
         maxReps = fetchMaxReps()
         maxWeight = fetchMaxWeight()
     }
@@ -68,36 +75,84 @@ class RecordLiveExcerciseController: UIViewController {
             
             _ = self.workoutSession.nextExcercise()
             self.excerciseLabel.text = self.workoutSession.currentExcercise.name!
-            self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise)
+            self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise, previousWorkout: self.previousWorkout)
             self.maxReps = self.fetchMaxReps()
             self.maxWeight = self.fetchMaxWeight()
         }
     }
     
-    func configureButtonsUI(forExercise exercise: Excercise) {
+    func configureButtonsUI(forExercise exercise: Excercise, previousWorkout: Workout?) {
+        let previousExcercise = previousWorkoutExcercise(matchingName: exercise.name)
+
         if exercise.isRecordingSets {
+            let sets: Double
+            if workoutSession.currentExcercise.sets == 0 {
+                sets =  previousExcercise?.sets ?? 0
+            } else {
+                sets = workoutSession.currentExcercise.sets
+            }
             setsButton.isHidden = false
+            setsButton.setTitle("Sets\n\(sets)", for: .normal)
+            workoutSession.currentExcercise.sets = sets
         } else {
             setsButton.isHidden = true
         }
         
         if exercise.isRecordingReps {
+            let reps: Double
+            if workoutSession.currentExcercise.reps == 0 {
+                reps = previousExcercise?.reps ?? 0
+            } else {
+                reps = workoutSession.currentExcercise.reps
+            }
             repsButton.isHidden = false
+            repsButton.setTitle("Reps\n\(reps)", for: .normal)
+            workoutSession.currentExcercise.reps = reps
         } else {
             repsButton.isHidden = true
         }
         
         if exercise.isRecordingWeight {
+            let weight: Double
+            if workoutSession.currentExcercise.weight == 0 {
+                weight = previousExcercise?.weight ?? 0
+            } else {
+                weight = workoutSession.currentExcercise.weight
+            }
             weightButton.isHidden = false
+            weightButton.setTitle("Weight\n\(weight)", for: .normal)
+            workoutSession.currentExcercise.weight = weight
         } else {
             weightButton.isHidden = true
         }
         
         if exercise.isRecordingDistance {
+            let distance: Double
+            if workoutSession.currentExcercise.distance == 0 {
+                distance = previousExcercise?.distance ?? 0
+            } else {
+                distance = workoutSession.currentExcercise.distance
+            }
             distaneButton.isHidden = false
+            distaneButton.setTitle("Distance\n\(distance)", for: .normal)
+            workoutSession.currentExcercise.distance = distance
         } else {
             distaneButton.isHidden = true
         }
+    }
+    
+    private func previousWorkoutExcercise(matchingName: String?) -> Excercise? {
+        guard matchingName != nil else { return nil }
+        guard let previous = previousWorkout else { return nil }
+        guard let excerciseSet = previous.excercises,
+            excerciseSet.count > 0 else { return nil }
+        
+        let excercises = Array(excerciseSet) as! [Excercise]
+        for excercise in excercises {
+            if excercise.name == matchingName { return excercise }
+        }
+        
+        return nil
     }
     
     @IBAction func repsButtonPushed(_ sender: Any) {
@@ -121,7 +176,7 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     func showRecordView(withTitle title: String, andStat stat: Stat) {
-        retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise) // debug code
+        retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise) // debug code remove later
         
         let text: String
         switch stat {
@@ -156,6 +211,9 @@ class RecordLiveExcerciseController: UIViewController {
             }
             
             UIView.animate(withDuration: 0.3, animations: {
+                DispatchQueue.main.async {
+                    self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise, previousWorkout: self.previousWorkout)
+                }
                 self.blurEffectView.alpha = 0
             }, completion: {_ in
                 self.blurEffectView.removeFromSuperview()
