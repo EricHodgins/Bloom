@@ -1724,8 +1724,23 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-OE-h1s">
                                         <rect key="frame" x="0.0" y="274.5" width="375" height="266.5"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVU-CB-83Z" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="119.5" height="266.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Sets">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="1" green="0.4871341991" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="1" green="0.90682248663887943" blue="0.32977570024994018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-I3-B7S" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="183.5" height="266.5"/>
+                                                <rect key="frame" x="127.5" y="0.0" width="120" height="266.5"/>
                                                 <color key="backgroundColor" red="0.24435588720000001" green="0.62128901479999998" blue="0.58164459469999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Distance">
@@ -1744,7 +1759,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkh-IX-Jaw" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                                <rect key="frame" x="191.5" y="0.0" width="183.5" height="266.5"/>
+                                                <rect key="frame" x="255.5" y="0.0" width="119.5" height="266.5"/>
                                                 <color key="backgroundColor" red="0.080622263250000006" green="0.57005900139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <state key="normal" title="Time">
@@ -1793,6 +1808,13 @@
                             <constraint firstItem="aI6-I7-mfQ" firstAttribute="leading" secondItem="Ffo-Wq-Uaq" secondAttribute="leading" id="zkW-zr-kXB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="distaneButton" destination="g9A-I3-B7S" id="HJ2-Ly-nwJ"/>
+                        <outlet property="repsButton" destination="m9B-z6-0t5" id="TbX-KY-r0B"/>
+                        <outlet property="setsButton" destination="EVU-CB-83Z" id="uQ8-mz-Xsl"/>
+                        <outlet property="timeButton" destination="dkh-IX-Jaw" id="tXi-qh-BHN"/>
+                        <outlet property="weightButton" destination="C3I-yG-gtN" id="tXx-fl-gkw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJY-8G-Olt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

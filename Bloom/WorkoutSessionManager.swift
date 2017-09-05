@@ -48,11 +48,15 @@ class WorkoutSessionManager {
         workout.startTime = startDate
         
         let workoutTemplate = BloomFilter.fetchWorkoutTemplate(forName: name, inManagedContext: managedContext)
-        
-        for excerciseTemplate in workoutTemplate.excercises! {
+        let excercises = Array(workoutTemplate.excercises!) as! [ExcerciseTemplate]
+        for excerciseTemplate in excercises {
             let excercise = Excercise(context: managedContext)
-            excercise.name = (excerciseTemplate as! ExcerciseTemplate).name!
-            excercise.orderNumber = Int16((excerciseTemplate as! ExcerciseTemplate).orderNumber)
+            excercise.name = excerciseTemplate.name
+            excercise.isRecordingSets = excerciseTemplate.isRecordingSets
+            excercise.isRecordingReps = excerciseTemplate.isRecordingReps
+            excercise.isRecordingWeight = excerciseTemplate.isRecordingWeight
+            excercise.isRecordingDistance = excerciseTemplate.isRecordingDistance
+            excercise.orderNumber = Int16(excerciseTemplate.orderNumber)
             workout.addToExcercises(excercise)
         }
         

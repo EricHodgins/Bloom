@@ -11,6 +11,12 @@ import CoreData
 
 class RecordLiveExcerciseController: UIViewController {
     
+    @IBOutlet weak var repsButton: GenericBloomButton!
+    @IBOutlet weak var weightButton: GenericBloomButton!
+    @IBOutlet weak var distaneButton: GenericBloomButton!
+    @IBOutlet weak var timeButton: GenericBloomButton!
+    @IBOutlet weak var setsButton: GenericBloomButton!
+    
     var workoutSession: WorkoutSessionManager!
     var managedContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<NSDictionary>!
@@ -38,6 +44,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        configureButtonsUI(forExercise: workoutSession.currentExcercise)
         maxReps = fetchMaxReps()
         maxWeight = fetchMaxWeight()
     }
@@ -61,8 +68,35 @@ class RecordLiveExcerciseController: UIViewController {
             
             _ = self.workoutSession.nextExcercise()
             self.excerciseLabel.text = self.workoutSession.currentExcercise.name!
+            self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise)
             self.maxReps = self.fetchMaxReps()
             self.maxWeight = self.fetchMaxWeight()
+        }
+    }
+    
+    func configureButtonsUI(forExercise exercise: Excercise) {
+        if exercise.isRecordingSets {
+            setsButton.isHidden = false
+        } else {
+            setsButton.isHidden = true
+        }
+        
+        if exercise.isRecordingReps {
+            repsButton.isHidden = false
+        } else {
+            repsButton.isHidden = true
+        }
+        
+        if exercise.isRecordingWeight {
+            weightButton.isHidden = false
+        } else {
+            weightButton.isHidden = true
+        }
+        
+        if exercise.isRecordingDistance {
+            distaneButton.isHidden = false
+        } else {
+            distaneButton.isHidden = true
         }
     }
     
