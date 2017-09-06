@@ -1738,6 +1738,9 @@
                                                         <color key="value" red="1" green="0.90682248663887943" blue="0.32977570024994018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setsButtonPushed:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="6aX-yu-8WJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-I3-B7S" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
                                                 <rect key="frame" x="127.5" y="0.0" width="120" height="266.5"/>

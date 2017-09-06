@@ -83,7 +83,8 @@ class RecordLiveExcerciseController: UIViewController {
     
     func configureButtonsUI(forExercise exercise: Excercise, previousWorkout: Workout?) {
         let previousExcercise = previousWorkoutExcercise(matchingName: exercise.name)
-
+        
+        // Sets
         if exercise.isRecordingSets {
             let sets: Double
             if workoutSession.currentExcercise.sets == 0 {
@@ -98,6 +99,7 @@ class RecordLiveExcerciseController: UIViewController {
             setsButton.isHidden = true
         }
         
+        // Reps
         if exercise.isRecordingReps {
             let reps: Double
             if workoutSession.currentExcercise.reps == 0 {
@@ -112,6 +114,7 @@ class RecordLiveExcerciseController: UIViewController {
             repsButton.isHidden = true
         }
         
+        // Weight
         if exercise.isRecordingWeight {
             let weight: Double
             if workoutSession.currentExcercise.weight == 0 {
@@ -126,6 +129,7 @@ class RecordLiveExcerciseController: UIViewController {
             weightButton.isHidden = true
         }
         
+        // Distance
         if exercise.isRecordingDistance {
             let distance: Double
             if workoutSession.currentExcercise.distance == 0 {
@@ -138,6 +142,14 @@ class RecordLiveExcerciseController: UIViewController {
             workoutSession.currentExcercise.distance = distance
         } else {
             distaneButton.isHidden = true
+        }
+        
+        // Time
+        if let buttonTime = workoutSession.currentExcercise.timeRecorded {
+            let formattedTime = workoutSession.workout.startTime?.delta(to: buttonTime)
+            timeButton.setTitle("Time\n\(formattedTime ?? "Error")", for: .normal)
+        } else {
+            timeButton.setTitle("Time", for: .normal)
         }
     }
     
@@ -153,6 +165,11 @@ class RecordLiveExcerciseController: UIViewController {
         }
         
         return nil
+    }
+    
+    @IBAction func setsButtonPushed(_ sender: Any) {
+        addBlurEffect()
+        showRecordView(withTitle: "Sets", andStat: Stat.Sets)
     }
     
     @IBAction func repsButtonPushed(_ sender: Any) {
@@ -171,26 +188,32 @@ class RecordLiveExcerciseController: UIViewController {
     }
     
     @IBAction func timeButtonPushed(_ sender: Any) {
-        addBlurEffect()
         showRecordView(withTitle: "Time", andStat: Stat.Time)
     }
     
     func showRecordView(withTitle title: String, andStat stat: Stat) {
         retriveCurrentExcerciseValue(excercise: workoutSession.currentExcercise) // debug code remove later
+        let previousExcercise = previousWorkoutExcercise(matchingName: workoutSession.currentExcercise.name)
         
         let text: String
         switch stat {
+        case .Sets:
+            currentCounter = previousExcercise?.sets ?? 0
+            text = "\(previousExcercise?.sets ?? 0)"
         case .Reps:
-            text = "\(maxReps ?? 0)"
-            currentCounter = maxReps ?? 0
+            text = "\(previousExcercise?.reps ?? 0)"
+            currentCounter = previousExcercise?.reps ?? 0
         case .Weight:
-            text = "\(maxWeight ?? 0)"
-            currentCounter = maxWeight ?? 0
+            text = "\(previousExcercise?.weight ?? 0)"
+            currentCounter = previousExcercise?.weight ?? 0
         case .Distance:
-            text = "Still need to complete distance values"
-            currentCounter = 0.0
+            text = "\(previousExcercise?.distance ?? 0)"
+            currentCounter = previousExcercise?.distance ?? 0
         case .Time:
-            text = "00:00:00"
+            let formattedTime = workoutSession.workout.startTime?.delta(to: NSDate())
+            timeButton.setTitle("Time\n\(formattedTime ?? "Error")", for: .normal)
+            workoutSession.currentExcercise.timeRecorded = NSDate()
+            return
         }
         
         
@@ -232,18 +255,18 @@ class RecordLiveExcerciseController: UIViewController {
         guard let excercise = workoutSession.currentExcercise else { return }
         
         switch stat {
+        case .Sets:
+            excercise.sets = Double(value)!
         case .Reps:
             excercise.reps = Double(value)!
-            saveContext()
         case .Weight:
             excercise.weight = Double(value)!
-            saveContext()
         case .Distance:
             excercise.distance = Double(value)!
-            saveContext()
         case .Time:
             excercise.timeRecorded = NSDate()
         }
+        saveContext()
     }
     
     func saveContext() {

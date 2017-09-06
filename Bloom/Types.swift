@@ -10,6 +10,7 @@ import Foundation
 
 
 enum Stat: Int {
+    case Sets
     case Reps
     case Weight
     case Distance

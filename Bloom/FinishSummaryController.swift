@@ -63,6 +63,7 @@ class FinishSummaryController: UIViewController {
         
         rows = excercises.map({ (excercise) -> [String] in
             var data: [String] = []
+            if excercise.sets != 0 { data.append("Sets: \(excercise.sets)") }
             if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
             if excercise.weight != 0 { data.append("Weight: \(excercise.weight)") }
             if excercise.distance != 0 { data.append("Distance: \(excercise.distance)") }
