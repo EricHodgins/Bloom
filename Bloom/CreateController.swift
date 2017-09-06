@@ -145,6 +145,9 @@ extension CreateController: FindViewManagerProtocol {
     
     func donePressedFromFindViewManager(withFoundExcerciseTemplates pickedExcercises: [ExcerciseTemplate]?) {
         if let addedExcercises = pickedExcercises {
+            for (index, excercise) in addedExcercises.enumerated() {
+                excercise.orderNumber = Int16(currentExcercises.count + index)
+            }
             currentExcercises = currentExcercises + addedExcercises
         }
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
@@ -165,6 +168,7 @@ extension CreateController: CreateViewManagerDelegate {
             let index = Int(template.orderNumber)
             currentExcercises[index] = template
         } else {
+            template.orderNumber = Int16(currentExcercises.count)
             currentExcercises.append(template)
         }
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
