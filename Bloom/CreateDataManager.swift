@@ -17,6 +17,7 @@ protocol CreateDataManagerDelegate: class {
 class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var excerciseTemplates: [ExcerciseTemplate] = []
+    var excerciseProxies: [ExcerciseProxy] = []
     let isSearching: Bool
     let tableView: UITableView!
     
@@ -24,8 +25,10 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     var detailCell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
     
     weak var delegate: CreateDataManagerDelegate?
+    var managedContext: NSManagedObjectContext!
     
     init(withManagedContext managedContext: NSManagedObjectContext, isSearching: Bool, tableView: UITableView, withExcerciseTemplates templates: [ExcerciseTemplate]?) {
+        self.managedContext = managedContext
         self.isSearching = isSearching
         self.tableView = tableView
         super.init()
@@ -37,7 +40,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
             guard let exercises = BloomFilter.fetchAllExcercises(inManagedContext: managedContext) else { return }
             self.tableView.allowsMultipleSelection =  true
             selectedRows = Array(repeating: false, count: exercises.count)
-            excerciseTemplates = exercises
+            excerciseProxies = exercises
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -53,6 +56,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching { return excerciseProxies.count }
         return excerciseTemplates.count
     }
     
@@ -60,17 +64,21 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         //TODO: - Don't like this; will need a custom cell eventually
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-        let excercise = excerciseTemplates[indexPath.row]
-        let name = "\(excercise.name ?? "")"
-        var detailText = "\(excercise.isRecordingSets ? "S" : "") "
-        detailText += "\(excercise.isRecordingReps ? "R" : "") "
-        detailText += "\(excercise.isRecordingWeight ? "W" : "") "
-        detailText += "\(excercise.isRecordingDistance ? "D" : "") "
-        cell.textLabel?.text = name
-        cell.detailTextLabel?.text = detailText
-        cell.textLabel?.textColor = UIColor.white
-        cell.tintColor = UIColor.white
-        cell.backgroundColor = UIColor.clear
+        if isSearching {
+            configureProxy(cell: cell, forProxy: excerciseProxies[indexPath.row])
+        } else {
+            let excercise = excerciseTemplates[indexPath.row]
+            let name = "\(excercise.name ?? "")"
+            var detailText = "\(excercise.isRecordingSets ? "S" : "") "
+            detailText += "\(excercise.isRecordingReps ? "R" : "") "
+            detailText += "\(excercise.isRecordingWeight ? "W" : "") "
+            detailText += "\(excercise.isRecordingDistance ? "D" : "") "
+            cell.textLabel?.text = name
+            cell.detailTextLabel?.text = detailText
+            cell.textLabel?.textColor = UIColor.white
+            cell.tintColor = UIColor.white
+            cell.backgroundColor = UIColor.clear
+        }
         
         if isSearching {
             if selectedRows[indexPath.row] == true {
@@ -85,6 +93,19 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func configureProxy(cell: UITableViewCell, forProxy excercise: ExcerciseProxy) {
+        let name = "\(excercise.name)"
+        var detailText = "\(excercise.isRecordingSets ? "S" : "") "
+        detailText += "\(excercise.isRecordingReps ? "R" : "") "
+        detailText += "\(excercise.isRecordingWeight ? "W" : "") "
+        detailText += "\(excercise.isRecordingDistance ? "D" : "") "
+        cell.textLabel?.text = name
+        cell.detailTextLabel?.text = detailText
+        cell.textLabel?.textColor = UIColor.white
+        cell.tintColor = UIColor.white
+        cell.backgroundColor = UIColor.clear
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,9 +155,15 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
         var choosen: [ExcerciseTemplate] = []
         
         if isSearching {
-            for (isChoosen, name) in zip(selectedRows, excerciseTemplates) {
+            for (isChoosen, proxy) in zip(selectedRows, excerciseProxies) {
                 if isChoosen {
-                    choosen.append(name)
+                    let template = ExcerciseTemplate(context: managedContext)
+                    template.name = proxy.name
+                    template.isRecordingSets = proxy.isRecordingSets
+                    template.isRecordingReps = proxy.isRecordingReps
+                    template.isRecordingWeight = proxy.isRecordingWeight
+                    template.isRecordingDistance = proxy.isRecordingDistance
+                    choosen.append(template)
                 }
             }
         } else {

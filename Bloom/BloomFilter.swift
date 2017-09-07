@@ -183,7 +183,7 @@ class BloomFilter {
         return workout.first!
     }
     
-    class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseTemplate]? {
+    class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseProxy]? {
         let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ExcerciseTemplate.name), ascending: true)]
         
@@ -195,22 +195,25 @@ class BloomFilter {
         }
         
         guard excercises.count != 0 else { return nil }
-        var uniqueExcercises: [ExcerciseTemplate] = []
+//        var uniqueExcercises: [ExcerciseTemplate] = []
+        var excerciseProxyObjects: [ExcerciseProxy] = []
         var set = Set<String>()
         for template in excercises {
             if let excerciseName = template.name,
                 !set.contains(excerciseName) {
                 set.insert(excerciseName)
-                let newTemplate = ExcerciseTemplate(context: managedContext)
-                newTemplate.name = excerciseName
-                newTemplate.isRecordingReps = template.isRecordingReps
-                newTemplate.isRecordingSets = template.isRecordingSets
-                newTemplate.isRecordingWeight = template.isRecordingWeight
-                newTemplate.isRecordingDistance = template.isRecordingDistance
-                uniqueExcercises.append(newTemplate)
+                let proxy = ExcerciseProxy(name: excerciseName, isRecordingSets: template.isRecordingSets, isRecordingReps: template.isRecordingReps, isRecordingWeight: template.isRecordingWeight, isRecordingDistance: template.isRecordingDistance)
+                excerciseProxyObjects.append(proxy)
+//                let newTemplate = ExcerciseTemplate(context: managedContext)
+//                newTemplate.name = excerciseName
+//                newTemplate.isRecordingReps = template.isRecordingReps
+//                newTemplate.isRecordingSets = template.isRecordingSets
+//                newTemplate.isRecordingWeight = template.isRecordingWeight
+//                newTemplate.isRecordingDistance = template.isRecordingDistance
+//                uniqueExcercises.append(newTemplate)
             }
         }
-        return uniqueExcercises
+        return excerciseProxyObjects
     }
     
     class func fetchPrevious(workout: Workout, inManagedContext context: NSManagedObjectContext) -> Workout? {
