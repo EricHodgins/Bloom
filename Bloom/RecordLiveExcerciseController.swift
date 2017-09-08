@@ -46,12 +46,12 @@ class RecordLiveExcerciseController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         excerciseLabel.text = workoutSession.currentExcercise.name!
+        previousWorkout = BloomFilter.fetchPrevious(workout: workoutSession.workout, inManagedContext: managedContext)
+        configureButtonsUI(forExercise: workoutSession.currentExcercise, previousWorkout: previousWorkout)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        previousWorkout = BloomFilter.fetchPrevious(workout: workoutSession.workout, inManagedContext: managedContext)
-        configureButtonsUI(forExercise: workoutSession.currentExcercise, previousWorkout: previousWorkout)
         maxReps = fetchMaxReps()
         maxWeight = fetchMaxWeight()
     }

@@ -69,7 +69,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
             configureProxy(cell: cell, forProxy: excerciseProxies[indexPath.row])
         } else {
             let excercise = excerciseTemplates[indexPath.row]
-            let name = "\(excercise.name ?? "")"
+            let name = "\(indexPath.row + 1).  \(excercise.name ?? "")"
             var detailText = "\(excercise.isRecordingSets ? "S" : "") "
             detailText += "\(excercise.isRecordingReps ? "R" : "") "
             detailText += "\(excercise.isRecordingWeight ? "W" : "") "

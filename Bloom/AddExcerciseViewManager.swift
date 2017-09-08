@@ -36,14 +36,14 @@ class AddExcerciseViewManager {
         numberLabel = UILabel()
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
         numberLabel.text = "Number of Excercises: \(controller.currentExcercises.count)"
-        numberLabel.textColor = UIColor.white
+        numberLabel.textColor = UIColor.black
         numberLabel.font = .systemFont(ofSize: 21)
         
         view.addSubview(numberLabel)
         
         NSLayoutConstraint.activate([
             numberLabel.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor, constant: 0),
-            numberLabel.leftAnchor.constraint(equalTo: view.leftAnchor),
+            numberLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8.0),
             numberLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
             numberLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15)
         ])
@@ -65,7 +65,7 @@ class AddExcerciseViewManager {
             tableView.topAnchor.constraint(equalTo: numberLabel.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: addExcercisesButton.topAnchor)
+            tableView.bottomAnchor.constraint(equalTo: addExcercisesButton.topAnchor, constant: -8.0)
         ])
     }
     
@@ -136,13 +136,13 @@ class AddExcerciseViewManager {
             self.addExcercisesButton.center = self.view.center
         })
         
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.addExcercisesButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.12, relativeDuration: 1.0, animations: {
                 self.addExcercisesButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             })
             

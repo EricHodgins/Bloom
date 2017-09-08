@@ -89,14 +89,14 @@ class FindAndCreateViewManager {
     
     //MARK: - Animations
     private func animateButtonsOnScreen() {
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.findButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
                 self.createButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.12, relativeDuration: 1.0, animations: {
                 self.findButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.createButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
@@ -114,14 +114,14 @@ class FindAndCreateViewManager {
             self.createButton.center = CGPoint(x: self.createButton.center.x, y: yCoord)
         }
         
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.findButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
                 self.createButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 1.0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.12, relativeDuration: 1.0, animations: {
                 self.findButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 self.createButton.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             })

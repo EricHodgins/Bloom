@@ -96,7 +96,7 @@ class FindViewManager {
             tableView.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor)
+            tableView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -8.0)
         ])
     }
     
