@@ -26,6 +26,7 @@ class CreateController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if workout != nil {
             isEditingExistingWorkout = true
         }
@@ -113,6 +114,7 @@ extension CreateController: AddExcerciseProtocol {
     func addPressedFromAddExcerciseView() {
         findAndCreateViewManager = FindAndCreateViewManager(view: view)
         findAndCreateViewManager.delegate = self
+        saveButton.isEnabled = false
     }
     
     func cellSelectedToEditFromAddExcerciseView(excercise: ExcerciseTemplate) {
@@ -120,6 +122,7 @@ extension CreateController: AddExcerciseProtocol {
         createViewManager.exerciseTemplate = excercise
         createViewManager.isEditing = true
         createViewManager.delegate = self
+        saveButton.isEnabled = false
     }
 }
 
@@ -141,6 +144,7 @@ extension CreateController: FindViewManagerProtocol {
     func cancelPressedFromFindViewManager() {
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
         addExcerciseViewManager.delegate = self
+        saveButton.isEnabled = true
     }
     
     func donePressedFromFindViewManager(withFoundExcerciseTemplates pickedExcercises: [ExcerciseTemplate]?) {
@@ -152,6 +156,8 @@ extension CreateController: FindViewManagerProtocol {
         }
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
         addExcerciseViewManager.delegate = self
+        
+        saveButton.isEnabled = true
     }
     
 }
@@ -161,6 +167,7 @@ extension CreateController: CreateViewManagerDelegate {
     func cancelPressedFromCreateView() {
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
         addExcerciseViewManager.delegate = self
+        saveButton.isEnabled = true
     }
     
     func donePressedFromCreateView(withExcerciseTemplate template: ExcerciseTemplate, isEditing: Bool) {
@@ -173,6 +180,7 @@ extension CreateController: CreateViewManagerDelegate {
         }
         addExcerciseViewManager = AddExcerciseViewManager(controller: self)
         addExcerciseViewManager.delegate = self
+        saveButton.isEnabled = true
     }
 }
 

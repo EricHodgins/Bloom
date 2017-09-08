@@ -22,6 +22,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     let tableView: UITableView!
     
     var selectedRows: [Bool] = []
+    var selectedExcercisesInOrder: [ExcerciseTemplate] = []
     var detailCell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
     
     weak var delegate: CreateDataManagerDelegate?
@@ -109,6 +110,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Finding Excercises
         if isSearching {
             if let cell = tableView.cellForRow(at: indexPath) {
                 let backgroundView = GradientView()
@@ -117,13 +119,43 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
                 cell.selectedBackgroundView = backgroundView
                 cell.accessoryType = .checkmark
                 selectedRows[indexPath.row] = true
+                
+                addSelectedProxy(proxy: excerciseProxies[indexPath.row])
             }
         }
         
+        //On Add Excercise Menu
         if !isSearching {
             if let _ = tableView.cellForRow(at: indexPath) {
                 let template = excerciseTemplates[indexPath.row]
                 delegate?.createDataManagerCellSelectedInAddExcerciseView(excerciseTemplate: template)
+            }
+        }
+    }
+    
+    private func addSelectedProxy(proxy: ExcerciseProxy) {
+        let template = ExcerciseTemplate(context: managedContext)
+        template.name = proxy.name
+        template.isRecordingSets = proxy.isRecordingSets
+        template.isRecordingReps = proxy.isRecordingReps
+        template.isRecordingWeight = proxy.isRecordingWeight
+        template.isRecordingDistance = proxy.isRecordingDistance
+        selectedExcercisesInOrder.append(template)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if isSearching {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                let proxy = excerciseProxies[indexPath.row]
+                cell.accessoryType = .none
+                selectedRows[indexPath.row] = false
+                
+                for (index, selected) in selectedExcercisesInOrder.enumerated() {
+                    if selected.name == proxy.name {
+                        selectedExcercisesInOrder.remove(at: index)
+                        break
+                    }
+                }
             }
         }
     }
@@ -155,17 +187,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
         var choosen: [ExcerciseTemplate] = []
         
         if isSearching {
-            for (isChoosen, proxy) in zip(selectedRows, excerciseProxies) {
-                if isChoosen {
-                    let template = ExcerciseTemplate(context: managedContext)
-                    template.name = proxy.name
-                    template.isRecordingSets = proxy.isRecordingSets
-                    template.isRecordingReps = proxy.isRecordingReps
-                    template.isRecordingWeight = proxy.isRecordingWeight
-                    template.isRecordingDistance = proxy.isRecordingDistance
-                    choosen.append(template)
-                }
-            }
+            return selectedExcercisesInOrder
         } else {
             choosen = excerciseTemplates
         }
