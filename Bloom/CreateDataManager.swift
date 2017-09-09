@@ -28,7 +28,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     weak var delegate: CreateDataManagerDelegate?
     var managedContext: NSManagedObjectContext!
     
-    init(withManagedContext managedContext: NSManagedObjectContext, isSearching: Bool, tableView: UITableView, withExcerciseTemplates templates: [ExcerciseTemplate]?) {
+    init(withManagedContext managedContext: NSManagedObjectContext, isSearching: Bool, tableView: UITableView, withController controller: CreateController) {
         self.managedContext = managedContext
         self.isSearching = isSearching
         self.tableView = tableView
@@ -37,6 +37,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        // Find View
         if isSearching {
             guard let exercises = BloomFilter.fetchAllExcercises(inManagedContext: managedContext) else { return }
             self.tableView.allowsMultipleSelection =  true
@@ -45,9 +46,9 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        } else {
-            guard let excercises = templates else { return }
-            excerciseTemplates = excercises
+        } else { // Add View
+            guard controller.currentExcercises.count > 0 else { return }
+            excerciseTemplates = controller.currentExcercises
             tableView.isEditing = true
             tableView.allowsSelectionDuringEditing = true
             DispatchQueue.main.async {

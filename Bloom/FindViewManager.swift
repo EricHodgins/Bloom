@@ -88,7 +88,7 @@ class FindViewManager {
         
         tableView.backgroundColor = UIColor.clear
         
-        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: true, tableView: tableView, withExcerciseTemplates: nil)
+        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: true, tableView: tableView, withController: controller)
         
         view.addSubview(tableView)
         

@@ -59,13 +59,16 @@ class CreateController: UIViewController {
         }
     }
     
+    //MARK: - Cancel Pressed
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true)
     }
     
+    //MARK: - Save Pressed
     @IBAction func savePressed(_ sender: Any) {
         //At this point you should have a valid workout name in the managedContext
         guard let excercises = addExcerciseViewManager.choosenExcercises() else { return }
+        workout?.excercises = nil 
         for (index, excerciseTemplate) in excercises.enumerated() {
             excerciseTemplate.orderNumber = Int16(index)
             workout?.addToExcercises(excerciseTemplate)

@@ -56,7 +56,7 @@ class AddExcerciseViewManager {
         
         tableView.backgroundColor = UIColor.clear
         
-        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: false, tableView: tableView, withExcerciseTemplates: controller.currentExcercises)
+        createDataManager = CreateDataManager(withManagedContext: controller.managedContext, isSearching: false, tableView: tableView, withController: controller)
         createDataManager.delegate = self
         
         view.addSubview(tableView)
