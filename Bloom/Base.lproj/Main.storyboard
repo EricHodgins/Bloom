@@ -203,7 +203,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Store" id="hq6-EL-ZBU"/>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Tgl-o6-wD2">
                             <connections>
-                                <segue destination="rXa-Er-TJX" kind="presentation" id="Xs5-v9-Q2e"/>
+                                <segue destination="hxz-xN-zau" kind="presentation" id="jSL-Uu-gq3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -339,7 +339,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AP3-xm-fBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pIx-A2-xCl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="-525.78710644677665"/>
+            <point key="canvasLocation" x="1892" y="-604"/>
         </scene>
         <!--New Workout-->
         <scene sceneID="Lct-rU-3Oj">
@@ -381,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUr-jR-1lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3770.4000000000001" y="-526.6866566716642"/>
+            <point key="canvasLocation" x="3810" y="-604"/>
         </scene>
         <!--Create Workout Controller-->
         <scene sceneID="pkq-eF-I0h">
@@ -2268,15 +2268,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nx-x6-sCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2831.1999999999998" y="-526.6866566716642"/>
+            <point key="canvasLocation" x="2850" y="-604"/>
         </scene>
-        <!--UIViewController-X8u-FG-5MQ-->
-        <scene sceneID="Mbm-i3-C4w">
+        <!--Settings-->
+        <scene sceneID="HuK-rG-CVC">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-X8u-FG-5MQ" storyboardName="Settings" referencedIdentifier="UIViewController-X8u-FG-5MQ" id="rXa-Er-TJX" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xsu-Qq-T3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="hxz-xN-zau" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-cu-ckT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-647"/>
+            <point key="canvasLocation" x="-481" y="-521"/>
         </scene>
     </scenes>
     <resources>
