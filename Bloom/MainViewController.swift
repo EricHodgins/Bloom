@@ -12,6 +12,7 @@ import SpriteKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var lastWorkoutNameLabel: UILabel!
     @IBOutlet weak var lastWorkoutDuration: UILabel!
@@ -31,6 +32,10 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let font = UIFont.systemFont(ofSize: 28.0)
+        let attributes = [NSFontAttributeName: font]
+        settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
+        settingsBarButtonItem.title = "\u{2699}\u{0000FE0E}"
         setupHeartBeat()
         
         let skView = lastWorkoutView!
@@ -138,6 +143,10 @@ class MainViewController: UIViewController {
             let heartRateController = segue.destination as! HeartBeatGraphController
             heartRateController.workout = workout
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        performSegue(withIdentifier: "LastWorkoutSegue", sender: self)
     }
     
     // When a workout is complete (Big Finish button is pressed) it navigates to back here

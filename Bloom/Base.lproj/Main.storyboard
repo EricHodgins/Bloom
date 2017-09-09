@@ -200,9 +200,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
-                        <barButtonItem key="rightBarButtonItem" title="Test" id="6JB-Ss-m1W">
+                        <barButtonItem key="leftBarButtonItem" title="Store" id="hq6-EL-ZBU"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Tgl-o6-wD2">
                             <connections>
-                                <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="0m2-Wk-kTV"/>
+                                <segue destination="rXa-Er-TJX" kind="presentation" id="Xs5-v9-Q2e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,6 +214,7 @@
                         <outlet property="lastWorkoutDuration" destination="EXE-Nu-e1G" id="Jsh-Ey-ukk"/>
                         <outlet property="lastWorkoutNameLabel" destination="b4n-0F-sOK" id="0lO-X2-gUp"/>
                         <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
+                        <outlet property="settingsBarButtonItem" destination="Tgl-o6-wD2" id="ebg-CJ-Yji"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
                     </connections>
                 </viewController>
@@ -337,7 +339,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AP3-xm-fBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pIx-A2-xCl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="-525.78710644677665"/>
+            <point key="canvasLocation" x="2015.2" y="-525.78710644677665"/>
         </scene>
         <!--New Workout-->
         <scene sceneID="Lct-rU-3Oj">
@@ -379,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUr-jR-1lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2831.1999999999998" y="-526.6866566716642"/>
+            <point key="canvasLocation" x="3770.4000000000001" y="-526.6866566716642"/>
         </scene>
         <!--Create Workout Controller-->
         <scene sceneID="pkq-eF-I0h">
@@ -2266,17 +2268,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nx-x6-sCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-526.6866566716642"/>
+            <point key="canvasLocation" x="2831.1999999999998" y="-526.6866566716642"/>
+        </scene>
+        <!--UIViewController-X8u-FG-5MQ-->
+        <scene sceneID="Mbm-i3-C4w">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="UIViewController-X8u-FG-5MQ" storyboardName="Settings" referencedIdentifier="UIViewController-X8u-FG-5MQ" id="rXa-Er-TJX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsu-Qq-T3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="-647"/>
         </scene>
     </scenes>
     <resources>
         <image name="StartPin" width="17" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HL2-Mf-Iac"/>
         <segue reference="DCD-pO-VED"/>
-        <segue reference="0m2-Wk-kTV"/>
+        <segue reference="HL2-Mf-Iac"/>
+        <segue reference="ODi-uK-JeC"/>
         <segue reference="rrC-hf-91z"/>
-        <segue reference="Tcu-ra-Bxx"/>
     </inferredMetricsTieBreakers>
 </document>
