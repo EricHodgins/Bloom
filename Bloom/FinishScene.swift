@@ -14,6 +14,11 @@ class FinishScene: SKScene {
     var inputOrigin = CIVector(x: 100, y: 100)
     var inputColor = CIVector(x: 0/255, y: 45/255, z: 135/255)
     
+    var goRight: Bool = true
+    var goUp: Bool = true
+    var widthDistance: CGFloat = 0
+    var heightDistance: CGFloat = 0
+    
     var effectNode: SKEffectNode!
     var sceneView: SKView!
     
@@ -23,6 +28,7 @@ class FinishScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.sceneView = view
+        heightDistance = sceneView.frame.height * 0.75
         backgroundColor = SKColor.black
         
         let scalex:CGFloat = 1
@@ -53,13 +59,9 @@ class FinishScene: SKScene {
     func startSunFlareAction() {
 
         
-        let speed: CGFloat = 10
-        var widthDistance: CGFloat = 0
-        var heightDistance: CGFloat = sceneView.frame.height * 0.75
+        let speed: CGFloat = 5
         var dt: CGFloat = 0
         var lastUpdateTime: CGFloat = 0
-        var goRight: Bool = true
-        var goUp: Bool = true
         let flareAction = SKAction.customAction(withDuration: 300) { (node, elapsed) in
             if lastUpdateTime == 0 {
                 dt = elapsed
@@ -68,34 +70,34 @@ class FinishScene: SKScene {
             }
             lastUpdateTime = elapsed
             
-            self.sunFlare.sunbeamsFilter?.setValue(elapsed*0.009, forKey: kCIInputTimeKey)
+            self.sunFlare.sunbeamsFilter?.setValue(elapsed*0.01, forKey: kCIInputTimeKey)
             
             
-            if widthDistance >= self.sceneView.frame.width {
-                goRight = false
-            } else if widthDistance <= 0 {
-                goRight = true
+            if self.widthDistance >= self.sceneView.frame.width {
+                self.goRight = false
+            } else if self.widthDistance <= 0 {
+                self.goRight = true
             }
             
-            if goRight {
-                widthDistance += speed * dt
+            if self.goRight {
+                self.widthDistance += speed * dt
             } else {
-                widthDistance -= speed * dt
+                self.widthDistance -= speed * dt
             }
             
-            if heightDistance >= self.sceneView.frame.height {
-                goUp = false
-            } else if heightDistance <= 0 {
-                goUp = true
+            if self.heightDistance >= self.sceneView.frame.height {
+                self.goUp = false
+            } else if self.heightDistance <= 0 {
+                self.goUp = true
             }
             
-            if goUp {
-                heightDistance += speed * dt
+            if self.goUp {
+                self.heightDistance += speed * dt
             } else {
-                heightDistance -= speed * dt
+                self.heightDistance -= speed * dt
             }
             
-            self.sunFlare.inputOrigin = CIVector(x: widthDistance, y: heightDistance)
+            self.sunFlare.inputOrigin = CIVector(x: self.widthDistance, y: self.heightDistance)
             self.sunFlare.inputColor = CIVector(x: (elapsed * 5)/255, y: 45/255, z: 135/255)
             
             
