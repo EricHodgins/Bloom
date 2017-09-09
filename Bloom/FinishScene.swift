@@ -28,7 +28,7 @@ class FinishScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.sceneView = view
-        heightDistance = sceneView.frame.height * 0.75
+        heightDistance = sceneView.frame.height //* 0.75
         backgroundColor = SKColor.black
         
         let scalex:CGFloat = 1
@@ -92,9 +92,9 @@ class FinishScene: SKScene {
             }
             
             if self.goUp {
-                self.heightDistance += speed * dt
+                //self.heightDistance += speed * dt
             } else {
-                self.heightDistance -= speed * dt
+                //self.heightDistance -= speed * dt
             }
             
             self.sunFlare.inputOrigin = CIVector(x: self.widthDistance, y: self.heightDistance)
