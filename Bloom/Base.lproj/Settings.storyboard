@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kfe-8O-VGI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,37 +13,175 @@
         <scene sceneID="0ov-Ro-kdp">
             <objects>
                 <navigationController id="Kfe-8O-VGI" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Npy-jP-e9J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="gYE-77-jw4" kind="relationship" relationship="rootViewController" id="3uh-Kv-xHk"/>
+                        <segue destination="jo0-IC-ddb" kind="relationship" relationship="rootViewController" id="RIm-CC-v7W"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y33-Fs-WpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-481" y="-521"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="jX3-J4-bFb">
+        <!--Settings Table View Controller-->
+        <scene sceneID="FPx-ct-5wt">
             <objects>
-                <viewController id="gYE-77-jw4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bjz-J5-Ebe"/>
-                        <viewControllerLayoutGuide type="bottom" id="mEq-f6-KXE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yoE-LW-eCj">
+                <tableViewController id="jo0-IC-ddb" customClass="SettingsTableViewController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ogv-QR-mdV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="N5z-Dm-whk"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="moe-l4-rE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <color key="separatorColor" red="0.45512872409326421" green="0.43595827819683663" blue="0.43078720592199893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <pickerView key="tableFooterView" contentMode="scaleToFill" id="naF-Gb-s8c">
+                            <rect key="frame" x="0.0" y="417.5" width="375" height="175"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="0.1720513417" blue="0.015082935780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </pickerView>
+                        <sections>
+                            <tableViewSection headerTitle="Weight" id="4bd-sd-T6I">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dp3-f9-Fdn">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dp3-f9-Fdn" id="ISm-u2-b4M">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yf9-dh-KJ0">
+                                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="lbs">
+                                                        <color key="titleColor" red="0.02362398617" green="0.52082663770000004" blue="0.99858564139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="weightButtonPressed:" destination="jo0-IC-ddb" eventType="touchUpInside" id="yR6-ld-stp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Distance" id="O7i-HY-cDT">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mBF-d0-r5d">
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mBF-d0-r5d" id="UWP-3l-S3X">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qw1-68-Ks0">
+                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Km">
+                                                        <color key="titleColor" red="0.02362398617" green="0.52082663770000004" blue="0.99858564139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="distanceButtonPushed:" destination="jo0-IC-ddb" eventType="touchUpInside" id="FOP-cf-q4E"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Speed" id="594-v0-5bI">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HlH-SC-YYE">
+                                        <rect key="frame" x="0.0" y="255.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HlH-SC-YYE" id="k2v-2o-wTL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-mH-zxy">
+                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="Km / hr">
+                                                        <color key="titleColor" red="0.02362398617" green="0.52082663770000004" blue="0.99858564139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="speedButtonPushed:" destination="jo0-IC-ddb" eventType="touchUpInside" id="CVD-b8-3tv"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Pace" id="1vg-aF-N1l">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RbZ-hc-76W">
+                                        <rect key="frame" x="0.0" y="355.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RbZ-hc-76W" id="mra-ak-H2e">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRB-4F-B2s">
+                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <state key="normal" title="mi / min">
+                                                        <color key="titleColor" red="0.02362398617" green="0.52082663770000004" blue="0.99858564139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="paceButtonPushed:" destination="jo0-IC-ddb" eventType="touchUpInside" id="you-iP-wKo"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="jo0-IC-ddb" id="Nhz-Jh-PJV"/>
+                            <outlet property="delegate" destination="jo0-IC-ddb" id="jDh-iS-ir3"/>
+                            <outletCollection property="gestureRecognizers" destination="ccy-Dv-BbQ" appends="YES" id="QUL-E8-hCH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="5fS-5u-Y7q">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Udn-HR-kYU">
+                            <connections>
+                                <action selector="cancelPressed:" destination="jo0-IC-ddb" id="Ykj-oY-Sl9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="erB-To-9wR">
+                            <connections>
+                                <action selector="donePressed:" destination="jo0-IC-ddb" id="sxE-4n-Qf1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="distanceButton" destination="qw1-68-Ks0" id="7Zs-Ut-Lw2"/>
+                        <outlet property="paceButton" destination="LRB-4F-B2s" id="VYC-kG-MfJ"/>
+                        <outlet property="pickerView" destination="naF-Gb-s8c" id="S6R-ao-Pmc"/>
+                        <outlet property="speedButton" destination="DbT-mH-zxy" id="jy9-m0-li6"/>
+                        <outlet property="weightButton" destination="yf9-dh-KJ0" id="U6T-Gy-nFN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tl-bT-4rc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ccy-Dv-BbQ">
+                    <connections>
+                        <action selector="customTapPressed:" destination="jo0-IC-ddb" id="fBB-ah-8Yd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="300" y="-526"/>
+            <point key="canvasLocation" x="264.80000000000001" y="-521.28935532233891"/>
         </scene>
     </scenes>
 </document>
