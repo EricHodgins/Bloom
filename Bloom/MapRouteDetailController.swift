@@ -23,6 +23,7 @@ class MapRouteDetailController: UIViewController {
     @IBOutlet weak var averageSpeedLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    let userDefaults = UserDefaults.standard
     
     var locations: [Location] = []
     var speeds: [Double] = []
@@ -146,7 +147,6 @@ class MapRouteDetailController: UIViewController {
             let segment = self.segments.removeFirst()
             self.mapView.add(segment)
         }
-        //mapView.addOverlays(segments)
     }
     
     @IBAction func mapTypeButtonPressed(_ sender: Any) {
@@ -163,8 +163,20 @@ class MapRouteDetailController: UIViewController {
         let maxSpeed = Measurement(value: max, unit: UnitSpeed.metersPerSecond)
         let avgSpeed = Measurement(value: avg, unit: UnitSpeed.metersPerSecond)
         
-        let maxMetric = maxSpeed.converted(to: UnitSpeed.kilometersPerHour)
-        let avgMetric = avgSpeed.converted(to: UnitSpeed.kilometersPerHour)
+        var maxMetric: Measurement<UnitSpeed> = maxSpeed.converted(to: UnitSpeed.kilometersPerHour)
+        var avgMetric: Measurement<UnitSpeed> = avgSpeed.converted(to: UnitSpeed.kilometersPerHour)
+        
+        if let speedMetric = userDefaults.value(forKey: "SpeedUnit") as? String {
+            if speedMetric == "km/hr" {
+                maxMetric = maxSpeed.converted(to: UnitSpeed.kilometersPerHour)
+                avgMetric = avgSpeed.converted(to: UnitSpeed.kilometersPerHour)
+            }
+            
+            if speedMetric == "mi/hr" {
+                maxMetric = maxSpeed.converted(to: UnitSpeed.milesPerHour)
+                avgMetric = avgSpeed.converted(to: UnitSpeed.milesPerHour)
+            }
+        }
         
         let fmtMax = String(format: "%.2f", maxMetric.value)
         let fmtMin = String(format: "%.2f", avgMetric.value)
@@ -210,7 +222,18 @@ extension MapRouteDetailController: WorkoutSummarizer {
     }
     
     func totalDistance(inMetres metres: Measurement<UnitLength>) {
-        let metric = metres.converted(to: UnitLength.kilometers)
+        var metric = metres.converted(to: UnitLength.kilometers)
+        
+        if let distanceUnit = userDefaults.value(forKey: "DistanceUnit") as? String {
+            if distanceUnit == "km" {
+                
+            }
+            
+            if distanceUnit == "mi" {
+                metric = metres.converted(to: UnitLength.miles)
+            }
+        }
+        
         let formattedValue = String(format: "%.2f", metric.value)
         distanceLabel.text = "Distance: \(formattedValue) \(metric.unit.symbol)"
     }
