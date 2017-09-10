@@ -176,12 +176,18 @@ class MapRouteDetailController: UIViewController {
                 maxMetric = maxSpeed.converted(to: UnitSpeed.milesPerHour)
                 avgMetric = avgSpeed.converted(to: UnitSpeed.milesPerHour)
             }
+            
+            let fmtMax = String(format: "%.2f", maxMetric.value)
+            let fmtMin = String(format: "%.2f", avgMetric.value)
+            maxSpeedLabel.text = "Max Speed: \(fmtMax) \(maxMetric.unit.symbol)"
+            averageSpeedLabel.text = "Avg Speed: \(fmtMin) \(avgMetric.unit.symbol)"
+        } else {
+            let formatter = MeasurementFormatter()
+            let maxSpeedText = formatter.string(from: maxSpeed)
+            let avgSpeedText = formatter.string(from: avgSpeed)
+            maxSpeedLabel.text = "Max Speed: \(maxSpeedText)"
+            averageSpeedLabel.text = "Avg Speed: \(avgSpeedText)"
         }
-        
-        let fmtMax = String(format: "%.2f", maxMetric.value)
-        let fmtMin = String(format: "%.2f", avgMetric.value)
-        maxSpeedLabel.text = "Max Speed: \(fmtMax) \(maxMetric.unit.symbol)"
-        averageSpeedLabel.text = "Avg Speed: \(fmtMin) \(avgMetric.unit.symbol)"
     }
     
 }
@@ -232,10 +238,14 @@ extension MapRouteDetailController: WorkoutSummarizer {
             if distanceUnit == "mi" {
                 metric = metres.converted(to: UnitLength.miles)
             }
+            
+            let formattedValue = String(format: "%.2f", metric.value)
+            distanceLabel.text = "Distance: \(formattedValue) \(metric.unit.symbol)"
+        } else {
+            let formatter = MeasurementFormatter()
+            let text = formatter.string(from: metric)
+            distanceLabel.text = "Distance: \(text)"
         }
-        
-        let formattedValue = String(format: "%.2f", metric.value)
-        distanceLabel.text = "Distance: \(formattedValue) \(metric.unit.symbol)"
     }
 }
 

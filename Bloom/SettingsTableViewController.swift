@@ -45,7 +45,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func customTapPressed(_ sender: Any) {
-        pickerView.isHidden = true
         switch metricChange {
         case .weight:
             userDefaults.set(selection, forKey: "WeightUnit")
@@ -60,6 +59,7 @@ class SettingsTableViewController: UITableViewController {
         }
         
         configureButtons()
+        animatePickerViewOffView()
     }
     
     func configureButtons() {
@@ -110,6 +110,19 @@ class SettingsTableViewController: UITableViewController {
         }
 
     }
+    
+    func animatePickerViewIntoView() {
+        UIView.animate(withDuration: 0.5) { 
+            self.pickerView.frame.size.height = 175
+        }
+    }
+    
+    func animatePickerViewOffView() {
+        UIView.animate(withDuration: 0.5) { 
+            self.pickerView.frame.size.height = 0
+            
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -139,6 +152,7 @@ class SettingsTableViewController: UITableViewController {
         selection = weightPickerData[pickerView.selectedRow(inComponent: 0)]
         metricChange = .weight
         pickerView.reloadAllComponents()
+        animatePickerViewIntoView()
     }
     
     @IBAction func distanceButtonPushed(_ sender: Any) {
@@ -146,6 +160,7 @@ class SettingsTableViewController: UITableViewController {
         selection = distancePickerData[pickerView.selectedRow(inComponent: 0)]
         metricChange = .distance
         pickerView.reloadAllComponents()
+        animatePickerViewIntoView()
     }
     
     @IBAction func speedButtonPushed(_ sender: Any) {
@@ -153,6 +168,7 @@ class SettingsTableViewController: UITableViewController {
         selection = speedPickerData[pickerView.selectedRow(inComponent: 0)]
         metricChange = .speed
         pickerView.reloadAllComponents()
+        animatePickerViewIntoView()
     }
     
     @IBAction func paceButtonPushed(_ sender: Any) {
@@ -160,6 +176,7 @@ class SettingsTableViewController: UITableViewController {
         selection = pacePickerData[pickerView.selectedRow(inComponent: 0)]
         metricChange = .pace
         pickerView.reloadAllComponents()
+        animatePickerViewIntoView()
     }
     
 }
@@ -186,21 +203,6 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch metricChange {
-        case .weight:
-            return weightPickerData[row]
-        case .distance:
-            return distancePickerData[row]
-        case .speed:
-            return speedPickerData[row]
-        case .pace:
-            return pacePickerData[row]
-        default:
-            return ""
-        }
-    }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch metricChange {
         case .weight:
@@ -214,6 +216,29 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
         default:
             selection = ""
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        switch metricChange {
+        case .weight:
+            let title = weightPickerData[row]
+            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        case .distance:
+            let title = distancePickerData[row]
+            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        case .speed:
+            let title = speedPickerData[row]
+            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        case .pace:
+            let title = pacePickerData[row]
+            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        case .none:
+            return nil
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 45
     }
 }
 

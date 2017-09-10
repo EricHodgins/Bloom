@@ -35,11 +35,13 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <color key="separatorColor" red="0.45512872409326421" green="0.43595827819683663" blue="0.43078720592199893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <pickerView key="tableFooterView" contentMode="scaleToFill" id="naF-Gb-s8c">
-                            <rect key="frame" x="0.0" y="417.5" width="375" height="175"/>
+                            <rect key="frame" x="0.0" y="417.5" width="375" height="137"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.1720513417" blue="0.015082935780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </pickerView>
                         <sections>
                             <tableViewSection headerTitle="Weight" id="4bd-sd-T6I">
