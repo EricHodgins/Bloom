@@ -266,7 +266,7 @@ extension SummaryViewController: NSFetchedResultsControllerDelegate {
         case .insert:
             self.tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            if indexPath?.row != 0 {
+            if indexPath?.row != 0 || tableView.numberOfRows(inSection: indexPath!.section) > 1 {
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             } else {
                 let indexSet = IndexSet(integer: indexPath!.section)

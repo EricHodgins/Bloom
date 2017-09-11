@@ -216,11 +216,12 @@
                         <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
                         <outlet property="settingsBarButtonItem" destination="Tgl-o6-wD2" id="ebg-CJ-Yji"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
+                        <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="gXT-uk-Ch6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1089" y="119"/>
         </scene>
         <!--Finish Summary Controller-->
         <scene sceneID="ZTS-h6-bhF">
@@ -2284,8 +2285,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DCD-pO-VED"/>
-        <segue reference="HL2-Mf-Iac"/>
         <segue reference="ODi-uK-JeC"/>
+        <segue reference="HL2-Mf-Iac"/>
+        <segue reference="gXT-uk-Ch6"/>
         <segue reference="rrC-hf-91z"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,10 @@ class RecordLiveExcerciseController: UIViewController {
     var workoutName: String!
     
     var previousWorkout: Workout?
+    var userDefaults = UserDefaults.standard
+    let formatter = MeasurementFormatter()
+    var weightMetric: String = "kg"
+    var distanceMetric: String = "km"
     var maxReps: Double?
     var maxWeight: Double?
     
@@ -36,6 +40,15 @@ class RecordLiveExcerciseController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let weightUnit = userDefaults.value(forKey: "WeightUnit") as? String,
+            weightUnit == "lbs" {
+            self.weightMetric = weightUnit
+        }
+        
+        if let distanceUnit = userDefaults.value(forKey: "DistanceUnit") as? String,
+            distanceUnit == "mi" {
+            self.distanceMetric = "mi"
+        }
         setsButton.titleLabel?.lineBreakMode = .byWordWrapping
         repsButton.titleLabel?.lineBreakMode = .byWordWrapping
         weightButton.titleLabel?.lineBreakMode = .byWordWrapping
@@ -123,7 +136,7 @@ class RecordLiveExcerciseController: UIViewController {
                 weight = workoutSession.currentExcercise.weight
             }
             weightButton.isHidden = false
-            weightButton.setTitle("Weight\n\(weight)", for: .normal)
+            weightButton.setTitle("Weight\n\(weight) \(weightMetric)", for: .normal)
             workoutSession.currentExcercise.weight = weight
         } else {
             weightButton.isHidden = true
@@ -137,8 +150,15 @@ class RecordLiveExcerciseController: UIViewController {
             } else {
                 distance = workoutSession.currentExcercise.distance
             }
+            
+            let measurement = Measurement(value: distance, unit: UnitLength.meters)
+            
+            if distanceMetric == "km" {
+                
+            }
+            
             distaneButton.isHidden = false
-            distaneButton.setTitle("Distance\n\(distance)", for: .normal)
+            distaneButton.setTitle("Distance\n\(distance) \(distanceMetric)", for: .normal)
             workoutSession.currentExcercise.distance = distance
         } else {
             distaneButton.isHidden = true
@@ -260,9 +280,20 @@ class RecordLiveExcerciseController: UIViewController {
         case .Reps:
             excercise.reps = Double(value)!
         case .Weight:
-            excercise.weight = Double(value)!
+            if weightMetric == "lbs" {
+                let valueToKilograms = Measurement(value: Double(value)!, unit: UnitMass.kilograms)
+                excercise.weight = valueToKilograms.value
+            } else {
+                // It's already kilograms
+                excercise.weight = Double(value)!
+            }
         case .Distance:
-            excercise.distance = Double(value)!
+            if distanceMetric == "mi" {
+                let valueToKilometres = Measurement(value: Double(value)!, unit: UnitLength.kilometers)
+                excercise.distance = valueToKilometres.value
+            } else {
+                excercise.distance = Double(value)!
+            }
         case .Time:
             excercise.timeRecorded = NSDate()
         }
