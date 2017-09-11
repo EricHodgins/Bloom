@@ -37,12 +37,32 @@
                         <color key="separatorColor" red="0.45512872409326421" green="0.43595827819683663" blue="0.43078720592199893" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <pickerView key="tableFooterView" contentMode="scaleToFill" id="naF-Gb-s8c">
-                            <rect key="frame" x="0.0" y="417.5" width="375" height="137"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </pickerView>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="drd-ed-azY" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="417.5" width="375" height="186"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naF-Gb-s8c">
+                                    <rect key="frame" x="0.0" y="3" width="375" height="180"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </pickerView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.4871341991" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="naF-Gb-s8c" firstAttribute="centerY" secondItem="drd-ed-azY" secondAttribute="centerY" id="Nf7-t8-wjN"/>
+                                <constraint firstItem="naF-Gb-s8c" firstAttribute="leading" secondItem="drd-ed-azY" secondAttribute="leading" id="UHc-7p-n4V"/>
+                                <constraint firstAttribute="trailing" secondItem="naF-Gb-s8c" secondAttribute="trailing" id="o76-TG-rKB"/>
+                                <constraint firstItem="naF-Gb-s8c" firstAttribute="top" secondItem="drd-ed-azY" secondAttribute="top" constant="3" id="unu-i7-ArZ"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                    <color key="value" red="1" green="0.4871341991" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                    <color key="value" red="1" green="0.43921568630000002" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Weight" id="4bd-sd-T6I">
                                 <cells>
@@ -172,6 +192,7 @@
                         <outlet property="distanceButton" destination="qw1-68-Ks0" id="7Zs-Ut-Lw2"/>
                         <outlet property="paceButton" destination="LRB-4F-B2s" id="VYC-kG-MfJ"/>
                         <outlet property="pickerView" destination="naF-Gb-s8c" id="S6R-ao-Pmc"/>
+                        <outlet property="pickerViewContainer" destination="drd-ed-azY" id="ia5-P3-PS9"/>
                         <outlet property="speedButton" destination="DbT-mH-zxy" id="jy9-m0-li6"/>
                         <outlet property="weightButton" destination="yf9-dh-KJ0" id="U6T-Gy-nFN"/>
                     </connections>

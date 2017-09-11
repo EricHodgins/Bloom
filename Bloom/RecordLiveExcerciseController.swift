@@ -135,8 +135,15 @@ class RecordLiveExcerciseController: UIViewController {
             } else {
                 weight = workoutSession.currentExcercise.weight
             }
+            
+            var selectedLocale = Measurement(value: weight, unit: UnitMass.kilograms)
+            
+            if weightMetric == "lbs" {
+                selectedLocale = selectedLocale.converted(to: UnitMass.pounds)
+            }
+            
             weightButton.isHidden = false
-            weightButton.setTitle("Weight\n\(weight) \(weightMetric)", for: .normal)
+            weightButton.setTitle("Weight\n\(selectedLocale.value) \(weightMetric)", for: .normal)
             workoutSession.currentExcercise.weight = weight
         } else {
             weightButton.isHidden = true
@@ -151,14 +158,14 @@ class RecordLiveExcerciseController: UIViewController {
                 distance = workoutSession.currentExcercise.distance
             }
             
-            let measurement = Measurement(value: distance, unit: UnitLength.meters)
+            var selectedLocale = Measurement(value: distance, unit: UnitLength.kilometers)
             
-            if distanceMetric == "km" {
-                
+            if distanceMetric == "mi" {
+                selectedLocale = selectedLocale.converted(to: UnitLength.miles)
             }
             
             distaneButton.isHidden = false
-            distaneButton.setTitle("Distance\n\(distance) \(distanceMetric)", for: .normal)
+            distaneButton.setTitle("Distance\n\(selectedLocale.value) \(distanceMetric)", for: .normal)
             workoutSession.currentExcercise.distance = distance
         } else {
             distaneButton.isHidden = true
@@ -292,6 +299,7 @@ class RecordLiveExcerciseController: UIViewController {
                 let valueToKilometres = Measurement(value: Double(value)!, unit: UnitLength.kilometers)
                 excercise.distance = valueToKilometres.value
             } else {
+                // It's alrady Kilometres
                 excercise.distance = Double(value)!
             }
         case .Time:

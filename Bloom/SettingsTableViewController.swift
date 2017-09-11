@@ -20,6 +20,7 @@ class SettingsTableViewController: UITableViewController {
     
     fileprivate var metricChange: MetricChange = .none
     
+    @IBOutlet weak var pickerViewContainer: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var weightButton: UIButton!
     @IBOutlet weak var distanceButton: UIButton!
@@ -37,11 +38,10 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerView.isHidden = true
+        pickerViewContainer.alpha = 0
         pickerView.delegate = self
         pickerView.dataSource = self
         configureButtons()
-        
     }
     
     @IBAction func customTapPressed(_ sender: Any) {
@@ -112,15 +112,14 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func animatePickerViewIntoView() {
-        UIView.animate(withDuration: 0.5) { 
-            self.pickerView.frame.size.height = 175
+        UIView.animate(withDuration: 0.3) {
+            self.pickerViewContainer.alpha = 1.0
         }
     }
     
     func animatePickerViewOffView() {
-        UIView.animate(withDuration: 0.5) { 
-            self.pickerView.frame.size.height = 0
-            
+        UIView.animate(withDuration: 0.3) {
+            self.pickerViewContainer.alpha = 0.0
         }
     }
 
