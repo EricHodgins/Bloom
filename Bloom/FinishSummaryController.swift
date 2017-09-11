@@ -28,8 +28,23 @@ class FinishSummaryController: UIViewController {
     var sections: [String] = []
     var rows: [[String]] = [[]]
     
+    let userDefaults = UserDefaults.standard
+    var weightMetric: String = "kg"
+    var distanceMetric: String = "km"
+    let formatter = MeasurementFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatter.unitOptions = .providedUnit
+        if let selectedWeight = userDefaults.value(forKey: "WeightUnit") as? String,
+            selectedWeight == "lbs" {
+            weightMetric = selectedWeight
+        }
+        
+        if let selectedDistance = userDefaults.value(forKey: "DistanceUnit") as? String,
+            selectedDistance == "mi" {
+            distanceMetric = selectedDistance
+        }
         
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
     
@@ -65,8 +80,24 @@ class FinishSummaryController: UIViewController {
             var data: [String] = []
             if excercise.sets != 0 { data.append("Sets: \(excercise.sets)") }
             if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
-            if excercise.weight != 0 { data.append("Weight: \(excercise.weight)") }
-            if excercise.distance != 0 { data.append("Distance: \(excercise.distance)") }
+            if excercise.weight != 0 {
+                let weightKg = Measurement(value: excercise.weight, unit: UnitMass.kilograms)
+                if weightMetric == "lbs" {
+                    let weightPounds = weightKg.converted(to: UnitMass.pounds)
+                    data.append("Weight: \(formatter.string(from: weightPounds))s")
+                } else {
+                    data.append("Weight: \(formatter.string(from: weightKg))")
+                }
+            }
+            if excercise.distance != 0 {
+                let distanceKm = Measurement(value: excercise.distance, unit: UnitLength.kilometers)
+                if distanceMetric == "mi" {
+                    let distanceMi = distanceKm.converted(to: UnitLength.miles)
+                    data.append("Distance: \(formatter.string(from: distanceMi))")
+                } else {
+                    data.append("Distance: \(formatter.string(from: distanceKm))")
+                }
+            }
             
             return data
         })
