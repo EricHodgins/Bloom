@@ -80,7 +80,6 @@
 		7A9CC99F1F003EF300ACE7ED /* WatchLiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */; };
 		7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */; };
 		7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */; };
-		7A9CC9A61F020E7400ACE7ED /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7A9CC9AB1F02152A00ACE7ED /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
@@ -916,7 +915,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A01348E1F0883E100B13476 /* FinishInterfaceController.swift in Sources */,
-				7A9CC9A61F020E7400ACE7ED /* CoreDataStack.swift in Sources */,
 				7A01348A1F08745B00B13476 /* WorkoutManager.swift in Sources */,
 				7A01348C1F087BC100B13476 /* StartInterfaceController.swift in Sources */,
 				7ADD26631F2EECB400B434AF /* HealthDataService_Watch.swift in Sources */,

@@ -195,7 +195,6 @@ class BloomFilter {
         }
         
         guard excercises.count != 0 else { return nil }
-//        var uniqueExcercises: [ExcerciseTemplate] = []
         var excerciseProxyObjects: [ExcerciseProxy] = []
         var set = Set<String>()
         for template in excercises {
@@ -204,13 +203,7 @@ class BloomFilter {
                 set.insert(excerciseName)
                 let proxy = ExcerciseProxy(name: excerciseName, isRecordingSets: template.isRecordingSets, isRecordingReps: template.isRecordingReps, isRecordingWeight: template.isRecordingWeight, isRecordingDistance: template.isRecordingDistance)
                 excerciseProxyObjects.append(proxy)
-//                let newTemplate = ExcerciseTemplate(context: managedContext)
-//                newTemplate.name = excerciseName
-//                newTemplate.isRecordingReps = template.isRecordingReps
-//                newTemplate.isRecordingSets = template.isRecordingSets
-//                newTemplate.isRecordingWeight = template.isRecordingWeight
-//                newTemplate.isRecordingDistance = template.isRecordingDistance
-//                uniqueExcercises.append(newTemplate)
+
             }
         }
         return excerciseProxyObjects
@@ -252,8 +245,45 @@ class BloomFilter {
         
         return locations
     }
+    
+    //MARK: - Clean Up
+    class func fetchExcerciseObjectsWhereWorkoutIsNil(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseTemplate]? {
+        let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
+        let predicate = NSPredicate(format: "%K == nil", #keyPath(ExcerciseTemplate.workout))
+        fetchRequest.predicate = predicate
+        
+        var excerciseTemplates: [ExcerciseTemplate] = []
+        
+        do {
+            excerciseTemplates = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Error fetching excercise templates with workout rel. nil: \(error.localizedDescription)")
+        }
+        
+        if excerciseTemplates.count == 0 { return nil }
+        return excerciseTemplates
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

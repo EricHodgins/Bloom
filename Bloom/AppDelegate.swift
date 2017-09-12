@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Activate Watch Connectivity
         setupWatchConnectivity()
-    
+        coreDataStack.performCleanUp()
         return true
     }
 
