@@ -288,7 +288,8 @@ class RecordLiveExcerciseController: UIViewController {
             excercise.reps = Double(value)!
         case .Weight:
             if weightMetric == "lbs" {
-                let valueToKilograms = Measurement(value: Double(value)!, unit: UnitMass.kilograms)
+                let valueInPounds = Measurement(value: Double(value)!, unit: UnitMass.pounds)
+                let valueToKilograms = valueInPounds.converted(to: UnitMass.kilograms)
                 excercise.weight = valueToKilograms.value
             } else {
                 // It's already kilograms
@@ -296,7 +297,8 @@ class RecordLiveExcerciseController: UIViewController {
             }
         case .Distance:
             if distanceMetric == "mi" {
-                let valueToKilometres = Measurement(value: Double(value)!, unit: UnitLength.kilometers)
+                let valueInMiles = Measurement(value: Double(value)!, unit: UnitLength.miles)
+                let valueToKilometres = valueInMiles.converted(to: UnitLength.kilometers)
                 excercise.distance = valueToKilometres.value
             } else {
                 // It's alrady Kilometres
