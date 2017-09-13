@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navController.navigationBar.barTintColor = UIColor.white
         mainController.managedContext = coreDataStack.managedContext
         
+        // Keyboard Manager to adjust views for textfield input
+        BloomTextfieldManager.shared.enabled = true
+        
         // Test:  - Load test data if needed
         //importJSONTestData()
         

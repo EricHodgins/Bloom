@@ -56,12 +56,23 @@ class MainViewController: UIViewController {
         workout = BloomFilter.fetchLastWorkout(inManagedContext: managedContext)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
         scene.startSunFlareAction()
         fetchLastWorkout()
         fillINLastWorkoutValues()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        scene.removeFlareAction()
     }
     
     func fillINLastWorkoutValues() {
@@ -99,11 +110,6 @@ class MainViewController: UIViewController {
         coloredString.addAttribute(NSForegroundColorAttributeName, value: blue, range: range)
 
         lastWorkoutDuration.attributedText = coloredString
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        scene.removeFlareAction()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -19,7 +19,7 @@ class RecordLiveStatView: BaseBloomView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.delegate = self
         
         title = UILabel(frame: .zero)

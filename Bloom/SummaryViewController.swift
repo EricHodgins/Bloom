@@ -27,8 +27,6 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
         
@@ -43,6 +41,16 @@ class SummaryViewController: UIViewController {
         tableView.delegate = self
         fetchWorkoutTypes()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let rootVC = navigationController?.viewControllers[0]
+        rootVC?.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        rootVC?.navigationController?.navigationBar.shadowImage = nil
     }
     
     func fetchWorkoutTypes() {

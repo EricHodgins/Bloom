@@ -46,7 +46,7 @@ class NameWorkoutViewManager {
         view.addSubview(textField)
         
         NSLayoutConstraint.activate([
-            textField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height*0.2),
+            textField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height*0.1),
             textField.heightAnchor.constraint(equalToConstant: 40),
             textField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
             textField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8)
