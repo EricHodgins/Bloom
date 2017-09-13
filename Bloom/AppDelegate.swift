@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let navController = window?.rootViewController as? UINavigationController,
             let mainController = navController.topViewController as? MainViewController else { return true }
         
+        navController.navigationBar.barTintColor = UIColor.white
         mainController.managedContext = coreDataStack.managedContext
         
         // Test:  - Load test data if needed
