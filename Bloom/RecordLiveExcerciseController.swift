@@ -245,6 +245,7 @@ class RecordLiveExcerciseController: UIViewController {
         
         
         recordLiveStatView = RecordLiveStatView(inView: view)
+        BloomTextfieldManager.shared.viewToMove = recordLiveStatView
         recordLiveStatView.stat = stat
         recordLiveStatView.title.text = title
         recordLiveStatView.textField.text = text

@@ -19,6 +19,14 @@ class BloomTextfieldManager {
         }
     }
     
+    public var viewToMove: UIView? = nil {
+        didSet {
+            guard viewToMove != nil else { return }
+            self.initialYOrigin = viewToMove!.frame.origin.y
+        }
+    }
+    private var initialYOrigin: CGFloat = 0
+    
     static let shared = BloomTextfieldManager()
     private init() {
         enabled = false
@@ -35,7 +43,6 @@ class BloomTextfieldManager {
     }
     
     @objc private func keyboardWasShown(notification: Notification) {
-        print("keyboard shown")
         let info = notification.userInfo!
         let endheight = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         
@@ -50,13 +57,23 @@ class BloomTextfieldManager {
         let window = UIApplication.shared.keyWindow!
         let v = window.subviews.last!
         
+        // If there's a specific view to move, move this one
+        if let view = viewToMove {
+            UIView.animate(withDuration: 0.3, animations: {
+                view.frame.origin.y = view.superview!.frame.height - height - view.frame.height
+            })
+            return
+        }
+        
+        //Otherwise just move the first view (bottom)
         let textfield = findTextfield(subviews: window.subviews)
         guard textfield != nil else { return }
         
-        let keyboardTop = height
-        if (textfield?.frame.origin.y)! > keyboardTop {
+        let keyboardTop = v.frame.height - height
+        let buttonHeight = v.frame.height * 0.1
+        if (textfield!.frame.origin.y + buttonHeight ) > keyboardTop {
             UIView.animate(withDuration: 0.3) {
-                v.frame.origin.y = v.frame.height - height - textfield!.frame.origin.y - 60
+                v.frame.origin.y = v.frame.height - height - textfield!.frame.origin.y - 60 - buttonHeight
             }
         }
     }
@@ -79,9 +96,16 @@ class BloomTextfieldManager {
         let window = UIApplication.shared.keyWindow!
         let v = window.subviews.last!
         
+        if let view = viewToMove {
+            UIView.animate(withDuration: 0.3, animations: { 
+                view.frame.origin.y = self.initialYOrigin
+            })
+            viewToMove = nil
+            return
+        }
+        
         UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
             v.frame.origin.y = 0
-            v.layoutIfNeeded()
         }, completion: nil)
     }
 }

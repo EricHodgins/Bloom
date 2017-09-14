@@ -37,6 +37,10 @@ class RecordLiveStatView: BaseBloomView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("Deinit.")
+    }
+    
     func setupTitleLabel() {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "TITLE"
@@ -87,9 +91,7 @@ class RecordLiveStatView: BaseBloomView {
             minusButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
-    
-    
-    
+
 }
 
 extension RecordLiveStatView: UITextFieldDelegate {
