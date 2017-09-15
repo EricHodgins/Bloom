@@ -200,7 +200,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
-                        <barButtonItem key="leftBarButtonItem" title="Store" id="hq6-EL-ZBU"/>
+                        <barButtonItem key="leftBarButtonItem" title="Store" id="hq6-EL-ZBU">
+                            <connections>
+                                <segue destination="t6j-1J-BFJ" kind="presentation" id="Nbl-4X-keS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Tgl-o6-wD2">
                             <connections>
                                 <segue destination="hxz-xN-zau" kind="presentation" id="jSL-Uu-gq3"/>
@@ -471,7 +475,7 @@
                                                 <rect key="frame" x="0.0" y="65.5" width="375" height="14"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="guA-ti-UKf">
-                                                        <rect key="frame" x="8" y="-2.5" width="97" height="21"/>
+                                                        <rect key="frame" x="8" y="-3.5" width="97" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="97" id="OyX-qg-sSg"/>
                                                         </constraints>
@@ -480,7 +484,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="11r-YK-Fo9">
-                                                        <rect key="frame" x="318" y="-7.5" width="51" height="31"/>
+                                                        <rect key="frame" x="318" y="-8.5" width="51" height="31"/>
                                                     </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1037,7 +1041,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFc-mg-emR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="1034.9325337331336"/>
+            <point key="canvasLocation" x="2831.1999999999998" y="1034.9325337331336"/>
         </scene>
         <!--Workout Detail Controller-->
         <scene sceneID="Ybu-WU-2S5">
@@ -1244,7 +1248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2L-Sj-gSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616.8000000000002" y="1034.9325337331336"/>
+            <point key="canvasLocation" x="3556" y="1034.9325337331336"/>
         </scene>
         <!--ExcerciseName-->
         <scene sceneID="50C-Mg-UVj">
@@ -1302,7 +1306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-G7-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3330" y="1035"/>
+            <point key="canvasLocation" x="4268" y="1034.9325337331336"/>
         </scene>
         <!--Filter Graph Controller-->
         <scene sceneID="W4L-Wt-yMB">
@@ -1455,7 +1459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBb-DD-V9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="299"/>
+            <point key="canvasLocation" x="2831.1999999999998" y="298.2008995502249"/>
         </scene>
         <!--Workout Name-->
         <scene sceneID="ZD8-V3-jR7">
@@ -1572,7 +1576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2618" y="299"/>
+            <point key="canvasLocation" x="3556" y="298.2008995502249"/>
         </scene>
         <!--Live Workout Controller-->
         <scene sceneID="6gQ-Ut-eDG">
@@ -1664,7 +1668,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKT-lf-ME6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UIc-tM-drf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3490.4000000000001" y="298.2008995502249"/>
+            <point key="canvasLocation" x="4429.6000000000004" y="298.2008995502249"/>
         </scene>
         <!--Record Live Excercise Controller-->
         <scene sceneID="fsn-bc-aeQ">
@@ -1824,7 +1828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJY-8G-Olt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4176.8000000000002" y="295.50224887556226"/>
+            <point key="canvasLocation" x="5116" y="295.50224887556226"/>
         </scene>
         <!--Live Excercise List Controller-->
         <scene sceneID="mNe-1Y-G55">
@@ -1871,7 +1875,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HK2-Q5-kiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4821.6000000000004" y="297.30134932533736"/>
+            <point key="canvasLocation" x="5760.8000000000002" y="297.30134932533736"/>
         </scene>
         <!--Live Map View Controller-->
         <scene sceneID="tCW-ZF-XDL">
@@ -2013,7 +2017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mn7-Kp-guu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5479.1999999999998" y="296.40179910044981"/>
+            <point key="canvasLocation" x="6418.3999999999996" y="296.40179910044981"/>
         </scene>
         <!--Finish Live Workout Controller-->
         <scene sceneID="rdI-bL-OgD">
@@ -2071,7 +2075,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6152.8000000000002" y="296.40179910044981"/>
+            <point key="canvasLocation" x="7092" y="296.40179910044981"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">
@@ -2234,7 +2238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616.8000000000002" y="2385.1574212893556"/>
+            <point key="canvasLocation" x="3556" y="2385.1574212893556"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KRq-wq-FcE">
@@ -2279,6 +2283,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbN-cu-ckT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-481" y="-521"/>
+        </scene>
+        <!--Store-->
+        <scene sceneID="OMj-PJ-yC3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Store" id="t6j-1J-BFJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q66-Oo-Yni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="-809"/>
         </scene>
     </scenes>
     <resources>

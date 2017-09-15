@@ -24,6 +24,10 @@
 		7A1D21B01F645BCF00619231 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1D21AE1F645BCF00619231 /* Settings.storyboard */; };
 		7A1D21B21F648BC100619231 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D21B11F648BC100619231 /* SettingsTableViewController.swift */; };
 		7A1D21B71F68E63400619231 /* BloomTextfieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D21B61F68E63400619231 /* BloomTextfieldManager.swift */; };
+		7A1D21B91F6B69B200619231 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1D21B81F6B69B200619231 /* StoreKit.framework */; };
+		7A1D21BC1F6B6A9E00619231 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */; };
+		7A1D21BE1F6B6B4700619231 /* products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A1D21BD1F6B6B4700619231 /* products.plist */; };
+		7A1D21C31F6B721E00619231 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1D21C21F6B721E00619231 /* Store.storyboard */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -181,6 +185,10 @@
 		7A1D21AF1F645BCF00619231 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		7A1D21B11F648BC100619231 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		7A1D21B61F68E63400619231 /* BloomTextfieldManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloomTextfieldManager.swift; sourceTree = "<group>"; };
+		7A1D21B81F6B69B200619231 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		7A1D21BD1F6B6B4700619231 /* products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = products.plist; sourceTree = "<group>"; };
+		7A1D21C21F6B721E00619231 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
@@ -279,6 +287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1D21B91F6B69B200619231 /* StoreKit.framework in Frameworks */,
 				7A1A7FF11F3B64D70013C5AC /* MapKit.framework in Frameworks */,
 				7ADD26511F2D4DAF00B434AF /* HealthKit.framework in Frameworks */,
 			);
@@ -346,6 +355,15 @@
 				7A1A7FFF1F42AC130013C5AC /* WorkoutSummary.swift */,
 			);
 			name = FinishedSummary;
+			sourceTree = "<group>";
+		};
+		7A1D21BA1F6B6A8E00619231 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */,
+				7A1D21BD1F6B6B4700619231 /* products.plist */,
+			);
+			name = IAP;
 			sourceTree = "<group>";
 		};
 		7A1E13E91E06182600330EFB /* App Buttons */ = {
@@ -475,6 +493,7 @@
 				7ADD264E1F2D4DAF00B434AF /* Bloom.entitlements */,
 				7A796D461E2B05500006DE61 /* Metal */,
 				7ACCF2E11EE99A00002B0865 /* spark.png */,
+				7A1D21BA1F6B6A8E00619231 /* IAP */,
 				7A0134841F0694C500B13476 /* PhoneConnectivity */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
 				7ADD25F81F23CF6E00B434AF /* Utils.swift */,
@@ -498,6 +517,7 @@
 				7AC183FF1E20BB660019AB2F /* LiveWorkout */,
 				7A4065441EDF4F890024724C /* StatsGroup */,
 				7A84F9451DFE761D00A37C80 /* Main.storyboard */,
+				7A1D21C21F6B721E00619231 /* Store.storyboard */,
 				7A1D21AE1F645BCF00619231 /* Settings.storyboard */,
 				7A1D21B11F648BC100619231 /* SettingsTableViewController.swift */,
 				7A84F9481DFE761D00A37C80 /* Assets.xcassets */,
@@ -581,6 +601,7 @@
 		7ADD264F1F2D4DAF00B434AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A1D21B81F6B69B200619231 /* StoreKit.framework */,
 				7A1A7FF01F3B64D70013C5AC /* MapKit.framework */,
 				7ADD26531F2D4DBA00B434AF /* HealthKit.framework */,
 				7ADD26501F2D4DAF00B434AF /* HealthKit.framework */,
@@ -730,6 +751,9 @@
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -793,7 +817,9 @@
 			files = (
 				7ACCF2E21EE99A00002B0865 /* spark.png in Resources */,
 				7A84F94C1DFE761D00A37C80 /* LaunchScreen.storyboard in Resources */,
+				7A1D21BE1F6B6B4700619231 /* products.plist in Resources */,
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
+				7A1D21C31F6B721E00619231 /* Store.storyboard in Resources */,
 				7A1D21B01F645BCF00619231 /* Settings.storyboard in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
 				7A40654E1EE269A80024724C /* workoutJsonData.json in Resources */,
@@ -862,6 +888,7 @@
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
+				7A1D21BC1F6B6A9E00619231 /* IAPManager.swift in Sources */,
 				7A1A7FF51F3D586E0013C5AC /* StateAnnotation.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
