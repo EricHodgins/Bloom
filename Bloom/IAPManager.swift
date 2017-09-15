@@ -9,6 +9,10 @@
 import UIKit
 import StoreKit
 
+protocol IAPManagerDelegate: class {
+    func productsRequestResponseCompleted()
+}
+
 class IAPManager: NSObject, SKProductsRequestDelegate {
     static let shared = IAPManager()
     private override init() {}
@@ -16,8 +20,11 @@ class IAPManager: NSObject, SKProductsRequestDelegate {
     var request: SKProductsRequest!
     var products: [SKProduct] = []
     
+    weak var delegate: IAPManagerDelegate?
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
+        delegate?.productsRequestResponseCompleted()
         
         for product in self.products {
             print(product.localizedTitle)
@@ -49,4 +56,32 @@ class IAPManager: NSObject, SKProductsRequestDelegate {
     func requestProducts() {
         self.performProductRequestForIdentifiers(identifiers: getProductIdentifiers())
     }
+    
+    func setupPurchases(_ handler: @escaping (Bool) -> Void) {
+        if SKPaymentQueue.canMakePayments() {
+            handler(true)
+            return
+        }
+        handler(false)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

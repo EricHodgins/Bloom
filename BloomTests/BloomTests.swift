@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Bloom
+
 
 class BloomTests: XCTestCase {
     

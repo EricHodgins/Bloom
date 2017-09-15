@@ -28,6 +28,7 @@
 		7A1D21BC1F6B6A9E00619231 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */; };
 		7A1D21BE1F6B6B4700619231 /* products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A1D21BD1F6B6B4700619231 /* products.plist */; };
 		7A1D21C31F6B721E00619231 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1D21C21F6B721E00619231 /* Store.storyboard */; };
+		7A1D21C51F6B72E500619231 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D21C41F6B72E500619231 /* StoreController.swift */; };
 		7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */; };
 		7A1E13E61E05FCF100330EFB /* GenericBloomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */; };
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
@@ -189,6 +190,7 @@
 		7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		7A1D21BD1F6B6B4700619231 /* products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = products.plist; sourceTree = "<group>"; };
 		7A1D21C21F6B721E00619231 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
+		7A1D21C41F6B72E500619231 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
 		7A1E13E31E05FCC400330EFB /* BeginWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginWorkoutButton.swift; sourceTree = "<group>"; };
 		7A1E13E51E05FCF100330EFB /* GenericBloomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBloomButton.swift; sourceTree = "<group>"; };
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */,
+				7A1D21C41F6B72E500619231 /* StoreController.swift */,
 				7A1D21BD1F6B6B4700619231 /* products.plist */,
 			);
 			name = IAP;
@@ -911,6 +914,7 @@
 				7A0134861F0694D500B13476 /* PhoneConnectivityManager.swift in Sources */,
 				7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */,
 				7A1D21B71F68E63400619231 /* BloomTextfieldManager.swift in Sources */,
+				7A1D21C51F6B72E500619231 /* StoreController.swift in Sources */,
 				7A1D21A31F60F7E700619231 /* ExcerciseProxy.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,

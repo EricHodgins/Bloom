@@ -36,9 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Keyboard Manager to adjust views for textfield input
         BloomTextfieldManager.shared.enabled = true
         
-        //IAP
-        IAPManager.shared.requestProducts()
-        
         // Test:  - Load test data if needed
         //importJSONTestData()
         

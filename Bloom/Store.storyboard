@@ -1,35 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="R66-jJ-bsr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Store Controller-->
         <scene sceneID="zyh-hb-g9q">
             <objects>
-                <viewController id="Tb6-KI-6wY" sceneMemberID="viewController">
+                <viewController id="Tb6-KI-6wY" customClass="StoreController" customModule="Bloom" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="woT-B5-5t3"/>
                         <viewControllerLayoutGuide type="bottom" id="It7-Ob-ZlH"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Bro-0A-bz4">
+                    <view key="view" contentMode="scaleToFill" id="Bro-0A-bz4" customClass="GradientView" customModule="Bloom" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASG-x9-Gbj" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
+                                <rect key="frame" x="37" y="103" width="300" height="133.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="1" green="0.17254901959999999" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="1" green="0.43921568630000002" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="csvButtonPushed:" destination="Tb6-KI-6wY" eventType="touchUpInside" id="9Wm-nK-aHT"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZL3-dJ-4Gy">
+                                <rect key="frame" x="177" y="159" width="20" height="20"/>
+                                <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LPx-Bh-rJB">
+                                <rect key="frame" x="37" y="244" width="300" height="133.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Purchasing the CSV download will give you the ability to view all your workout data in a CSV file.  You'll be able view you data in any of your favorite spreadsheet programs.  The file will be sent to your email.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LPx-Bh-rJB" firstAttribute="leading" secondItem="Bro-0A-bz4" secondAttribute="leadingMargin" constant="21" id="EMC-gz-z91"/>
+                            <constraint firstItem="LPx-Bh-rJB" firstAttribute="top" secondItem="ASG-x9-Gbj" secondAttribute="bottom" constant="7.5" id="FsX-y2-B9d"/>
+                            <constraint firstItem="ASG-x9-Gbj" firstAttribute="width" secondItem="Bro-0A-bz4" secondAttribute="width" multiplier="0.8" id="Gqu-hT-Gy2"/>
+                            <constraint firstItem="ASG-x9-Gbj" firstAttribute="height" secondItem="Bro-0A-bz4" secondAttribute="height" multiplier="0.2" id="LFZ-vS-Kvz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LPx-Bh-rJB" secondAttribute="trailing" constant="22" id="Pv0-Sl-5fF"/>
+                            <constraint firstItem="ASG-x9-Gbj" firstAttribute="centerX" secondItem="Bro-0A-bz4" secondAttribute="centerX" id="mzg-ag-dvw"/>
+                            <constraint firstItem="ZL3-dJ-4Gy" firstAttribute="centerX" secondItem="ASG-x9-Gbj" secondAttribute="centerX" id="p5x-9g-h9E"/>
+                            <constraint firstItem="ASG-x9-Gbj" firstAttribute="top" secondItem="woT-B5-5t3" secondAttribute="bottom" constant="39" id="vz6-9U-C6P"/>
+                            <constraint firstItem="LPx-Bh-rJB" firstAttribute="height" secondItem="Bro-0A-bz4" secondAttribute="height" multiplier="0.2" id="yey-hy-ZIm"/>
+                            <constraint firstItem="ZL3-dJ-4Gy" firstAttribute="centerY" secondItem="ASG-x9-Gbj" secondAttribute="centerY" id="ywP-wq-pqo"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.4395239637305699" green="0.0" blue="0.38221916521520388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="mxE-qm-FKg"/>
+                    <navigationItem key="navigationItem" id="mxE-qm-FKg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="xjx-mY-Wcj">
+                            <connections>
+                                <action selector="donePushed:" destination="Tb6-KI-6wY" id="IYE-ll-nqt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ZL3-dJ-4Gy" id="Lu0-hS-Sj5"/>
+                        <outlet property="csvButton" destination="ASG-x9-Gbj" id="YGh-qZ-EnU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgI-jw-RVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="-809"/>
+            <point key="canvasLocation" x="648.79999999999995" y="-809.14542728635683"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mNB-tw-DKe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R66-jJ-bsr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="z9e-R2-kbO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
