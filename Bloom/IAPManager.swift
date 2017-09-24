@@ -13,7 +13,7 @@ protocol IAPManagerDelegate: class {
     func productsRequestResponseCompleted()
 }
 
-class IAPManager: NSObject, SKProductsRequestDelegate {
+class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     static let shared = IAPManager()
     private override init() {}
     
@@ -60,10 +60,48 @@ class IAPManager: NSObject, SKProductsRequestDelegate {
     func setupPurchases(_ handler: @escaping (Bool) -> Void) {
         if SKPaymentQueue.canMakePayments() {
             handler(true)
+            
+            SKPaymentQueue.default().add(self)
             return
         }
         handler(false)
     }
+    
+    func createPaymentRequestForProduct(product: SKProduct) {
+        let payment = SKMutablePayment(product: product)
+        payment.quantity = 1
+        payment.applicationUsername = hash("username")
+        
+        SKPaymentQueue.default().add(payment)
+    }
+    
+    //MARK: - Transaction Observer
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchasing:
+                print("Purchasing")
+                break
+            case . purchased:
+                print("Purchased")
+                queue.finishTransaction(transaction)
+                break
+            case .deferred:
+                // DO not block UI here.  THis is for family sharing and this delegate method will be called at another time. (SKMutablePayment.simulatesAskToBuyInSandbox to simulate)
+                print("Deferred")
+                break
+            case .failed:
+                print("Failed")
+                queue.finishTransaction(transaction)
+                break
+            case .restored:
+                print("Restored")
+                queue.finishTransaction(transaction)
+                break
+            }
+        }
+    }
+
 }
 
 

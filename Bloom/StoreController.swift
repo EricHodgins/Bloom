@@ -13,9 +13,12 @@ class StoreController: UIViewController, IAPManagerDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var csvButton: GenericBloomButton!
-
+    @IBOutlet weak var csvPurchaseDescriptionTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        csvButton.isEnabled = false
+        csvPurchaseDescriptionTextView.isHidden = true
         activityIndicator.startAnimating()
         
         IAPManager.shared.delegate = self
@@ -28,6 +31,7 @@ class StoreController: UIViewController, IAPManagerDelegate {
     
     func productsRequestResponseCompleted() {
         activityIndicator.stopAnimating()
+        csvButton.isEnabled = true
         setCSVButtonTitle()
     }
     
@@ -49,6 +53,7 @@ class StoreController: UIViewController, IAPManagerDelegate {
     }
     
     func setCSVButtonTitle() {
+        csvPurchaseDescriptionTextView.isHidden = false
         csvButton.titleLabel?.lineBreakMode = .byWordWrapping
         csvButton.titleLabel?.textAlignment = .center
         let csvProduct = IAPManager.shared.products[0]
@@ -63,12 +68,41 @@ class StoreController: UIViewController, IAPManagerDelegate {
         
         return formatter.string(from: product.price)!
     }
-
+    
     @IBAction func donePushed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func csvButtonPushed(_ sender: Any) {
+        guard IAPManager.shared.products.count > 0 else { return }
+        
+        let product = IAPManager.shared.products[0]
+        IAPManager.shared.createPaymentRequestForProduct(product: product)
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

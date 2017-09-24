@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import HealthKit
+import StoreKit
 import WatchConnectivity
 
 @UIApplicationMain
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        SKPaymentQueue.default().add(self)
         
         guard let navController = window?.rootViewController as? UINavigationController,
             let mainController = navController.topViewController as? MainViewController else { return true }

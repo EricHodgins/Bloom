@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ZL3-dJ-4Gy" id="Lu0-hS-Sj5"/>
                         <outlet property="csvButton" destination="ASG-x9-Gbj" id="YGh-qZ-EnU"/>
+                        <outlet property="csvPurchaseDescriptionTextView" destination="LPx-Bh-rJB" id="Y7f-k4-eFq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgI-jw-RVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
