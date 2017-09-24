@@ -83,7 +83,7 @@ class RecordLiveExcerciseController: UIViewController {
         DispatchQueue.main.async {
             
             if self.workoutSession.currentExcercise.timeRecorded == nil {
-                self.workoutSession.currentExcercise.timeRecorded = NSDate()
+                self.workoutSession.currentExcercise.timeRecorded = Date()
             }
             
             _ = self.workoutSession.nextExcercise()
@@ -237,9 +237,9 @@ class RecordLiveExcerciseController: UIViewController {
             text = "\(previousExcercise?.distance ?? 0)"
             currentCounter = previousExcercise?.distance ?? 0
         case .Time:
-            let formattedTime = workoutSession.workout.startTime?.delta(to: NSDate())
+            let formattedTime = workoutSession.workout.startTime?.delta(to: Date())
             timeButton.setTitle("Time\n\(formattedTime ?? "Error")", for: .normal)
-            workoutSession.currentExcercise.timeRecorded = NSDate()
+            workoutSession.currentExcercise.timeRecorded = Date()
             return
         }
         
@@ -306,7 +306,7 @@ class RecordLiveExcerciseController: UIViewController {
                 excercise.distance = Double(value)!
             }
         case .Time:
-            excercise.timeRecorded = NSDate()
+            excercise.timeRecorded = Date()
         }
         saveContext()
     }
@@ -319,12 +319,12 @@ class RecordLiveExcerciseController: UIViewController {
         }
     }
     
-    func plusButtonPushed(sender: UIButton) {
+    @objc func plusButtonPushed(sender: UIButton) {
         currentCounter += 1.0
         recordLiveStatView.textField.text = "\(currentCounter)"
     }
     
-    func minusButtonPushed(sender: UIButton) {
+    @objc func minusButtonPushed(sender: UIButton) {
         currentCounter -= 1.0
         recordLiveStatView.textField.text = "\(currentCounter)"
     }

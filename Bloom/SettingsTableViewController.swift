@@ -221,16 +221,16 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
         switch metricChange {
         case .weight:
             let title = weightPickerData[row]
-            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+            return NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         case .distance:
             let title = distancePickerData[row]
-            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+            return NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         case .speed:
             let title = speedPickerData[row]
-            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+            return NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         case .pace:
             let title = pacePickerData[row]
-            return NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName: UIColor.white])
+            return NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         case .none:
             return nil
         }

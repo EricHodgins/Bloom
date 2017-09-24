@@ -52,7 +52,7 @@ class PhoneConnectivityManager: NSObject {
     
     func sendStateToWatch(date: NSDate, name: String, excercises: [String]) {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             if session.isWatchAppInstalled {
                 do {
                     let dictionary: [String: Any] = ["StartDate" : date,
@@ -89,7 +89,7 @@ class PhoneConnectivityManager: NSObject {
     
     class func sendFinishedMessage() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             if session.isWatchAppInstalled {
                 let message = ["Finished": true]
                 do {
@@ -103,7 +103,7 @@ class PhoneConnectivityManager: NSObject {
     
     class func newWorkoutCreatedMessage() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             if session.isWatchAppInstalled {
                 do {
                     let message = ["WorkoutDateCreated": NSDate()]
@@ -174,7 +174,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             let reps = message["Reps"] as? Double,
             let weight = message["Weight"] as? Double,
             let distance = message["Distance"] as? Double,
-            let time = message["Time"] as? NSDate,
+            let time = message["Time"] as? Date,
             let orderNumber = message["OrderNumber"] as? Int {
             
             replyHandler(["Done": true])
@@ -183,7 +183,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         
         //MARK: - Workout has begun on watch. Transition Phone app to live workout session.
         if let workoutName = message["Name"] as? String,
-            let startDate = message["StartDate"] as? NSDate {
+            let startDate = message["StartDate"] as? Date {
             
             replyHandler(["PhoneActivated": true])
             
@@ -220,7 +220,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
         print(message)
         
         //MARK: - Workout Finished on Watch
-        if let finishDate = message["Finished"] as? NSDate {
+        if let finishDate = message["Finished"] as? Date {
             
             liveWorkoutController.workoutSessionManager.save(finishedDate: finishDate)
             DispatchQueue.main.async {
@@ -235,7 +235,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
 //MARK: - Helper Methods
 extension PhoneConnectivityManager {
     
-    func segueToLiveWorkout(workoutName: String, startDate: NSDate) {
+    func segueToLiveWorkout(workoutName: String, startDate: Date) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let window = appDelegate.window

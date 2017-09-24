@@ -34,7 +34,7 @@ class WatchConnectivityManager: NSObject {
     
     //MARK: - Request Workouts
     class func requestWorkouts(completion: @escaping ([String]) -> Void) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 session.sendMessage(["NeedWorkouts": true], replyHandler: { workouts in
@@ -50,7 +50,7 @@ class WatchConnectivityManager: NSObject {
     
     //MARK: - Request Excercises
     class func requestExcercises(forWorkout workout: String, completion: @escaping (([String]) -> Void)) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 print("Requesting excercises....")
@@ -66,7 +66,7 @@ class WatchConnectivityManager: NSObject {
     
     //MARK: - Request Max Reps
     class func requestMaxReps(forExcercise excercise: String, inWorkout workout: String, completion: @escaping ((Double) -> Void)) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 session.sendMessage(["MaxReps": true, "Excercise": excercise, "Workout": workout], replyHandler: { (maxRepsDict) in
@@ -84,7 +84,7 @@ class WatchConnectivityManager: NSObject {
     
     //MARK: - Request Max Weight
     class func requestMaxWeight(forExcercise excercise: String, inWorkout workout: String, completion: @escaping ((Double) -> Void)) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 session.sendMessage(["MaxWeight" : true, "Excercise": excercise, "Workout": workout], replyHandler: { (maxWeightDict) in
@@ -101,7 +101,7 @@ class WatchConnectivityManager: NSObject {
     
     //MARK: - Request Image Data
     class func requestWorkoutImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 let dict: [String: Any] = ["NeedWorkoutButtonImageData": true, "Height": height, "Width": width]
@@ -118,7 +118,7 @@ class WatchConnectivityManager: NSObject {
     }
     
     class func requestStatImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 let dict: [String: Any] = ["NeedStatButtonImageData": true, "Height": height, "Width": width]
@@ -136,7 +136,7 @@ class WatchConnectivityManager: NSObject {
     
     //Mark: - Save All Values for Excercise
     class func save(reps: Double, weight: Double, distance: Double, time: NSDate, orderNumber: Int) {
-        let session = WCSession.default()
+        let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
                 let saveDict: [String: Any] = ["SaveAll": true,
@@ -157,7 +157,7 @@ class WatchConnectivityManager: NSObject {
     //MARK: - Send Workout Started Message
     class func sendWorkoutStartMessageToPhone() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             if session.isReachable {
                 let dict: [String : Any] = ["Name": WorkoutManager.shared.currentWorkout!, "StartDate": WorkoutManager.shared.workoutStartDate!]
                 session.sendMessage(dict, replyHandler: { (reply) in
@@ -173,7 +173,7 @@ class WatchConnectivityManager: NSObject {
     //MARK: - Send Workout Finished Message
     class func sendWorkoutFinishedMessageToPhone(date: NSDate) {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             if session.isReachable {
                 let dict: [String : NSDate] = ["Finished" : date]
                 session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
@@ -254,7 +254,7 @@ extension WatchConnectivityManager {
     //MARK: - Send State to Phone
     func sendStateToPhone() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             do {
                 let dictionary: [String: Any] = ["StartDate" : WorkoutManager.shared.workoutStartDate!,
                                                  "Name": WorkoutManager.shared.currentWorkout!

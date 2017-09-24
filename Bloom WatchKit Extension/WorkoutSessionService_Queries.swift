@@ -63,7 +63,7 @@ extension WorkoutSessionService {
     
     func sendUpdatedHeartRateToPhone(hr: HKQuantity) {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             let hrValue = hr.doubleValue(for: hrUnit)
             if session.isReachable {
                 let heartRateMessage = ["heart_rate": hrValue]

@@ -33,7 +33,7 @@ class WorkoutSessionManager {
     
     weak var mapRouteDelegate: MapRouteDelegate?
     
-    init(managedContext: NSManagedObjectContext, workoutName: String, startDate: NSDate, deviceInitiated device: WorkoutSessionDeviceInitiation) {
+    init(managedContext: NSManagedObjectContext, workoutName: String, startDate: Date, deviceInitiated device: WorkoutSessionDeviceInitiation) {
         guard state == .inactive else { return }
         self.state = .active
         self.managedContext = managedContext
@@ -42,7 +42,7 @@ class WorkoutSessionManager {
         createWorkout(name: workoutName, startDate: startDate)
     }
     
-    private func createWorkout(name: String, startDate: NSDate) {
+    private func createWorkout(name: String, startDate: Date) {
         let workout = Workout(context: managedContext)
         workout.name = name
         workout.startTime = startDate
@@ -104,7 +104,7 @@ extension WorkoutSessionManager {
         return nil
     }
     
-    func save(reps: Double, weight: Double, distance: Double, time: NSDate, orderNumber: Int16) {
+    func save(reps: Double, weight: Double, distance: Double, time: Date, orderNumber: Int16) {
         guard let excercise = excercise(forOrderNumber: orderNumber) else { return }
         excercise.reps = reps
         excercise.weight = weight
@@ -125,7 +125,7 @@ extension WorkoutSessionManager {
         save()
     }
     
-    func save(finishedDate date: NSDate) {
+    func save(finishedDate date: Date) {
         mapRouteDelegate?.saveRoute()
         workout.endTime = date
         save()

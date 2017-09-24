@@ -36,6 +36,10 @@ class LensFlare: CIFilter {
     var inputReflectionSizeSix: CGFloat = 38
     var inputReflectionSizeSeven: CGFloat = 20
     
+    override func setValue(_ value: Any?, forKey key: String) {
+        
+    }
+    
     override var attributes: [String : Any]
     {
         let positions: [String : Any] = [
@@ -219,7 +223,7 @@ class LensFlare: CIFilter {
             "inputStriationContrast": 0.5
         ])
     
-    var colorKernel = CIColorKernel(string:
+    var colorKernel = CIColorKernel(source:
         "float brightnessWithinHexagon(vec2 coord, vec2 center, float v)" +
             "{" +
             "   float h = v * sqrt(3.0);" +
@@ -281,11 +285,11 @@ class LensFlare: CIFilter {
             inputReflectionSizeFive, inputReflectionSizeSix, inputReflectionSizeSeven,
             inputColor, inputReflectionBrightness]
         
-        let lensFlareImage = colorKernel.apply(withExtent: extent, arguments: arguments)?.applyingFilter("CIGaussianBlur", withInputParameters: [kCIInputRadiusKey: 1])
+        let lensFlareImage = colorKernel.apply(extent: extent, arguments: arguments)?.applyingFilter("CIGaussianBlur", parameters: [kCIInputRadiusKey: 1])
         
         return lensFlareImage?.applyingFilter(
             "CIAdditionCompositing",
-            withInputParameters: [kCIInputBackgroundImageKey: sunbeamsImage]).cropping(to: extent)
+            parameters: [kCIInputBackgroundImageKey: sunbeamsImage]).cropped(to: extent)
     }
 }
 

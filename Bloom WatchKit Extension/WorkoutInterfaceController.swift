@@ -49,7 +49,7 @@ extension WorkoutInterfaceController: WorkoutsTableDelegate {
         refresh()
     }
     
-    func refresh() {
+    @objc func refresh() {
         table.setNumberOfRows(WorkoutManager.shared.workouts.count, withRowType: "WorkoutRowType")
         
         for (index, name) in WorkoutManager.shared.workouts.enumerated() {

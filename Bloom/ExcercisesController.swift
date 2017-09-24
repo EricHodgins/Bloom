@@ -74,7 +74,7 @@ extension ExcercisesController: UITableViewDataSource {
 extension ExcercisesController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
+        cell?.contentView.backgroundColor = UIColor(displayP3Red: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {

@@ -44,7 +44,7 @@ class StartWorkoutController: UIViewController, CountDown {
         startButton.addTarget(self, action: #selector(StartWorkoutController.hideNavigation), for: .touchUpInside)
     }
     
-    func hideNavigation() {
+    @objc func hideNavigation() {
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -62,7 +62,7 @@ extension StartWorkoutController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LiveWorkoutSegue" {
             let liveWorkoutController = segue.destination as! LiveWorkoutController
-            liveWorkoutController.workoutSessionManager = WorkoutSessionManager(managedContext: managedContext, workoutName: workoutName, startDate: NSDate(), deviceInitiated: .phone)
+            liveWorkoutController.workoutSessionManager = WorkoutSessionManager(managedContext: managedContext, workoutName: workoutName, startDate: Date(), deviceInitiated: .phone)
             liveWorkoutController.workoutName = workoutName
             liveWorkoutController.managedContext = managedContext
             

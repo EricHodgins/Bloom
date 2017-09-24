@@ -101,6 +101,20 @@ struct FormatDisplay {
 
 
 // MARK: - Date Extension
+extension Date {
+    public func delta(to: Date) -> String {
+        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+        
+        let difference = Calendar.current.dateComponents(dayHourMinuteSecond, from: self, to: to)
+        
+        let seconds = String(format: "%02d", difference.second!)
+        let minutes = String(format: "%02d", difference.minute!)
+        let hours = String(format: "%02d", difference.hour!)
+        
+        return hours + ":" + minutes + ":" + seconds
+    }
+}
+
 extension NSDate {
     public func delta(to: NSDate) -> String {
         let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]

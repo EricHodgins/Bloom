@@ -113,11 +113,11 @@ class SummaryViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
         if tableView.isEditing {
             deleteBarButtonItem.title = "Delete"
-            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 255/255, green: 0, blue: 0, alpha: 1.0)
+            deleteBarButtonItem.tintColor = UIColor(displayP3Red: 255/255, green: 0, blue: 0, alpha: 1.0)
             tableView.setEditing(false, animated: true)
         } else {
             deleteBarButtonItem.title = "Done"
-            deleteBarButtonItem.tintColor = UIColor(colorLiteralRed: 61/255, green: 157/255, blue: 148/255, alpha: 1.0)
+            deleteBarButtonItem.tintColor = UIColor(displayP3Red: 61/255, green: 157/255, blue: 148/255, alpha: 1.0)
             tableView.setEditing(true, animated: true)
         }
     }
@@ -207,7 +207,7 @@ extension SummaryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.contentView.backgroundColor = UIColor(colorLiteralRed: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
+        cell?.contentView.backgroundColor = UIColor(displayP3Red: 100/255, green: 212/255, blue: 255/255, alpha: 1.0)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {

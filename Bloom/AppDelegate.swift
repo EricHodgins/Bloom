@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        SKPaymentQueue.default().add(self)
-        
         guard let navController = window?.rootViewController as? UINavigationController,
             let mainController = navController.topViewController as? MainViewController else { return true }
         
@@ -136,19 +134,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     wkout.name = "chest"
                     let startString = chestWorkout["startTime"]! as! String
                     let startDate = formatter.date(from: startString)!
-                    wkout.startTime = startDate as NSDate
+                    wkout.startTime = startDate
                     if let excercises = chestWorkout["Excercises"] as? [String : AnyObject] {
                         for excercise in excercises {
                             let exc = Excercise(entity: excerciseEntity, insertInto: coreDataStack.managedContext)
                             exc.name = excercise.0
-                            exc.reps = Double(excercise.1["Reps"]!! as! NSNumber)
-                            exc.weight = Double(excercise.1["Weight"]!! as! NSNumber)
+                            //exc.reps = Double(excercise.1["Reps"]!! as! NSNumber)
+                            //exc.weight = Double(excercise.1["Weight"]!! as! NSNumber)
                             wkout.addToExcercises(exc)
                         }
                     }
                     let endString = chestWorkout["endTime"]! as! String
                     let endDate = formatter.date(from: endString)!
-                    wkout.endTime = endDate as NSDate
+                    wkout.endTime = endDate
                 }
             }
         }
@@ -165,7 +163,7 @@ extension AppDelegate {
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = phoneConnectivityManager
             session.activate()
         }

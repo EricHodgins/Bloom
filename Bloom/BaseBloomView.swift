@@ -136,7 +136,7 @@ class BaseBloomView: UIView {
 
 
 extension BaseBloomView {
-    func savePressed() {
+    @objc func savePressed() {
         if textField.text != "" {
             let text = self.textField.text!.removeExtraWhiteSpace
             completionHandler!(text)
@@ -144,7 +144,7 @@ extension BaseBloomView {
         }
     }
     
-    func cancelPressed() {
+    @objc func cancelPressed() {
         completionHandler!(nil)
         removeViewFromSuperViewAnimation()
     }

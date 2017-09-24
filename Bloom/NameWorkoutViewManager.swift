@@ -41,7 +41,7 @@ class NameWorkoutViewManager {
         textField.textColor = UIColor.white
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(16, 0, 0)
         textField.attributedPlaceholder = NSAttributedString(string: "Name Your Workout",
-                                                             attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+                                                             attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         textField.delegate = controller
         view.addSubview(textField)
         

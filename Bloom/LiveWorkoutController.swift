@@ -108,7 +108,7 @@ class LiveWorkoutController: UIViewController {
 }
 
 extension LiveWorkoutController {
-    func startTimer() {
+    @objc func startTimer() {
         let finish = Date.timeIntervalSinceReferenceDate + currentWatchInterval
         var diff = finish - startTime
         
@@ -131,7 +131,7 @@ extension LiveWorkoutController {
         }
     }
     
-    func startHeartLineAnimation() {
+    @objc func startHeartLineAnimation() {
         heartBeatView.startAnimatingHeartLine()
     }
 }
@@ -200,7 +200,7 @@ extension LiveWorkoutController {
     func workoutFinishedOnWatch() {
         guard let workout = workoutSessionManager.workout else { return }
         
-        workout.endTime = NSDate()
+        workout.endTime = Date()
         do {
             try workout.managedObjectContext?.save()
         } catch let error as NSError {

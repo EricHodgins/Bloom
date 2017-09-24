@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let font = UIFont.systemFont(ofSize: 28.0)
-        let attributes = [NSFontAttributeName: font]
+        let attributes = [NSAttributedStringKey.font: font]
         settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         settingsBarButtonItem.title = "\u{2699}\u{0000FE0E}"
         setupHeartBeat()
@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
         
         // This check is mostly for when the apple watch hits finish.  One time the endTime was not saved.
         if lastWorkout.endTime == nil {
-            lastWorkout.endTime = NSDate()
+            lastWorkout.endTime = Date()
             do {
              try managedContext.save()
             } catch {
@@ -98,7 +98,7 @@ class MainViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
-        let blue = UIColor(colorLiteralRed: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
+        let blue = UIColor(displayP3Red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
         
         lastWorkoutNameLabel.text = lastWorkout.name ?? ""
         lastWorkoutNameLabel.textColor = UIColor.red
@@ -107,7 +107,7 @@ class MainViewController: UIViewController {
         let dateDurationString = dateFormatter.string(from: start as Date) + " - " + start.delta(to: end)
         let range = NSRange(location: dateDurationString.characters.count - 8, length: 8)
         let coloredString = NSMutableAttributedString(string: dateDurationString, attributes: [:])
-        coloredString.addAttribute(NSForegroundColorAttributeName, value: blue, range: range)
+        coloredString.addAttribute(NSAttributedStringKey.foregroundColor, value: blue, range: range)
 
         lastWorkoutDuration.attributedText = coloredString
     }

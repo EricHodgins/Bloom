@@ -49,7 +49,7 @@ class FinishLiveWorkoutController: UIViewController {
     
     @IBAction func finishWorkoutButtonPressed(_ sender: Any) {
         workoutSession.saveMapRoute()
-        workout.endTime = NSDate()
+        workout.endTime = Date()
         do {
             try workout.managedObjectContext?.save()
         } catch let error as NSError {

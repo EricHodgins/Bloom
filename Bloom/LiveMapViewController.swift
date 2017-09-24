@@ -116,7 +116,7 @@ class LiveMapViewController: UIViewController {
             let locationObject = Location(context: managedContext)
             locationObject.latitude = location.coordinate.latitude
             locationObject.longitude = location.coordinate.longitude
-            locationObject.timeStamp = location.timestamp as NSDate
+            locationObject.timeStamp = location.timestamp
             workoutSession.workout.addToLocations(locationObject)
         }
         

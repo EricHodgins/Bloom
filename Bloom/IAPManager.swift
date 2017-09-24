@@ -70,7 +70,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     func createPaymentRequestForProduct(product: SKProduct) {
         let payment = SKMutablePayment(product: product)
         payment.quantity = 1
-        payment.applicationUsername = hash("username")
+        //payment.applicationUsername = hash("username")
         
         SKPaymentQueue.default().add(payment)
     }

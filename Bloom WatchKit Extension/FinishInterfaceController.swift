@@ -55,7 +55,7 @@ class FinishInterfaceController: WKInterfaceController {
         WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
     }
     
-    func finishedOnPhone() {
+    @objc func finishedOnPhone() {
         let finishDate = NSDate()
         WorkoutManager.shared.workoutEndDate = finishDate
         if workoutSessionService != nil {

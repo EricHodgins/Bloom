@@ -42,7 +42,7 @@ class StartButton: GenericBloomButton {
     }
     
     //MARK: - Animations
-    func animateGradient() {
+    @objc func animateGradient() {
         editWorkoutButton.animateGradient()
         
         let gradientAnimation = CABasicAnimation(keyPath: "colors")

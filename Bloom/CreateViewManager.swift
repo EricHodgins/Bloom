@@ -53,7 +53,7 @@ class CreateViewManager {
         textField.textColor = UIColor.white
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(16, 0, 0)
         textField.attributedPlaceholder = NSAttributedString(string: "Name Your Excercise",
-                                                             attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+                                                             attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         if let excercise = exerciseTemplate {
             textField.text = excercise.name
         }

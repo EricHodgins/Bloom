@@ -60,7 +60,7 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    func setupGradientImage() {
+    @objc func setupGradientImage() {
         let height = Double(WKInterfaceDevice.current().screenBounds.height / 2)
         let width = Double(WKInterfaceDevice.current().screenBounds.width)
         WatchConnectivityManager.requestWorkoutImageData(height: height, width: width) { (imageData) in
@@ -82,7 +82,7 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    func requestWorkoutRoutines() {
+    @objc func requestWorkoutRoutines() {
         WatchConnectivityManager.requestWorkouts() { workoutNames in
             print("WOrkout request complete: \(workoutNames)")
             WorkoutManager.shared.workouts = workoutNames
