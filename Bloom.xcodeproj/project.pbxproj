@@ -34,6 +34,17 @@
 		7A1E13E81E06124300330EFB /* StatsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13E71E06124300330EFB /* StatsButton.swift */; };
 		7A1E13EB1E06185B00330EFB /* CreateWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */; };
 		7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E13ED1E06197900330EFB /* GradientView.swift */; };
+		7A2075E81F783936001C1A02 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7A2075E71F783936001C1A02 /* Podfile */; };
+		7A2075F61F78416E001C1A02 /* DecodingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075F31F7840B1001C1A02 /* DecodingHelpers.swift */; };
+		7A2075F71F784170001C1A02 /* ReceiptExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075F11F7840B0001C1A02 /* ReceiptExtractor.swift */; };
+		7A2075F81F784174001C1A02 /* ReceiptFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075F21F7840B0001C1A02 /* ReceiptFetcher.swift */; };
+		7A2075F91F784177001C1A02 /* ReceiptLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075EF1F7840B0001C1A02 /* ReceiptLoader.swift */; };
+		7A2075FA1F78417A001C1A02 /* ReceiptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075F01F7840B0001C1A02 /* ReceiptParser.swift */; };
+		7A2075FB1F78417D001C1A02 /* ReceiptSignatureValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075EE1F7840AF001C1A02 /* ReceiptSignatureValidator.swift */; };
+		7A2075FC1F78417F001C1A02 /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075ED1F7840AF001C1A02 /* ReceiptValidator.swift */; };
+		7A2075FD1F784182001C1A02 /* ParsedReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075F41F7840F5001C1A02 /* ParsedReceipt.swift */; };
+		7A2075FE1F784185001C1A02 /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = 7A2075EB1F784079001C1A02 /* pkcs7_union_accessors.c */; };
+		7A2075FF1F788A5A001C1A02 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7A2075F51F784168001C1A02 /* AppleIncRootCertificate.cer */; };
 		7A30CD851E03B0F0007C2F69 /* CreateWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */; };
 		7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */; };
 		7A4065461EDF4FB00024724C /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065451EDF4FB00024724C /* GraphViewController.swift */; };
@@ -109,6 +120,7 @@
 		7ADD268D1F35074E00B434AF /* LensFlare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268C1F35074E00B434AF /* LensFlare.swift */; };
 		7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD268E1F35084000B434AF /* FinishSummaryController.swift */; };
 		7ADD26911F3508F900B434AF /* FinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26901F3508F900B434AF /* FinishScene.swift */; };
+		F3038D95C25F881B3C3839DB /* libPods-Bloom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BB19AB18E10289449962FF /* libPods-Bloom.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +208,19 @@
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
 		7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutController.swift; sourceTree = "<group>"; };
 		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		7A2075E71F783936001C1A02 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		7A2075EA1F784078001C1A02 /* Bloom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloom-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A2075EB1F784079001C1A02 /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
+		7A2075EC1F784079001C1A02 /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
+		7A2075ED1F7840AF001C1A02 /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
+		7A2075EE1F7840AF001C1A02 /* ReceiptSignatureValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptSignatureValidator.swift; sourceTree = "<group>"; };
+		7A2075EF1F7840B0001C1A02 /* ReceiptLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptLoader.swift; sourceTree = "<group>"; };
+		7A2075F01F7840B0001C1A02 /* ReceiptParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParser.swift; sourceTree = "<group>"; };
+		7A2075F11F7840B0001C1A02 /* ReceiptExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptExtractor.swift; sourceTree = "<group>"; };
+		7A2075F21F7840B0001C1A02 /* ReceiptFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFetcher.swift; sourceTree = "<group>"; };
+		7A2075F31F7840B1001C1A02 /* DecodingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingHelpers.swift; sourceTree = "<group>"; };
+		7A2075F41F7840F5001C1A02 /* ParsedReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedReceipt.swift; sourceTree = "<group>"; };
+		7A2075F51F784168001C1A02 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		7A30CD841E03B0F0007C2F69 /* CreateWorkoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutButton.swift; sourceTree = "<group>"; };
 		7A38C3F81EE5A0FC000F0AB7 /* BloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloomFilter.swift; sourceTree = "<group>"; };
 		7A4065451EDF4FB00024724C /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
@@ -282,9 +307,19 @@
 		7ADD268C1F35074E00B434AF /* LensFlare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LensFlare.swift; sourceTree = "<group>"; };
 		7ADD268E1F35084000B434AF /* FinishSummaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSummaryController.swift; sourceTree = "<group>"; };
 		7ADD26901F3508F900B434AF /* FinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishScene.swift; sourceTree = "<group>"; };
+		B8BB19AB18E10289449962FF /* libPods-Bloom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bloom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D73CDD64A85C1A670D6455FE /* Pods-Bloom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.release.xcconfig"; sourceTree = "<group>"; };
+		ED8B18BD00BA06D1248254F4 /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		41BBFEAFECECC34583DB8775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A84F93B1DFE761D00A37C80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +327,7 @@
 				7A1D21B91F6B69B200619231 /* StoreKit.framework in Frameworks */,
 				7A1A7FF11F3B64D70013C5AC /* MapKit.framework in Frameworks */,
 				7ADD26511F2D4DAF00B434AF /* HealthKit.framework in Frameworks */,
+				F3038D95C25F881B3C3839DB /* libPods-Bloom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +398,7 @@
 		7A1D21BA1F6B6A8E00619231 /* IAP */ = {
 			isa = PBXGroup;
 			children = (
+				7A2075E91F784025001C1A02 /* Crypto */,
 				7A1D21BB1F6B6A9E00619231 /* IAPManager.swift */,
 				7A1D21C41F6B72E500619231 /* StoreController.swift */,
 				7A1D21BD1F6B6B4700619231 /* products.plist */,
@@ -394,6 +431,25 @@
 				7A43241B1EDDB0BD00BE9009 /* GraphView.swift */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		7A2075E91F784025001C1A02 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				7A2075F51F784168001C1A02 /* AppleIncRootCertificate.cer */,
+				7A2075F31F7840B1001C1A02 /* DecodingHelpers.swift */,
+				7A2075F11F7840B0001C1A02 /* ReceiptExtractor.swift */,
+				7A2075F21F7840B0001C1A02 /* ReceiptFetcher.swift */,
+				7A2075EF1F7840B0001C1A02 /* ReceiptLoader.swift */,
+				7A2075F01F7840B0001C1A02 /* ReceiptParser.swift */,
+				7A2075EE1F7840AF001C1A02 /* ReceiptSignatureValidator.swift */,
+				7A2075ED1F7840AF001C1A02 /* ReceiptValidator.swift */,
+				7A2075F41F7840F5001C1A02 /* ParsedReceipt.swift */,
+				7A2075EB1F784079001C1A02 /* pkcs7_union_accessors.c */,
+				7A2075EC1F784079001C1A02 /* pkcs7_union_accessors.h */,
+				7A2075EA1F784078001C1A02 /* Bloom-Bridging-Header.h */,
+			);
+			name = Crypto;
 			sourceTree = "<group>";
 		};
 		7A30CD831E03AFDA007C2F69 /* Playgrounds */ = {
@@ -466,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				7A40654D1EE269A80024724C /* workoutJsonData.json */,
+				7A2075E71F783936001C1A02 /* Podfile */,
 				7A6B9BBC1EDA8BCE00E05D04 /* CoreDataTest.swift */,
 				7A30CD831E03AFDA007C2F69 /* Playgrounds */,
 				7A84F9401DFE761D00A37C80 /* Bloom */,
@@ -475,6 +532,7 @@
 				7A84F9551DFE761E00A37C80 /* BloomTests */,
 				7A84F93F1DFE761D00A37C80 /* Products */,
 				7ADD264F1F2D4DAF00B434AF /* Frameworks */,
+				DE1C469CE057F4EF38A25E1F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -608,6 +666,7 @@
 				7A1A7FF01F3B64D70013C5AC /* MapKit.framework */,
 				7ADD26531F2D4DBA00B434AF /* HealthKit.framework */,
 				7ADD26501F2D4DAF00B434AF /* HealthKit.framework */,
+				B8BB19AB18E10289449962FF /* libPods-Bloom.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -641,6 +700,15 @@
 			name = MapTracker;
 			sourceTree = "<group>";
 		};
+		DE1C469CE057F4EF38A25E1F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED8B18BD00BA06D1248254F4 /* Pods-Bloom.debug.xcconfig */,
+				D73CDD64A85C1A670D6455FE /* Pods-Bloom.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -648,10 +716,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A84F9841DFE761F00A37C80 /* Build configuration list for PBXNativeTarget "Bloom" */;
 			buildPhases = (
+				9A791C6481887775C604B484 /* [CP] Check Pods Manifest.lock */,
 				7A84F93A1DFE761D00A37C80 /* Sources */,
 				7A84F93B1DFE761D00A37C80 /* Frameworks */,
 				7A84F93C1DFE761D00A37C80 /* Resources */,
 				7A84F9831DFE761F00A37C80 /* Embed Watch Content */,
+				4D5A17E2FC170FC9CDE46A6B /* [CP] Embed Pods Frameworks */,
+				AEB6FC2D2E1A9D387CD0A8EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -687,6 +758,7 @@
 			buildPhases = (
 				7A84F9591DFE761E00A37C80 /* Resources */,
 				7A84F97F1DFE761F00A37C80 /* Embed App Extensions */,
+				41BBFEAFECECC34583DB8775 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -828,7 +900,9 @@
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A1D21C31F6B721E00619231 /* Store.storyboard in Resources */,
 				7A1D21B01F645BCF00619231 /* Settings.storyboard in Resources */,
+				7A2075E81F783936001C1A02 /* Podfile in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
+				7A2075FF1F788A5A001C1A02 /* AppleIncRootCertificate.cer in Resources */,
 				7A40654E1EE269A80024724C /* workoutJsonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,12 +940,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D5A17E2FC170FC9CDE46A6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bloom/Pods-Bloom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A791C6481887775C604B484 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bloom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB6FC2D2E1A9D387CD0A8EC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bloom/Pods-Bloom-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A84F93A1DFE761D00A37C80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7A6B9BBD1EDA8BCE00E05D04 /* CoreDataTest.swift in Sources */,
+				7A2075FD1F784182001C1A02 /* ParsedReceipt.swift in Sources */,
 				7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */,
 				7A9CC8FA1EF6F4E600ACE7ED /* HeartView.swift in Sources */,
 				7A38C3F91EE5A0FC000F0AB7 /* BloomFilter.swift in Sources */,
@@ -890,14 +1016,19 @@
 				7A4065461EDF4FB00024724C /* GraphViewController.swift in Sources */,
 				7A84F9441DFE761D00A37C80 /* MainViewController.swift in Sources */,
 				7A7915D71E10A6BD00090D7B /* WorkoutsController.swift in Sources */,
+				7A2075F91F784177001C1A02 /* ReceiptLoader.swift in Sources */,
+				7A2075FE1F784185001C1A02 /* pkcs7_union_accessors.c in Sources */,
 				7A1A7FFD1F40FC1F0013C5AC /* MultiColorPolyLine.swift in Sources */,
 				7A7915DB1E10CA9000090D7B /* StartButton.swift in Sources */,
 				7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */,
 				7A9432FF1E08DD4300A1AE9A /* AddExcerciseView.swift in Sources */,
 				7A84F9421DFE761D00A37C80 /* AppDelegate.swift in Sources */,
+				7A2075FC1F78417F001C1A02 /* ReceiptValidator.swift in Sources */,
+				7A2075F71F784170001C1A02 /* ReceiptExtractor.swift in Sources */,
 				7A1D21BC1F6B6A9E00619231 /* IAPManager.swift in Sources */,
 				7A1A7FF51F3D586E0013C5AC /* StateAnnotation.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
+				7A2075F81F784174001C1A02 /* ReceiptFetcher.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
 				7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */,
 				7A1D21B21F648BC100619231 /* SettingsTableViewController.swift in Sources */,
@@ -907,6 +1038,7 @@
 				7A7D94B51EF1003800609B88 /* WorkoutDetailController.swift in Sources */,
 				7A7FD8311F5B649800B87269 /* CreateDataManager.swift in Sources */,
 				7A7FD82D1F58F27700B87269 /* CreateViewManager.swift in Sources */,
+				7A2075FA1F78417A001C1A02 /* ReceiptParser.swift in Sources */,
 				7AC184011E20BBBB0019AB2F /* RecordLiveExcerciseController.swift in Sources */,
 				7A7E6A7D1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift in Sources */,
 				7A1A7FFB1F40DAB60013C5AC /* MapRouteDetailController.swift in Sources */,
@@ -919,6 +1051,7 @@
 				7ADD268B1F32913200B434AF /* HeartBeatGraphController.swift in Sources */,
 				7A1D21B71F68E63400619231 /* BloomTextfieldManager.swift in Sources */,
 				7A1D21C51F6B72E500619231 /* StoreController.swift in Sources */,
+				7A2075F61F78416E001C1A02 /* DecodingHelpers.swift in Sources */,
 				7A1D21A31F60F7E700619231 /* ExcerciseProxy.swift in Sources */,
 				7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */,
 				7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */,
@@ -928,6 +1061,7 @@
 				7A1E13E41E05FCC400330EFB /* BeginWorkoutButton.swift in Sources */,
 				7ADD25F91F23CF6E00B434AF /* Utils.swift in Sources */,
 				7A764CED1E16EFF400736446 /* LayerExtension.swift in Sources */,
+				7A2075FB1F78417D001C1A02 /* ReceiptSignatureValidator.swift in Sources */,
 				7A7FD8251F58EFCA00B87269 /* CreateController.swift in Sources */,
 				7A764CEB1E16EF1300736446 /* RingLayer.swift in Sources */,
 				7A1E13EE1E06197900330EFB /* GradientView.swift in Sources */,
@@ -1074,6 +1208,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1090,7 +1225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1131,6 +1266,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1141,7 +1277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1233,17 +1369,22 @@
 		};
 		7A84F9851DFE761F00A37C80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED8B18BD00BA06D1248254F4 /* Pods-Bloom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bloom/Bloom.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bloom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloom/Bloom-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1251,17 +1392,21 @@
 		};
 		7A84F9861DFE761F00A37C80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D73CDD64A85C1A670D6455FE /* Pods-Bloom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bloom/Bloom.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Bloom/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloom/Bloom-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

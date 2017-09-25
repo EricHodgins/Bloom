@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        validateReceipt()
+        
         guard let navController = window?.rootViewController as? UINavigationController,
             let mainController = navController.topViewController as? MainViewController else { return true }
         
@@ -48,6 +50,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWatchConnectivity()
         coreDataStack.performCleanUp()
         return true
+    }
+    
+    func validateReceipt() {
+        let receiptValidator = ReceiptValidator()
+        let result = receiptValidator.validateReceipt()
+        switch result {
+        case .success(let receipt):
+            guard let purchaseReceipts = receipt.inAppPurchaseReceipts else { return }
+            for purchase in purchaseReceipts {
+                print(purchase.productIdentifier ?? "nothing...")
+                if let product = purchase.productIdentifier {
+                    if product == "com.bloom.csvexporter" {
+                        print("unlock csv")
+                    }
+                }
+            }
+        case .error(let error):
+            print("error: \(error)")
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

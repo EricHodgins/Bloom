@@ -55,6 +55,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     
     func requestProducts() {
         self.performProductRequestForIdentifiers(identifiers: getProductIdentifiers())
+        SKPaymentQueue.default().add(self)
     }
     
     func setupPurchases(_ handler: @escaping (Bool) -> Void) {
@@ -84,6 +85,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
                 break
             case . purchased:
                 print("Purchased")
+                validateReceipt()
                 queue.finishTransaction(transaction)
                 break
             case .deferred:
@@ -99,6 +101,27 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
                 queue.finishTransaction(transaction)
                 break
             }
+        }
+    }
+    
+    private func validateReceipt() {
+        let receiptValidator = ReceiptValidator()
+        let validationResult = receiptValidator.validateReceipt()
+        switch validationResult {
+        case .success(let parsedReceipt):
+            print("Success")
+            guard let purchaseReceipts = parsedReceipt.inAppPurchaseReceipts else {
+                print("No IAP receipts.")
+                return
+            }
+            // Unlock features
+            for purchase in purchaseReceipts {
+                print(purchase.productIdentifier ?? "no identifier...")
+            }
+            break
+        case .error(let receiptError):
+            print("Error: \(receiptError)")
+            break
         }
     }
 

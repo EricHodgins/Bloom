@@ -13,7 +13,6 @@ class LensFlare: CIFilter {
     var inputImage: CIImage?
     
     var inputOrigin = CIVector(x: 50, y: 75)
-    //var inputSize = CIVector(x: 400, y: 400)
     var inputSize:CIVector!
     
     var inputColor = CIVector(x: 0/255, y: 45/255, z: 135/255)
@@ -253,9 +252,7 @@ class LensFlare: CIFilter {
     
     override var outputImage: CIImage!
     {
-        guard let
-            colorKernel = colorKernel else
-        {
+        guard let colorKernel = colorKernel else {
             return nil
         }
         
