@@ -1,0 +1,15 @@
+.DS_Store
+Bloom.xcodeproj/project.xcworkspace/xcuserdata/erichodgins.xcuserdatad/UserInterfaceState.xcuserstate
+Podfile
+Pods/*
+DecodingHelpers.swift
+ReceiptExtractor.swift
+ReceiptFetcher.swift
+ReceiptLoader.swift
+ReceiptParser.swift
+ReceiptSignatureValidator.swift
+ReceiptValidator.swift
+ParsedReceipt.swift
+pkcs7_union_accessors.c
+pkcs7_union_accessors.h
+Bloom-Bridging-Header.h
