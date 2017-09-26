@@ -29,6 +29,10 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if IAPManager.shared.isCSVPurchased {
+            csvBarButtonItem.isEnabled = true
+        }
+        
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
         
         dateFormatter = DateFormatter()

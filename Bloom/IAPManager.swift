@@ -21,6 +21,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     var products: [SKProduct] = []
     
     weak var delegate: IAPManagerDelegate?
+    var isCSVPurchased: Bool = false
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
@@ -117,6 +118,10 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
             // Unlock features
             for purchase in purchaseReceipts {
                 print(purchase.productIdentifier ?? "no identifier...")
+                if let product = purchase.productIdentifier,
+                    product == "com.csvexporter.com" {
+                    isCSVPurchased = true
+                }
             }
             break
         case .error(let receiptError):

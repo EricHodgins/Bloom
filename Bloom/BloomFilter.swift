@@ -263,6 +263,22 @@ class BloomFilter {
         if excerciseTemplates.count == 0 { return nil }
         return excerciseTemplates
     }
+    
+    //MARK: CSV
+    class func fetchAllWorkouts(inManagedContext context: NSManagedObjectContext) -> [Workout]? {
+        let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
+        
+        var workouts: [Workout] = []
+        do {
+            workouts = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("all workout fetch error: \(error.localizedDescription)")
+        }
+
+        guard workouts.count >= 0 else { return nil }
+        return workouts
+    }
+    
 
 }
 

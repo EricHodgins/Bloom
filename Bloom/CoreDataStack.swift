@@ -76,7 +76,14 @@ extension CoreDataStack {
             }
         }
     }
+    
+    public func exportCSVFile() {
+        storeContainer.performBackgroundTask { (managedContext) in
+            
+        }
+    }
 }
+
 
 
 

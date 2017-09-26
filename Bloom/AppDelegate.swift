@@ -59,10 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .success(let receipt):
             guard let purchaseReceipts = receipt.inAppPurchaseReceipts else { return }
             for purchase in purchaseReceipts {
-                print(purchase.productIdentifier ?? "nothing...")
                 if let product = purchase.productIdentifier {
                     if product == "com.bloom.csvexporter" {
                         print("unlock csv")
+                        IAPManager.shared.isCSVPurchased = true
                     }
                 }
             }
