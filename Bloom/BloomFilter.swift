@@ -11,18 +11,18 @@ import CoreData
 
 class BloomFilter {
     
-    lazy var workoutForNamePredicate = { (workoutName: String) -> NSPredicate in
+    var workoutForNamePredicate = { (workoutName: String) -> NSPredicate in
         return NSPredicate(format: "%K == %@", #keyPath(Excercise.workout.name), workoutName)
     }
-    
-    lazy var excerciseNamePredicate = { (excerciseName:String) -> NSPredicate in
+
+    var excerciseNamePredicate = { (excerciseName: String) -> NSPredicate in
         return NSPredicate(format: "%K == %@", #keyPath(Excercise.name), excerciseName)
     }
     
-    lazy var workoutDateSortDescriptor: NSSortDescriptor = {
+    lazy var workoutDateSortDescriptor: NSSortDescriptor  = {
         return NSSortDescriptor(key: #keyPath(Excercise.workout.startTime), ascending: true)
     }()
-    
+
     lazy var datePredicate = { (start: Date, end: Date) -> NSPredicate in
         var startDate = start
         var endDate = end
@@ -35,7 +35,7 @@ class BloomFilter {
         
         return predicate
     }
-    
+
     lazy var maxRepsExpressionDescription: NSExpressionDescription = {
         let maxRepExpressionDesc = NSExpressionDescription()
         maxRepExpressionDesc.name = "maxReps"
@@ -47,7 +47,7 @@ class BloomFilter {
         
         return maxRepExpressionDesc
     }()
-    
+ 
     lazy var maxWeightExpressionDescription: NSExpressionDescription = {
         let maxRepExpressionDesc = NSExpressionDescription()
         maxRepExpressionDesc.name = "maxWeight"
@@ -56,10 +56,9 @@ class BloomFilter {
         maxRepExpressionDesc.expression = NSExpression(forFunction: "max:", arguments: [excerciseRepsDesc])
         
         maxRepExpressionDesc.expressionResultType = .doubleAttributeType
-        
         return maxRepExpressionDesc
     }()
-    
+
     func allWorkouts(inManagedContext managedContext: NSManagedObjectContext) -> [WorkoutTemplate] {
         let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         var workouts: [WorkoutTemplate] = []
@@ -68,9 +67,10 @@ class BloomFilter {
         } catch let error as NSError {
             print("Save error: \(error), description: \(error.userInfo)")
         }
+        
         return workouts
     }
-    
+
     func fetchMaxReps(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
         let fetchRequest: NSFetchRequest<NSDictionary>
         fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
@@ -96,7 +96,7 @@ class BloomFilter {
         
         return maxValue ?? 0
     }
-    
+ 
     func fetchMaxWeight(forExcercise excercise: String, inWorkout workout: String, withManagedContext managedContext: NSManagedObjectContext) -> Double {
         let fetchRequest: NSFetchRequest<NSDictionary>
         fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Excercise")
@@ -119,11 +119,11 @@ class BloomFilter {
         } catch let error as NSError {
             print("NSDescription Error: \(error.userInfo)")
         }
-        
+
         return maxValue ?? 0
     }
     
-    
+
     class func excercises(forWorkout workoutName: String, inManagedContext managedContext: NSManagedObjectContext) -> [String] {
         let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         let predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
@@ -148,7 +148,7 @@ class BloomFilter {
         
         return ordererdExcercises
     }
-    
+ 
     class func fetchWorkoutTemplate(forName name: String, inManagedContext managedContext: NSManagedObjectContext) -> WorkoutTemplate {
         let fetchRequest = NSFetchRequest<WorkoutTemplate>(entityName: "WorkoutTemplate")
         let predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), name)
@@ -165,7 +165,7 @@ class BloomFilter {
         
         return workoutTemplate
     }
-    
+ 
     class func fetchLastWorkout(inManagedContext managedContext: NSManagedObjectContext) -> Workout? {
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Workout.startTime), ascending: false)]
@@ -182,7 +182,7 @@ class BloomFilter {
         
         return workout.first!
     }
-    
+ 
     class func fetchAllExcercises(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseProxy]? {
         let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ExcerciseTemplate.name), ascending: true)]
@@ -208,7 +208,7 @@ class BloomFilter {
         }
         return excerciseProxyObjects
     }
-    
+ 
     class func fetchPrevious(workout: Workout, inManagedContext context: NSManagedObjectContext) -> Workout? {
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
         let predicate = NSPredicate(format: "%K == %@", #keyPath(Workout.name), workout.name!)
@@ -227,7 +227,7 @@ class BloomFilter {
         if workout.count == 1 { return workout.first! }
         return workout.last!
     }
-    
+
     //MARK: - Location Queries
     class func fetchLocations(startDate: Date, finishDate: Date, inManagedContext managedContext: NSManagedObjectContext) -> [Location] {
         
@@ -245,7 +245,7 @@ class BloomFilter {
         
         return locations
     }
-    
+
     //MARK: - Clean Up
     class func fetchExcerciseObjectsWhereWorkoutIsNil(inManagedContext managedContext: NSManagedObjectContext) -> [ExcerciseTemplate]? {
         let fetchRequest = NSFetchRequest<ExcerciseTemplate>(entityName: "ExcerciseTemplate")
@@ -267,7 +267,7 @@ class BloomFilter {
     //MARK: CSV
     class func fetchAllWorkouts(inManagedContext context: NSManagedObjectContext) -> [Workout]? {
         let fetchRequest = NSFetchRequest<Workout>(entityName: "Workout")
-        
+
         var workouts: [Workout] = []
         do {
             workouts = try context.fetch(fetchRequest)
@@ -278,8 +278,6 @@ class BloomFilter {
         guard workouts.count >= 0 else { return nil }
         return workouts
     }
-    
-
 }
 
 

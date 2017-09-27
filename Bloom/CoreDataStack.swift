@@ -40,9 +40,6 @@ class CoreDataStack {
             print("Unresolved error \(error), \(error.userInfo)")
         }
     }
-    
-
-    
 }
 
 extension CoreDataStack {
@@ -77,13 +74,72 @@ extension CoreDataStack {
         }
     }
     
-    public func exportCSVFile() {
+    public func exportCSVFile(completion: @escaping ((_ url: URL?) -> Void)) {
         storeContainer.performBackgroundTask { (managedContext) in
+            let allWorkouts = BloomFilter.fetchAllWorkouts(inManagedContext: managedContext)
+            guard let workouts = allWorkouts else {
+                completion(nil)
+                return
+            }
             
+            //Export File path
+            let exportFilePath = NSTemporaryDirectory() + "bloom_workout_data.csv"
+            let exportFileURL = URL(fileURLWithPath: exportFilePath)
+            FileManager.default.createFile(atPath: exportFilePath, contents: Data(), attributes: nil)
+            
+            // Now write to disk
+            let fileHandle: FileHandle?
+            do {
+                fileHandle = try FileHandle(forWritingTo: exportFileURL)
+            } catch let error as NSError {
+                print("error: \(error.localizedDescription)")
+                fileHandle = nil
+            }
+            
+            if let fileHandle = fileHandle {
+                for workout in workouts {
+                    fileHandle.seekToEndOfFile()
+                    if let lines = workout.csvArray() {
+                        for line in lines {
+                            if let csvData = line.data(using: .utf8, allowLossyConversion: false) {
+                                fileHandle.write(csvData)
+                            }
+                        }
+                    }
+                }
+                fileHandle.closeFile()
+                print("Export path: \(exportFilePath)")
+                completion(exportFileURL)
+            }
         }
     }
 }
 
+extension Workout {
+    func csvArray() -> [String]? {
+        var workoutLines: [String] = []
+        let workoutName = name ?? ""
+        let startDate = startTime?.dateString() ?? ""
+        let endDate = endTime?.dateString() ?? ""
+        
+        guard let excercisesSet = self.excercises else {
+            return nil
+        }
+        let excercises = Array(excercisesSet) as! [Excercise]
+        
+        for excercise in excercises {
+            let name = excercise.name ?? ""
+            let sets = excercise.sets
+            let reps = excercise.reps
+            let weight = excercise.weight
+            let distance = excercise.distance
+            let timeComplete = excercise.timeRecorded?.dateString() ?? ""
+            let line = "\(workoutName), \(startDate), \(endDate), \(name), \(sets), \(reps), \(weight), \(distance), \(timeComplete)\n"
+            workoutLines.append(line)
+        }
+        return workoutLines
+    }
+}
 
 
 

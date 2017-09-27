@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
 class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -45,7 +46,6 @@ class SummaryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         fetchWorkoutTypes()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +109,24 @@ class SummaryViewController: UIViewController {
             workoutDetailController.workout = workout
             workoutDetailController.managedContext = managedContext
         }
+        
+        
+    }
+    @IBAction func csvBarButtonItemPressed(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let coreDataStack = appDelegate.coreDataStack
+        coreDataStack.exportCSVFile() { url in
+            guard let url = url else { return }
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self;
+                mail.setSubject("Bloom Workout Data")
+                mail.setMessageBody("Message body", isHTML: false)
+                let csvData = try! Data.init(contentsOf: url)
+                mail.addAttachmentData(csvData, mimeType: "text/csv", fileName: "Bloom Workout Data")
+                self.present(mail, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func segmentControllPressed(_ sender: UISegmentedControl) {
@@ -125,6 +143,13 @@ class SummaryViewController: UIViewController {
             deleteBarButtonItem.tintColor = UIColor(displayP3Red: 61/255, green: 157/255, blue: 148/255, alpha: 1.0)
             tableView.setEditing(true, animated: true)
         }
+    }
+}
+
+//MARK: - Mail Delegate
+extension SummaryViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -1034,7 +1034,11 @@
                                     <action selector="deleteButtonPressed:" destination="fSD-V5-eS1" id="qec-os-LtB"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="0gf-ut-NIi"/>
+                            <barButtonItem enabled="NO" systemItem="action" id="0gf-ut-NIi">
+                                <connections>
+                                    <action selector="csvBarButtonItemPressed:" destination="fSD-V5-eS1" id="SHs-vL-I43"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>

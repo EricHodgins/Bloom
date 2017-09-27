@@ -114,6 +114,15 @@ extension Date {
         
         return hours + ":" + minutes + ":" + seconds
     }
+    
+    public func dateString() -> String {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: self)
+        let month = calendar.component(.month, from: self)
+        let day = calendar.component(.day, from: self)
+        
+        return "\(year)\\\(month)\\\(day)"
+    }
 }
 
 extension NSDate {
