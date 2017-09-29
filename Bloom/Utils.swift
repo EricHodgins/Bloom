@@ -117,11 +117,25 @@ extension Date {
     
     public func dateString() -> String {
         let calendar = Calendar.current
-        let year = calendar.component(.year, from: self)
-        let month = calendar.component(.month, from: self)
-        let day = calendar.component(.day, from: self)
+        let year = String(format: "%02d", calendar.component(.year, from: self))
+        let month = String(format: "%02d", calendar.component(.month, from: self))
+        let day = String(format: "%02d", calendar.component(.day, from: self))
         
         return "\(year)\\\(month)\\\(day)"
+    }
+    
+    public func dateString(withTime: Bool) -> String {
+        if !withTime { return self.dateString() }
+        
+        let calendar = Calendar.current
+        let hour = String(format: "%02d", calendar.component(.hour, from: self))
+        let minutes = String(format: "%02d", calendar.component(.minute, from: self))
+        let seconds = String(format: "%02d", calendar.component(.second, from: self))
+        
+        let yearMonthDay = self.dateString()
+        let hourMinSec = " \(hour):\(minutes):\(seconds)"
+        let dateTime = yearMonthDay + hourMinSec
+        return dateTime
     }
 }
 
@@ -161,7 +175,33 @@ extension UIColor {
     static let createEnd = #colorLiteral(red: 0.5803921569, green: 0.6901960784, blue: 1, alpha: 1)
 }
 
+// Units
 
+struct Metric {
+    static func weightMetricString() -> String {
+        let weightMetric: String
+        let userDefaults = UserDefaults.standard
+        if let weightUnit = userDefaults.value(forKey: "WeightUnit") as? String,
+            weightUnit == "lbs" {
+            weightMetric = weightUnit
+        } else {
+            weightMetric = "kg"
+        }
+        return weightMetric
+    }
+    
+    static func distanceMetricString() -> String {
+        let distanceMetric: String
+        let userDefaults = UserDefaults.standard
+        if let distanceUnit = userDefaults.value(forKey: "DistanceUnit") as? String,
+            distanceUnit == "mi" {
+            distanceMetric = "mi"
+        } else {
+            distanceMetric = "km"
+        }
+        return distanceMetric
+    }
+}
 
 
 

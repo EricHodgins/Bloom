@@ -6,7 +6,7 @@
 //  Copyright © 2016 Eric Hodgins. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class CoreDataStack {
@@ -96,7 +96,14 @@ extension CoreDataStack {
                 fileHandle = nil
             }
             
+            let weightUnit = Metric.weightMetricString()
+            let distanceUnit = Metric.distanceMetricString()
+            
+            let headerRow = "Workout, Start Date, End Date, Duration, Exercise, Sets, Reps, Weight (\(weightUnit)), Distance (\(distanceUnit)), Excercise Time Completed\n"
+            let headerRowData = headerRow.data(using: .utf8, allowLossyConversion: false)!
+            
             if let fileHandle = fileHandle {
+                fileHandle.write(headerRowData)
                 for workout in workouts {
                     fileHandle.seekToEndOfFile()
                     if let lines = workout.csvArray() {
@@ -108,7 +115,6 @@ extension CoreDataStack {
                     }
                 }
                 fileHandle.closeFile()
-                print("Export path: \(exportFilePath)")
                 completion(exportFileURL)
             }
         }
@@ -117,10 +123,19 @@ extension CoreDataStack {
 
 extension Workout {
     func csvArray() -> [String]? {
+        let weightMetric: String = Metric.weightMetricString()
+        let distanceMetric: String = Metric.distanceMetricString()
+
         var workoutLines: [String] = []
         let workoutName = name ?? ""
-        let startDate = startTime?.dateString() ?? ""
-        let endDate = endTime?.dateString() ?? ""
+        let startDate = startTime?.dateString(withTime: true) ?? ""
+        let endDate = endTime?.dateString(withTime: true) ?? ""
+        let duration: String
+        if let start = self.startTime, let end = self.endTime {
+            duration = start.delta(to: end)
+        } else {
+            duration = ""
+        }
         
         guard let excercisesSet = self.excercises else {
             return nil
@@ -131,10 +146,19 @@ extension Workout {
             let name = excercise.name ?? ""
             let sets = excercise.sets
             let reps = excercise.reps
-            let weight = excercise.weight
-            let distance = excercise.distance
-            let timeComplete = excercise.timeRecorded?.dateString() ?? ""
-            let line = "\(workoutName), \(startDate), \(endDate), \(name), \(sets), \(reps), \(weight), \(distance), \(timeComplete)\n"
+            
+            var selectedWeightLocale = Measurement(value: excercise.weight, unit: UnitMass.kilograms)
+            if weightMetric == "lbs" {
+                selectedWeightLocale = selectedWeightLocale.converted(to: UnitMass.pounds)
+            }
+            
+            var selectedDistanceLocale = Measurement(value: excercise.distance, unit: UnitLength.kilometers)
+            if distanceMetric == "mi" {
+                selectedDistanceLocale = selectedDistanceLocale.converted(to: UnitLength.miles)
+            }
+
+            let timeComplete = excercise.timeRecorded?.dateString(withTime: true) ?? ""
+            let line = "\(workoutName), \(startDate), \(endDate), \(duration), \(name), \(sets), \(reps), \(selectedWeightLocale.value), \(selectedDistanceLocale.value), \(timeComplete)\n"
             workoutLines.append(line)
         }
         return workoutLines

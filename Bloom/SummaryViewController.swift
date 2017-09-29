@@ -120,8 +120,8 @@ class SummaryViewController: UIViewController {
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self;
-                mail.setSubject("Bloom Workout Data")
-                mail.setMessageBody("Message body", isHTML: false)
+                mail.setSubject("Bloom Workout Data - \(Date().dateString())")
+                mail.setMessageBody("Bloom workout data.", isHTML: false)
                 let csvData = try! Data.init(contentsOf: url)
                 mail.addAttachmentData(csvData, mimeType: "text/csv", fileName: "Bloom Workout Data")
                 self.present(mail, animated: true, completion: nil)
