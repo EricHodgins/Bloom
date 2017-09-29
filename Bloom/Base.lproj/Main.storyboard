@@ -28,101 +28,41 @@
                                 <rect key="frame" x="0.0" y="60" width="320" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WorkoutName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4n-0F-sOK">
-                                        <rect key="frame" x="98" y="50" width="125" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="92.5" y="50" width="136.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="1" green="0.2100468103" blue="0.38450793640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:43:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXE-Nu-e1G">
-                                        <rect key="frame" x="126.5" y="81.5" width="68" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.37439638376235962" green="0.75109666585922241" blue="0.33150961995124817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, 28 Sep 2017 18:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXE-Nu-e1G">
+                                        <rect key="frame" x="61.5" y="84" width="198.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" red="0.6588235294" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uxp-sN-7pp">
-                                        <rect key="frame" x="64" y="109.5" width="192" height="50.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3D-25-tyA" userLabel="HeartRateContainer">
-                                                <rect key="frame" x="0.0" y="0.0" width="96" height="50.5"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD3-Sp-iz8" userLabel="heartContainerView">
-                                                        <rect key="frame" x="33" y="10" width="30" height="30"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="lod-gK-Coi"/>
-                                                            <constraint firstAttribute="height" constant="30" id="zgJ-6n-Vzm"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhJ-P4-gHP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="50.5"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <connections>
-                                                            <segue destination="BbM-FM-AW8" kind="show" identifier="LastHeartRateSegue" id="DCD-pO-VED"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="lhJ-P4-gHP" firstAttribute="top" secondItem="z3D-25-tyA" secondAttribute="top" id="3Rz-iR-3qg"/>
-                                                    <constraint firstItem="sD3-Sp-iz8" firstAttribute="centerX" secondItem="lhJ-P4-gHP" secondAttribute="centerX" id="JTf-8w-4eP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="lhJ-P4-gHP" secondAttribute="bottom" id="UAw-CR-XZl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="lhJ-P4-gHP" secondAttribute="trailing" id="Ucv-jQ-sbp"/>
-                                                    <constraint firstItem="sD3-Sp-iz8" firstAttribute="centerY" secondItem="lhJ-P4-gHP" secondAttribute="centerY" id="lYP-bZ-5Lz"/>
-                                                    <constraint firstItem="lhJ-P4-gHP" firstAttribute="leading" secondItem="z3D-25-tyA" secondAttribute="leading" id="xef-55-Ls9"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-ib-SDD" userLabel="MapContainer">
-                                                <rect key="frame" x="96" y="0.0" width="96" height="50.5"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartPin" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-CP-LKQ">
-                                                        <rect key="frame" x="33.5" y="10.5" width="30" height="30"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="KbA-vc-xjO"/>
-                                                            <constraint firstAttribute="width" constant="30" id="ZnQ-Mz-PZD"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WR1-ul-WRl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="50.5"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <connections>
-                                                            <segue destination="Sdo-47-91L" kind="show" identifier="LastMapRouteSegue" id="HL2-Mf-Iac"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="WR1-ul-WRl" firstAttribute="leading" secondItem="2wb-ib-SDD" secondAttribute="leading" id="B5G-LC-Hql"/>
-                                                    <constraint firstAttribute="bottom" secondItem="WR1-ul-WRl" secondAttribute="bottom" id="OXO-uz-hMt"/>
-                                                    <constraint firstItem="WR1-ul-WRl" firstAttribute="top" secondItem="2wb-ib-SDD" secondAttribute="top" id="RI6-BL-n8S"/>
-                                                    <constraint firstAttribute="trailing" secondItem="WR1-ul-WRl" secondAttribute="trailing" id="SWe-eA-pfr"/>
-                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="centerY" secondItem="WR1-ul-WRl" secondAttribute="centerY" id="ScQ-5x-5Vq"/>
-                                                    <constraint firstItem="hZB-CP-LKQ" firstAttribute="centerX" secondItem="WR1-ul-WRl" secondAttribute="centerX" id="TaY-EJ-2xM"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-Cr-Lqq">
+                                        <rect key="frame" x="16" y="123" width="288" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Do1-Cc-oo5"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="height" secondItem="ZhY-hI-Lh1" secondAttribute="height" multiplier="0.1" id="3K7-HI-GSG"/>
-                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="width" secondItem="ZhY-hI-Lh1" secondAttribute="width" multiplier="0.6" id="ERg-qd-cLU"/>
+                                    <constraint firstItem="Lym-Cr-Lqq" firstAttribute="top" secondItem="EXE-Nu-e1G" secondAttribute="bottom" constant="16" id="Hia-NE-AiW"/>
                                     <constraint firstItem="EXE-Nu-e1G" firstAttribute="top" secondItem="b4n-0F-sOK" secondAttribute="bottom" constant="8" id="MoE-en-wKy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lym-Cr-Lqq" secondAttribute="trailing" constant="16" id="aIM-Ag-L49"/>
                                     <constraint firstItem="EXE-Nu-e1G" firstAttribute="centerX" secondItem="b4n-0F-sOK" secondAttribute="centerX" id="jE5-va-Pvu"/>
                                     <constraint firstItem="b4n-0F-sOK" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="nke-Zl-HeV"/>
-                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="top" secondItem="EXE-Nu-e1G" secondAttribute="bottom" constant="8" id="qAL-BQ-QSA"/>
+                                    <constraint firstItem="Lym-Cr-Lqq" firstAttribute="leading" secondItem="ZhY-hI-Lh1" secondAttribute="leading" constant="16" id="pyO-or-A6Y"/>
                                     <constraint firstItem="b4n-0F-sOK" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="top" constant="50" id="sA0-El-R7N"/>
-                                    <constraint firstItem="Uxp-sN-7pp" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="vZa-Cd-Gm9"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-39-VQU">
-                                <rect key="frame" x="8" y="247.5" width="304" height="312.5"/>
+                                <rect key="frame" x="8" y="193" width="304" height="367"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="101"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="119"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Create Workout Routine">
                                             <color key="titleColor" red="0.45882352941176469" green="0.92549019607843142" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,7 +83,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="106" width="304" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="124" width="304" height="119"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Workouts">
                                             <color key="titleColor" red="1" green="0.21004681031605432" blue="0.38450793637772496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +104,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="211.5" width="304" height="101"/>
+                                        <rect key="frame" x="0.0" y="248" width="304" height="119"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="View Stats">
                                             <color key="titleColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,9 +135,9 @@
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Joo-TH-SjP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" constant="8" id="Oed-la-BIZ"/>
                             <constraint firstItem="ZhY-hI-Lh1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-4" id="SCK-z1-rBx"/>
+                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="Lym-Cr-Lqq" secondAttribute="bottom" constant="9" id="VV0-FS-RFl"/>
                             <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" constant="8" id="aHA-tH-S6H"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="bottom" constant="4" id="cjY-hA-hb1"/>
-                            <constraint firstItem="4Ja-39-VQU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.55" id="uzi-qZ-02m"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
@@ -215,7 +155,6 @@
                     <connections>
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
-                        <outlet property="heartContainerView" destination="sD3-Sp-iz8" id="1oz-Dk-jdl"/>
                         <outlet property="lastWorkoutDuration" destination="EXE-Nu-e1G" id="Jsh-Ey-ukk"/>
                         <outlet property="lastWorkoutNameLabel" destination="b4n-0F-sOK" id="0lO-X2-gUp"/>
                         <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
@@ -226,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="119"/>
+            <point key="canvasLocation" x="1087.5" y="118.30985915492958"/>
         </scene>
         <!--Finish Summary Controller-->
         <scene sceneID="ZTS-h6-bhF">
@@ -2314,8 +2253,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ODi-uK-JeC"/>
-        <segue reference="HL2-Mf-Iac"/>
-        <segue reference="DCD-pO-VED"/>
         <segue reference="rrC-hf-91z"/>
         <segue reference="gXT-uk-Ch6"/>
     </inferredMetricsTieBreakers>

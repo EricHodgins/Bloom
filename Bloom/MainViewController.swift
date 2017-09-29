@@ -46,10 +46,10 @@ class MainViewController: UIViewController {
     }
     
     func setupHeartBeat() {
-        let size = heartContainerView.frame.width
-        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
-        heartContainerView.addSubview(heartView)
-        heartView.pulse(speed: .slow)
+//        let size = heartContainerView.frame.width
+//        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+//        heartContainerView.addSubview(heartView)
+//        heartView.pulse(speed: .slow)
     }
     
     func fetchLastWorkout() {
@@ -101,7 +101,6 @@ class MainViewController: UIViewController {
         //let blue = UIColor(displayP3Red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
         
         lastWorkoutNameLabel.text = lastWorkout.name ?? ""
-        lastWorkoutNameLabel.textColor = UIColor.red
         
         lastWorkoutDuration.text = dateFormatter.string(from: start)
 //        let dateDurationString = dateFormatter.string(from: start as Date) + " - " + start.delta(to: end)
