@@ -16,6 +16,7 @@ protocol CreateDataManagerDelegate: class {
 
 class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     
+    var controller: CreateController!
     var excerciseTemplates: [ExcerciseTemplate] = []
     var excerciseProxies: [ExcerciseProxy] = []
     let isSearching: Bool
@@ -29,6 +30,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
     var managedContext: NSManagedObjectContext!
     
     init(withManagedContext managedContext: NSManagedObjectContext, isSearching: Bool, tableView: UITableView, withController controller: CreateController) {
+        self.controller = controller
         self.managedContext = managedContext
         self.isSearching = isSearching
         self.tableView = tableView
@@ -180,6 +182,7 @@ class CreateDataManager: NSObject, UITableViewDelegate, UITableViewDataSource {
             let movedWorkout = excerciseTemplates[sourceIndexPath.row]
             excerciseTemplates.remove(at: sourceIndexPath.row)
             excerciseTemplates.insert(movedWorkout, at: destinationIndexPath.row)
+            controller.currentExcercises = excerciseTemplates
         }
     }
     
