@@ -16,6 +16,8 @@ class FinishScene: SKScene {
     
     var goRight: Bool = true
     var goUp: Bool = true
+    var redColor: CGFloat = 0
+    var redShiftDown: Bool = false
     var widthDistance: CGFloat = 0
     var heightDistance: CGFloat = 0
     
@@ -37,7 +39,6 @@ class FinishScene: SKScene {
         let shape = SKShapeNode(rect: shapeRect)
         shape.position = CGPoint.zero
         
-        //let sunFlare = LensFlare()
         sunFlare.inputSize = CIVector(x: sceneView.frame.width, y: sceneView.frame.height)
         
         effectNode = SKEffectNode()
@@ -50,6 +51,11 @@ class FinishScene: SKScene {
         addChild(effectNode)
         
         startSunFlareAction()
+        
+        if let particles = SKEmitterNode(fileNamed: "DustParticles.sks") {
+            particles.position = CGPoint(x: self.sceneView.frame.width/2, y: self.sceneView.frame.height / 2)
+            self.addChild(particles)
+        }
     }
     
     func removeFlareAction() {
@@ -59,7 +65,7 @@ class FinishScene: SKScene {
     func startSunFlareAction() {
 
         
-        let speed: CGFloat = 5
+        let speed: CGFloat = 2.5
         var dt: CGFloat = 0
         var lastUpdateTime: CGFloat = 0
         let flareAction = SKAction.customAction(withDuration: 300) { (node, elapsed) in
@@ -98,8 +104,19 @@ class FinishScene: SKScene {
             }
             
             self.sunFlare.inputOrigin = CIVector(x: self.widthDistance, y: self.heightDistance)
-            self.sunFlare.inputColor = CIVector(x: (elapsed * 5)/255, y: 45/255, z: 135/255)
             
+            if self.redColor > 0.78 {
+                self.redShiftDown = true
+            } else if self.redColor <= 0 {
+                self.redShiftDown = false
+            }
+            
+            if self.redShiftDown {
+                self.redColor -= 0.0001
+            } else {
+                self.redColor += 0.0001
+            }
+            self.sunFlare.inputColor = CIVector(x: self.redColor, y: 45/255, z: 135/255)
             
             self.effectNode.shouldEnableEffects = true
         }

@@ -45,8 +45,6 @@ class FinishSummaryController: UIViewController {
             selectedDistance == "mi" {
             distanceMetric = selectedDistance
         }
-        
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
     
         let skView = self.view as! SKView
         //skView.showsFPS = true
@@ -157,6 +155,7 @@ extension FinishSummaryController: UITableViewDelegate {
         
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor(displayP3Red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
+        header.textLabel?.font = UIFont.systemFont(ofSize: 20)
         
     }
 }

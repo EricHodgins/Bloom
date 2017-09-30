@@ -54,6 +54,7 @@
 		7A4065521EE33BE50024724C /* FilterGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4065511EE33BE50024724C /* FilterGraphController.swift */; };
 		7A43241C1EDDB0BD00BE9009 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A43241B1EDDB0BD00BE9009 /* GraphView.swift */; };
 		7A450AFF1F79E76B00DA0843 /* CSVExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A450AFE1F79E76B00DA0843 /* CSVExporter.swift */; };
+		7A450B031F7DF70000DA0843 /* DustParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A450B021F7DF70000DA0843 /* DustParticles.sks */; };
 		7A5346831E1A03610067E982 /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5346821E1A03610067E982 /* HeartBeatView.swift */; };
 		7A66583E1E46974C008B41FA /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66583D1E46974C008B41FA /* Types.swift */; };
 		7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A68C7F21E11EE0500F6023A /* EditWorkoutButton.swift */; };
@@ -209,7 +210,7 @@
 		7A1E13E71E06124300330EFB /* StatsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsButton.swift; sourceTree = "<group>"; };
 		7A1E13EA1E06185B00330EFB /* CreateWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutController.swift; sourceTree = "<group>"; };
 		7A1E13ED1E06197900330EFB /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		7A2075E71F783936001C1A02 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		7A2075E71F783936001C1A02 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7A2075EA1F784078001C1A02 /* Bloom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloom-Bridging-Header.h"; sourceTree = "<group>"; };
 		7A2075EB1F784079001C1A02 /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
 		7A2075EC1F784079001C1A02 /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 		7A4065511EE33BE50024724C /* FilterGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterGraphController.swift; sourceTree = "<group>"; };
 		7A43241B1EDDB0BD00BE9009 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7A450AFE1F79E76B00DA0843 /* CSVExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExporter.swift; sourceTree = "<group>"; };
+		7A450B021F7DF70000DA0843 /* DustParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DustParticles.sks; sourceTree = "<group>"; };
 		7A5346811E198B680067E982 /* HeartBeatPulseAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = HeartBeatPulseAnimation.playground; sourceTree = "<group>"; };
 		7A5346821E1A03610067E982 /* HeartBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
 		7A6340021E05CECA0021594C /* Drawings+Icons.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Drawings+Icons.playground"; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				7ADD264E1F2D4DAF00B434AF /* Bloom.entitlements */,
 				7A796D461E2B05500006DE61 /* Metal */,
 				7ACCF2E11EE99A00002B0865 /* spark.png */,
+				7A450B021F7DF70000DA0843 /* DustParticles.sks */,
 				7A1D21BA1F6B6A8E00619231 /* IAP */,
 				7A0134841F0694C500B13476 /* PhoneConnectivity */,
 				7A84F9411DFE761D00A37C80 /* AppDelegate.swift */,
@@ -903,6 +906,7 @@
 				7A84F9491DFE761D00A37C80 /* Assets.xcassets in Resources */,
 				7A1D21C31F6B721E00619231 /* Store.storyboard in Resources */,
 				7A1D21B01F645BCF00619231 /* Settings.storyboard in Resources */,
+				7A450B031F7DF70000DA0843 /* DustParticles.sks in Resources */,
 				7A2075E81F783936001C1A02 /* Podfile in Resources */,
 				7A84F9471DFE761D00A37C80 /* Main.storyboard in Resources */,
 				7A2075FF1F788A5A001C1A02 /* AppleIncRootCertificate.cer in Resources */,

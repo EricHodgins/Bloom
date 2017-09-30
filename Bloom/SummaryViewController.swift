@@ -34,8 +34,6 @@ class SummaryViewController: UIViewController {
             csvBarButtonItem.isEnabled = true
         }
         
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 25)
-        
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
@@ -160,11 +158,12 @@ extension SummaryViewController: UITableViewDataSource {
         let header = view as! UITableViewHeaderFooterView
         header.backgroundView?.backgroundColor = #colorLiteral(red: 0.0369855836, green: 0.5332083106, blue: 0.9984238744, alpha: 1)
         header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont.systemFont(ofSize: 20)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isAllWorkouts {
-            return 60
+            return 30
         }
         return 0
     }
