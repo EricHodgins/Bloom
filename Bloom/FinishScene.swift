@@ -28,6 +28,8 @@ class FinishScene: SKScene {
         return LensFlare()
     }()
     
+    var particles: SKEmitterNode?
+    
     override func didMove(to view: SKView) {
         self.sceneView = view
         heightDistance = sceneView.frame.height //* 0.75
@@ -49,21 +51,23 @@ class FinishScene: SKScene {
         effectNode.addChild(shape)
         
         addChild(effectNode)
-        
-        startSunFlareAction()
-        
-        if let particles = SKEmitterNode(fileNamed: "DustParticles.sks") {
-            particles.position = CGPoint(x: self.sceneView.frame.width/2, y: self.sceneView.frame.height / 2)
-            self.addChild(particles)
-        }
     }
     
     func removeFlareAction() {
         effectNode.removeAllActions()
+        particles?.removeFromParent()
+    }
+    
+    func addParticles() {
+        if let particlesSKS = SKEmitterNode(fileNamed: "DustParticles.sks") {
+            particles = particlesSKS
+            particles!.position = CGPoint(x: self.sceneView.frame.width/2, y: self.sceneView.frame.height / 2)
+            self.addChild(particles!)
+        }
     }
     
     func startSunFlareAction() {
-
+        addParticles()
         
         let speed: CGFloat = 2.5
         var dt: CGFloat = 0

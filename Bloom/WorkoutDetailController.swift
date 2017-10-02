@@ -25,10 +25,15 @@ class WorkoutDetailController: UIViewController {
     var sections: [String] = []
     var rows: [[String]] = [[]]
     
+    let userDefaults = UserDefaults.standard
+    var weightMetric: String = "kg"
+    var distanceMetric: String = "km"
+    let formatter = MeasurementFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = workout.name!
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).font = UIFont.boldSystemFont(ofSize: 20)
+
         setupHeartBeat()
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
@@ -52,15 +57,20 @@ class WorkoutDetailController: UIViewController {
     }
     
     func setupExcerciseTableData() {
+        formatter.unitOptions = .providedUnit
+        weightMetric = Metric.weightMetricString()
+        distanceMetric = Metric.distanceMetricString()
+        
         sections = excercises.map({ (excercise) -> String in
             return excercise.name!
         })
         
         rows = excercises.map({ (excercise) -> [String] in
             var data: [String] = []
+            if excercise.sets != 0 { data.append("Sets: \(excercise.sets)")}
             if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
-            if excercise.weight != 0 { data.append("Weight: \(excercise.weight)") }
-            if excercise.distance != 0 { data.append("Distance: \(excercise.distance)") }
+            if excercise.weight != 0 { data.append("Weight: \(excercise.weight) \(weightMetric)") }
+            if excercise.distance != 0 { data.append("Distance: \(excercise.distance) \(distanceMetric)") }
             
             return data
         })
@@ -127,7 +137,7 @@ extension WorkoutDetailController: UITableViewDelegate {
         
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
+        header.textLabel?.font = UIFont.systemFont(ofSize: 20)
     }
 }
 

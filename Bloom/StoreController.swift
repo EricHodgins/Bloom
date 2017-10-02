@@ -56,9 +56,15 @@ class StoreController: UIViewController, IAPManagerDelegate {
         csvPurchaseDescriptionTextView.isHidden = false
         csvButton.titleLabel?.lineBreakMode = .byWordWrapping
         csvButton.titleLabel?.textAlignment = .center
-        let csvProduct = IAPManager.shared.products[0]
-        let csvButtonTitle = csvProduct.localizedTitle + "\n" + priceStringForProduct(product: csvProduct)
-        csvButton.setTitle(csvButtonTitle, for: .normal)
+        if IAPManager.shared.isCSVPurchased == true {
+            csvButton.isEnabled = false
+            csvButton.setTitle("CSV has been purchased", for: .normal)
+        } else {
+            
+            let csvProduct = IAPManager.shared.products[0]
+            let csvButtonTitle = csvProduct.localizedTitle + "\n" + priceStringForProduct(product: csvProduct)
+            csvButton.setTitle(csvButtonTitle, for: .normal)
+        }
     }
     
     func priceStringForProduct(product: SKProduct) -> String {

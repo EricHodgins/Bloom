@@ -25,6 +25,7 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
+        validateReceipt()
         delegate?.productsRequestResponseCompleted()
         
         for product in self.products {
@@ -72,7 +73,6 @@ class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObser
     func createPaymentRequestForProduct(product: SKProduct) {
         let payment = SKMutablePayment(product: product)
         payment.quantity = 1
-        //payment.applicationUsername = hash("username")
         
         SKPaymentQueue.default().add(payment)
     }
