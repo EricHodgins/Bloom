@@ -1584,8 +1584,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHR-P7-7wo" customClass="HeartBeatView" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="48" y="55" width="224" height="46"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70 BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cj-Ib-Nzi">
-                                        <rect key="frame" x="152" y="35" width="60" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cj-Ib-Nzi">
+                                        <rect key="frame" x="152" y="35" width="55.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="0.0198914904" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2224,7 +2224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IO-T4-jHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="2385.1574212893556"/>
+            <point key="canvasLocation" x="3328" y="2551"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KRq-wq-FcE">
