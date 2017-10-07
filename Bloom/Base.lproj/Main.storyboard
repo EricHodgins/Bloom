@@ -1213,7 +1213,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkP-IU-cSh" customClass="GraphView" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -1224,13 +1224,42 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EvA-rD-ii4">
+                                <rect key="frame" x="16" y="64" width="296" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.2100468103" blue="0.38450793640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="Reps"/>
+                                    <segment title="Weight"/>
+                                    <segment title="Distance"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="segmentedControlPressed:" destination="tTO-ql-dMH" eventType="valueChanged" id="LxU-Oq-AkN"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nA-0z-sJO">
+                                <rect key="frame" x="152.5" y="95" width="16" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UkP-IU-cSh" firstAttribute="top" secondItem="hXS-qF-czz" secondAttribute="bottom" id="9hC-u7-Ugj"/>
+                            <constraint firstItem="EvA-rD-ii4" firstAttribute="top" secondItem="hXS-qF-czz" secondAttribute="bottom" id="29V-M9-pml"/>
+                            <constraint firstItem="8nA-0z-sJO" firstAttribute="centerX" secondItem="82n-8V-DGS" secondAttribute="centerX" id="4Rf-Bp-R0E"/>
+                            <constraint firstItem="8nA-0z-sJO" firstAttribute="top" secondItem="EvA-rD-ii4" secondAttribute="bottom" constant="3" id="BCg-Vq-O02"/>
                             <constraint firstItem="UkP-IU-cSh" firstAttribute="trailing" secondItem="82n-8V-DGS" secondAttribute="trailingMargin" constant="16" id="KNX-4c-AwV"/>
+                            <constraint firstItem="EvA-rD-ii4" firstAttribute="leading" secondItem="82n-8V-DGS" secondAttribute="leading" constant="16" id="Uut-De-gmP"/>
                             <constraint firstItem="UkP-IU-cSh" firstAttribute="leading" secondItem="82n-8V-DGS" secondAttribute="leadingMargin" constant="-16" id="WZl-3F-kSh"/>
+                            <constraint firstAttribute="trailing" secondItem="EvA-rD-ii4" secondAttribute="trailing" constant="8" id="afR-uv-IlH"/>
                             <constraint firstItem="0RR-23-RII" firstAttribute="top" secondItem="UkP-IU-cSh" secondAttribute="bottom" id="gRU-HM-fQo"/>
+                            <constraint firstItem="UkP-IU-cSh" firstAttribute="top" secondItem="8nA-0z-sJO" secondAttribute="bottom" id="oAl-x5-dk1"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -1252,11 +1281,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="graphView" destination="UkP-IU-cSh" id="sSa-0z-zCJ"/>
+                        <outlet property="segmentedControl" destination="EvA-rD-ii4" id="fWm-lh-3bb"/>
+                        <outlet property="unitLabel" destination="8nA-0z-sJO" id="8Fz-M2-icj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-G7-UzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4268" y="1034.9325337331336"/>
+            <point key="canvasLocation" x="4267.5" y="1034.1549295774648"/>
         </scene>
         <!--Filter Graph Controller-->
         <scene sceneID="W4L-Wt-yMB">

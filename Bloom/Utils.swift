@@ -201,7 +201,58 @@ struct Metric {
         }
         return distanceMetric
     }
+    
+    var isWeightMetric: Bool = true
+    var isDistanceMetric: Bool = true
+    
+    init() {
+        if Metric.weightMetricString() == "kg" {
+            isWeightMetric = true
+        } else {
+            isWeightMetric = false
+        }
+        
+        if Metric.distanceMetricString() == "km" {
+            isDistanceMetric = true
+        } else {
+            isDistanceMetric = false
+        }
+    }
+    
+    func distance(value: Double) -> Double {
+        if isDistanceMetric {
+            return value
+        } else {
+            let formatter = Measurement(value: value, unit: UnitLength.kilometers)
+            let miles = formatter.converted(to: UnitLength.miles)
+            return miles.value
+        }
+    }
+    
+    func weight(value: Double) -> Double {
+        if isWeightMetric {
+            return value
+        } else {
+            let formatter = Measurement(value: value, unit: UnitMass.kilograms)
+            let pounds = formatter.converted(to: UnitMass.pounds)
+            return pounds.value
+        }
+    }
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

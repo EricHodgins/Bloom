@@ -60,7 +60,7 @@ class GraphView: UIView {
         }
         
         // Calculate Y Point
-        let topBorder:CGFloat = 60
+        let topBorder:CGFloat = 8//60
         let bottomBorder:CGFloat = 50
         let graphHeight = height - topBorder - bottomBorder
         var maxValue = dataSet.max()!

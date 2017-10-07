@@ -20,6 +20,8 @@ class GraphViewController: UIViewController {
     var excercises: [Excercise] = []
     var dataSet: [Double] = []
     
+    @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var graphView: GraphView!
     
     override func viewDidLoad() {
@@ -44,16 +46,44 @@ class GraphViewController: UIViewController {
         
         do {
             excercises = try managedContext.fetch(fetchRequest)
-            loadGraphDataSet(excercises: excercises)
+            loadRepsGraphDataSet()
         } catch let error as NSError {
             print("Chest workout fetch error: \(error), \(error.userInfo)")
         }
     }
     
-    func loadGraphDataSet(excercises: [Excercise]) {
+    @IBAction func segmentedControlPressed(_ sender: Any) {
+        if segmentedControl.selectedSegmentIndex == 0 { loadRepsGraphDataSet() }
+        if segmentedControl.selectedSegmentIndex == 1 { loadWeightGraphDataSet() }
+        if segmentedControl.selectedSegmentIndex == 2 { loadDistanceGraphDataSet() }
+    }
+    func loadRepsGraphDataSet() {
+        unitLabel.text = "--"
         dataSet = []
         for excercise in excercises {
             dataSet.append(excercise.reps)
+        }
+        graphView.dataSet = dataSet
+    }
+    
+    func loadWeightGraphDataSet() {
+        let metrics = Metric()
+        unitLabel.text = Metric.weightMetricString()
+        dataSet = []
+        for excercise in excercises {
+            let value = metrics.weight(value: excercise.weight)
+            dataSet.append(value)
+        }
+        graphView.dataSet = dataSet
+    }
+    
+    func loadDistanceGraphDataSet() {
+        let metrics = Metric()
+        unitLabel.text = Metric.distanceMetricString()
+        dataSet = []
+        for excercise in excercises {
+            let value = metrics.distance(value: excercise.distance)
+            dataSet.append(value)
         }
         graphView.dataSet = dataSet
     }
@@ -83,7 +113,7 @@ extension GraphViewController: FilterViewControllerDelegate {
         
         do {
             excercises = try managedContext.fetch(fetchRequest)
-            loadGraphDataSet(excercises: excercises)
+            loadRepsGraphDataSet()
         } catch let error as NSError {
             print("Filter fetch error: \(error.userInfo)")
         }

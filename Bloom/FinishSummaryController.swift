@@ -47,12 +47,11 @@ class FinishSummaryController: UIViewController {
         }
     
         let skView = self.view as! SKView
-        //skView.showsFPS = true
-        //skView.showsNodeCount = true
         skView.ignoresSiblingOrder = false
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
         skView.presentScene(scene)
+        scene.startSunFlareAction()
         
         tableView.dataSource = self
         tableView.delegate = self

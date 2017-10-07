@@ -219,7 +219,7 @@ class LensFlare: CIFilter {
         [
             "inputStriationStrength": 0.1,
             "inputMaxStriationRadius": 40,
-            "inputStriationContrast": 0.5
+            "inputStriationContrast": 0.3
         ])
     
     var colorKernel = CIColorKernel(source:

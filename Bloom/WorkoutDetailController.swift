@@ -57,6 +57,7 @@ class WorkoutDetailController: UIViewController {
     }
     
     func setupExcerciseTableData() {
+        let metrics = Metric()
         formatter.unitOptions = .providedUnit
         weightMetric = Metric.weightMetricString()
         distanceMetric = Metric.distanceMetricString()
@@ -69,8 +70,8 @@ class WorkoutDetailController: UIViewController {
             var data: [String] = []
             if excercise.sets != 0 { data.append("Sets: \(excercise.sets)")}
             if excercise.reps != 0 { data.append("Reps: \(excercise.reps)") }
-            if excercise.weight != 0 { data.append("Weight: \(excercise.weight) \(weightMetric)") }
-            if excercise.distance != 0 { data.append("Distance: \(excercise.distance) \(distanceMetric)") }
+            if excercise.weight != 0 { data.append("Weight: \(metrics.weight(value:excercise.weight)) \(weightMetric)") }
+            if excercise.distance != 0 { data.append("Distance: \(metrics.distance(value: excercise.distance)) \(distanceMetric)") }
             
             return data
         })
