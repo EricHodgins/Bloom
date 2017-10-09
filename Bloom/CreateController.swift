@@ -61,6 +61,11 @@ class CreateController: UIViewController {
     
     //MARK: - Cancel Pressed
     @IBAction func cancelPressed(_ sender: Any) {
+        if isEditingExistingWorkout == false {
+            if let createdWorkout = workout {
+                managedContext.delete(createdWorkout)
+            }
+        }
         dismiss(animated: true)
     }
     

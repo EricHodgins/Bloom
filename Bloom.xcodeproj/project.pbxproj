@@ -1300,6 +1300,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Bloom WatchKit Extension/Bloom WatchKit Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp.watchkitextension;
@@ -1321,6 +1322,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Bloom WatchKit Extension/Bloom WatchKit Extension.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Bloom WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp.watchkitextension;
@@ -1342,6 +1344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = YES;
 				IBSC_MODULE = Bloom_WatchKit_Extension;
 				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp;
@@ -1362,6 +1365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = E3QZ6M9437;
+				ENABLE_BITCODE = YES;
 				IBSC_MODULE = Bloom_WatchKit_Extension;
 				INFOPLIST_FILE = "Bloom WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.Bloom.V1.0.0.watchkitapp;

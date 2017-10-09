@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Bloom needs access to your location to track your distance and speed.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDocumentTypes</key>
@@ -30,7 +28,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>4</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -43,6 +41,8 @@
 	<string>Bloom would like to access heart rate data from your watch.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Bloom would like to save heart rate data to HealthKit Store.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bloom needs access to your location to track your distance and speed.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
