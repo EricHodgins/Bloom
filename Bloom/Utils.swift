@@ -88,7 +88,13 @@ struct FormatDisplay {
     
     static func distance(_ distance: Measurement<UnitLength>) -> String {
         let formatter = MeasurementFormatter()
-        return formatter.string(from: distance)
+        if Metric.distanceMetricString() == "km" {
+            let km = distance.converted(to: UnitLength.kilometers)
+            return formatter.string(from: km)
+        } else {
+            let miles = distance.converted(to: UnitLength.miles)
+            return formatter.string(from: miles)
+        }
     }
     
     static func pace(distance: Measurement<UnitLength>, seconds: Int, outputUnit: UnitSpeed) -> String {
@@ -200,6 +206,18 @@ struct Metric {
             distanceMetric = "km"
         }
         return distanceMetric
+    }
+    
+    static func paceString() -> String {
+        let paceMetric: String
+        let userDefaults = UserDefaults.standard
+        if let paceUnit = userDefaults.value(forKey: "PaceUnit") as? String,
+            paceUnit == "min/mi" {
+            paceMetric = "min/mi"
+        } else {
+            paceMetric = "min/km"
+        }
+        return paceMetric
     }
     
     var isWeightMetric: Bool = true

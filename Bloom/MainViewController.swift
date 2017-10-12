@@ -36,20 +36,12 @@ class MainViewController: UIViewController {
         let attributes = [NSAttributedStringKey.font: font]
         settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         settingsBarButtonItem.title = "\u{2699}\u{0000FE0E}"
-        setupHeartBeat()
         
         let skView = lastWorkoutView!
         skView.ignoresSiblingOrder = false
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
         skView.presentScene(scene)
-    }
-    
-    func setupHeartBeat() {
-//        let size = heartContainerView.frame.width
-//        let heartView = HeartView(frame: CGRect(x: 0, y: 0, width: size, height: size))
-//        heartContainerView.addSubview(heartView)
-//        heartView.pulse(speed: .slow)
     }
     
     func fetchLastWorkout() {
@@ -93,22 +85,11 @@ class MainViewController: UIViewController {
             }
         }
         
-        //let end = lastWorkout.endTime!
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
         
-        //let blue = UIColor(displayP3Red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
-        
         lastWorkoutNameLabel.text = lastWorkout.name ?? ""
-        
         lastWorkoutDuration.text = dateFormatter.string(from: start)
-//        let dateDurationString = dateFormatter.string(from: start as Date) + " - " + start.delta(to: end)
-//        let range = NSRange(location: dateDurationString.characters.count - 8, length: 8)
-//        let coloredString = NSMutableAttributedString(string: dateDurationString, attributes: [:])
-//        coloredString.addAttribute(NSAttributedStringKey.foregroundColor, value: blue, range: range)
-//
-//        lastWorkoutDuration.attributedText = coloredString
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

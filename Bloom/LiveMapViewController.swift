@@ -28,6 +28,7 @@ class LiveMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
+    var paceUnit: UnitSpeed!
     
     fileprivate let locationManager: LocationManager = LocationManager.shared
     fileprivate var locationList: [CLLocation] = []
@@ -40,6 +41,13 @@ class LiveMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Metric.paceString() == "min/mi" {
+            paceUnit = UnitSpeed.minutesPerMile
+        } else {
+            paceUnit = UnitSpeed.minutesPerKilometer
+        }
+        
         workoutSession.mapRouteDelegate = self
         mapView.delegate = self
     }
@@ -88,7 +96,7 @@ class LiveMapViewController: UIViewController {
     
     private func updateDisplay() {
         let formattedDistance = FormatDisplay.distance(distance)
-        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+        let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: paceUnit)
         distanceLabel.text = formattedDistance
         paceLabel.text = formattedPace
     }
