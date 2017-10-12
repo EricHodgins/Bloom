@@ -38,7 +38,7 @@ class FindViewManager {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.startColor = UIColor.cancelEnd
         cancelButton.endColor = UIColor.cancelStart
-        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitle("Back", for: .normal)
         cancelButton.setTitleColor(UIColor.white, for: .normal)
         cancelButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         
