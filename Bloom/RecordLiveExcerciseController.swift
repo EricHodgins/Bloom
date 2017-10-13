@@ -338,6 +338,18 @@ class RecordLiveExcerciseController: UIViewController {
     }
 }
 
+extension RecordLiveExcerciseController: MappedDistance {
+    // length will come in as Metres
+    func updateMappedDistance(formattedValue: String, valueInKm: Measurement<UnitLength>) {
+        let length = valueInKm.converted(to: UnitLength.kilometers)
+        if distaneButton.isHidden == false {
+            workoutSession.currentExcercise.distance = length.value
+            DispatchQueue.main.async {
+                self.distaneButton.setTitle("Distance\n\(formattedValue)", for: .normal)
+            }
+        }
+    }
+}
 
 
 

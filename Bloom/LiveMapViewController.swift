@@ -15,6 +15,10 @@ protocol MapRouteDelegate: class {
     func saveRoute()
 }
 
+protocol MappedDistance: class {
+    func updateMappedDistance(formattedValue: String, valueInKm: Measurement<UnitLength>)
+}
+
 class LiveMapViewController: UIViewController {
     
     var workoutSession: WorkoutSessionManager!
@@ -38,6 +42,8 @@ class LiveMapViewController: UIViewController {
     
     fileprivate var startLocation: CLLocationCoordinate2D?
     fileprivate var finishLocation: CLLocationCoordinate2D?
+    
+    weak var mappedDistanceDelegate: MappedDistance?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +105,8 @@ class LiveMapViewController: UIViewController {
         let formattedPace = FormatDisplay.pace(distance: distance, seconds: seconds, outputUnit: paceUnit)
         distanceLabel.text = formattedDistance
         paceLabel.text = formattedPace
+        guard let mappedDelegate = mappedDistanceDelegate else { return }
+        mappedDelegate.updateMappedDistance(formattedValue: formattedDistance, valueInKm: distance)
     }
 
     @IBAction func mapTypeButtonPressed(_ sender: Any) {

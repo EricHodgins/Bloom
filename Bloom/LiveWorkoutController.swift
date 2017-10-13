@@ -57,6 +57,7 @@ class LiveWorkoutController: UIViewController {
         let page1 = createRecordLiveExcerciseController()
         let page2 = createLiveExcerciseListController()
         let page3 = createLiveMapController()
+        page3.mappedDistanceDelegate = page1
         let page4 = createFinishLiveWorkoutController()
         
         pages = [page1, page2, page3, page4]
