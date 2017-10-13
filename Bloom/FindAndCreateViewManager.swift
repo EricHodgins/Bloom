@@ -116,7 +116,7 @@ class FindAndCreateViewManager {
         
         UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
                 self.findButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
                 self.createButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })

@@ -319,9 +319,9 @@ class CreateViewManager {
     }
     
     private func animateButtonsOffScreen(completion: (() -> Void)?) {
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.01, delay: 0, options: [], animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
                 self.cancelButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
                 self.doneButton.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
             })
