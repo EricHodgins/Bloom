@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MetalKit
 
 protocol CountDown: class {
     func countDownComplete()
@@ -26,7 +27,10 @@ class StartWorkoutController: UIViewController, CountDown {
     var workoutTemplate: WorkoutTemplate!
     
     var managedContext: NSManagedObjectContext!
+    var renderer: Renderer?
 
+    @IBOutlet weak var metalView: MTKView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = workoutName
@@ -42,6 +46,20 @@ class StartWorkoutController: UIViewController, CountDown {
         }
         startButton.addTarget(startButton, action: #selector(StartButton.animateGradient), for: .touchUpInside)
         startButton.addTarget(self, action: #selector(StartWorkoutController.hideNavigation), for: .touchUpInside)
+        
+        //Create Cool Metal Shader Scene
+        
+        metalView.device = MTLCreateSystemDefaultDevice()
+        guard let device = metalView.device else {
+            fatalError("Metal Device could not be created.")
+        }
+        
+        //metalView.clearColor = Colors.wenderlichGreen
+        renderer = Renderer(device: device)
+        metalView.delegate = renderer
+        
+        renderer?.scene = StartWorkoutScene(device: device, size: view.bounds.size)
+ 
     }
     
     @objc func hideNavigation() {
