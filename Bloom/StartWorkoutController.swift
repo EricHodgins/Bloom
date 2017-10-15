@@ -30,6 +30,8 @@ class StartWorkoutController: UIViewController, CountDown {
     var renderer: Renderer?
 
     @IBOutlet weak var metalView: MTKView!
+    @IBOutlet weak var flower: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +65,36 @@ class StartWorkoutController: UIViewController, CountDown {
     }
     
     @objc func hideNavigation() {
+        UIView.animate(withDuration: 0.2) {
+            self.flower.alpha = 0.0
+        }
         navigationController?.navigationBar.isHidden = true
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupFlowerImageAnimation()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        flower.image = UIImage(named: "Flower_1.png")
+    }
+    
+    func setupFlowerImageAnimation() {
+        var flowerImages: [UIImage] = []
+        for i in 1...38 {
+            let flowerImage = UIImage(named: "Flower_\(i).png")!
+            flowerImages.append(flowerImage)
+        }
+        flower.animationImages = flowerImages
+        flower.animationDuration = 1.5
+        flower.animationRepeatCount = 1
+        flower.image = UIImage(named: "LaunchScreen.png")!
+        flower.startAnimating()
     }
     
 }

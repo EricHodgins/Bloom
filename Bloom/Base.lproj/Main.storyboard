@@ -58,7 +58,7 @@
                                     <constraint firstItem="b4n-0F-sOK" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="top" constant="30" id="sA0-El-R7N"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-lF-Kdt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower_1" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-lF-Kdt">
                                 <rect key="frame" x="254" y="518" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -165,6 +165,7 @@
                     <connections>
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
+                        <outlet property="flower" destination="VrZ-lF-Kdt" id="16X-qx-QJk"/>
                         <outlet property="lastWorkoutDuration" destination="EXE-Nu-e1G" id="Jsh-Ey-ukk"/>
                         <outlet property="lastWorkoutNameLabel" destination="b4n-0F-sOK" id="0lO-X2-gUp"/>
                         <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
@@ -1537,7 +1538,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="olA-ud-85r">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower_1" translatesAutoresizingMaskIntoConstraints="NO" id="olA-ud-85r">
                                 <rect key="frame" x="110" y="234" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ehv-9A-EED"/>
@@ -1573,6 +1574,7 @@
                         <outlet property="countDownLabel" destination="N9e-lV-0wa" id="IeR-Jx-a2Z"/>
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
+                        <outlet property="flower" destination="olA-ud-85r" id="aoO-zc-BIh"/>
                         <outlet property="metalView" destination="vs5-5T-WU6" id="1Sl-J0-m9W"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
                         <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" modalTransitionStyle="flipHorizontal" id="6nR-L9-1gv"/>
@@ -2307,11 +2309,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchScreen" width="308" height="351"/>
+        <image name="Flower_1" width="310" height="354"/>
         <image name="StartPin" width="17" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tcu-ra-Bxx"/>
+        <segue reference="ODi-uK-JeC"/>
         <segue reference="gXT-uk-Ch6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     var managedContext: NSManagedObjectContext!
     var workout: Workout?
 
+    @IBOutlet weak var flower: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let font = UIFont.systemFont(ofSize: 28.0)
@@ -56,6 +58,20 @@ class MainViewController: UIViewController {
         scene.startSunFlareAction()
         fetchLastWorkout()
         fillINLastWorkoutValues()
+        setupFlowerImageAnimation()
+    }
+    
+    func setupFlowerImageAnimation() {
+        var flowerImages: [UIImage] = []
+        for i in 1...38 {
+            let flowerImage = UIImage(named: "Flower_\(i).png")!
+            flowerImages.append(flowerImage)
+        }
+        flower.animationImages = flowerImages
+        flower.animationDuration = 1.5
+        flower.animationRepeatCount = 1
+        flower.image = UIImage(named: "LaunchScreen.png")!
+        flower.startAnimating()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,6 +80,7 @@ class MainViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        flower.image = UIImage(named: "Flower_1.png")
         scene.removeFlareAction()
     }
     
