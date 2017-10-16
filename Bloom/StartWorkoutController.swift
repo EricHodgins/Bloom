@@ -91,7 +91,7 @@ class StartWorkoutController: UIViewController, CountDown {
             flowerImages.append(flowerImage)
         }
         flower.animationImages = flowerImages
-        flower.animationDuration = 1.5
+        flower.animationDuration = 1.0
         flower.animationRepeatCount = 1
         flower.image = UIImage(named: "LaunchScreen.png")!
         flower.startAnimating()

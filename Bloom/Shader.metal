@@ -61,7 +61,7 @@ fragment half4 fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Const
     c /= float(MAX_ITER);
     c = 1.5 - sqrt(c);
     
-    half4 texColor = half4(0.1, 0.02, 0.03, 1.0);
+    half4 texColor = half4(0.1, 0.02, 0.3, 1.0);
     
     texColor.rgb *= (1.0 / (1.0 - (c + 0.0)));
     
