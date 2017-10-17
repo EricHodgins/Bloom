@@ -182,6 +182,19 @@ class WatchConnectivityManager: NSObject {
             }
         }
     }
+    
+    //MARK: - Stream Heart Rate
+    class func sendHeartRateToPhone(heartRateString: String) {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            if session.isReachable {
+                let dict: [String: String] = ["HeartRate" : heartRateString]
+                session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
+                    print("Error streaming Heart Rate sample from watch: \(error.localizedDescription)")
+                })
+            }
+        }
+    }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {
@@ -244,7 +257,13 @@ extension WatchConnectivityManager: WCSessionDelegate {
     
     //MARK: - Received Message
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-
+        if let isStreamingHeartRate = message["StreamHeartRate"] as? Bool {
+            if isStreamingHeartRate == true {
+                WorkoutManager.shared.isStreamingHeartRateDataToPhone = true
+            } else {
+                WorkoutManager.shared.isStreamingHeartRateDataToPhone = false
+            }
+        }
     }
 }
 

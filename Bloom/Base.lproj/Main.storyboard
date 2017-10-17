@@ -1644,9 +1644,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ke-Hi-PCK">
+                                <rect key="frame" x="280" y="63" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Bh-3P-gbc"/>
+                                    <constraint firstAttribute="width" constant="30" id="fiZ-OJ-KBw"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="scan"/>
+                                <connections>
+                                    <action selector="heartStreamingButtonPressed:" destination="EYv-bC-qS5" eventType="touchUpInside" id="pCe-7z-grn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Ke-Hi-PCK" firstAttribute="leading" secondItem="gHR-P7-7wo" secondAttribute="trailing" constant="8" id="336-YB-lwc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fkc-jR-eQA" secondAttribute="trailing" id="3VB-h3-kUK"/>
                             <constraint firstItem="Fkc-jR-eQA" firstAttribute="top" secondItem="uqZ-Xc-hRZ" secondAttribute="bottom" constant="15" id="8XZ-la-g9U"/>
                             <constraint firstAttribute="leadingMargin" secondItem="uqZ-Xc-hRZ" secondAttribute="leading" id="FS2-6u-at5"/>
@@ -1654,6 +1667,7 @@
                             <constraint firstItem="gHR-P7-7wo" firstAttribute="width" secondItem="0Z1-9g-JwO" secondAttribute="width" multiplier="0.7" id="HpM-qc-HZe"/>
                             <constraint firstItem="sKD-ZL-zFB" firstAttribute="top" secondItem="5DU-Pt-H9F" secondAttribute="bottom" id="VvH-d5-NYa"/>
                             <constraint firstItem="sKD-ZL-zFB" firstAttribute="centerX" secondItem="0Z1-9g-JwO" secondAttribute="centerX" id="YjC-kV-0WK"/>
+                            <constraint firstItem="2Ke-Hi-PCK" firstAttribute="centerY" secondItem="gHR-P7-7wo" secondAttribute="centerY" id="Ywm-ps-HaU"/>
                             <constraint firstAttribute="trailing" secondItem="DhK-VJ-Z8Z" secondAttribute="trailing" id="aMb-dY-Vgq"/>
                             <constraint firstItem="DhK-VJ-Z8Z" firstAttribute="top" secondItem="Fkc-jR-eQA" secondAttribute="bottom" constant="8" id="gbg-rF-Lb7"/>
                             <constraint firstItem="gHR-P7-7wo" firstAttribute="top" secondItem="sKD-ZL-zFB" secondAttribute="bottom" constant="8" id="jK9-mi-PUB"/>
@@ -1667,6 +1681,8 @@
                     <connections>
                         <outlet property="currentExcerciseLabel" destination="Fkc-jR-eQA" id="sCn-RF-B7d"/>
                         <outlet property="heartBeatView" destination="gHR-P7-7wo" id="IEq-Zk-yal"/>
+                        <outlet property="heartRateLabel" destination="6Cj-Ib-Nzi" id="y6V-3i-cEc"/>
+                        <outlet property="heartRateStreamingButton" destination="2Ke-Hi-PCK" id="RbV-6f-wm9"/>
                         <outlet property="scrollView" destination="DhK-VJ-Z8Z" id="2c7-5U-lIB"/>
                         <outlet property="workoutDurationLabel" destination="sKD-ZL-zFB" id="hQZ-Ac-vAE"/>
                         <segue destination="UIc-tM-drf" kind="unwind" identifier="mainMenu" unwindAction="unwindToMenuWithSegue:" id="VUg-dc-kzk"/>
@@ -2311,6 +2327,7 @@
     <resources>
         <image name="Flower_1" width="310" height="354"/>
         <image name="StartPin" width="17" height="23"/>
+        <image name="scan" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ODi-uK-JeC"/>

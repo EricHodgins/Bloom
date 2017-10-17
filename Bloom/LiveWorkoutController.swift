@@ -25,8 +25,16 @@ class LiveWorkoutController: UIViewController {
     var pages = [UIViewController]()
     var flwc: FinishLiveWorkoutController!
 
+    @IBOutlet weak var heartRateLabel: UILabel!
+    @IBOutlet weak var heartRateStreamingButton: UIButton!
+    var isStreamingHeartRate: Bool = false
+    var phoneConnectivityManager: PhoneConnectivityManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        phoneConnectivityManager = appDelegate.phoneConnectivityManager
         
         if workoutSessionManager.deviceInitiation == .phone {
             currentWatchInterval = 0.0
@@ -105,6 +113,19 @@ class LiveWorkoutController: UIViewController {
             
         }
     }
+    
+    // MARK: - Start/Stop Streaming Heart Rate
+    @IBAction func heartStreamingButtonPressed(_ sender: Any) {
+        if isStreamingHeartRate == false {
+            isStreamingHeartRate = true
+            phoneConnectivityManager?.requestToStreamHeartRate(stream: true)
+        } else {
+            isStreamingHeartRate = false
+            phoneConnectivityManager?.requestToStreamHeartRate(stream: false)
+            heartRateLabel.text = "-- BPM"
+        }
+    }
+    
     
 }
 
@@ -212,7 +233,15 @@ extension LiveWorkoutController {
     }
 }
 
+//MARK: - Streaming Heart Rate
+extension LiveWorkoutController {
 
+    func updateHeartRate(value: String) {
+        DispatchQueue.main.async {
+            self.heartRateLabel.text = value
+        }
+    }
+}
 
 
 

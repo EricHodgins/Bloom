@@ -52,7 +52,8 @@ class FinishInterfaceController: WKInterfaceController {
         
         WatchConnectivityManager.sendWorkoutFinishedMessageToPhone(date: finishDate)
         WorkoutManager.shared.reset()
-        WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+        //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+        WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
     }
     
     @objc func finishedOnPhone() {
@@ -64,6 +65,7 @@ class FinishInterfaceController: WKInterfaceController {
         }
         
         WorkoutManager.shared.reset()
-        WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+        //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+        WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
     }
 }

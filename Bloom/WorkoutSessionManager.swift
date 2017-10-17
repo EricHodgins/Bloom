@@ -5,7 +5,7 @@
 //  Created by Eric Hodgins on 2017-07-10.
 //  Copyright © 2017 Eric Hodgins. All rights reserved.
 //
-// This is mostly trying to keep phone and watch in sync
+// This is trying to keep phone and watch in sync
 
 import Foundation
 import CoreData

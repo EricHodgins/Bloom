@@ -29,6 +29,8 @@ class WorkoutManager {
     weak var repsWeightDelegate: RepsWeightDelegate?
     weak var liveWorkoutDelegate: LiveWorkoutDelegate?
     
+    var isStreamingHeartRateDataToPhone: Bool = false
+    
     lazy var notificationCenter: NotificationCenter = {
         return NotificationCenter.default
     }()

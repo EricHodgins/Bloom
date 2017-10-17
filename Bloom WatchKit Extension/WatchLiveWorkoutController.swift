@@ -75,6 +75,10 @@ extension WatchLiveWorkoutController: WorkoutSessionServiceDelegate {
     func workoutSessionService(didUpdateHeartRate heartRate: Double) {
         DispatchQueue.main.async {
             self.heartRateLabel.setText("\(heartRate) BPM")
+            // Send to Phone if Necessary
+            if WorkoutManager.shared.isStreamingHeartRateDataToPhone == true {
+                WatchConnectivityManager.sendHeartRateToPhone(heartRateString: "\(heartRate) BPM")
+            }
         }
     }
 }

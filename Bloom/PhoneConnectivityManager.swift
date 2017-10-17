@@ -66,6 +66,20 @@ class PhoneConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Stream Heart Rate Request
+    func requestToStreamHeartRate(stream: Bool) {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            if session.isWatchAppInstalled {
+                let dict: [String: Bool] = ["StreamHeartRate": stream]
+                session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
+                    print("Error requesting Streaming HEart Rate from phone: \(error.localizedDescription)")
+                })
+            }
+        }
+    }
+    
+    //MARK: - Request Excercises
     func sendExcerciseStateToWatch() {
         
     }
@@ -214,10 +228,17 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             
             replyHandler(["StatButtonImageData": imageData])
         }
+        
+
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
+        
+        //MARK: - Heart Rate Streaming
+        if let heartRateString = message["HeartRate"] as? String {
+            liveWorkoutController.updateHeartRate(value: heartRateString)
+        }
         
         //MARK: - Workout Finished on Watch
         if let finishDate = message["Finished"] as? Date {
