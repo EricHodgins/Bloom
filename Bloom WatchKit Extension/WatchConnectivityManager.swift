@@ -228,14 +228,15 @@ extension WatchConnectivityManager: WCSessionDelegate {
                 let contexts: [Any]
                 guard let workoutSessionService = workoutSessionService else {
                     contexts = [["workoutStartDate" : timeStartedOnPhone]]
-                    WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+                    WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
+                    //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
                     return
                 }
                 workoutSessionService.startSession()
                 contexts = [["WorkoutSessionService": workoutSessionService, "workoutStartDate" : timeStartedOnPhone], workoutSessionService, workoutSessionService, workoutSessionService]
                 
-                
-                WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+                WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
+                //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
             })
         }
         
@@ -250,7 +251,8 @@ extension WatchConnectivityManager: WCSessionDelegate {
             notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutHasFinishedOnPhone), object: nil)
             //2.
             DispatchQueue.main.async {
-                WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
+                WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
+                //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
             }
         }
     }

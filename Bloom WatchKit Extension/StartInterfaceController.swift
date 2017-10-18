@@ -57,7 +57,8 @@ class StartInterfaceController: WKInterfaceController {
         
         // If workoutsession is nil
         guard let workoutSessionService = workoutSessionService else {
-            WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+            WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil, orientation: .horizontal, pageIndex: 0)
+            //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
             return
         }
         
@@ -66,14 +67,16 @@ class StartInterfaceController: WKInterfaceController {
         let heartRateAuthorizedStatus = workoutSessionService.heartRateAuthorizationStatus()
         
         guard workoutAuthorizedStatus == .sharingAuthorized && heartRateAuthorizedStatus == .sharingAuthorized else {
-            WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
+            WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil, orientation: .horizontal, pageIndex: 0)
+            //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
             return
         }
         
         // Everything is Authorized start a workout session to record a workout and heart rate data to HealthKit Store
         workoutSessionService.startSession()
         let contexts: [Any] = [["WorkoutSessionService": workoutSessionService], workoutSessionService, workoutSessionService, workoutSessionService]
-        WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+        WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
+        //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
     }
 }
 
