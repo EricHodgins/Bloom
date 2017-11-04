@@ -17,24 +17,24 @@ class InterfaceController: WKInterfaceController {
         return NotificationCenter.default
     }()
     
-    @IBOutlet var workoutsButton: WKInterfaceButton!
-    @IBOutlet var statsButton: WKInterfaceButton!
+//    @IBOutlet var workoutsButton: WKInterfaceButton!
+//    @IBOutlet var statsButton: WKInterfaceButton!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        let workoutButtonImageData = UserDefaults.standard.object(forKey: "WorkoutButtonImageData")
-        let statButtonImagedData = UserDefaults.standard.object(forKey: "StatButtonImageData")
-        
-        if let workoutImgData = workoutButtonImageData as? Data,
-            let statImgData = statButtonImagedData as? Data {
-            let workoutBackgroundImage = UIImage(data: workoutImgData)!
-            let statBackgroundImage = UIImage(data: statImgData)!
-            workoutsButton.setBackgroundImage(workoutBackgroundImage)
-            statsButton.setBackgroundImage(statBackgroundImage)
-        } else {
-            notificationCenter.addObserver(self, selector: #selector(InterfaceController.setupGradientImage), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
-        }
+//        let workoutButtonImageData = UserDefaults.standard.object(forKey: "WorkoutButtonImageData")
+//        let statButtonImagedData = UserDefaults.standard.object(forKey: "StatButtonImageData")
+//
+//        if let workoutImgData = workoutButtonImageData as? Data,
+//            let statImgData = statButtonImagedData as? Data {
+//            let workoutBackgroundImage = UIImage(data: workoutImgData)!
+//            let statBackgroundImage = UIImage(data: statImgData)!
+//            workoutsButton.setBackgroundImage(workoutBackgroundImage)
+//            statsButton.setBackgroundImage(statBackgroundImage)
+//        } else {
+//            notificationCenter.addObserver(self, selector: #selector(InterfaceController.setupGradientImage), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
+//        }
         
         if WatchConnectivityManager.shared.state == .inactive {
             notificationCenter.addObserver(self, selector: #selector(InterfaceController.requestWorkoutRoutines), name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
@@ -60,44 +60,34 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    @objc func setupGradientImage() {
-        let height = Double(WKInterfaceDevice.current().screenBounds.height / 2)
-        let width = Double(WKInterfaceDevice.current().screenBounds.width)
-        WatchConnectivityManager.requestWorkoutImageData(height: height, width: width) { (imageData) in
-            print("Received image Data: \(imageData)")
-            let image = UIImage(data: imageData)!
-            UserDefaults.standard.set(imageData, forKey: "WorkoutButtonImageData")
-            DispatchQueue.main.async {
-                self.workoutsButton.setBackgroundImage(image)
-            }
-        }
-        
-        WatchConnectivityManager.requestStatImageData(height: height, width: width) { (imageData) in
-            print("Received stat image data: \(imageData)")
-            let image = UIImage(data: imageData)!
-            UserDefaults.standard.set(imageData, forKey: "StatButtonImageData")
-            DispatchQueue.main.async {
-                self.statsButton.setBackgroundImage(image)
-            }
-        }
-    }
+//    @objc func setupGradientImage() {
+//        let height = Double(WKInterfaceDevice.current().screenBounds.height / 2)
+//        let width = Double(WKInterfaceDevice.current().screenBounds.width)
+//        WatchConnectivityManager.requestWorkoutImageData(height: height, width: width) { (imageData) in
+//            print("Received image Data: \(imageData)")
+//            let image = UIImage(data: imageData)!
+//            UserDefaults.standard.set(imageData, forKey: "WorkoutButtonImageData")
+//            DispatchQueue.main.async {
+//                self.workoutsButton.setBackgroundImage(image)
+//            }
+//        }
+//
+//        WatchConnectivityManager.requestStatImageData(height: height, width: width) { (imageData) in
+//            print("Received stat image data: \(imageData)")
+//            let image = UIImage(data: imageData)!
+//            UserDefaults.standard.set(imageData, forKey: "StatButtonImageData")
+//            DispatchQueue.main.async {
+//                self.statsButton.setBackgroundImage(image)
+//            }
+//        }
+//    }
     
     @objc func requestWorkoutRoutines() {
-        WatchConnectivityManager.requestWorkouts() { workoutNames in
-            print("WOrkout request complete: \(workoutNames)")
-            WorkoutManager.shared.workouts = workoutNames
-            self.notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutsReceived), object: nil)
-        }
+//        WatchConnectivityManager.requestWorkouts() { workoutNames in
+//            print("WOrkout request complete: \(workoutNames)")
+//            WorkoutManager.shared.workouts = workoutNames
+//            self.notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutsReceived), object: nil)
+//        }
     }
     
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
 }

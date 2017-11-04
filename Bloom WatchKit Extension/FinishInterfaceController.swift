@@ -32,16 +32,6 @@ class FinishInterfaceController: WKInterfaceController {
         notificationCenter.addObserver(self, selector: #selector(FinishInterfaceController.finishedOnPhone), name: NSNotification.Name(rawValue: NotificationWorkoutHasFinishedOnPhone), object: nil)
     }
 
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
     @IBAction func finishPressed() {
         let finishDate = NSDate()
         WorkoutManager.shared.workoutEndDate = finishDate
@@ -52,7 +42,6 @@ class FinishInterfaceController: WKInterfaceController {
         
         WatchConnectivityManager.sendWorkoutFinishedMessageToPhone(date: finishDate)
         WorkoutManager.shared.reset()
-        //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
         WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
     }
     
@@ -65,7 +54,6 @@ class FinishInterfaceController: WKInterfaceController {
         }
         
         WorkoutManager.shared.reset()
-        //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
         WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
     }
 }

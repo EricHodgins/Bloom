@@ -24,6 +24,7 @@ class LiveWorkoutController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var pages = [UIViewController]()
     var flwc: FinishLiveWorkoutController!
+    var rlec: RecordLiveExcerciseController!
 
     @IBOutlet weak var heartRateLabel: UILabel!
     @IBOutlet weak var heartRateStreamingButton: UIButton!
@@ -161,7 +162,7 @@ extension LiveWorkoutController {
 extension LiveWorkoutController {
     
     fileprivate func createRecordLiveExcerciseController() -> RecordLiveExcerciseController {
-        let rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
+        rlec = storyboard!.instantiateViewController(withIdentifier: "Record") as! RecordLiveExcerciseController
         rlec.view.translatesAutoresizingMaskIntoConstraints = false
         
         rlec.workoutSession = workoutSessionManager

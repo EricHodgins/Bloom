@@ -99,36 +99,51 @@ class WatchConnectivityManager: NSObject {
         }
     }
     
-    //MARK: - Request Image Data
-    class func requestWorkoutImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
+    //MARK: - Request Initial Excercise Values
+    class func initialExcerciseValues(completion: @escaping (() -> Void)) {
         let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
-                let dict: [String: Any] = ["NeedWorkoutButtonImageData": true, "Height": height, "Width": width]
-                session.sendMessage(dict, replyHandler: { (dict) in
-                    if let imageData = dict["WorkoutButtonImageData"] as? Data {
-                        completion(imageData)
+                let dict: [String: Bool] = ["InitialExcerciseValues": true]
+                session.sendMessage(dict, replyHandler: { (reply) in
+                    if let sets = reply["Sets"] as? String,
+                        let reps = reply["Reps"] as? String,
+                        let weight = reply["Weight"] as? String,
+                        let distance = reply["Distance"] as? String {
+                        WorkoutManager.shared.activeExcercise.sets = sets
+                        WorkoutManager.shared.activeExcercise.reps = reps
+                        WorkoutManager.shared.activeExcercise.weight = weight
+                        WorkoutManager.shared.activeExcercise.distance = distance
+                        completion()
                     }
-                    
                 }, errorHandler: { (error) in
-                    print("Error getting image data: \(error)")
+                    print(error.localizedDescription)
                 })
             }
         }
     }
     
-    class func requestStatImageData(height: Double, width: Double, completion: @escaping ((Data) -> Void)) {
+    //MARK: - Next Excercise Pressed on Watch
+    class func nextExcercise(excerciseIndex: Int, completion:@escaping (() -> Void)) {
         let session = WCSession.default
         if WCSession.isSupported() {
             if session.isReachable {
-                let dict: [String: Any] = ["NeedStatButtonImageData": true, "Height": height, "Width": width]
-                session.sendMessage(dict, replyHandler: { (dict) in
-                    if let imageData = dict["StatButtonImageData"] as? Data {
-                        completion(imageData)
+                let dict: [String: Int] = ["NextExcercisePressed": excerciseIndex]
+                session.sendMessage(dict, replyHandler: { (reply) in
+                    if let sets = reply["Sets"] as? String,
+                       let reps = reply["Reps"] as? String,
+                       let weight = reply["Weight"] as? String,
+                       let distance = reply["Distance"] as? String {
+
+                        WorkoutManager.shared.activeExcercise.sets = sets
+                        WorkoutManager.shared.activeExcercise.reps = reps
+                        WorkoutManager.shared.activeExcercise.weight = weight
+                        WorkoutManager.shared.activeExcercise.distance = distance
+                        completion()
                     }
-                    
-                }, errorHandler: { (error) in
-                    print("Error getting image data: \(error)")
+                }
+                    , errorHandler: { (error) in
+                        print("Error on Next Excercise Press: \(error.localizedDescription)")
                 })
             }
         }
@@ -228,15 +243,13 @@ extension WatchConnectivityManager: WCSessionDelegate {
                 let contexts: [Any]
                 guard let workoutSessionService = workoutSessionService else {
                     contexts = [["workoutStartDate" : timeStartedOnPhone]]
-                    WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-                    //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+                    WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
                     return
                 }
                 workoutSessionService.startSession()
                 contexts = [["WorkoutSessionService": workoutSessionService, "workoutStartDate" : timeStartedOnPhone], workoutSessionService, workoutSessionService, workoutSessionService]
                 
-                WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-                //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
+                WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
             })
         }
         
@@ -252,7 +265,6 @@ extension WatchConnectivityManager: WCSessionDelegate {
             //2.
             DispatchQueue.main.async {
                 WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
-                //WKInterfaceController.reloadRootControllers(withNames: ["Main"], contexts: nil)
             }
         }
     }

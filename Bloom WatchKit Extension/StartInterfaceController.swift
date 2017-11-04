@@ -58,7 +58,6 @@ class StartInterfaceController: WKInterfaceController {
         // If workoutsession is nil
         guard let workoutSessionService = workoutSessionService else {
             WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil, orientation: .horizontal, pageIndex: 0)
-            //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
             return
         }
         
@@ -68,7 +67,6 @@ class StartInterfaceController: WKInterfaceController {
         
         guard workoutAuthorizedStatus == .sharingAuthorized && heartRateAuthorizedStatus == .sharingAuthorized else {
             WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil, orientation: .horizontal, pageIndex: 0)
-            //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: nil)
             return
         }
         
@@ -76,7 +74,6 @@ class StartInterfaceController: WKInterfaceController {
         workoutSessionService.startSession()
         let contexts: [Any] = [["WorkoutSessionService": workoutSessionService], workoutSessionService, workoutSessionService, workoutSessionService]
         WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-        //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout", "RepsWeight", "DistanceTime", "Finish"], contexts: contexts)
     }
 }
 

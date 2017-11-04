@@ -65,21 +65,34 @@ class RecordLiveExcerciseController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        maxReps = fetchMaxReps()
-        maxWeight = fetchMaxWeight()
     }
     
-    func fetchMaxReps() -> Double {
-        bloomFilter = BloomFilter()
-        return bloomFilter.fetchMaxReps(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
+    func provideCurrentExcerciseValuesToWatch(completion: ((_ sets: String, _ reps: String, _ weight: String, _ distance: String) -> Void)?) {
+        guard let complete = completion else { return }
+        let sets = "\(self.workoutSession.currentExcercise.sets)"
+        let reps = "\(self.workoutSession.currentExcercise.reps)"
+        
+        var weight: String
+        if self.weightMetric == "lbs" {
+            let kg = Measurement(value: self.workoutSession.currentExcercise.weight, unit: UnitMass.kilograms)
+            let pounds = kg.converted(to: UnitMass.pounds)
+            weight = "\(pounds.value) \(self.weightMetric)"
+        } else {
+            weight = "\(self.workoutSession.currentExcercise.weight) \(self.weightMetric)"
+        }
+        
+        var distance: String
+        if self.distanceMetric == "mi" {
+            let km = Measurement(value: self.workoutSession.currentExcercise.distance, unit: UnitLength.kilometers)
+            let mi = km.converted(to: UnitLength.miles)
+            distance = "\(mi.value) \(self.distanceMetric)"
+        } else {
+            distance = "\(self.workoutSession.currentExcercise.distance) \(self.distanceMetric)"
+        }
+        complete(sets, reps, weight, distance)
     }
     
-    func fetchMaxWeight() -> Double {
-        bloomFilter = BloomFilter()
-        return bloomFilter.fetchMaxWeight(forExcercise: workoutSession.currentExcercise.name!, inWorkout: workoutSession.workout.name!, withManagedContext: managedContext)
-    }
-    
-    @IBAction func nextExcerciseTapped(_ sender: Any) {
+    func nextExcercise(_ sender: Any, completion: ((_ sets: String, _ reps: String, _ weight: String, _ distance: String) -> Void)?) {
         DispatchQueue.main.async {
             
             if self.workoutSession.currentExcercise.timeRecorded == nil {
@@ -89,9 +102,35 @@ class RecordLiveExcerciseController: UIViewController {
             _ = self.workoutSession.nextExcercise()
             self.excerciseLabel.text = self.workoutSession.currentExcercise.name!
             self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise, previousWorkout: self.previousWorkout)
-            self.maxReps = self.fetchMaxReps()
-            self.maxWeight = self.fetchMaxWeight()
+            if let complete = completion {
+                self.provideCurrentExcerciseValuesToWatch(completion: complete)
+//                let sets = "\(self.workoutSession.currentExcercise.sets)"
+//                let reps = "\(self.workoutSession.currentExcercise.reps)"
+//                
+//                var weight: String
+//                if self.weightMetric == "lbs" {
+//                    let kg = Measurement(value: self.workoutSession.currentExcercise.weight, unit: UnitMass.kilograms)
+//                    let pounds = kg.converted(to: UnitMass.pounds)
+//                    weight = "\(pounds.value) \(self.weightMetric)"
+//                } else {
+//                    weight = "\(self.workoutSession.currentExcercise.weight) \(self.weightMetric)"
+//                }
+//                
+//                var distance: String
+//                if self.distanceMetric == "mi" {
+//                    let km = Measurement(value: self.workoutSession.currentExcercise.distance, unit: UnitLength.kilometers)
+//                    let mi = km.converted(to: UnitLength.miles)
+//                    distance = "\(mi.value) \(self.distanceMetric)"
+//                } else {
+//                    distance = "\(self.workoutSession.currentExcercise.distance) \(self.distanceMetric)"
+//                }
+//                complete(sets, reps, weight, distance)
+            }
         }
+    }
+    
+    @IBAction func nextExcerciseTapped(_ sender: Any) {
+        nextExcercise(sender, completion: nil)
     }
     
     func configureButtonsUI(forExercise exercise: Excercise, previousWorkout: Workout?) {
@@ -231,11 +270,23 @@ class RecordLiveExcerciseController: UIViewController {
             text = "\(previousExcercise?.reps ?? 0)"
             currentCounter = previousExcercise?.reps ?? 0
         case .Weight:
-            text = "\(previousExcercise?.weight ?? 0)"
-            currentCounter = previousExcercise?.weight ?? 0
+            let wt = previousExcercise?.weight ?? 0
+            var selectedLocale = Measurement(value: wt, unit: UnitMass.kilograms)
+            
+            if weightMetric == "lbs" {
+                selectedLocale = selectedLocale.converted(to: UnitMass.pounds)
+            }
+            text = "\(selectedLocale.value)"
+            currentCounter = selectedLocale.value
         case .Distance:
-            text = "\(previousExcercise?.distance ?? 0)"
-            currentCounter = previousExcercise?.distance ?? 0
+            let distance = previousExcercise?.distance ?? 0
+            var selectedLocale = Measurement(value: distance, unit: UnitLength.kilometers)
+            
+            if distanceMetric == "mi" {
+                selectedLocale = selectedLocale.converted(to: UnitLength.miles)
+            }
+            text = "\(selectedLocale.value)"
+            currentCounter = selectedLocale.value
         case .Time:
             let formattedTime = workoutSession.workout.startTime?.delta(to: Date())
             timeButton.setTitle("Time\n\(formattedTime ?? "Error")", for: .normal)

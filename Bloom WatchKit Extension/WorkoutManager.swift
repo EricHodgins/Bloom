@@ -17,8 +17,7 @@ protocol LiveWorkoutDelegate: class {
 }
 
 protocol RepsWeightDelegate: class {
-    func updateReps()
-    func updateWeight()
+    func updateExcerciseValues()
 }
 
 class WorkoutManager {
@@ -47,6 +46,7 @@ class WorkoutManager {
     }
     fileprivate var currentExcercise: String?
     fileprivate var excerciseIndex: Int = 0
+    var activeExcercise: ActiveExcercise = ActiveExcercise(name: "", sets: "0", reps: "0", weight: "0", distance: "0", index: 0)
     var workoutStartDate: NSDate?
     var workoutEndDate: NSDate?
     var currentWorkout: String? {
@@ -55,73 +55,35 @@ class WorkoutManager {
             WatchConnectivityManager.requestExcercises(forWorkout: workoutName) { (excerciseNames) in
                 self.currentExcercises = excerciseNames
                 self.currentExcercise = self.currentExcercises[0]
-                self.updateMaxReps()
-                self.updateMaxWeight()
+                self.setupInitialExcerciseValues()
             }
         }
     }
-    var reps: Double? = 10.0 {
-        didSet {
-            DispatchQueue.main.async {
-                self.repsWeightDelegate?.updateReps()
-            }
-        }
-    }
-    var weight: Double? = 10.0 {
-        didSet {
-            DispatchQueue.main.async {
-                self.repsWeightDelegate?.updateWeight()
-            }
-        }
-    }
-    var distance: Double?
+    var sets: String? = "Sets: 0"
+    var reps: String? = "Reps: 0"
+    var weight: String? = "Weight: 0"
+    var distance: String? = "Distance: 0"
     var timeRecorded: NSDate?
     
     func nextExcercise() -> String {
         excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
         currentExcercise = currentExcercises[excerciseIndex]
+        updatePhoneAndRequestNewExcerciseValues()
         return currentExcercises[excerciseIndex]
     }
     
-    func updateMaxReps() {
-        guard let workout = currentWorkout,
-            let excercise = currentExcercise else { return }
-        
-        WatchConnectivityManager.requestMaxReps(forExcercise: excercise, inWorkout: workout) { (maxReps) in
-            self.reps = maxReps
+    private func setupInitialExcerciseValues() {
+        WatchConnectivityManager.initialExcerciseValues {
+            self.repsWeightDelegate?.updateExcerciseValues()
         }
     }
     
-    func updateMaxWeight() {
-        guard let workout = currentWorkout,
-            let excercise = currentExcercise else { return }
-        
-        WatchConnectivityManager.requestMaxWeight(forExcercise: excercise, inWorkout: workout) { (maxWeight) in
-            self.weight = maxWeight
+    private func updatePhoneAndRequestNewExcerciseValues() {
+        WatchConnectivityManager.nextExcercise(excerciseIndex: excerciseIndex) {
+            DispatchQueue.main.async {
+                self.repsWeightDelegate?.updateExcerciseValues()
+            }
         }
-    }
-    
-    func save() {
-        let orderNumber = excerciseIndex
-        
-        if reps == nil {
-            reps = 0.0
-        }
-        
-        if weight == nil {
-            weight = 0.0
-        }
-        
-        if distance == nil {
-            distance = 0.0
-        }
-        
-        if timeRecorded == nil {
-            timeRecorded = NSDate()
-        }
-        
-        // This saves an excercise based on the order number
-        WatchConnectivityManager.save(reps: reps!, weight: weight!, distance: distance!, time: timeRecorded!, orderNumber: orderNumber)
     }
 }
 

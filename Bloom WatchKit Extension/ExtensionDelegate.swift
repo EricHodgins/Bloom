@@ -79,7 +79,6 @@ extension ExtensionDelegate: WCSessionDelegate {
             DispatchQueue.main.async(execute: {
                 let contexts = [["workoutStartDate" : timeStartedOnPhone]]
                 WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-                //WKInterfaceController.reloadRootControllers(withNames: ["LiveWorkout"], contexts: contexts)
             })
         }
     }

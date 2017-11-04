@@ -97,10 +97,6 @@ class PhoneConnectivityManager: NSObject {
         replyHandler(["Excercises": excercises])
     }
     
-    func sendMaxReps(forExcercise: String, replyHandler: (([String : Any]) -> Void)) {
-        
-    }
-    
     class func sendFinishedMessage() {
         if WCSession.isSupported() {
             let session = WCSession.default
@@ -163,24 +159,23 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             sendExcercisesToWatch(name: workoutName, replyHandler: replyHandler)
         }
         
-        if let _ = message["MaxReps"] as? Bool,
-            let workout = message["Workout"] as? String,
-            let excercise = message["Excercise"] as? String {
-            
-            let bloomFilter = BloomFilter()
-            let maxReps = bloomFilter.fetchMaxReps(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
-            let replyDict: [String: String] = ["MaxReps": "\(maxReps)"]
-            replyHandler(replyDict)
+        //MARK: - Reqeusted initial excercise values
+        if let _ = message["InitialExcerciseValues"] as? Bool {
+            self.liveWorkoutController.rlec.provideCurrentExcerciseValuesToWatch(completion: { (sets, reps, weight, distance) in
+                let dict: [String: Any] = ["Sets": sets, "Reps": reps, "Weight": weight, "Distance": distance]
+                replyHandler(dict)
+            })
         }
         
-        if let _ = message["MaxWeight"] as? Bool,
-            let workout = message["Workout"] as? String,
-            let excercise = message["Excercise"] as? String {
-            
-            let bloomFilter = BloomFilter()
-            let maxWeight = bloomFilter.fetchMaxWeight(forExcercise: excercise, inWorkout: workout, withManagedContext: managedContext)
-            let replyDict: [String: String] = ["MaxWeight": "\(maxWeight)"]
-            replyHandler(replyDict)
+        // MARK: - Next Excercise Pushed on Watch
+        // message["NextExcercise"] returns the excerciseIndex
+        if let _ = message["NextExcercisePressed"] as? Int {
+            DispatchQueue.main.async {
+                self.liveWorkoutController.rlec.nextExcercise(self, completion: { (sets, reps, weight, distance) in
+                    let dict: [String: Any] = ["Sets": sets, "Reps": reps, "Weight": weight, "Distance": distance]
+                    replyHandler(dict)
+                })
+            }
         }
         
         //Mark: - Save Excercise Values
@@ -204,32 +199,6 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             segueToLiveWorkout(workoutName: workoutName, startDate: startDate)
         }
         
-        //MARK: - Need Image Data
-        if let _ = message["NeedWorkoutButtonImageData"] as? Bool,
-                let height = message["Height"] as? Double,
-                let width = message["Width"] as? Double {
-            
-            let size = CGSize(width: width, height: height)
-            let bottomColor = UIColor(red: 255/255, green: 85/255, blue: 0.0, alpha: 1.0)
-            let topColor = UIColor(red: 255/255, green: 112/255, blue: 189/255, alpha: 1.0)
-            let imageData = UIImage.gradientImageData(size: size, topUIColor: topColor, bottomUIColor: bottomColor)
-            
-            replyHandler(["WorkoutButtonImageData": imageData])
-        }
-        
-        if let _ = message["NeedStatButtonImageData"] as? Bool,
-            let height = message["Height"] as? Double,
-            let width = message["Width"] as? Double  {
-            
-            let size = CGSize(width: width, height: height)
-            let bottomColor = UIColor(red: 4/255, green: 132/255, blue: 255/255, alpha: 1.0)
-            let topColor = UIColor(red: 105/255, green: 219/255, blue: 255/255, alpha: 1.0)
-            let imageData = UIImage.gradientImageData(size: size, topUIColor: topColor, bottomUIColor: bottomColor)
-            
-            replyHandler(["StatButtonImageData": imageData])
-        }
-        
-
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
