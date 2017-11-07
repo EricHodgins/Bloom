@@ -69,6 +69,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     func provideCurrentExcerciseValuesToWatch(completion: ((_ sets: String, _ reps: String, _ weight: String, _ distance: String) -> Void)?) {
         guard let complete = completion else { return }
+        
         let sets = "\(self.workoutSession.currentExcercise.sets)"
         let reps = "\(self.workoutSession.currentExcercise.reps)"
         
@@ -104,33 +105,14 @@ class RecordLiveExcerciseController: UIViewController {
             self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise, previousWorkout: self.previousWorkout)
             if let complete = completion {
                 self.provideCurrentExcerciseValuesToWatch(completion: complete)
-//                let sets = "\(self.workoutSession.currentExcercise.sets)"
-//                let reps = "\(self.workoutSession.currentExcercise.reps)"
-//                
-//                var weight: String
-//                if self.weightMetric == "lbs" {
-//                    let kg = Measurement(value: self.workoutSession.currentExcercise.weight, unit: UnitMass.kilograms)
-//                    let pounds = kg.converted(to: UnitMass.pounds)
-//                    weight = "\(pounds.value) \(self.weightMetric)"
-//                } else {
-//                    weight = "\(self.workoutSession.currentExcercise.weight) \(self.weightMetric)"
-//                }
-//                
-//                var distance: String
-//                if self.distanceMetric == "mi" {
-//                    let km = Measurement(value: self.workoutSession.currentExcercise.distance, unit: UnitLength.kilometers)
-//                    let mi = km.converted(to: UnitLength.miles)
-//                    distance = "\(mi.value) \(self.distanceMetric)"
-//                } else {
-//                    distance = "\(self.workoutSession.currentExcercise.distance) \(self.distanceMetric)"
-//                }
-//                complete(sets, reps, weight, distance)
             }
         }
     }
     
     @IBAction func nextExcerciseTapped(_ sender: Any) {
-        nextExcercise(sender, completion: nil)
+        nextExcercise(sender) { (sets, reps, weight, distance) in
+            PhoneConnectivityManager.goToNextExcerciseOnWatch(sets: sets, reps: reps, weight: weight, distance: distance)
+        }
     }
     
     func configureButtonsUI(forExercise exercise: Excercise, previousWorkout: Workout?) {

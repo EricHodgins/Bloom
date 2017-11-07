@@ -13,6 +13,7 @@ protocol WorkoutsTableDelegate: class {
 }
 
 protocol LiveWorkoutDelegate: class {
+    func phoneRequestsNextExcercise(name: String)
     func updateExcercises()
 }
 
@@ -69,7 +70,19 @@ class WorkoutManager {
         excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
         currentExcercise = currentExcercises[excerciseIndex]
         updatePhoneAndRequestNewExcerciseValues()
+        activeExcercise.name = currentExcercises[excerciseIndex]
         return currentExcercises[excerciseIndex]
+    }
+    
+    func phoneRequestsNextExcercise() {
+        excerciseIndex = (excerciseIndex + 1) % currentExcercises.count
+        currentExcercise = currentExcercises[excerciseIndex]
+        liveWorkoutDelegate?.phoneRequestsNextExcercise(name: currentExcercises[excerciseIndex])
+    }
+    
+    func udpateExcerciseValues() {
+        phoneRequestsNextExcercise()
+        repsWeightDelegate?.updateExcerciseValues()
     }
     
     private func setupInitialExcerciseValues() {

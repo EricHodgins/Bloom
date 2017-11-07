@@ -124,6 +124,18 @@ class PhoneConnectivityManager: NSObject {
             }
         }
     }
+    
+    class func goToNextExcerciseOnWatch(sets: String, reps: String, weight: String, distance: String) {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            if session.isWatchAppInstalled {
+                let message: [String: Any] = ["GoToNextExcercise": true, "Sets": sets, "Reps": reps, "Weight": weight, "Distance": distance]
+                session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                    print(error.localizedDescription)
+                })
+            }
+        }
+    }
 }
 
 extension PhoneConnectivityManager: WCSessionDelegate {

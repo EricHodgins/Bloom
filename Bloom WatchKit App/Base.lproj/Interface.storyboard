@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13196" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
     </dependencies>
     <scenes>
         <!--Main-->
@@ -23,64 +23,6 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="288"/>
-        </scene>
-        <!--Workout Interface Controller-->
-        <scene sceneID="uy8-IF-xv0">
-            <objects>
-                <controller id="WvP-nf-xaT" customClass="WorkoutInterfaceController" customModule="Bloom_WatchKit_Extension">
-                    <items>
-                        <table alignment="left" id="v1G-cX-iwT">
-                            <items>
-                                <tableRow identifier="WorkoutRowType" id="zfv-sI-mOM" customClass="WorkoutRowController" customModule="Bloom_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.40000000000000002" heightAdjustment="29" alignment="left" id="LdZ-CI-XrW">
-                                        <items>
-                                            <label alignment="left" verticalAlignment="center" text="Arms &amp; Back" numberOfLines="0" id="Odw-Sv-P2a">
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="font" type="system" pointSize="28"/>
-                                            </label>
-                                        </items>
-                                        <color key="backgroundColor" red="0.0" green="0.6098405116580311" blue="0.47009506054370176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="fug-N8-azY" kind="push" id="jGw-E2-A8k"/>
-                                        </connections>
-                                    </group>
-                                    <connections>
-                                        <outlet property="titleLabel" destination="Odw-Sv-P2a" id="AaD-AN-iMg"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="table" destination="v1G-cX-iwT" id="eVy-kH-fhC"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="498" y="70"/>
-        </scene>
-        <!--Start Interface Controller-->
-        <scene sceneID="NJo-X3-QKP">
-            <objects>
-                <controller id="fug-N8-azY" customClass="StartInterfaceController" customModule="Bloom_WatchKit_Extension">
-                    <items>
-                        <button width="1" height="0.5" alignment="center" verticalAlignment="bottom" title="Start" id="qoP-01-PY3">
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.20019130639999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="25"/>
-                            <connections>
-                                <action selector="startButtonPressed" destination="fug-N8-azY" id="wDH-JB-n6P"/>
-                            </connections>
-                        </button>
-                        <label width="1" alignment="left" text="Chest" numberOfLines="0" id="SV0-Tt-wbv">
-                            <fontDescription key="font" type="system" pointSize="25"/>
-                        </label>
-                    </items>
-                    <connections>
-                        <outlet property="startButton" destination="qoP-01-PY3" id="8OD-Rl-SUw"/>
-                        <outlet property="workoutName" destination="SV0-Tt-wbv" id="g15-gZ-npq"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="731" y="70"/>
         </scene>
         <!--LiveWorkout-->
         <scene sceneID="Fc4-ab-DQa">
@@ -114,26 +56,26 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="1000" y="-43"/>
+            <point key="canvasLocation" x="525" y="288"/>
         </scene>
         <!--RepsWeight-->
         <scene sceneID="3k3-I2-wLg">
             <objects>
                 <controller identifier="RepsWeight" id="aDo-7C-QOM" customClass="RepsWeightController" customModule="Bloom_WatchKit_Extension">
                     <items>
-                        <label height="0.25" alignment="left" text="Sets: 0" id="O0D-fg-Mip">
+                        <label height="0.25" alignment="left" text="Sets: --" id="O0D-fg-Mip">
                             <color key="textColor" red="1" green="0.90682248659999998" blue="0.32977570020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
-                        <label height="0.25" alignment="left" verticalAlignment="center" text="Reps: 14" id="ULF-zF-OUX">
+                        <label height="0.25" alignment="left" verticalAlignment="center" text="Reps: --" id="ULF-zF-OUX">
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
-                        <label height="0.25" alignment="left" verticalAlignment="bottom" text="Weight: 25 lbs" id="MXP-JO-qKE">
+                        <label height="0.25" alignment="left" verticalAlignment="bottom" text="Weight: --" id="MXP-JO-qKE">
                             <color key="textColor" red="0.70769983530000002" green="0.095412097870000004" blue="0.9991180301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
-                        <label height="0.25" alignment="left" verticalAlignment="bottom" text="Distance: 0 km" id="sRf-4P-KBu">
+                        <label height="0.25" alignment="left" verticalAlignment="bottom" text="Distance: --" id="sRf-4P-KBu">
                             <color key="textColor" red="0.2402660251" green="0.61729735139999997" blue="0.58178645370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
@@ -146,7 +88,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="1232" y="-43"/>
+            <point key="canvasLocation" x="769" y="289"/>
         </scene>
         <!--Finish-->
         <scene sceneID="rGi-6s-mls">
@@ -154,7 +96,7 @@
                 <controller identifier="Finish" id="QeT-y5-4OY" customClass="FinishInterfaceController" customModule="Bloom_WatchKit_Extension">
                     <items>
                         <button width="1" height="0.5" alignment="center" verticalAlignment="center" title="Finish" id="a21-AW-kNm">
-                            <color key="backgroundColor" red="0.023529411760000001" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="1" green="0.11086671299443851" blue="0.49888366261260497" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="25"/>
                             <connections>
                                 <action selector="finishPressed" destination="QeT-y5-4OY" id="rQL-M2-IAm"/>
@@ -163,7 +105,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="1458" y="-43"/>
+            <point key="canvasLocation" x="1001" y="288"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

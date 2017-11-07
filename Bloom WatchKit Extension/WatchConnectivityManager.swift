@@ -278,6 +278,19 @@ extension WatchConnectivityManager: WCSessionDelegate {
                 WorkoutManager.shared.isStreamingHeartRateDataToPhone = false
             }
         }
+        
+        if let _ = message["GoToNextExcercise"] as? Bool,
+            let sets = message["Sets"] as? String,
+            let reps = message["Reps"] as? String,
+            let weight = message["Weight"] as? String,
+            let distance = message["Distance"] as? String {
+            
+            WorkoutManager.shared.activeExcercise.sets = sets
+            WorkoutManager.shared.activeExcercise.reps = reps
+            WorkoutManager.shared.activeExcercise.weight = weight
+            WorkoutManager.shared.activeExcercise.distance = distance
+            WorkoutManager.shared.udpateExcerciseValues()
+        }
     }
 }
 

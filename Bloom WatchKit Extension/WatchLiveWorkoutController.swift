@@ -25,6 +25,8 @@ class WatchLiveWorkoutController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        WorkoutManager.shared.liveWorkoutDelegate = self
+        
         // Check for WorkoutServiceSession for HeartRate data and Workout for HealthKit Store
         if let contextDict = context as? [String: Any],
             let workoutSessionService = contextDict["WorkoutSessionService"] as? WorkoutSessionService {
@@ -64,6 +66,18 @@ class WatchLiveWorkoutController: WKInterfaceController {
     @IBAction func nextExcerciseButtonPressed() {
         WorkoutManager.shared.timeRecorded = NSDate()
         excerciseLabel.setText(WorkoutManager.shared.nextExcercise())
+    }
+}
+
+extension WatchLiveWorkoutController: LiveWorkoutDelegate {
+    func phoneRequestsNextExcercise(name: String) {
+        DispatchQueue.main.async {
+            self.excerciseLabel.setText(name)
+        }
+    }
+    
+    func updateExcercises() {
+        
     }
 }
 
