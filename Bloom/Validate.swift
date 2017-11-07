@@ -42,43 +42,4 @@ struct Validate {
         if name == "" { return Validation.isEmpty }
         return Validation.pass
     }
-    
-//    func isCheckedAndTrimmedWorkoutNamePassed() -> Bool {
-//        if self.workoutNameTextfield.text != "" {
-//            let workoutName = self.workoutNameTextfield.text!.removeExtraWhiteSpace
-//            let workoutFetch: NSFetchRequest<WorkoutTemplate> = WorkoutTemplate.fetchRequest()
-//            workoutFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(WorkoutTemplate.name), workoutName)
-//            
-//            do {
-//                let results = try self.managedContext.fetch(workoutFetch)
-//                if results.count > 0 {
-//                    //Alert Notifying a workout is already named that.
-//                    present(AlertManager.alert(title: "Workout already exists.", message: "A workout is already named that. Please choose a different name.", style: .alert), animated: true)
-//                    return false
-//                } else {
-//                    // If editing an existing workout template don't create new one.
-//                    guard !self.isEditingExistingWorkout else {
-//                        self.updateWorkoutTemplate(workoutName: workoutName)
-//                        return true
-//                    }
-//                    // Brand New Workout Named -> Create a new workout with this name
-//                    self.navigationController?.title = workoutName
-//                    self.currentWorkout = WorkoutTemplate(context: self.managedContext)
-//                    self.currentWorkout?.name = workoutName
-//                    
-//                    return true
-//                }
-//            } catch let error as NSError {
-//                print("Fetch error: \(error), \(error.userInfo)")
-//            }
-//        } else {
-//            //Alert - Workout name has not been named
-//            present(AlertManager.alert(title: "A workout must have a name.", message: "Please name your workout.", style: .alert), animated: true)
-//            return false
-//        }
-//        
-//        present(AlertManager.alert(title: "Workout Name is Blank.", message: "Please name your workout.", style: .alert), animated: true)
-//        return false
-//    }
-
 }

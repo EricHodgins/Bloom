@@ -250,7 +250,7 @@ extension CreateController: UITextFieldDelegate {
     func validateExcercise(name: String?) -> Validation {
         let validation = Validate.exercercise(name: name)
         if validation != .pass {
-            present(AlertManager.alert(title: "Excercise Name is empty.", message: "Please try again.", style: .alert), animated: true)
+            present(AlertManager.alert(title: "Exercise Name is empty.", message: "Please try again.", style: .alert), animated: true)
         }
         return validation
     }

@@ -36,7 +36,7 @@
                             <color key="textColor" red="0.02833753265" green="0.53321093320000001" blue="0.99842721219999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="15"/>
                         </label>
-                        <button width="1" height="0.5" alignment="center" verticalAlignment="center" title="Next Excercise" id="qxR-0C-3Ou">
+                        <button width="1" height="0.5" alignment="center" verticalAlignment="center" title="Next Exercise" id="qxR-0C-3Ou">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" red="0.37580421980000001" green="0.61973555069999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="17"/>

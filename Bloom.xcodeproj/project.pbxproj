@@ -103,7 +103,6 @@
 		7A9CC8FC1EF71D6300ACE7ED /* HeartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */; };
 		7A9CC99F1F003EF300ACE7ED /* WatchLiveWorkoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */; };
 		7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */; };
-		7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */; };
 		7A9CC9AB1F02152A00ACE7ED /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
 		7AA861281E0F17510054B443 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861271E0F17510054B443 /* CoreDataStack.swift */; };
 		7AA8612B1E0F19DE0054B443 /* Bloom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AA861291E0F19DE0054B443 /* Bloom.xcdatamodeld */; };
@@ -296,7 +295,6 @@
 		7A9CC8FB1EF71D6300ACE7ED /* HeartLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartLineView.swift; sourceTree = "<group>"; };
 		7A9CC99E1F003EF300ACE7ED /* WatchLiveWorkoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchLiveWorkoutController.swift; sourceTree = "<group>"; };
 		7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutRowController.swift; sourceTree = "<group>"; };
-		7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInterfaceController.swift; sourceTree = "<group>"; };
 		7AA861271E0F17510054B443 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7AA8612A1E0F19DE0054B443 /* Bloom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bloom.xcdatamodel; sourceTree = "<group>"; };
 		7AB613191E4035AD00EEAC38 /* BaseBloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBloomView.swift; sourceTree = "<group>"; };
@@ -654,7 +652,6 @@
 				7ADD26521F2D4DBA00B434AF /* Bloom WatchKit Extension.entitlements */,
 				7A0134881F07550500B13476 /* WatchConnectivity */,
 				7A84F9711DFE761E00A37C80 /* InterfaceController.swift */,
-				7A9CC9A41F01559900ACE7ED /* WorkoutInterfaceController.swift */,
 				7A9CC9A01F0152C300ACE7ED /* WorkoutRowController.swift */,
 				7A01348B1F087BC100B13476 /* StartInterfaceController.swift */,
 				7A01348F1F08AFB900B13476 /* LiveWorkout */,
@@ -1142,7 +1139,6 @@
 				7A9CC9A11F0152C300ACE7ED /* WorkoutRowController.swift in Sources */,
 				7ADD265B1F2D538B00B434AF /* WorkoutSessionService.swift in Sources */,
 				7AE2039B1FAA58A700EA86AC /* ActiveExcercise.swift in Sources */,
-				7A9CC9A51F01559900ACE7ED /* WorkoutInterfaceController.swift in Sources */,
 				7A84F9741DFE761E00A37C80 /* ExtensionDelegate.swift in Sources */,
 				7A0134831F0693E300B13476 /* WatchConnectivityManager.swift in Sources */,
 				7ADD265D1F2D53F700B434AF /* WorkoutSessionService_Queries.swift in Sources */,

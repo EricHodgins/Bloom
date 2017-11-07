@@ -35,7 +35,7 @@ class AddExcerciseViewManager {
     private func setupNumberOfExcercisesLabel() {
         numberLabel = UILabel()
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
-        numberLabel.text = "Number of Excercises: \(controller.currentExcercises.count)"
+        numberLabel.text = "Number of Exercises: \(controller.currentExcercises.count)"
         numberLabel.textColor = UIColor.black
         numberLabel.font = .systemFont(ofSize: 21)
         
@@ -74,7 +74,7 @@ class AddExcerciseViewManager {
         addExcercisesButton.translatesAutoresizingMaskIntoConstraints = false
         addExcercisesButton.startColor = UIColor.addStart
         addExcercisesButton.endColor = UIColor.addEnd
-        addExcercisesButton.setTitle("Add Excercise", for: .normal)
+        addExcercisesButton.setTitle("Add Exercise", for: .normal)
         addExcercisesButton.setTitleColor(UIColor.white, for: .normal)
         addExcercisesButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         
