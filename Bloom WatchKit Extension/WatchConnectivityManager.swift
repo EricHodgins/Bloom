@@ -214,7 +214,7 @@ class WatchConnectivityManager: NSObject {
 
 extension WatchConnectivityManager: WCSessionDelegate {
     
-    //MARK: - Activatin Complete
+    //MARK: - Activation Complete
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WCSession error: \(error.localizedDescription)")
@@ -228,44 +228,10 @@ extension WatchConnectivityManager: WCSessionDelegate {
     
     //MARK: - Received Application Context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        // This should be executed when Phone initiates a workout and watch app is not in a live workout routine
-        if let timeStartedOnPhone = applicationContext["StartDate"] as? NSDate,
-            let workoutName = applicationContext["Name"] as? String,
-            let excercises = applicationContext["Excercises"] as? [String] {
-            
-            WorkoutManager.shared.currentWorkout = workoutName
-            WorkoutManager.shared.currentExcercises = excercises
-            WorkoutManager.shared.workoutStartDate = timeStartedOnPhone
-            
-            let workoutSessionService = setupWorkouSessionService()
-            
-            DispatchQueue.main.async(execute: {
-                let contexts: [Any]
-                guard let workoutSessionService = workoutSessionService else {
-                    contexts = [["workoutStartDate" : timeStartedOnPhone]]
-                    WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-                    return
-                }
-                workoutSessionService.startSession()
-                contexts = [["WorkoutSessionService": workoutSessionService, "workoutStartDate" : timeStartedOnPhone], workoutSessionService, workoutSessionService, workoutSessionService]
-                
-                WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
-            })
-        }
         
         // New Workout Created on the Phone
         if let _ = applicationContext["WorkoutDateCreated"] as? NSDate {
             notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWatchConnectivityActive), object: nil)
-        }
-        
-        // Finish workout.  Hit Finish button on phone
-        if let _ = applicationContext["Finished"] as? Bool {
-            //1. Notify to stop workout session
-            notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutHasFinishedOnPhone), object: nil)
-            //2.
-            DispatchQueue.main.async {
-                WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
-            }
         }
     }
     
@@ -290,6 +256,47 @@ extension WatchConnectivityManager: WCSessionDelegate {
             WorkoutManager.shared.activeExcercise.weight = weight
             WorkoutManager.shared.activeExcercise.distance = distance
             WorkoutManager.shared.udpateExcerciseValues()
+        }
+        
+        // New Workout has been initiated
+        setupWatchInterfaceForWorkout(message: message)
+        
+        // Finish workout.  Hit Finish button on phone
+        if let _ = message["Finished"] as? Bool {
+            //1. Notify to stop workout session
+            notificationCenter.post(name: NSNotification.Name(rawValue: NotificationWorkoutHasFinishedOnPhone), object: nil)
+            //2.
+            DispatchQueue.main.async {
+                WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
+            }
+        }
+    }
+    
+    // Workout Has Begun (Start was pressed on iPhone)
+    func setupWatchInterfaceForWorkout(message: [String: Any]) {
+        // This should be executed when Phone initiates a workout and watch app is not in a live workout routine
+        if let timeStartedOnPhone = message["StartDate"] as? NSDate,
+            let workoutName = message["Name"] as? String,
+            let excercises = message["Excercises"] as? [String] {
+            
+            WorkoutManager.shared.currentWorkout = workoutName
+            WorkoutManager.shared.currentExcercises = excercises
+            WorkoutManager.shared.workoutStartDate = timeStartedOnPhone
+            
+            let workoutSessionService = setupWorkouSessionService()
+            
+            DispatchQueue.main.async(execute: {
+                let contexts: [Any]
+                guard let workoutSessionService = workoutSessionService else {
+                    contexts = [["workoutStartDate" : timeStartedOnPhone]]
+                    WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
+                    return
+                }
+                workoutSessionService.startSession()
+                contexts = [["WorkoutSessionService": workoutSessionService, "workoutStartDate" : timeStartedOnPhone], workoutSessionService, workoutSessionService, workoutSessionService]
+                
+                WKInterfaceController.reloadRootPageControllers(withNames: ["LiveWorkout", "RepsWeight", "Finish"], contexts: contexts, orientation: .horizontal, pageIndex: 0)
+            })
         }
     }
 }

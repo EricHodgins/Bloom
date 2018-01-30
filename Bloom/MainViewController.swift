@@ -20,8 +20,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var sunflareView: SKView!
     
-    @IBOutlet weak var heartContainerView: UIView!
-    
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
     @IBOutlet weak var beginWorkoutButton: BeginWorkoutButton!
     @IBOutlet weak var statsButton: StatsButton!
@@ -43,10 +41,6 @@ class MainViewController: UIViewController {
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
         skView.presentScene(scene)
-    }
-    
-    func fetchLastWorkout() {
-        workout = BloomFilter.fetchLastWorkout(inManagedContext: managedContext)
     }
     
     override func viewWillAppear(_ animated: Bool) {

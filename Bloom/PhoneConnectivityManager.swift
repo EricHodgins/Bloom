@@ -36,6 +36,7 @@ class PhoneConnectivityManager: NSObject {
     }
     
     func setupNotifications() {
+        // Coming from LiveWorkoutController when starting a new workout.
         notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
             if let dateStarted = notification.userInfo?["StartDate"] as? NSDate,
                 let name = notification.userInfo?["Name"] as? String,
@@ -50,18 +51,15 @@ class PhoneConnectivityManager: NSObject {
         }
     }
     
+    //MARK: - Workout started on iPhone
     func sendStateToWatch(date: NSDate, name: String, excercises: [String]) {
         if WCSession.isSupported() {
             let session = WCSession.default
             if session.isWatchAppInstalled {
-                do {
-                    let dictionary: [String: Any] = ["StartDate" : date,
-                                      "Name": name,
-                                      "Excercises": excercises]
-                    try session.updateApplicationContext(dictionary) // Application Context transfers only transfer the most recent dictionary of data over.
-                } catch {
-                    print("ERROR (sendStateToWatch): \(error)")
-                }
+                let dict: [String: Any] = ["StartDate": date, "Name": name, "Excercises": excercises]
+                session.sendMessage(dict, replyHandler: nil, errorHandler: { (error) in
+                    print("Error sending state to watch from phone: \(error.localizedDescription)")
+                })
             }
         }
     }
@@ -102,11 +100,14 @@ class PhoneConnectivityManager: NSObject {
             let session = WCSession.default
             if session.isWatchAppInstalled {
                 let message = ["Finished": true]
-                do {
-                    try session.updateApplicationContext(message)
-                } catch {
-                    print("Error sending Finish message to watch: \(error)")
-                }
+                session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                    print("Error sending Finish message to watch: \(error.localizedDescription)")
+                })
+//                do {
+//                    try session.updateApplicationContext(message)
+//                } catch {
+//                    print("Error sending Finish message to watch: \(error)")
+//                }
             }
         }
     }
