@@ -13,14 +13,13 @@ import SpriteKit
 class MainViewController: UIViewController {
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
-    
-    @IBOutlet weak var lastWorkoutNameLabel: UILabel!
-    @IBOutlet weak var lastWorkoutDuration: UILabel!
-    
+        
     lazy var scene: FinishScene! = {
-        return FinishScene(size: self.lastWorkoutView.frame.size)
+        return FinishScene(size: self.sunflareView.frame.size)
     }()
-    @IBOutlet weak var lastWorkoutView: SKView!
+    
+    @IBOutlet weak var sunflareView: SKView!
+    
     @IBOutlet weak var heartContainerView: UIView!
     
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
@@ -39,7 +38,7 @@ class MainViewController: UIViewController {
         settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         settingsBarButtonItem.title = "\u{2699}\u{0000FE0E}"
         
-        let skView = lastWorkoutView!
+        let skView = sunflareView!
         skView.ignoresSiblingOrder = false
         scene.scaleMode = .aspectFill
         skView.backgroundColor = UIColor.clear
@@ -56,8 +55,6 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         scene.startSunFlareAction()
-        fetchLastWorkout()
-        fillINLastWorkoutValues()
         setupFlowerImageAnimation()
     }
     
@@ -84,30 +81,6 @@ class MainViewController: UIViewController {
         scene.removeFlareAction()
     }
     
-    func fillINLastWorkoutValues() {
-        guard let lastWorkout = workout,
-         let start = lastWorkout.startTime else {
-                lastWorkoutNameLabel.text = "No workout data."
-                lastWorkoutDuration.text = "--"
-                return
-        }
-        
-        // This check is mostly for when the apple watch hits finish.  One time the endTime was not saved.
-        if lastWorkout.endTime == nil {
-            lastWorkout.endTime = Date()
-            do {
-             try managedContext.save()
-            } catch {
-                print("Error saving workout end time when it was not saved originally for some reason.")
-            }
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm"
-        
-        lastWorkoutNameLabel.text = lastWorkout.name ?? ""
-        lastWorkoutDuration.text = dateFormatter.string(from: start)
-    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         createWorkoutButton.setNeedsDisplay()

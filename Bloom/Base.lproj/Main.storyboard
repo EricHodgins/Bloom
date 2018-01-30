@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zq7-Af-ALD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zq7-Af-ALD">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -24,39 +24,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhY-hI-Lh1" customClass="SKView">
-                                <rect key="frame" x="0.0" y="60" width="320" height="504"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WorkoutName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4n-0F-sOK">
-                                        <rect key="frame" x="92.5" y="30" width="136.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="1" green="0.2100468103" blue="0.38450793640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, 28 Sep 2017 18:17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXE-Nu-e1G">
-                                        <rect key="frame" x="61.5" y="64" width="198.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <color key="textColor" red="0.6588235294" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lym-Cr-Lqq">
-                                        <rect key="frame" x="16" y="103" width="288" height="1"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Do1-Cc-oo5"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Lym-Cr-Lqq" firstAttribute="top" secondItem="EXE-Nu-e1G" secondAttribute="bottom" constant="16" id="Hia-NE-AiW"/>
-                                    <constraint firstItem="EXE-Nu-e1G" firstAttribute="top" secondItem="b4n-0F-sOK" secondAttribute="bottom" constant="8" id="MoE-en-wKy"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lym-Cr-Lqq" secondAttribute="trailing" constant="16" id="aIM-Ag-L49"/>
-                                    <constraint firstItem="EXE-Nu-e1G" firstAttribute="centerX" secondItem="b4n-0F-sOK" secondAttribute="centerX" id="jE5-va-Pvu"/>
-                                    <constraint firstItem="b4n-0F-sOK" firstAttribute="centerX" secondItem="ZhY-hI-Lh1" secondAttribute="centerX" id="nke-Zl-HeV"/>
-                                    <constraint firstItem="Lym-Cr-Lqq" firstAttribute="leading" secondItem="ZhY-hI-Lh1" secondAttribute="leading" constant="16" id="pyO-or-A6Y"/>
-                                    <constraint firstItem="b4n-0F-sOK" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="top" constant="30" id="sA0-El-R7N"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-gK-3Qo" customClass="SKView">
+                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower_1" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-lF-Kdt">
                                 <rect key="frame" x="254" y="518" width="50" height="50"/>
@@ -67,10 +37,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-39-VQU">
-                                <rect key="frame" x="8" y="173" width="304" height="387"/>
+                                <rect key="frame" x="8" y="128" width="304" height="432"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7v-TV-dsG" customClass="CreateWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="125.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="140.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Create Workout Routine">
                                             <color key="titleColor" red="0.45882352941176469" green="0.92549019607843142" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -91,7 +61,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnw-Jy-kma" customClass="BeginWorkoutButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="130.5" width="304" height="126"/>
+                                        <rect key="frame" x="0.0" y="145.5" width="304" height="141"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Workouts">
                                             <color key="titleColor" red="1" green="0.21004681031605432" blue="0.38450793637772496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu1-mZ-cgC" customClass="StatsButton" customModule="Bloom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="261.5" width="304" height="125.5"/>
+                                        <rect key="frame" x="0.0" y="291.5" width="304" height="140.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="View Stats">
                                             <color key="titleColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -138,16 +108,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ZhY-hI-Lh1" secondAttribute="trailing" id="8Q4-WP-XZd"/>
-                            <constraint firstItem="ZhY-hI-Lh1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9WL-o1-kDG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VrZ-lF-Kdt" secondAttribute="bottom" id="AT8-kN-oJW"/>
+                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Fz5-Vt-OzA"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Joo-TH-SjP"/>
+                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="NTT-Gh-cMh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" constant="8" id="Oed-la-BIZ"/>
-                            <constraint firstItem="ZhY-hI-Lh1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-4" id="SCK-z1-rBx"/>
-                            <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="Lym-Cr-Lqq" secondAttribute="bottom" constant="9" id="VV0-FS-RFl"/>
+                            <constraint firstItem="VrZ-lF-Kdt" firstAttribute="top" secondItem="gfr-gK-3Qo" secondAttribute="bottom" constant="-50" id="Rd1-TP-C3F"/>
                             <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" constant="8" id="aHA-tH-S6H"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZhY-hI-Lh1" secondAttribute="bottom" constant="4" id="cjY-hA-hb1"/>
                             <constraint firstAttribute="trailing" secondItem="VrZ-lF-Kdt" secondAttribute="trailing" constant="16" id="mZ2-g9-B6I"/>
+                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-8" id="peO-Tt-BSh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gfr-gK-3Qo" secondAttribute="trailing" constant="-16" id="z79-CA-eOF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
@@ -166,11 +136,9 @@
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
                         <outlet property="flower" destination="VrZ-lF-Kdt" id="16X-qx-QJk"/>
-                        <outlet property="lastWorkoutDuration" destination="EXE-Nu-e1G" id="Jsh-Ey-ukk"/>
-                        <outlet property="lastWorkoutNameLabel" destination="b4n-0F-sOK" id="0lO-X2-gUp"/>
-                        <outlet property="lastWorkoutView" destination="ZhY-hI-Lh1" id="WW7-P0-8Vx"/>
                         <outlet property="settingsBarButtonItem" destination="Tgl-o6-wD2" id="ebg-CJ-Yji"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
+                        <outlet property="sunflareView" destination="gfr-gK-3Qo" id="fIK-OA-h5z"/>
                         <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="gXT-uk-Ch6"/>
                     </connections>
                 </viewController>
