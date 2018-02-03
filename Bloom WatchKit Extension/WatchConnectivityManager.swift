@@ -210,6 +210,25 @@ class WatchConnectivityManager: NSObject {
             }
         }
     }
+    
+    //MARK: - Sync Workout (workout started on Phone)
+    class func requestSyncWithPhone(completion: @escaping ((Bool) -> Void)) {
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            if session.isReachable {
+                let dict: [String: Bool] = ["Sync": true]
+                session.sendMessage(dict, replyHandler: { (reply) in
+                    let message = reply["WorkoutStarted"] as! Bool
+                    if message == false {
+                        //Notify user workout has not started on phone.
+                        completion(message)
+                    }
+                }, errorHandler: { (error) in
+                   print("Error syncing phone to watch: \(error.localizedDescription)")
+                })
+            }
+        }
+    }
 }
 
 extension WatchConnectivityManager: WCSessionDelegate {

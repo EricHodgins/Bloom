@@ -97,8 +97,10 @@ class LiveWorkoutController: UIViewController {
     func setupNotifications() {
         // Need to restart the heart beat animation when app leaves foreground and comes back.
         NotificationCenter.default.addObserver(self, selector: #selector(LiveWorkoutController.startHeartLineAnimation), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        
-        // Notify that a workout has started.  Needed to Sync with Apple Watch if Apple watch is not launched at the moment. Then launched later while iPhone is running the workout.
+    }
+    
+    // Sync Pressed on watch - triggered from PhoneConnectivity manager
+    func sendStateToWatch() {
         if workoutSessionManager.deviceInitiation == .phone {
             let startDate = workoutSessionManager.workout.startTime!
             let excercises = workoutSessionManager.excercises
@@ -106,10 +108,10 @@ class LiveWorkoutController: UIViewController {
                 return excercise.name!
             }
             let userInfo: [String: Any] = ["StartDate" : startDate,
-                                       "Name": workoutName,
-                                       "Excercises": excerciseNames
-                                      ]
-        
+                                           "Name": workoutName,
+                                           "Excercises": excerciseNames
+            ]
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, userInfo: userInfo)
             
         }

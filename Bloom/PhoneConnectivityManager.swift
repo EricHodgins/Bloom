@@ -103,11 +103,6 @@ class PhoneConnectivityManager: NSObject {
                 session.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
                     print("Error sending Finish message to watch: \(error.localizedDescription)")
                 })
-//                do {
-//                    try session.updateApplicationContext(message)
-//                } catch {
-//                    print("Error sending Finish message to watch: \(error)")
-//                }
             }
         }
     }
@@ -210,6 +205,18 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             replyHandler(["PhoneActivated": true])
             
             segueToLiveWorkout(workoutName: workoutName, startDate: startDate)
+        }
+        
+        //MARL: - Received Sync Message
+        if let sync = message["Sync"] as? Bool {
+            if sync == true {
+                if liveWorkoutController != nil {
+                    liveWorkoutController.sendStateToWatch()
+                    replyHandler(["WorkoutStarted": true])
+                } else {
+                    replyHandler(["WorkoutStarted": false])
+                }
+            }
         }
         
     }

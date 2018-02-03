@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
         <!--Main-->
@@ -14,15 +14,25 @@
             <objects>
                 <controller identifier="Main" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Bloom_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label height="0.59999999999999998" alignment="center" verticalAlignment="bottom" text="Start Workout On Phone" numberOfLines="0" id="AOL-1c-UnO">
+                        <label height="67" alignment="center" verticalAlignment="center" text="Start Workout On Phone, then SYNC" textAlignment="left" numberOfLines="0" id="AOL-1c-UnO">
                             <color key="textColor" red="1" green="0.1720513417" blue="0.015082935780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="18"/>
                         </label>
-                        <imageView width="1" height="0.40000000000000002" alignment="left" image="Flower_WatchKit" contentMode="scaleAspectFit" id="R6m-i9-ouf"/>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="SYNC PHONE" id="qqn-Y7-pt3">
+                            <color key="titleColor" red="0.023529411760000001" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="syncPhonePressed" destination="AgC-eL-Hgc" id="3dS-fi-nEn"/>
+                            </connections>
+                        </button>
+                        <imageView width="54" height="0.20000000000000001" alignment="left" image="Flower_WatchKit" contentMode="scaleAspectFit" id="R6m-i9-ouf"/>
                     </items>
+                    <connections>
+                        <outlet property="instructionLabel" destination="AOL-1c-UnO" id="5pS-Ar-BCO"/>
+                        <outlet property="syncButton" destination="qqn-Y7-pt3" id="EiM-KM-HWk"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="288"/>
+            <point key="canvasLocation" x="220" y="283"/>
         </scene>
         <!--LiveWorkout-->
         <scene sceneID="Fc4-ab-DQa">
