@@ -235,6 +235,7 @@ extension PhoneConnectivityManager: WCSessionDelegate {
             liveWorkoutController.workoutSessionManager.save(finishedDate: finishDate)
             DispatchQueue.main.async {
                 self.liveWorkoutController.workoutFinishedOnWatch()
+                self.liveWorkoutController = nil
             }
         }
     }

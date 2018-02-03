@@ -238,7 +238,6 @@ extension LiveWorkoutController {
 
 //MARK: - Streaming Heart Rate
 extension LiveWorkoutController {
-
     func updateHeartRate(value: String) {
         DispatchQueue.main.async {
             self.heartRateLabel.text = value
