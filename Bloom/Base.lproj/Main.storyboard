@@ -1437,6 +1437,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ow6-oG-Hb3" customClass="SKView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3D-HA-Msd" customClass="StartButton" customModule="Bloom" customModuleProvider="target">
                                 <rect key="frame" x="16" y="72" width="288" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
@@ -1526,10 +1530,14 @@
                             <constraint firstItem="V1N-kZ-qpk" firstAttribute="centerX" secondItem="euu-dV-rmI" secondAttribute="centerX" id="Kl2-3A-veS"/>
                             <constraint firstItem="V1N-kZ-qpk" firstAttribute="height" secondItem="euu-dV-rmI" secondAttribute="height" multiplier="0.8" id="KtR-Vb-5OP"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mkr-Pj-q4z" secondAttribute="leading" id="OzD-Pq-XoH"/>
+                            <constraint firstAttribute="trailing" secondItem="ow6-oG-Hb3" secondAttribute="trailing" id="USI-xL-hpa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p3D-HA-Msd" secondAttribute="trailing" id="ZVS-eP-bAL"/>
                             <constraint firstItem="mkr-Pj-q4z" firstAttribute="height" secondItem="euu-dV-rmI" secondAttribute="height" multiplier="0.15" id="ZXR-hu-7Q4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mkr-Pj-q4z" secondAttribute="trailing" id="aiX-Bh-3Kn"/>
                             <constraint firstAttribute="leadingMargin" secondItem="p3D-HA-Msd" secondAttribute="leading" id="d7K-ap-m8R"/>
+                            <constraint firstItem="ow6-oG-Hb3" firstAttribute="leading" secondItem="euu-dV-rmI" secondAttribute="leading" id="dQh-lu-gcb"/>
+                            <constraint firstItem="ow6-oG-Hb3" firstAttribute="top" secondItem="euu-dV-rmI" secondAttribute="top" id="eGf-TO-IpN"/>
+                            <constraint firstItem="qAA-3M-frL" firstAttribute="top" secondItem="ow6-oG-Hb3" secondAttribute="bottom" id="eKN-bC-kcY"/>
                             <constraint firstItem="qAA-3M-frL" firstAttribute="top" secondItem="mkr-Pj-q4z" secondAttribute="bottom" constant="20" id="hX7-cL-i6r"/>
                             <constraint firstItem="olA-ud-85r" firstAttribute="centerX" secondItem="euu-dV-rmI" secondAttribute="centerX" id="hjI-Ll-Sg9"/>
                             <constraint firstAttribute="trailing" secondItem="vs5-5T-WU6" secondAttribute="trailing" id="nOb-3F-brR"/>
@@ -1541,6 +1549,7 @@
                     <connections>
                         <outlet property="countDownLabel" destination="N9e-lV-0wa" id="IeR-Jx-a2Z"/>
                         <outlet property="countDownView" destination="V1N-kZ-qpk" id="se4-bq-JW7"/>
+                        <outlet property="dustParticleView" destination="ow6-oG-Hb3" id="ydg-s4-JCA"/>
                         <outlet property="editWorkoutButton" destination="mkr-Pj-q4z" id="rO5-J8-UvB"/>
                         <outlet property="flower" destination="olA-ud-85r" id="aoO-zc-BIh"/>
                         <outlet property="metalView" destination="vs5-5T-WU6" id="1Sl-J0-m9W"/>
@@ -2295,7 +2304,7 @@
         <image name="scan" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ODi-uK-JeC"/>
+        <segue reference="Tcu-ra-Bxx"/>
         <segue reference="gXT-uk-Ch6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -23,6 +23,7 @@ class InterfaceController: WKInterfaceController {
     enum ScreenStatus {
         case isReady
         case syncFailed
+        case syncTakingTooLong
     }
     
     var userStatus: ScreenStatus = .isReady
@@ -55,7 +56,7 @@ class InterfaceController: WKInterfaceController {
                     self.userStatus = .syncFailed
                     DispatchQueue.main.async {
                         self.instructionLabel.setText("Workout not started on phone.")
-                        self.syncButton.setTitle("Ok")
+                        self.syncButton.setTitle("OK")
                         self.syncButton.setEnabled(true)
                     }
                 } else {
@@ -66,6 +67,14 @@ class InterfaceController: WKInterfaceController {
             DispatchQueue.main.async {
                 self.instructionLabel.setText("Hold on...")
             }
+            
+            let when = DispatchTime.now() + 10.0
+            DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                self.userStatus = .syncTakingTooLong
+                self.instructionLabel.setText("Sync failed, try again.")
+                self.syncButton.setEnabled(true)
+                self.syncButton.setTitle("OK")
+            })
         }
         
         if userStatus == .syncFailed {
@@ -76,5 +85,11 @@ class InterfaceController: WKInterfaceController {
             }
         }
         
+        if userStatus == .syncTakingTooLong {
+            userStatus = .isReady
+            DispatchQueue.main.async {
+                WKInterfaceController.reloadRootPageControllers(withNames: ["Main"], contexts: nil, orientation: .horizontal, pageIndex: 0)
+            }
+        }
     }
 }

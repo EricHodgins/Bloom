@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 import MetalKit
 
 protocol CountDown: class {
@@ -31,6 +32,14 @@ class StartWorkoutController: UIViewController, CountDown {
 
     @IBOutlet weak var metalView: MTKView!
     @IBOutlet weak var flower: UIImageView!
+    
+    lazy var dustParticleScene:SKScene = {
+        var scene = DustParticleScene(size: dustParticleView.frame.size)
+        scene.backgroundColor = UIColor.clear
+        return scene
+    }()
+    
+    @IBOutlet weak var dustParticleView: SKView!
     
     
     override func viewDidLoad() {
@@ -56,12 +65,11 @@ class StartWorkoutController: UIViewController, CountDown {
             fatalError("Metal Device could not be created.")
         }
         
-        //metalView.clearColor = Colors.wenderlichGreen
         renderer = Renderer(device: device)
         metalView.delegate = renderer
         
         renderer?.scene = StartWorkoutScene(device: device, size: view.bounds.size)
- 
+        dustParticleView.presentScene(dustParticleScene)
     }
     
     @objc func hideNavigation() {
@@ -96,7 +104,6 @@ class StartWorkoutController: UIViewController, CountDown {
         flower.image = UIImage(named: "LaunchScreen.png")!
         flower.startAnimating()
     }
-    
 }
 
 extension StartWorkoutController {
