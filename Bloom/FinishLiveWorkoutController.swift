@@ -50,6 +50,7 @@ class FinishLiveWorkoutController: UIViewController {
     @IBAction func finishWorkoutButtonPressed(_ sender: Any) {
         workoutSession.saveMapRoute()
         workout.endTime = Date()
+        workoutSession.state = .finished
         do {
             try workout.managedObjectContext?.save()
         } catch let error as NSError {
@@ -57,6 +58,8 @@ class FinishLiveWorkoutController: UIViewController {
         }
         
         PhoneConnectivityManager.sendFinishedMessage()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.phoneConnectivityManager.liveWorkoutController = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

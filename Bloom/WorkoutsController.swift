@@ -26,6 +26,10 @@ class WorkoutsController: UIViewController {
         authorizeHealthKit()
     }
     
+    deinit {
+        print("WORKOUTS CONTROLLER DEINIT...")
+    }
+    
     func authorizeHealthKit() {
         let healthService:HealthDataService = HealthDataService()
         healthService.authorizeHealthKitAccess {(accessGranted, error) in

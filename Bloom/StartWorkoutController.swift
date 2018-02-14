@@ -33,8 +33,8 @@ class StartWorkoutController: UIViewController, CountDown {
     @IBOutlet weak var metalView: MTKView!
     @IBOutlet weak var flower: UIImageView!
     
-    lazy var dustParticleScene:SKScene = {
-        var scene = DustParticleScene(size: dustParticleView.frame.size)
+    lazy var dustParticleScene: SKScene! = {
+        var scene: SKScene = DustParticleScene(size: dustParticleView.frame.size)
         scene.backgroundColor = UIColor.clear
         return scene
     }()
@@ -50,7 +50,7 @@ class StartWorkoutController: UIViewController, CountDown {
         countDownView.countDownLabel = countDownLabel
         countDownView.isHidden = true
         countDownView.delegate = self
-        startButton.buttonAnimationCompletion = {
+        startButton.buttonAnimationCompletion = { [unowned self] in
             self.countDownView.isHidden = false
             self.countDownView.startCountDown(withSeconds: self.ringAnimationInterval)
             self.countDownView.animateRing(withSeconds: self.ringAnimationInterval)
@@ -70,6 +70,10 @@ class StartWorkoutController: UIViewController, CountDown {
         
         renderer?.scene = StartWorkoutScene(device: device, size: view.bounds.size)
         dustParticleView.presentScene(dustParticleScene)
+    }
+    
+    deinit {
+        print("START CONTROLLER DEINIT..")
     }
     
     @objc func hideNavigation() {

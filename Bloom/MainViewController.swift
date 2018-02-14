@@ -8,18 +8,13 @@
 
 import UIKit
 import CoreData
+import MetalKit
 import SpriteKit
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
-        
-    lazy var scene: FinishScene! = {
-        return FinishScene(size: self.sunflareView.frame.size)
-    }()
-    
-    @IBOutlet weak var sunflareView: SKView!
-    
+
     @IBOutlet weak var createWorkoutButton: CreateWorkoutButton!
     @IBOutlet weak var beginWorkoutButton: BeginWorkoutButton!
     @IBOutlet weak var statsButton: StatsButton!
@@ -29,6 +24,12 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var flower: UIImageView!
     
+    @IBOutlet weak var metalView: MTKView!
+    var renderer: Renderer?
+    
+    @IBOutlet weak var dustParticleView: SKView!
+    var dustParticleScene: SKScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let font = UIFont.systemFont(ofSize: 28.0)
@@ -36,11 +37,19 @@ class MainViewController: UIViewController {
         settingsBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         settingsBarButtonItem.title = "\u{2699}\u{0000FE0E}"
         
-        let skView = sunflareView!
-        skView.ignoresSiblingOrder = false
-        scene.scaleMode = .aspectFill
-        skView.backgroundColor = UIColor.clear
-        skView.presentScene(scene)
+        // Create Metal Shader
+        metalView.device = MTLCreateSystemDefaultDevice()
+        guard let device = metalView.device else {
+            fatalError("Metal Device could not be created.")
+        }
+        
+        renderer = Renderer(device: device)
+        metalView.delegate = renderer
+        
+        renderer?.scene = StartWorkoutScene(device: device, size: view.bounds.size)
+        dustParticleScene = DustParticleScene(size: dustParticleView.frame.size)
+        dustParticleScene.backgroundColor = UIColor.clear
+        dustParticleView.presentScene(dustParticleScene)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +57,6 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        scene.startSunFlareAction()
         setupFlowerImageAnimation()
     }
     
@@ -72,9 +80,7 @@ class MainViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         flower.image = UIImage(named: "Flower_1.png")
-        scene.removeFlareAction()
     }
-    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         createWorkoutButton.setNeedsDisplay()

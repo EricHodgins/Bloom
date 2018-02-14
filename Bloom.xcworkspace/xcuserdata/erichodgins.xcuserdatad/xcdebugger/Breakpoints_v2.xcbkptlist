@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bloom/RecordLiveExcerciseController.swift"
-            timestampString = "539373210.802722"
+            filePath = "Bloom/CreateWorkoutController.swift"
+            timestampString = "531725058.858499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "provideCurrentExcerciseValuesToWatch(completion:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bloom/CreateWorkoutController.swift"
-            timestampString = "531725058.858499"
+            filePath = "Bloom/PhoneConnectivityManager.swift"
+            timestampString = "540276457.984737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "segueToLiveWorkout(workoutName:startDate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -24,9 +24,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJe-aQ-iSc" customClass="MTKView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-gK-3Qo" customClass="SKView">
-                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower_1" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-lF-Kdt">
                                 <rect key="frame" x="254" y="518" width="50" height="50"/>
@@ -108,16 +112,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="44q-Pb-Ylv"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VrZ-lF-Kdt" secondAttribute="bottom" id="AT8-kN-oJW"/>
-                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Fz5-Vt-OzA"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ECm-8L-Ant"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Joo-TH-SjP"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NGK-bZ-pyT"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="NTT-Gh-cMh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" constant="8" id="Oed-la-BIZ"/>
-                            <constraint firstItem="VrZ-lF-Kdt" firstAttribute="top" secondItem="gfr-gK-3Qo" secondAttribute="bottom" constant="-50" id="Rd1-TP-C3F"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eJe-aQ-iSc" secondAttribute="bottom" id="YSb-cn-MPc"/>
+                            <constraint firstAttribute="trailing" secondItem="eJe-aQ-iSc" secondAttribute="trailing" id="Ypv-0a-4de"/>
                             <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" constant="8" id="aHA-tH-S6H"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gfr-gK-3Qo" secondAttribute="bottom" id="dLl-mt-CAo"/>
+                            <constraint firstAttribute="trailing" secondItem="gfr-gK-3Qo" secondAttribute="trailing" id="is5-51-cHw"/>
                             <constraint firstAttribute="trailing" secondItem="VrZ-lF-Kdt" secondAttribute="trailing" constant="16" id="mZ2-g9-B6I"/>
-                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-8" id="peO-Tt-BSh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gfr-gK-3Qo" secondAttribute="trailing" constant="-16" id="z79-CA-eOF"/>
+                            <constraint firstItem="gfr-gK-3Qo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u7L-a6-oAM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bloom" id="sHe-Xb-aBd">
@@ -135,10 +143,11 @@
                     <connections>
                         <outlet property="beginWorkoutButton" destination="wnw-Jy-kma" id="l2N-H7-aLf"/>
                         <outlet property="createWorkoutButton" destination="m7v-TV-dsG" id="CNf-G3-tuf"/>
+                        <outlet property="dustParticleView" destination="gfr-gK-3Qo" id="Fs8-5V-4Bn"/>
                         <outlet property="flower" destination="VrZ-lF-Kdt" id="16X-qx-QJk"/>
+                        <outlet property="metalView" destination="eJe-aQ-iSc" id="S8E-rW-NQb"/>
                         <outlet property="settingsBarButtonItem" destination="Tgl-o6-wD2" id="ebg-CJ-Yji"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
-                        <outlet property="sunflareView" destination="gfr-gK-3Qo" id="fIK-OA-h5z"/>
                         <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="gXT-uk-Ch6"/>
                     </connections>
                 </viewController>
@@ -2304,7 +2313,7 @@
         <image name="scan" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tcu-ra-Bxx"/>
+        <segue reference="ODi-uK-JeC"/>
         <segue reference="gXT-uk-Ch6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,7 +19,10 @@ class LiveExcerciseListController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
+    deinit {
+        print("LIVE LIST DEINIT..")
+    }
 
 }
 

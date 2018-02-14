@@ -13,6 +13,7 @@ import CoreData
 enum WorkoutSessionManagerState {
     case inactive
     case active
+    case finished
 }
 
 enum WorkoutSessionDeviceInitiation {
@@ -32,6 +33,7 @@ class WorkoutSessionManager {
     var currentExcercise: Excercise!
     
     weak var mapRouteDelegate: MapRouteDelegate?
+    var workoutIsFinished: Bool = false
     
     init(managedContext: NSManagedObjectContext, workoutName: String, startDate: Date, deviceInitiated device: WorkoutSessionDeviceInitiation) {
         guard state == .inactive else { return }

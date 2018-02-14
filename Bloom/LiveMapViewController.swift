@@ -57,6 +57,10 @@ class LiveMapViewController: UIViewController {
         workoutSession.mapRouteDelegate = self
         mapView.delegate = self
     }
+    
+    deinit {
+        print("LIVE MAP DEINIT..")
+    }
 
     @IBAction func switchPressed(_ sender: Any) {
         if CLLocationManager.locationServicesEnabled() {
@@ -79,7 +83,7 @@ class LiveMapViewController: UIViewController {
         seconds = 0
         startLocationUpdates()
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [unowned self] (timer) in
             self.eachSecond()
         })
     }
@@ -95,7 +99,7 @@ class LiveMapViewController: UIViewController {
     
     private func eachSecond() {
         seconds += 1
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.updateDisplay()
         }
     }
@@ -146,7 +150,7 @@ class LiveMapViewController: UIViewController {
     private func presentAlertViewController() {
         let alertController = UIAlertController(title: "Route Tracking", message: "What would you like to do?", preferredStyle: .actionSheet)
         
-        let saveButton = UIAlertAction(title: "Save and Stop", style: .default, handler: { (action) -> Void in
+        let saveButton = UIAlertAction(title: "Save and Stop", style: .default, handler: { [unowned self] (action) -> Void in
             print("Saving map route..")
             self.addFinishLocation()
             self.locationManager.stopUpdatingLocation()
@@ -156,12 +160,12 @@ class LiveMapViewController: UIViewController {
         
         let stateButton: UIAlertAction
         if locationManager.isUpdatingLocation {
-            stateButton = UIAlertAction(title: "Pause", style: .destructive, handler: { (action) -> Void in
+            stateButton = UIAlertAction(title: "Pause", style: .destructive, handler: { [unowned self] (action) -> Void in
                 print("Pausing location updates")
                 self.locationManager.stopUpdatingLocation()
             })
         } else {
-            stateButton = UIAlertAction(title: "Resume", style: .destructive, handler: { (action) -> Void in
+            stateButton = UIAlertAction(title: "Resume", style: .destructive, handler: { [unowned self] (action) -> Void in
                 print("Resuming location updates")
                 self.locationManager.startUpdatingLocation()
             })

@@ -10,7 +10,7 @@ import UIKit
 
 class BaseBloomView: UIView {
     
-    let textField: UITextField =  UITextField()
+    let textField: UITextField = UITextField()
     let lineSeparator: UIView = UIView()
     
     var saveButton: UIButton!

@@ -35,7 +35,7 @@ class RecordLiveExcerciseController: UIViewController {
     weak var excerciseLabel: UILabel!
     var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView to increase/decrease values
     
-    var recordLiveStatView: RecordLiveStatView!
+    weak var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
 
     override func viewDidLoad() {
@@ -54,6 +54,10 @@ class RecordLiveExcerciseController: UIViewController {
         weightButton.titleLabel?.lineBreakMode = .byWordWrapping
         distaneButton.titleLabel?.lineBreakMode = .byWordWrapping
         timeButton.titleLabel?.lineBreakMode = .byWordWrapping
+    }
+    
+    deinit {
+        print("RECORD LIVE EXCERCISE CONTROLLER DEINIT..")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -294,12 +298,12 @@ class RecordLiveExcerciseController: UIViewController {
                 self.saveExcerciseValue(forStat: self.recordLiveStatView.stat!, value: value)
             }
             
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: { [unowned self] in
                 DispatchQueue.main.async {
                     self.configureButtonsUI(forExercise: self.workoutSession.currentExcercise, previousWorkout: self.previousWorkout)
                 }
                 self.blurEffectView.alpha = 0
-            }, completion: {_ in
+            }, completion: { [unowned self] _ in
                 self.blurEffectView.removeFromSuperview()
             })
             

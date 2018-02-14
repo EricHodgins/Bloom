@@ -31,6 +31,8 @@ class LiveWorkoutController: UIViewController {
     var isStreamingHeartRate: Bool = false
     var phoneConnectivityManager: PhoneConnectivityManager?
     
+    var timer: Timer? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,10 +49,14 @@ class LiveWorkoutController: UIViewController {
         
         // Start Timer
         startTime = Date.timeIntervalSinceReferenceDate
-        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(LiveWorkoutController.startTimer), userInfo: nil, repeats: true)
         
         setupNotifications()
         setupViewLayout()
+    }
+    
+    deinit {
+        print("LIVE WORKOUT CONTROLLER DEINIT")
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -69,7 +75,8 @@ class LiveWorkoutController: UIViewController {
         page3.mappedDistanceDelegate = page1
         let page4 = createFinishLiveWorkoutController()
         
-        pages = [page1, page2, page3, page4]
+        //pages = [page1, page2, page3, page4]
+        pages = [page4]
         
         let views: [String: UIView] = ["view": scrollView, "page1": page1.view, "page2": page2.view, "page3": page3.view, "page4": page4.view]
         
@@ -136,23 +143,28 @@ extension LiveWorkoutController {
     @objc func startTimer() {
         let finish = Date.timeIntervalSinceReferenceDate + currentWatchInterval
         var diff = finish - startTime
-        
+
         let hours = Int16(diff / 3600)
-        
+
         diff -= TimeInterval(hours * 3600)
-        
+
         let minutes = Int16(diff / 60)
-        
+
         diff -= TimeInterval(minutes * 60)
-        
+
         let seconds = Int16(diff)
-        
+
         let hoursFormatted = String(format: "%02d", hours)
         let minutesFormatted = String(format: "%02d", minutes)
         let secondsFormatted = String(format: "%02d", seconds)
-        
-        DispatchQueue.main.async {
+
+        DispatchQueue.main.async { [unowned self] in
             self.workoutDurationLabel.text = "\(hoursFormatted):\(minutesFormatted):\(secondsFormatted)"
+        }
+        
+        if workoutSessionManager.state == .finished {
+            timer?.invalidate()
+            timer = nil
         }
     }
     
@@ -218,7 +230,6 @@ extension LiveWorkoutController {
         
         return flwc
     }
-    
 }
 
 extension LiveWorkoutController {
@@ -239,7 +250,7 @@ extension LiveWorkoutController {
 //MARK: - Streaming Heart Rate
 extension LiveWorkoutController {
     func updateHeartRate(value: String) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [unowned self] in
             self.heartRateLabel.text = value
         }
     }

@@ -37,7 +37,7 @@ class PhoneConnectivityManager: NSObject {
     
     func setupNotifications() {
         // Coming from LiveWorkoutController when starting a new workout.
-        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { (notification) in
+        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationLiveWorkoutStarted), object: nil, queue: nil) { [unowned self] (notification) in
             if let dateStarted = notification.userInfo?["StartDate"] as? NSDate,
                 let name = notification.userInfo?["Name"] as? String,
                 let excercises = notification.userInfo?["Excercises"] as? [String] {
