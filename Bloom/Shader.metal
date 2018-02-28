@@ -82,7 +82,7 @@ float3 lensflare(float2 uv,float2 pos)
     float2 main = uv-pos;
     float2 uvd = uv*(length(uv));
     
-    float ang = atan2(main.x,main.y);
+    //float ang = atan2(main.x,main.y);
     float dist=length(main);
     dist = pow(dist,.1);
     
@@ -90,7 +90,7 @@ float3 lensflare(float2 uv,float2 pos)
     
     f0 = f0; //+ f0*(sin(noise(sin(ang*2.+pos.x)*4.0 - cos(ang*3.+pos.y))*16.)*.1 + dist*.1 + .8);
     
-    float f1 = max(0.01-pow(length(uv+1.2*pos),1.9),.0)*7.0;
+    //float f1 = max(0.01-pow(length(uv+1.2*pos),1.9),.0)*7.0;
     
     float f2 = max(1.0/(1.0+32.0*pow(length(uvd+0.8*pos),2.0)),.0)*00.25;
     float f22 = max(1.0/(1.0+32.0*pow(length(uvd+0.85*pos),2.0)),.0)*00.23;
@@ -134,7 +134,7 @@ fragment half4 fragment_shader(VertexOut vertexIn [[ stage_in ]], constant Const
     uv.x *= constants.resolution.x /constants.resolution.y;
     float t = constants.time;
     
-    float3 mouse = float3(-cos(t/6.0)*1.0, cos(t/3.0)*.3, 0.0);
+    float3 mouse = float3(0.5, cos(t/20.0)*.5, 0.0);//float3(cos(t/1.0)*.5, cos(t/2.0)*.5, 0.0);
     mouse.x *= constants.resolution.x/constants.resolution.y; //fix aspect ratio
     
     float3 color = float3(0.4,1.2,1.8)*lensflare(uv,mouse.xy);

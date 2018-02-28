@@ -35,8 +35,10 @@ class RecordLiveExcerciseController: UIViewController {
     weak var excerciseLabel: UILabel!
     var currentCounter: Double = 0.0 // keeps track of the textfield in RecordLiveStatView to increase/decrease values
     
-    weak var recordLiveStatView: RecordLiveStatView!
+    var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
+    
+    var liveExcerciseListController: LiveExcerciseListController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +118,7 @@ class RecordLiveExcerciseController: UIViewController {
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         nextExcercise(sender) { (sets, reps, weight, distance) in
             PhoneConnectivityManager.goToNextExcerciseOnWatch(sets: sets, reps: reps, weight: weight, distance: distance)
+            self.liveExcerciseListController.updateExcerciseList(sets: sets, reps: reps, weight: weight, distance: distance, position: self.workoutSession.currentExcercise.orderNumber)
         }
     }
     

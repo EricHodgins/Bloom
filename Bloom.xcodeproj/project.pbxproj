@@ -128,6 +128,7 @@
 		7ADD26911F3508F900B434AF /* FinishScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD26901F3508F900B434AF /* FinishScene.swift */; };
 		7AE2039B1FAA58A700EA86AC /* ActiveExcercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE2039A1FAA58A700EA86AC /* ActiveExcercise.swift */; };
 		7AEAE4C22033496D009EBCD5 /* DustParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAE4C12033496C009EBCD5 /* DustParticleScene.swift */; };
+		7AEAE4C42046EBE5009EBCD5 /* LiveExcerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAE4C32046EBE5009EBCD5 /* LiveExcerciseCell.swift */; };
 		F3038D95C25F881B3C3839DB /* libPods-Bloom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BB19AB18E10289449962FF /* libPods-Bloom.a */; };
 /* End PBXBuildFile section */
 
@@ -323,6 +324,7 @@
 		7ADD26901F3508F900B434AF /* FinishScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishScene.swift; sourceTree = "<group>"; };
 		7AE2039A1FAA58A700EA86AC /* ActiveExcercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveExcercise.swift; sourceTree = "<group>"; };
 		7AEAE4C12033496C009EBCD5 /* DustParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustParticleScene.swift; sourceTree = "<group>"; };
+		7AEAE4C32046EBE5009EBCD5 /* LiveExcerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveExcerciseCell.swift; sourceTree = "<group>"; };
 		B8BB19AB18E10289449962FF /* libPods-Bloom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bloom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73CDD64A85C1A670D6455FE /* Pods-Bloom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.release.xcconfig"; sourceTree = "<group>"; };
 		ED8B18BD00BA06D1248254F4 /* Pods-Bloom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bloom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bloom/Pods-Bloom.debug.xcconfig"; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				7A7E6A7C1E1B545100D2AEDB /* LiveWorkoutTableViewCell.swift */,
+				7AEAE4C32046EBE5009EBCD5 /* LiveExcerciseCell.swift */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -1074,6 +1077,7 @@
 				7A1D21BC1F6B6A9E00619231 /* IAPManager.swift in Sources */,
 				7A1A7FF51F3D586E0013C5AC /* StateAnnotation.swift in Sources */,
 				7A7915D91E10BF3C00090D7B /* StartWorkoutController.swift in Sources */,
+				7AEAE4C42046EBE5009EBCD5 /* LiveExcerciseCell.swift in Sources */,
 				7A2075F81F784174001C1A02 /* ReceiptFetcher.swift in Sources */,
 				7A68C7F31E11EE0500F6023A /* EditWorkoutButton.swift in Sources */,
 				7ADD268F1F35084000B434AF /* FinishSummaryController.swift in Sources */,

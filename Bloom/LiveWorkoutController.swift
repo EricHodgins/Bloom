@@ -71,6 +71,7 @@ class LiveWorkoutController: UIViewController {
         // Setup Pages for scroll view
         let page1 = createRecordLiveExcerciseController()
         let page2 = createLiveExcerciseListController()
+        page1.liveExcerciseListController = page2
         let page3 = createLiveMapController()
         page3.mappedDistanceDelegate = page1
         let page4 = createFinishLiveWorkoutController()
@@ -194,6 +195,7 @@ extension LiveWorkoutController {
     fileprivate func createLiveExcerciseListController() -> LiveExcerciseListController {
         let lelc = storyboard!.instantiateViewController(withIdentifier: "List") as! LiveExcerciseListController
         lelc.view.translatesAutoresizingMaskIntoConstraints = false
+        lelc.workoutsession = workoutSessionManager
         lelc.excercises = workoutSessionManager.excercises
         
         scrollView.addSubview(lelc.view)

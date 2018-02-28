@@ -12,10 +12,10 @@ class LiveExcerciseListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var excercises = [Excercise]()
+    var workoutsession: WorkoutSessionManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -23,7 +23,6 @@ class LiveExcerciseListController: UIViewController {
     deinit {
         print("LIVE LIST DEINIT..")
     }
-
 }
 
 extension LiveExcerciseListController: UITableViewDataSource {
@@ -37,6 +36,7 @@ extension LiveExcerciseListController: UITableViewDataSource {
         let excercise = excercises[indexPath.row]
         
         cell.textLabel?.text = "\(excercise.name!)"
+        cell.detailTextLabel?.text = "S:\(excercise.sets), R:\(excercise.reps), W:\(excercise.weight), D:\(excercise.distance)"
         
         return cell
     }
@@ -53,3 +53,30 @@ extension LiveExcerciseListController: UITableViewDelegate {
         cell?.contentView.backgroundColor = UIColor.clear
     }
 }
+
+extension LiveExcerciseListController {
+    func updateExcerciseList(sets: String, reps: String, weight: String, distance: String, position: Int16) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

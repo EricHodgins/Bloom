@@ -1801,7 +1801,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-4s-PXj">
                                         <rect key="frame" x="0.0" y="470.5" width="320" height="77.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <state key="normal" title="Next Exercise"/>
+                                        <state key="normal" title="Next Exercise ➡️"/>
                                         <connections>
                                             <action selector="nextExcerciseTapped:" destination="B2Z-Xh-Nrc" eventType="touchUpInside" id="xEt-Oy-REo"/>
                                         </connections>
@@ -1855,14 +1855,59 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="Yrz-Ce-ZOs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="Yrz-Ce-ZOs" customClass="LiveExcerciseCell" customModule="Bloom" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yrz-Ce-ZOs" id="ePL-aV-avV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Push-Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzX-kN-zcy">
+                                                    <rect key="frame" x="15" y="11" width="290" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="D8K-a0-EJN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:17:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oC-xG-AlM">
+                                                    <rect key="frame" x="257.5" y="0.0" width="47.5" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="Y51-cF-k8R"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0, R: 0, W: 0, D: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7y-Z4-J3T">
+                                                    <rect key="frame" x="15" y="54" width="290" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="wJw-xr-SUz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uzX-kN-zcy" firstAttribute="trailing" secondItem="ePL-aV-avV" secondAttribute="trailingMargin" id="35E-3z-sKB"/>
+                                                <constraint firstItem="0oC-xG-AlM" firstAttribute="top" secondItem="ePL-aV-avV" secondAttribute="top" id="Ual-PX-a7F"/>
+                                                <constraint firstItem="0oC-xG-AlM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ePL-aV-avV" secondAttribute="leading" constant="20" symbolic="YES" id="Z3m-h2-hfp"/>
+                                                <constraint firstItem="uzX-kN-zcy" firstAttribute="leading" secondItem="ePL-aV-avV" secondAttribute="leadingMargin" id="c6R-cd-iwU"/>
+                                                <constraint firstItem="uzX-kN-zcy" firstAttribute="top" secondItem="ePL-aV-avV" secondAttribute="topMargin" id="ewZ-Ct-QpX"/>
+                                                <constraint firstAttribute="trailing" secondItem="0oC-xG-AlM" secondAttribute="trailing" constant="15" id="kDN-KZ-lE0"/>
+                                                <constraint firstItem="C7y-Z4-J3T" firstAttribute="leading" secondItem="ePL-aV-avV" secondAttribute="leadingMargin" id="nJK-yy-B62"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="C7y-Z4-J3T" secondAttribute="trailing" id="rRh-GX-mjR"/>
+                                                <constraint firstItem="C7y-Z4-J3T" firstAttribute="bottom" secondItem="ePL-aV-avV" secondAttribute="bottomMargin" id="v9f-1F-zIU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="excerciseDetails" destination="C7y-Z4-J3T" id="Fus-lO-sb9"/>
+                                            <outlet property="excerciseName" destination="uzX-kN-zcy" id="mMW-0N-Ata"/>
+                                            <outlet property="timeCompleteLabel" destination="0oC-xG-AlM" id="x6z-MI-Ki8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
