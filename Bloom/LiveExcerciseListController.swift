@@ -71,6 +71,14 @@ extension LiveExcerciseListController {
     }
 }
 
+extension LiveExcerciseListController: UpdateWorkoutList {
+    func updateWorkoutList() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
 
 
 

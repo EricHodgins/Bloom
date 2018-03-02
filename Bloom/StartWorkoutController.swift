@@ -15,6 +15,10 @@ protocol CountDown: class {
     func countDownComplete()
 }
 
+protocol UpdateWorkoutList: class {
+    func updateWorkoutList()
+}
+
 
 class StartWorkoutController: UIViewController, CountDown {
     

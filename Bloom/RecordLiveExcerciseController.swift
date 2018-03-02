@@ -38,7 +38,8 @@ class RecordLiveExcerciseController: UIViewController {
     var recordLiveStatView: RecordLiveStatView!
     var blurEffectView: UIVisualEffectView!
     
-    var liveExcerciseListController: LiveExcerciseListController!
+    //var liveExcerciseListController: LiveExcerciseListController!
+    weak var workoutListDelegate: UpdateWorkoutList?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +119,8 @@ class RecordLiveExcerciseController: UIViewController {
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         nextExcercise(sender) { (sets, reps, weight, distance) in
             PhoneConnectivityManager.goToNextExcerciseOnWatch(sets: sets, reps: reps, weight: weight, distance: distance)
-            self.liveExcerciseListController.updateExcerciseList(sets: sets, reps: reps, weight: weight, distance: distance, position: self.workoutSession.currentExcercise.orderNumber)
+            //self.liveExcerciseListController.updateExcerciseList(sets: sets, reps: reps, weight: weight, distance: distance, position: self.workoutSession.currentExcercise.orderNumber)
+            self.workoutListDelegate?.updateWorkoutList()
         }
     }
     

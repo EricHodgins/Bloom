@@ -71,7 +71,8 @@ class LiveWorkoutController: UIViewController {
         // Setup Pages for scroll view
         let page1 = createRecordLiveExcerciseController()
         let page2 = createLiveExcerciseListController()
-        page1.liveExcerciseListController = page2
+        //page1.liveExcerciseListController = page2
+        page1.workoutListDelegate = page2
         let page3 = createLiveMapController()
         page3.mappedDistanceDelegate = page1
         let page4 = createFinishLiveWorkoutController()
