@@ -20,6 +20,10 @@ class FinishLiveWorkoutController: UIViewController {
         super.viewDidLoad()
     }
     
+    deinit {
+        print("FINISH LIVE WORKOUT CONTROLLER DEINIT..")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

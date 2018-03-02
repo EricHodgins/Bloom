@@ -2094,10 +2094,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-Z5-EI8" customClass="GenericBloomButton" customModule="Bloom" customModuleProvider="target">
-                                <rect key="frame" x="16" y="170.5" width="288" height="227"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="227" id="G8w-zU-rL3"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="433.5" width="288" height="114.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Finish Workout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2115,19 +2112,40 @@
                                     <segue destination="5HP-LI-QZi" kind="presentation" identifier="SummarySegue" id="JJG-zd-ewo"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Aj-zE-HF4">
+                                <rect key="frame" x="31" y="283.5" width="258" height="2.5"/>
+                                <color key="progressTintColor" red="1" green="0.1720513417" blue="0.015082935780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="97% Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg9-R2-0Yg">
+                                <rect key="frame" x="96" y="219" width="129" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Mxr-zX-qal"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" id="Cnv-DU-TY7"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="7YX-Z5-EI8" secondAttribute="leading" id="JcO-Iv-Uo4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7YX-Z5-EI8" secondAttribute="trailing" id="cz7-FX-rro"/>
+                            <constraint firstItem="NT5-NK-nxB" firstAttribute="top" secondItem="7YX-Z5-EI8" secondAttribute="bottom" constant="20" id="3nL-9O-Wu7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Aj-zE-HF4" secondAttribute="trailing" constant="15" id="7g6-tE-HAS"/>
+                            <constraint firstItem="1Aj-zE-HF4" firstAttribute="leading" secondItem="OvS-oF-Iy1" secondAttribute="leadingMargin" constant="15" id="7nT-h2-O4v"/>
+                            <constraint firstItem="1Aj-zE-HF4" firstAttribute="centerX" secondItem="OvS-oF-Iy1" secondAttribute="centerX" id="Bp6-nP-p5W"/>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="height" secondItem="OvS-oF-Iy1" secondAttribute="height" multiplier="0.2" constant="1" id="L94-RF-oiS"/>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="trailing" secondItem="OvS-oF-Iy1" secondAttribute="trailingMargin" id="ar3-wJ-oZi"/>
+                            <constraint firstItem="7YX-Z5-EI8" firstAttribute="leading" secondItem="OvS-oF-Iy1" secondAttribute="leadingMargin" id="jD1-22-dB5"/>
+                            <constraint firstItem="1Aj-zE-HF4" firstAttribute="top" secondItem="Qg9-R2-0Yg" secondAttribute="bottom" constant="40.5" id="nL1-K5-xeP"/>
+                            <constraint firstItem="1Aj-zE-HF4" firstAttribute="centerY" secondItem="OvS-oF-Iy1" secondAttribute="centerY" id="t86-Iz-Scu"/>
+                            <constraint firstItem="Qg9-R2-0Yg" firstAttribute="centerX" secondItem="OvS-oF-Iy1" secondAttribute="centerX" id="uI7-LS-nl5"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.01674571075" green="0.51669448610000002" blue="0.998639524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.0" green="1" blue="0.78045744294455188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -2137,7 +2155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7092" y="296.40179910044981"/>
+            <point key="canvasLocation" x="7091.25" y="295.77464788732397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="COg-y7-Ygm">
@@ -2359,6 +2377,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ODi-uK-JeC"/>
-        <segue reference="gXT-uk-Ch6"/>
+        <segue reference="JJG-zd-ewo"/>
     </inferredMetricsTieBreakers>
 </document>
