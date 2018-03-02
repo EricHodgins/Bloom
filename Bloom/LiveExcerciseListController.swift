@@ -31,12 +31,21 @@ extension LiveExcerciseListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LiveExcerciseCell
         
         let excercise = excercises[indexPath.row]
         
-        cell.textLabel?.text = "\(excercise.name!)"
-        cell.detailTextLabel?.text = "S:\(excercise.sets), R:\(excercise.reps), W:\(excercise.weight), D:\(excercise.distance)"
+        cell.excerciseName.text = "\(excercise.name!)"
+        cell.excerciseDetails.text = "S:\(excercise.sets), R:\(excercise.reps), W:\(excercise.weight), D:\(excercise.distance)"
+        
+        if let timeComplete = excercise.timeRecorded {
+            let formattedTime = workoutsession.workout.startTime?.delta(to: timeComplete)
+            cell.timeCompleteLabel.text = "\(formattedTime ?? "Error")"
+            cell.accessoryType = .checkmark
+        } else {
+            cell.timeCompleteLabel.text = "--:--:--"
+            cell.accessoryType = .none
+        }
         
         return cell
     }
