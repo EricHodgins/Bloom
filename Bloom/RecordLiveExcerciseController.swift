@@ -40,6 +40,7 @@ class RecordLiveExcerciseController: UIViewController {
     
     //var liveExcerciseListController: LiveExcerciseListController!
     weak var workoutListDelegate: UpdateWorkoutList?
+    weak var progressDelegate: UpdateFinishedProgress?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +120,8 @@ class RecordLiveExcerciseController: UIViewController {
     @IBAction func nextExcerciseTapped(_ sender: Any) {
         nextExcercise(sender) { (sets, reps, weight, distance) in
             PhoneConnectivityManager.goToNextExcerciseOnWatch(sets: sets, reps: reps, weight: weight, distance: distance)
-            //self.liveExcerciseListController.updateExcerciseList(sets: sets, reps: reps, weight: weight, distance: distance, position: self.workoutSession.currentExcercise.orderNumber)
             self.workoutListDelegate?.updateWorkoutList()
+            self.progressDelegate?.updateProgress()
         }
     }
     

@@ -2118,11 +2118,11 @@
                                 <color key="trackTintColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="97% Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qg9-R2-0Yg">
-                                <rect key="frame" x="96" y="219" width="129" height="24"/>
+                                <rect key="frame" x="80.5" y="219" width="159.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Mxr-zX-qal"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.390235424" green="0.83725744489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2151,6 +2151,8 @@
                     </view>
                     <connections>
                         <outlet property="finishWorkoutButton" destination="7YX-Z5-EI8" id="5fa-Js-Lsg"/>
+                        <outlet property="percentCompleteLabel" destination="Qg9-R2-0Yg" id="2O0-ml-YDs"/>
+                        <outlet property="progressBar" destination="1Aj-zE-HF4" id="xHc-Rf-9Qj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUJ-5A-J2q" userLabel="First Responder" sceneMemberID="firstResponder"/>

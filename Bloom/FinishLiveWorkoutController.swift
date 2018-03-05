@@ -16,8 +16,15 @@ class FinishLiveWorkoutController: UIViewController {
     
     var workoutSession: WorkoutSessionManager!
     
+    @IBOutlet weak var percentCompleteLabel: UILabel!
+    
+    @IBOutlet weak var progressBar: UIProgressView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressBar.progress = 0.0
+        percentCompleteLabel.text = "0.0 % Complete"
     }
     
     deinit {
@@ -42,7 +49,7 @@ class FinishLiveWorkoutController: UIViewController {
         emitterCell.birthRate = 10
         emitterCell.lifetime = 50.0
         emitter.emitterCells = [emitterCell]
-        emitterCell.yAcceleration = -5.0
+        emitterCell.yAcceleration = -4.0
         emitterCell.scale = 0.07
         emitterCell.scaleRange = 0.1
         emitterCell.redRange = 0.3
@@ -78,6 +85,22 @@ class FinishLiveWorkoutController: UIViewController {
     }
 }
 
+extension FinishLiveWorkoutController: UpdateFinishedProgress {
+    func updateProgress() {
+        let total = Float(workoutSession.excercises.count)
+        var complete: Float = 0.0
+        for e in workoutSession.excercises {
+            if e.timeRecorded != nil {
+                complete += 1
+            }
+        }
+        let percent = Float(complete / total)
+        DispatchQueue.main.async {
+            self.percentCompleteLabel.text = String(format: "%.1f", percent*100.0) + " % Complete"
+            self.progressBar.progress = percent
+        }
+    }
+}
 
 
 
