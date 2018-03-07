@@ -1563,7 +1563,7 @@
                         <outlet property="flower" destination="olA-ud-85r" id="aoO-zc-BIh"/>
                         <outlet property="metalView" destination="vs5-5T-WU6" id="1Sl-J0-m9W"/>
                         <outlet property="startButton" destination="p3D-HA-Msd" id="EoF-iy-B6v"/>
-                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" modalTransitionStyle="flipHorizontal" id="6nR-L9-1gv"/>
+                        <segue destination="EYv-bC-qS5" kind="presentation" identifier="LiveWorkoutSegue" modalTransitionStyle="crossDissolve" id="6nR-L9-1gv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqv-1t-JZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2109,7 +2109,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="finishWorkoutButtonPressed:" destination="jAF-YU-cOg" eventType="touchUpInside" id="Ieb-74-lz6"/>
-                                    <segue destination="5HP-LI-QZi" kind="presentation" identifier="SummarySegue" id="JJG-zd-ewo"/>
+                                    <segue destination="5HP-LI-QZi" kind="presentation" identifier="SummarySegue" modalTransitionStyle="crossDissolve" id="JJG-zd-ewo"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1Aj-zE-HF4">
@@ -2378,7 +2378,7 @@
         <image name="scan" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ODi-uK-JeC"/>
+        <segue reference="Tcu-ra-Bxx"/>
         <segue reference="JJG-zd-ewo"/>
     </inferredMetricsTieBreakers>
 </document>
