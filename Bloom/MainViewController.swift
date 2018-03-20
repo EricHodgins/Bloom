@@ -107,7 +107,8 @@ class MainViewController: UIViewController {
         
         if segue.identifier == "LastWorkoutSegue" {
             let lastWorkoutSummaryController = segue.destination as! FinishSummaryController
-            lastWorkoutSummaryController.workout = workout
+            let lastWorkout = BloomFilter.fetchLastWorkout(inManagedContext: managedContext)
+            lastWorkoutSummaryController.workout = lastWorkout
         }
         
         if segue.identifier == "LastMapRouteSegue" {

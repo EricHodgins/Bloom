@@ -30,6 +30,15 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfr-gK-3Qo" customClass="SKView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khS-MR-AbZ">
+                                        <rect key="frame" x="114.5" y="72" width="91" height="30"/>
+                                        <state key="normal" title="Last Workout"/>
+                                        <connections>
+                                            <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="4w4-7M-fxk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flower_1" translatesAutoresizingMaskIntoConstraints="NO" id="VrZ-lF-Kdt">
@@ -113,15 +122,17 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gfr-gK-3Qo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="44q-Pb-Ylv"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="top" secondItem="gfr-gK-3Qo" secondAttribute="top" id="809-nZ-NmY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VrZ-lF-Kdt" secondAttribute="bottom" id="AT8-kN-oJW"/>
-                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ECm-8L-Ant"/>
+                            <constraint firstItem="khS-MR-AbZ" firstAttribute="centerX" secondItem="m7v-TV-dsG" secondAttribute="centerX" id="GTt-KO-8w5"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="IE0-k5-qKA"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Joo-TH-SjP"/>
-                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NGK-bZ-pyT"/>
                             <constraint firstItem="4Ja-39-VQU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="NTT-Gh-cMh"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="trailing" secondItem="gfr-gK-3Qo" secondAttribute="trailing" id="Nw9-TJ-Eh7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Ja-39-VQU" secondAttribute="bottom" constant="8" id="Oed-la-BIZ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eJe-aQ-iSc" secondAttribute="bottom" id="YSb-cn-MPc"/>
-                            <constraint firstAttribute="trailing" secondItem="eJe-aQ-iSc" secondAttribute="trailing" id="Ypv-0a-4de"/>
                             <constraint firstAttribute="trailing" secondItem="4Ja-39-VQU" secondAttribute="trailing" constant="8" id="aHA-tH-S6H"/>
+                            <constraint firstItem="m7v-TV-dsG" firstAttribute="top" secondItem="khS-MR-AbZ" secondAttribute="bottom" constant="26" id="cku-7Q-vID"/>
+                            <constraint firstItem="eJe-aQ-iSc" firstAttribute="leading" secondItem="gfr-gK-3Qo" secondAttribute="leading" id="d4U-r1-Gqt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gfr-gK-3Qo" secondAttribute="bottom" id="dLl-mt-CAo"/>
                             <constraint firstAttribute="trailing" secondItem="gfr-gK-3Qo" secondAttribute="trailing" id="is5-51-cHw"/>
                             <constraint firstAttribute="trailing" secondItem="VrZ-lF-Kdt" secondAttribute="trailing" constant="16" id="mZ2-g9-B6I"/>
@@ -148,7 +159,6 @@
                         <outlet property="metalView" destination="eJe-aQ-iSc" id="S8E-rW-NQb"/>
                         <outlet property="settingsBarButtonItem" destination="Tgl-o6-wD2" id="ebg-CJ-Yji"/>
                         <outlet property="statsButton" destination="wu1-mZ-cgC" id="sb5-hE-IEt"/>
-                        <segue destination="5HP-LI-QZi" kind="presentation" identifier="LastWorkoutSegue" id="gXT-uk-Ch6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2378,7 +2388,7 @@
         <image name="scan" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tcu-ra-Bxx"/>
-        <segue reference="JJG-zd-ewo"/>
+        <segue reference="ODi-uK-JeC"/>
+        <segue reference="4w4-7M-fxk"/>
     </inferredMetricsTieBreakers>
 </document>
